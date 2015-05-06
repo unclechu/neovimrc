@@ -12,7 +12,26 @@ filetype plugin indent on "important for vundle
 
 "vundle plugins
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
+Plugin 'drmikehenry/vim-fontsize'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'gkz/vim-ls'
+Plugin 'groenewege/vim-less'
+Plugin 'wavded/vim-stylus'
+Plugin 'digitaltoad/vim-jade'
+Bundle 'chase/vim-ansible-yaml'
+Plugin 'elzr/vim-json'
+Plugin 'niklasl/vim-rdf'
+Plugin 'klen/python-mode'
+Bundle 'gmoe/vim-faust'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'mattn/emmet-vim'
+Plugin 'briancollins/vim-jst'
 
 "vundle colorschemes
 Plugin 'altercation/vim-colors-solarized'
@@ -26,8 +45,7 @@ syntax on
 runtime! my-modules/**/*.vim
 
 "modules stuff
-nmap <F10> <Esc>:DeleteHiddenBuffers<CR>
-nmap <F9> <Esc>:ToggleTabsHL<CR>
+"highlight tabs by default
 call ToggleTabsHL()
 
 "some vim configs
@@ -58,21 +76,32 @@ set showtabline=2 "show tabs always
 set fileencodings=utf8,cp1251
 set modeline
 set foldmethod=indent
+set foldlevelstart=3
+set cpoptions+=I "disable indent removing in insert mode
 
 let mapleader = ','
 
-"reset search
+"hotkeys
+imap <F1> <Esc>:NewTabWithNERDTree<CR>
+nmap <F1> <Esc>:NewTabWithNERDTree<CR>
+imap <F2> <Esc>:ToggleAutoIndent<CR>li
+nmap <F2> <Esc>:ToggleAutoIndent<CR>
+"reset search (removes hilighting)
 map <F3> :let @/ = ""<CR>
-
 "provide forward deleting in Insert and Command-Line modes
 inoremap <C-l> <Del>
 cnoremap <C-l> <Del>
+"tabs
+nmap <F4> <Esc><C-W><Right>:tabclose<CR>
+map <F5> :NERDTreeMirrorToggle<CR>
+map <F6> :BufExplorerRelative<CR>
+nmap <F7> <Esc>:tabprevious<CR>
+nmap <F8> <Esc>:tabnext<CR>
+nmap <F9> <Esc>:ToggleTabsHL<CR>
+nmap <F10> <Esc>:DeleteHiddenBuffers<CR>
 
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
-
-"reset search hotkey (removes hilighting)
-map <F3> :let @/ = ""<CR>
 
 "vim: set noet :

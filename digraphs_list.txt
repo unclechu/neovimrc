@@ -1,0 +1,38 @@
+Vim digraphs mnenomic codes
+Insert mode: Ctrl+K {mnemonic-code}
+
+French, Russian     German, Russian (inner)
+<<  «    >>  »      :9  „    "6  “               
+
+English (single)    English (double)
+'6  ‘    '9  ’      "6  “    "9  ”
+
+NS  | (non-break space)
+-N  – (EN, middle dash)
+-M  — (EM, big dash)
+
+CUSTOM!!! (see .vimrc)
+3.  …    ''  (áccent)
+
+<-  ←    -!  ↑    ->  →    -v  ↓
+<>  ↔    UD  ↕    <=  ⇐    =>  ⇒    ==  ⇔
+AN  ∧    OR  ∨
+
+Co  ©    Rg  ®    TM  ™
+.P  ⋅    .M  ·    Sb  ∙    Ob  ∘
++-  ±    *X  ×    -:  ÷
+?2  ≈    !=  ≠    =<  ≤    >=  ≥
+
+DG  °    Om  Ω    My  µ    00  ∞    PI  ¶    ae  æ    Eu  €
+
+14  ¼    12  ½    34  ¾
+1S  ¹    2S  ²    3S  ³
+1s  ₁    2s  ₂    3s  ₃
+1.  ⒈
+2.  ⒉
+3.  ⒊
+
+OK  ✓    XX  ✗
+
+0u  ☺    0U  ☻    SU  ☼    Fm  ♀    Ml  ♂
+Md  ♩    M8  ♪    M2  ♫    Mb  ♭    Mx  ♮    MX  ♯
