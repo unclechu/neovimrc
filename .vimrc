@@ -29,7 +29,6 @@ Plugin 'klen/python-mode'
 Bundle 'gmoe/vim-faust'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mattn/emmet-vim'
 Plugin 'briancollins/vim-jst'
 Plugin 'godlygeek/tabular'
@@ -43,6 +42,7 @@ Plugin 'darkburn'
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
 
 "load my modules
 syntax on
@@ -84,22 +84,17 @@ set cpoptions+=I "disable indent removing in insert mode
 
 let mapleader = ','
 
-"hotkeys
-imap <F1> <Esc>:NewTabWithNERDTree<CR>
-nmap <F1> <Esc>:NewTabWithNERDTree<CR>
-imap <F2> <Esc>:ToggleAutoIndent<CR>li
-nmap <F2> <Esc>:ToggleAutoIndent<CR>
-"reset search (removes hilighting)
-map <F3> :let @/ = ""<CR>
 "provide forward deleting in Insert and Command-Line modes
 inoremap <C-l> <Del>
 cnoremap <C-l> <Del>
+
+"hotkeys
+nmap <F1> <Esc>:tabnew<CR>
+"reset search (removes hilighting)
+nmap <F3> :let @/ = ""<CR>
 "tabs
 nmap <F4> <Esc><C-W><Right>:tabclose<CR>
-map <F5> :NERDTreeMirrorToggle<CR>
-map <F6> :BufExplorerRelative<CR>
-nmap <F7> <Esc>:tabprevious<CR>
-nmap <F8> <Esc>:tabnext<CR>
+nmap <F5> :NERDTreeMirrorToggle<CR>
 nmap <F9> <Esc>:ToggleTabsHL<CR>
 nmap <F10> <Esc>:DeleteHiddenBuffers<CR>
 
