@@ -35,6 +35,7 @@ Plugin 'briancollins/vim-jst'
 
 "vundle colorschemes
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'darkburn'
 
 "plugins stuff
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
