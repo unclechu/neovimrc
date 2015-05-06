@@ -11,6 +11,7 @@ call vundle#rc()
 filetype plugin indent on "important for vundle
 
 "vundle plugins
+Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
