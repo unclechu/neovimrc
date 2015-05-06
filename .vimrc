@@ -42,6 +42,7 @@ Plugin 'darkburn'
 "plugins stuff
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
+let g:airline#extensions#tabline#enabled = 1
 
 "load my modules
 syntax on
@@ -75,7 +76,6 @@ if has('mouse')
 	set mouse=a
 endif
 
-set showtabline=2 "show tabs always
 set fileencodings=utf8,cp1251
 set modeline
 set foldmethod=indent
