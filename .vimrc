@@ -1,3 +1,6 @@
+".vimrc
+"Author: Viacheslav Lotsmanov
+
 set nocompatible
 filetype off "important for vundle
 
@@ -7,14 +10,27 @@ call vundle#rc()
 
 filetype plugin indent on "important for vundle
 
-"vundle github repos
+"vundle plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 
-"vundle vim/scripts repos
-" ...
+"vundle colorschemes
+Plugin 'altercation/vim-colors-solarized'
 
-"some config
+"plugins stuff
+let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
+let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
+
+"load my modules
+syntax on
+runtime! my-modules/**/*.vim
+
+"modules stuff
+nmap <F10> <Esc>:DeleteHiddenBuffers<CR>
+nmap <F9> <Esc>:ToggleTabsHL<CR>
+call ToggleTabsHL()
+
+"some vim configs
 
 set tabstop=4
 set softtabstop=4
@@ -45,8 +61,6 @@ set foldmethod=indent
 
 let mapleader = ','
 
-syntax on
-
 "reset search
 map <F3> :let @/ = ""<CR>
 
@@ -57,5 +71,8 @@ cnoremap <C-l> <Del>
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
+
+"reset search hotkey (removes hilighting)
+map <F3> :let @/ = ""<CR>
 
 "vim: set noet :
