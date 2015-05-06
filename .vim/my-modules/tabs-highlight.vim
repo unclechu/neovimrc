@@ -4,7 +4,7 @@
 let g:listchars_original=&listchars
 let g:listchars_onlytab='tab:>-'
 
-function! ToggleTabsHL()
+function! ToggleTabsHL(silent)
 	let l:lc = &listchars
 	if l:lc == g:listchars_onlytab
 		let &listchars = g:listchars_original
@@ -13,7 +13,9 @@ function! ToggleTabsHL()
 		tabdo windo set nolist
 		exec 'tabn' . l:tab_n
 		exec l:win_n . 'wincmd w'
-		echo 'Tabs highlighting is disabled'
+		if a:silent != 1
+			echo 'Tabs highlighting is disabled'
+		endif
 	else
 		let &listchars = g:listchars_onlytab
 		let l:tab_n = tabpagenr()
@@ -22,9 +24,11 @@ function! ToggleTabsHL()
 		exec 'tabn' . l:tab_n
 		exec l:win_n . 'wincmd w'
 		let g:listchars_original = l:lc
-		echo 'Tabs highlighting is enabled'
+		if a:silent != 1
+			echo 'Tabs highlighting is enabled'
+		endif
 	endif
 endfunction
-command ToggleTabsHL call ToggleTabsHL()
+command ToggleTabsHL call ToggleTabsHL(0)
 
 "vim: set noet :

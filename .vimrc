@@ -47,7 +47,7 @@ runtime! my-modules/**/*.vim
 
 "modules stuff
 "highlight tabs by default
-call ToggleTabsHL()
+call ToggleTabsHL(1)
 
 "some vim configs
 
