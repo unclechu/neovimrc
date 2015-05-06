@@ -9,11 +9,9 @@ filetype plugin indent on "important for vundle
 
 "vundle github repos
 Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
 
 "vundle vim/scripts repos
-" ...
-
-"vundle just git repos
 " ...
 
 "some config
