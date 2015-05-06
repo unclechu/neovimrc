@@ -33,6 +33,7 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mattn/emmet-vim'
 Plugin 'briancollins/vim-jst'
 Plugin 'godlygeek/tabular'
+Plugin 'bling/vim-airline'
 
 "vundle colorschemes
 Plugin 'altercation/vim-colors-solarized'
