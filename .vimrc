@@ -1,5 +1,6 @@
 ".vimrc
 "Author: Viacheslav Lotsmanov
+"vim: set noet fenc=utf-8 :
 
 set nocompatible
 filetype off "important for vundle
@@ -83,6 +84,11 @@ set foldmethod=indent
 set foldlevelstart=3
 set cpoptions+=I "disable indent removing in insert mode
 
+set showbreak=˪
+set breakindentopt=shift:4,sbr
+set breakindent
+set linebreak
+
 let mapleader = ','
 
 "provide forward deleting in Insert and Command-Line modes
@@ -102,5 +108,3 @@ nmap <F10> <Esc>:DeleteHiddenBuffers<CR>
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
-
-"vim: set noet :
