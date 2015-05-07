@@ -85,9 +85,13 @@ set foldlevelstart=3
 set cpoptions+=I "disable indent removing in insert mode
 
 set showbreak=˪
-set breakindentopt=shift:4,sbr
-set breakindent
 set linebreak
+"try-catch for old vim versions
+try
+	set breakindentopt=shift:4,sbr
+	set breakindent
+catch
+endtry
 
 let mapleader = ','
 
