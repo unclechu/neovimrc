@@ -45,6 +45,7 @@ filetype plugin indent on
 "plugins stuff
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
+let NERDTreeMapHelp = '<Leader>?' "heals backward search
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 
