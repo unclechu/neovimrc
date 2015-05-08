@@ -35,6 +35,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'briancollins/vim-jst'
 Plugin 'godlygeek/tabular'
 Plugin 'bling/vim-airline'
+Plugin 'ap/vim-css-color'
 
 "vundle colorschemes
 Plugin 'altercation/vim-colors-solarized'
