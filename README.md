@@ -8,6 +8,7 @@ Hot to use it
 
   ```bash
   $ git clone https://github.com/unclechu/vimrc2 ~/.vimrc2-git
+  $ cd ~/.vimrc2-git
   $ git submodule update --init # need for Vundle
   ```
 
