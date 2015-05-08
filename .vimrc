@@ -2,17 +2,14 @@
 "Author: Viacheslav Lotsmanov
 "vim: set noet fenc=utf-8 :
 
+"required for vundle
 set nocompatible
-filetype off "important for vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
-set rtp+=~/.vim/bundle/vundle/
-
-call vundle#rc()
-
-filetype plugin indent on "important for vundle
-
-"vundle plugins
-Plugin 'gmarik/vundle'
+"plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
@@ -37,9 +34,13 @@ Plugin 'godlygeek/tabular'
 Plugin 'bling/vim-airline'
 Plugin 'ap/vim-css-color'
 
-"vundle colorschemes
+"colorschemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'darkburn'
+
+"required for vundle
+call vundle#end()
+filetype plugin indent on
 
 "plugins stuff
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
