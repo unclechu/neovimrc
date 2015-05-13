@@ -92,7 +92,10 @@ set fileencodings=utf8,cp1251
 set modeline
 set foldmethod=indent
 set foldlevelstart=3
-set cpoptions+=I "disable indent removing in insert mode
+set cpoptions+=I "disable indent removing in insert mode (moving by arrow keys)
+
+"dirty hack for ignore trim trailing whitespace by <CR> in insert mode
+inoremap <CR> x<Backspace><CR>x<Backspace>
 
 set showbreak=˪
 set linebreak
