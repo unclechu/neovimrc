@@ -33,6 +33,8 @@ Plugin 'briancollins/vim-jst'
 Plugin 'godlygeek/tabular'
 Plugin 'bling/vim-airline'
 Plugin 'ap/vim-css-color'
+Plugin 'henrik/vim-indexed-search'
+Plugin 'kristijanhusak/vim-multiple-cursors'
 
 "colorschemes
 Plugin 'altercation/vim-colors-solarized'
