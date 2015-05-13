@@ -7,7 +7,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim' "provided by git-submodule
 
 "plugins
 Plugin 'scrooloose/nerdtree'
@@ -35,6 +35,8 @@ Plugin 'bling/vim-airline'
 Plugin 'ap/vim-css-color'
 Plugin 'henrik/vim-indexed-search'
 Plugin 'kristijanhusak/vim-multiple-cursors'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
 
 "colorschemes
 Plugin 'altercation/vim-colors-solarized'
@@ -44,7 +46,7 @@ Plugin 'darkburn'
 call vundle#end()
 filetype plugin indent on
 
-"plugins stuff
+"plugins config
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
 let NERDTreeMapHelp = '<Leader>?' "heals backward search
@@ -55,14 +57,15 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\v\.(exe|so|dll)$',
 	\ 'link': '',
 	\ }
+let g:indentLine_enabled = 0
+let g:indent_guides_start_level = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
 
 "load my modules
 syntax on
 runtime! my-modules/**/*.vim
-
-"modules stuff
-"highlight tabs by default
-call ToggleTabsHL(1)
 
 "some vim configs
 
@@ -119,7 +122,7 @@ nmap <F3> :let @/ = ""<CR>
 "tabs
 nmap <F4> <Esc><C-W><Right>:tabclose<CR>
 nmap <F5> :NERDTreeMirrorToggle<CR>
-nmap <F9> <Esc>:ToggleTabsHL<CR>
+nmap <F9> <Esc>:TabsHLToggle<CR>
 nmap <F10> <Esc>:DeleteHiddenBuffers<CR>
 
 "custom digraphs

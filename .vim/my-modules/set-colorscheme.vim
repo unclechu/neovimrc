@@ -3,10 +3,11 @@
 
 "required install colorschemes by vundle first
 try
-	let g:colorscheme = 'solarized'
 
 	"terminal mode
-	if !has("gui_running")
+	if has("gui_running")
+		let g:colorscheme = 'solarized'
+	else
 		let g:colorscheme = 'darkburn'
 	endif
 
@@ -15,10 +16,14 @@ try
 	exec 'colorscheme ' . g:colorscheme
 
 	"overwrite SpecialKey for tabs highlight
-	if g:colorscheme == 'solarized'
-		hi SpecialKey guifg=#f4ce81 ctermfg=222 guibg=#efefce ctermbg=230
+	if has("gui_running")
+		hi SpecialKey       guibg=#efefce ctermbg=230 guifg=#f4ce81 ctermfg=222
+		hi IndentGuidesOdd  guibg=#efefce ctermbg=229 guifg=#f4ce81 ctermfg=222
+		hi IndentGuidesEven guibg=#ededc2 ctermbg=228 guifg=#f4ce81 ctermfg=222
 	else
-		hi SpecialKey guifg=#340 ctermfg=53 guibg=#111 ctermbg=234
+		hi SpecialKey       guibg=#111111 ctermbg=234 guifg=#333333 ctermfg=237
+		hi IndentGuidesOdd  guibg=#111111 ctermbg=233 guifg=#333333 ctermfg=237
+		hi IndentGuidesEven guibg=#222222 ctermbg=232 guifg=#333333 ctermfg=237
 	endif
 catch
 endtry

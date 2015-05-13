@@ -4,7 +4,7 @@
 let g:listchars_original=&listchars
 let g:listchars_onlytab='tab:>-'
 
-function! ToggleTabsHL(silent)
+function! TabsHLToggle(silent)
 	let l:lc = &listchars
 	if l:lc == g:listchars_onlytab
 		let &listchars = g:listchars_original
@@ -29,6 +29,6 @@ function! ToggleTabsHL(silent)
 		endif
 	endif
 endfunction
-command ToggleTabsHL call ToggleTabsHL(0)
+command TabsHLToggle call TabsHLToggle(0)
 
 "vim: set noet :
