@@ -7,7 +7,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim' "provided by git-submodule
+Plugin 'gmarik/Vundle.vim', {'pinned': 1} "provided by git-submodule
 
 "plugins
 Plugin 'scrooloose/nerdtree'
