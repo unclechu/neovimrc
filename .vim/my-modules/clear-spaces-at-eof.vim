@@ -4,7 +4,12 @@
 function! ClearSpacesAtEOF()
 	try
 		exec "%s/\\([^ \\t]\\)[ \\t]\\+$/\\1/g"
-		exec "%s/[ ]\\+$//g"
+	catch
+	endtry
+	try
+		if ! &expandtab
+			exec "%s/[ ]\\+$//g"
+		endif
 	catch
 	endtry
 endfunction
