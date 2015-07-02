@@ -120,14 +120,14 @@ inoremap <C-l> <Del>
 cnoremap <C-l> <Del>
 
 "hotkeys
-nmap <F1> <Esc>:tabnew<CR>
+nmap <F1>  :tabnew<CR>
 "reset search (removes hilighting)
-nmap <F3> :let @/ = ""<CR>
+nmap <F3>  :let @/ = ""<CR>
 "tabs
-nmap <F4> <Esc><C-W><Right>:tabclose<CR>
-nmap <F5> :NERDTreeMirrorToggle<CR>
-nmap <F9> <Esc>:TabsHLToggle<CR>
-nmap <F10> <Esc>:DeleteHiddenBuffers<CR>
+nmap <F4>  <C-W><Right>:tabclose<CR>
+nmap <F5>  :NERDTreeMirrorToggle<CR>
+nmap <F9>  :TabsHLToggle<CR>
+nmap <F10> :DeleteHiddenBuffers<CR>
 
 "custom digraphs
 digraphs '' 769 "accent
