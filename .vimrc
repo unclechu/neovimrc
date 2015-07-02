@@ -57,7 +57,6 @@ let g:ctrlp_custom_ignore = {
 	\ }
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
-let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
 vmap <Enter> <Plug>(EasyAlign)
@@ -66,6 +65,9 @@ nmap ga <Plug>(EasyAlign)
 "load my modules
 syntax on
 runtime! my-modules/**/*.vim
+
+"enable tabs hl by default
+call TabsHLEnable(1)
 
 "some vim configs
 
