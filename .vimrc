@@ -132,3 +132,9 @@ nmap <F10> :DeleteHiddenBuffers<CR>
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
+
+"include local vimrc
+let g:vimrcpost = expand('~') . '/.vimrc-local-post'
+if filereadable(g:vimrcpost)
+	exec 'source ' . g:vimrcpost
+endif
