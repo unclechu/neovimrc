@@ -97,7 +97,7 @@ endif
 set fileencodings=utf8,cp1251
 set modeline
 set foldmethod=indent
-set foldlevelstart=3
+set foldlevelstart=999
 set cpoptions+=I "disable indent removing in insert mode (moving by arrow keys)
 
 "dirty hacks for ignore trim trailing whitespace
