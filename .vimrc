@@ -102,6 +102,7 @@ set cpoptions+=I "disable indent removing in insert mode (moving by arrow keys)
 
 "dirty hacks for ignore trim trailing whitespace
 inoremap <CR> x<Backspace><CR>x<Backspace>
+inoremap <C-j> x<Backspace><C-j>x<Backspace>
 nnoremap o ox<Backspace>
 nnoremap O Ox<Backspace>
 
