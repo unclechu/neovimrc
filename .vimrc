@@ -67,9 +67,6 @@ nmap ga <Plug>(EasyAlign)
 syntax on
 runtime! my-modules/**/*.vim
 
-"enable tabs hl by default
-call TabsHLEnable(1)
-
 "some vim configs
 
 set tabstop=4
@@ -128,7 +125,6 @@ nmap <F3>  :let @/ = ""<CR>
 "tabs
 nmap <F4>  <C-W><Right>:tabclose<CR>
 nmap <F5>  :NERDTreeMirrorToggle<CR>
-nmap <F9>  :TabsHLToggle<CR>
 nmap <F10> :DeleteHiddenBuffers<CR>
 
 "custom digraphs
