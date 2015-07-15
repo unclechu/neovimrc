@@ -125,12 +125,17 @@ nnoremap <leader>k :ls<CR>:bd<space>
 
 "hotkeys
 nmap <F1>  :tabnew<CR>
-"reset search (removes hilighting)
+nmap <F2>  :w<CR>
+imap <F2>  <Esc>:w<CR>
+vmap <F2>  <Esc>:w<CR>
+"reset search by <F3>
 nmap <F3>  :let @/ = ""<CR>
-"tabs
 nmap <F4>  <C-W><Right>:tabclose<CR>
 nmap <F5>  :NERDTreeMirrorToggle<CR>
 nmap <F10> :DeleteHiddenBuffers<CR>
+nmap <F12> :
+imap <F12> <Esc>:
+vmap <F12> <Esc>:
 
 "custom digraphs
 digraphs '' 769 "accent
