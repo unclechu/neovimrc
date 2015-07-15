@@ -132,6 +132,7 @@ vmap <F2>  <Esc>:w<CR>
 nmap <F3>  :let @/ = ""<CR>
 nmap <F4>  <C-W><Right>:tabclose<CR>
 nmap <F5>  :NERDTreeMirrorToggle<CR>
+nmap <F6>  :ls<CR>:b<space>
 nmap <F10> :DeleteHiddenBuffers<CR>
 nmap <F12> :
 imap <F12> <Esc>:
