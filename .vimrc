@@ -118,6 +118,11 @@ let mapleader = ','
 inoremap <C-l> <Del>
 cnoremap <C-l> <Del>
 
+" flying between buffers
+" (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
+nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <leader>k :ls<CR>:bd<space>
+
 "hotkeys
 nmap <F1>  :tabnew<CR>
 "reset search (removes hilighting)
