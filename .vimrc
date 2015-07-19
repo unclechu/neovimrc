@@ -36,7 +36,6 @@ Plugin 'ap/vim-css-color'
 Plugin 'henrik/vim-indexed-search'
 Plugin 'kristijanhusak/vim-multiple-cursors'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Shougo/neocomplete.vim'
 
 "snipmate
 Plugin 'tomtom/tlib_vim'
@@ -68,12 +67,6 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-"neocomplete
-let g:neocomplete#enable_at_startup     = 1
-let g:neocomplete#enable_auto_select    = 0
-let g:neocomplete#disable_auto_complete = 1
-inoremap <expr><C-n> neocomplete#start_manual_complete()
-inoremap <expr><C-p> neocomplete#start_manual_complete()
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 
