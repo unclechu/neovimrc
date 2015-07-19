@@ -38,6 +38,11 @@ Plugin 'kristijanhusak/vim-multiple-cursors'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Shougo/neocomplete.vim'
 
+"snipmate
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
+
 "colorschemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'darkburn'
@@ -69,6 +74,8 @@ let g:neocomplete#enable_auto_select    = 0
 let g:neocomplete#disable_auto_complete = 1
 inoremap <expr><C-n> neocomplete#start_manual_complete()
 inoremap <expr><C-p> neocomplete#start_manual_complete()
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
 
 "load my modules
 syntax on
