@@ -2,15 +2,64 @@ snippet f
 	function (${1}) {
 		${2}
 	}
-
+snippet fi
+	function (${1}) { ${2} }
+snippet fn
+	function ${1}(${2}) {
+		${3}
+	}
 snippet if
 	if (${1}) {
 		${2}
 	}
-
 snippet ife
 	if (${1}) {
 		${2}
 	} else {
 		${3}
 	}
+snippet (
+	(${1})
+snippet [
+	[${1}]
+snippet a
+	[${1}]
+snippet {
+	{ ${1}: ${2} }
+snippet o
+	{ ${1}: ${2} }
+snippet e
+	.forEach(function (${1:item}) {
+		${2}
+	})
+snippet m
+	.map(function (${1:item}) {
+		return ${2:item};
+	})
+snippet ro
+	.reduce(function (${1:obj}, ${2:item}) {
+		${3}
+		return ${4:obj};
+	}, {})
+snippet some
+	.some(function (${1:item}) {
+		return ${2:item};
+	})
+snippet every
+	.every(function (${1:item}) {
+		return ${2:item};
+	})
+snippet filter
+	.filter(function (${1:item}) {
+		return ${2:item};
+	})
+snippet ok
+	Object.keys(${1})
+snippet isa
+	Array.isArray(${1})
+snippet io
+	${1} instanceof ${2:Object}
+snippet to
+	setTimeout(function () {
+		${1}
+	}, ${2:0});
