@@ -104,11 +104,17 @@ set foldmethod=indent
 set foldlevelstart=999
 set cpoptions+=I "disable indent removing in insert mode (moving by arrow keys)
 
-"dirty hacks for ignore trim trailing whitespace
+"dirty hacks for prevent unwanted trim trailing whitespace
 inoremap <CR> x<Backspace><CR>x<Backspace>
 inoremap <C-j> x<Backspace><C-j>x<Backspace>
 nnoremap o ox<Backspace>
 nnoremap O Ox<Backspace>
+vnoremap c cx<Backspace>
+vnoremap C Cx<Backspace>
+nnoremap s sx<Backspace>
+nnoremap S Sx<Backspace>
+vnoremap s sx<Backspace>
+vnoremap S Sx<Backspace>
 
 set showbreak=˪
 set linebreak
