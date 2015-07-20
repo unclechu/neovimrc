@@ -18,22 +18,45 @@ function! ClearSpacesAtEOF()
 		let s:line     = getline(s:i)
 		let s:lineorig = s:line
 		
-		if &filetype == 'javascript'
-			" TODO many multiline comments in same line
+		if   &filetype == 'javascript'
+		\ || &filetype == 'ls'
+			
+			let s:hasComments = 1
+			
 			" /* */ comments
-			if s:isoc == 0
-				if s:line =~ '\/\*'
-					let s:isoc = 1
-					let s:line = ''
+			while s:hasComments == 1
+				let s:hasComments = 0
+				if s:isoc == 0
+					if s:line =~ '/\*'
+						let s:hasComments = 1
+						let s:isoc = 1
+						let s:linesub = substitute(
+							\ s:line,
+							\ '^.\{-}/\*.\{-}\*/', 'x', '')
+						" if previous regex didn't match
+						if s:linesub == s:line
+							let s:line = ''
+						else
+							let s:line = s:linesub
+							let s:isoc = 0
+						endif
+					endif
+				else
+					if s:line =~ '\*/'
+						let s:hasComments = 1
+						let s:isoc = 0
+						let s:line = substitute(s:line, '^.\{-}\*/', 'x', '')
+					endif
 				endif
-			else
-				if s:line =~ '\*\/'
-					let s:isoc = 0
-					let s:line = substitute(s:line, '^.{-}\*\/', '', '')
-				endif
+			endwhile
+			
+			if &filetype == 'ls'
+				" # comments
+				let s:line = substitute(s:line, '[ \t]*#.*$', '', '')
+			else "javascript
+				" // comments
+				let s:line = substitute(s:line, '[ \t]*//.*$', '', '')
 			endif
-			" // comments
-			let s:line = substitute(s:line, '[ \t]*\/\/.*$', '', '')
 		endif
 		
 		if s:line =~ '\([^ \t]\)[ \t]\+$' && s:isoc == 0
