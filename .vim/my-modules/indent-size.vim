@@ -3,16 +3,20 @@
 
 function! TabsIndentSize(size)
 	set noet
-	let &ts = a:size
+	let &ts  = a:size
 	let &sts = a:size
-	let &sw = a:size
+	let &sw  = a:size
+	IndentGuidesToggle
+	IndentGuidesToggle
 endfunction
 
 function! SpacesIndentSize(size)
 	set et
-	let &ts = a:size
+	let &ts  = a:size
 	let &sts = a:size
-	let &sw = a:size
+	let &sw  = a:size
+	IndentGuidesToggle
+	IndentGuidesToggle
 endfunction
 
 command! -nargs=1 TabsIndentSize call TabsIndentSize(<f-args>)
