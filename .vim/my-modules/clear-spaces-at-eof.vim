@@ -29,10 +29,7 @@ function! ClearSpacesAtEOF()
 			else
 				if s:line =~ '\*\/'
 					let s:isoc = 0
-					try
-						let s:line = substitute(s:line, '^.*\{-}\*\/', '', '')
-					catch
-					endtry
+					let s:line = substitute(s:line, '^.{-}\*\/', '', '')
 				endif
 			endif
 			" // comments
