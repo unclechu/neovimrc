@@ -59,7 +59,7 @@ function! ClearSpacesAtEOF()
 			endif
 		endif
 		
-		if s:line =~ '\([^ \t]\)[ \t]\+$' && s:isoc == 0
+		if s:isoc == 0 && s:line =~ '\([^ \t]\)[ \t]\+$'
 			call setline(
 				\ s:i,
 				\ substitute(s:lineorig, '\([^ \t]\)[ \t]\+$', '\1', '')
@@ -68,20 +68,20 @@ function! ClearSpacesAtEOF()
 	endwhile
 	
 	" clear all spaces at EOF if we using tabs for indentation
-	try
-		if ! &expandtab
+	if ! &expandtab
+		try
 			silent %s/[ ]\+$//g
-		endif
-	catch
-	endtry
+		catch
+		endtry
+	endif
 	
 	" clear tabs after spaces if we using tabs for indentation
-	try
-		if ! &expandtab
+	if ! &expandtab
+		try
 			silent %s/[ ]\+[ \t]\+$//g
-		endif
-	catch
-	endtry
+		catch
+		endtry
+	endif
 	
 endfunction
 command ClearSpacesAtEOF call ClearSpacesAtEOF()
