@@ -22,15 +22,9 @@ snippet ife
 	} else {
 		${3}
 	}
-snippet (
-	(${1})
-snippet [
+snippet -a
 	[${1}]
-snippet a
-	[${1}]
-snippet {
-	{ ${1}: ${2} }
-snippet o
+snippet -o
 	{ ${1}: ${2} }
 snippet .e
 	.forEach(function (${1:item}) {
@@ -91,12 +85,6 @@ snippet ce
 	console.error(${1});
 snippet dg
 	debugger;
-snippet '
-	'${1}'
-snippet "
-	"${1}"
-snippet /
-	/${1}/g
 snippet dn
 	Date.now()
 snippet nd
@@ -107,9 +95,9 @@ snippet te
 	throw new Error('${1}');
 snippet tt
 	throw ${1};
-snippet v
+snippet -v
 	var ${1:foo} = ${2};
-snippet r
+snippet -r
 	return ${1};
 snippet ..
 	.${1}(${2})
