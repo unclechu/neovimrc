@@ -115,3 +115,16 @@ snippet ..
 	.${1}(${2})
 snippet tof
 	typeof ${1}
+snippet map
+	var map = {
+		${2:foo}: function () {
+			${3}
+		},
+		${4:bar}: function () {
+			${5}
+		},
+		otherwise: function () {
+			${6}
+		}
+	}, f = map[${1:x}];
+	f && f() || map.otherwise();
