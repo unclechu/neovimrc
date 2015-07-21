@@ -136,20 +136,48 @@ cnoremap <C-l> <Del>
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>k :ls<CR>:bd<space>
 
-"hotkeys
+" fn-keys map
+
 nmap <F1>  :tabnew<CR>
+imap <F1>  <Esc><F1>
+vmap <F1>  <Esc><F1>
+
 nmap <F2>  :w<CR>
-imap <F2>  <Esc>:w<CR>
-vmap <F2>  <Esc>:w<CR>
+imap <F2>  <Esc><F2>
+vmap <F2>  <Esc><F2>
+
 "reset search by <F3>
 nmap <F3>  :let @/ = ""<CR>
+imap <F3>  <Esc><F3>
+vmap <F3>  <Esc><F3>
+
 nmap <F4>  <C-W><Right>:tabclose<CR>
+imap <F4>  <Esc><F4>
+vmap <F4>  <Esc><F4>
+
 nmap <F5>  :NERDTreeMirrorToggle<CR>
+imap <F5>  <Esc><F5>
+vmap <F5>  <Esc><F5>
+
 nmap <F6>  :ls<CR>:b<space>
+imap <F6>  <Esc><F6>
+vmap <F6>  <Esc><F6>
+
+nmap <F7>  :bprev<CR>
+imap <F7>  <Esc><F7>
+vmap <F7>  <Esc><F7>
+
+nmap <F8>  :bnext<CR>
+imap <F8>  <Esc><F8>
+vmap <F8>  <Esc><F8>
+
 nmap <F10> :DeleteHiddenBuffers<CR>
+imap <F10> <Esc><F10>
+vmap <F10> <Esc><F10>
+
 nmap <F12> :
-imap <F12> <Esc>:
-vmap <F12> <Esc>:
+imap <F12> <Esc><F12>
+vmap <F12> :
 
 "custom digraphs
 digraphs '' 769 "accent
