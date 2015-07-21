@@ -36,11 +36,21 @@ snippet .m
 	.map(function (${1:item}) {
 		return ${2:item};
 	})
+snippet .r
+	.reduce(function (${1:prev}, ${2:next}) {
+		return ${4:prev} + ${5:next};
+	})
+snippet .rr
+	.reduceRight(function (${1:prev}, ${2:next}) {
+		return ${4:prev} + ${5:next};
+	})
 snippet .ro
 	.reduce(function (${1:obj}, ${2:item}) {
 		${3}
 		return ${4:obj};
 	}, {})
+snippet .rv
+	.reverse()
 snippet .sm
 	.some(function (${1:item}) {
 		return ${2:item};
@@ -57,6 +67,8 @@ snippet .iof
 	.indexOf(${1})
 snippet .ca
 	.charAt(${1})
+snippet .ts
+	.toString()
 snippet ok
 	Object.keys(${1})
 snippet isa
