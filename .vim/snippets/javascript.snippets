@@ -115,4 +115,4 @@ snippet map
 			${6}
 		}
 	}, f = map[${1:x}];
-	f && f() || map.otherwise();
+	f ? f() : map.otherwise();
