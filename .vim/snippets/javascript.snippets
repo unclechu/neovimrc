@@ -22,15 +22,9 @@ snippet ife
 	} else {
 		${3}
 	}
-snippet (
-	(${1})
-snippet [
+snippet -a
 	[${1}]
-snippet a
-	[${1}]
-snippet {
-	{ ${1}: ${2} }
-snippet o
+snippet -o
 	{ ${1}: ${2} }
 snippet .e
 	.forEach(function (${1:item}) {
@@ -59,7 +53,7 @@ snippet .sm
 	.some(function (${1:item}) {
 		return ${2:item};
 	})
-snippet .er
+snippet .ev
 	.every(function (${1:item}) {
 		return ${2:item};
 	})
@@ -67,6 +61,8 @@ snippet .fl
 	.filter(function (${1:item}) {
 		return ${2:item};
 	})
+snippet .sp
+	.splice(${1:0}, ${2:1})
 snippet .iof
 	.indexOf(${1})
 snippet .ca
@@ -89,17 +85,34 @@ snippet ce
 	console.error(${1});
 snippet dg
 	debugger;
-snippet '
-	'${1}'
-snippet "
-	"${1}"
-snippet /
-	/${1}/g
 snippet dn
 	Date.now()
 snippet nd
 	new Date()
-snippet v
+snippet ne
+	new Error('${1}')
+snippet te
+	throw new Error('${1}');
+snippet tt
+	throw ${1};
+snippet -v
 	var ${1:foo} = ${2};
-snippet r
+snippet -r
 	return ${1};
+snippet ..
+	.${1}(${2})
+snippet tof
+	typeof ${1}
+snippet map
+	var map = {
+		${2:foo}: function () {
+			${3}
+		},
+		${4:bar}: function () {
+			${5}
+		},
+		otherwise: function () {
+			${6}
+		}
+	}, f = map[${1:x}];
+	f ? f() : map.otherwise();
