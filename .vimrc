@@ -159,21 +159,23 @@ nmap <F5>  :NERDTreeMirrorToggle<CR>
 imap <F5>  <Esc><F5>
 vmap <F5>  <Esc><F5>
 
-nmap <F6>  :ls<CR>:b<space>
-imap <F6>  <Esc><F6>
-vmap <F6>  <Esc><F6>
-
+"buffers
 nmap <F7>  :bprev<CR>
 imap <F7>  <Esc><F7>
 vmap <F7>  <Esc><F7>
-
-nmap <F8>  :bnext<CR>
+"-------
+nmap <F8>  :ls<CR>:b<space>
 imap <F8>  <Esc><F8>
 vmap <F8>  <Esc><F8>
-
+"-------
+nmap <F9>  :bnext<CR>
+imap <F9>  <Esc><F9>
+vmap <F9>  <Esc><F9>
+"-------
 nmap <F10> :DeleteHiddenBuffers<CR>
 imap <F10> <Esc><F10>
 vmap <F10> <Esc><F10>
+"-------
 
 nmap <F12> :
 imap <F12> <Esc><F12>
