@@ -2,11 +2,18 @@
 "Author: Viacheslav Lotsmanov
 
 if has("gui_running")
+	
 	set guioptions-=T "hide toolbar
 	set guioptions-=m "hide menu
-	set guioptions-=r "hide scrollbar
-	set guioptions-=l "hide scrollbar
-	"set lines=999 columns=999 "maximize gvim window
+	
+	"hide scrollbar
+	set guioptions-=r
+	set guioptions-=R
+	set guioptions-=l
+	set guioptions-=L
+	
+	"maximize gvim window
+	"set lines=999 columns=999
 	set lines=50 columns=100
 endif
 
