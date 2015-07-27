@@ -104,6 +104,10 @@ set foldmethod=indent
 set foldlevelstart=999
 set cpoptions+=I "disable indent removing in insert mode (moving by arrow keys)
 
+"sessions
+set ssop-=options " do not store global and local values in a session
+set ssop-=folds   " do not store folds
+
 "dirty hacks for prevent unwanted trim trailing whitespace
 inoremap <CR> x<Backspace><CR>x<Backspace>
 inoremap <C-j> x<Backspace><C-j>x<Backspace>
