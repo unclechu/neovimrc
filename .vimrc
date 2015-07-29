@@ -54,6 +54,7 @@ filetype plugin indent on
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
 let NERDTreeMapHelp = '<Leader>?' "heals backward search
+let NERDTreeShowLineNumbers = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:ctrlp_custom_ignore = {
