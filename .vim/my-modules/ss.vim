@@ -17,6 +17,7 @@ function! SaveSession(bang, filepath)
 		let l:curtabn = l:curtabn + 1
 	endwhile
 	
+	" restore last opened tab
 	exec 'tabnext ' . l:lasttabn
 	
 	if a:bang == 1
@@ -31,5 +32,25 @@ endfunction
 
 command! -nargs=1 -complete=file SS call SaveSession(0, <q-args>)
 command! -nargs=1 -complete=file -bang SS call SaveSession(<bang>0, <q-args>)
+
+" for prevent default NERDTree windows focused after restore session
+function! RestoreSession()
+	
+	let l:lasttabn  = tabpagenr()
+	let l:totaltabn = tabpagenr('$')
+	let l:curtabn   = 1
+	
+	while l:curtabn <= l:totaltabn
+		exec 'tabnext ' . l:curtabn
+		exec 'wincmd l'
+		let l:curtabn = l:curtabn + 1
+	endwhile
+	
+	" restore last opened tab
+	exec 'tabnext ' . l:lasttabn
+	
+endfunction
+
+command RS call RestoreSession()
 
 "vim: set noet :
