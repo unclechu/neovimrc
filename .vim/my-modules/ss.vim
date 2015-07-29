@@ -28,6 +28,8 @@ function! SaveSession(bang, filepath)
 	
 	let g:nerdtree_tabs_open_on_new_tab = l:store
 	
+	call RestoreSession()
+	
 endfunction
 
 command! -nargs=1 -complete=file SS call SaveSession(0, <q-args>)
