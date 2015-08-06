@@ -73,6 +73,8 @@ nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 set hidden "ctrlspace
+let g:airline_exclude_preview = 1 "ctrlspace
+let g:ctrlspace_use_tabline = 1
 
 "load my modules
 syntax on
