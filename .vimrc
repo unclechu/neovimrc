@@ -36,8 +36,8 @@ Plugin 'henrik/vim-indexed-search'
 Plugin 'kristijanhusak/vim-multiple-cursors'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
-Plugin 'szw/vim-ctrlspace'
 Plugin 'bling/vim-airline'
+Plugin 'szw/vim-ctrlspace'
 
 "snipmate
 Plugin 'tomtom/tlib_vim'
@@ -57,16 +57,22 @@ let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
 let NERDTreeMapHelp = '<Leader>?' "heals backward search
 let NERDTreeShowLineNumbers = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:nerdtree_tabs_open_on_gui_startup     = 0
+let g:nerdtree_tabs_open_on_console_startup = 0
+let g:nerdtree_tabs_open_on_new_tab         = 0
+let g:airline#extensions#tabline#enabled    = 0
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_exclude_preview = 1 "ctrlspace
+set laststatus=2 "airline always
+set hidden "ctrlspace
+set showtabline=2
+if has('gui_running')
+	set guioptions-=e
+endif
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|bower_components|__pycache__)$',
 	\ 'file': '\v\.(exe|so|dll)$',
 	\ 'link': '',
 	\ }
-set hidden "ctrlspace
-"let g:ctrlspace_use_tabline = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
