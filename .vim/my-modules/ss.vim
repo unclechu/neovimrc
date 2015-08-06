@@ -43,7 +43,16 @@ function! RestoreSession()
 	let l:curtabn   = 1
 	
 	while l:curtabn <= l:totaltabn
+		
 		exec 'tabnext ' . l:curtabn
+		
+		let l:wini = 1
+		let l:wincount = winnr('$')
+		while l:wini <= l:wincount
+			exec 'wincmd w'
+			let l:wini = l:wini + 1
+		endwhile
+		
 		exec 'wincmd l'
 		let l:curtabn = l:curtabn + 1
 	endwhile
@@ -53,6 +62,6 @@ function! RestoreSession()
 	
 endfunction
 
-command RS call RestoreSession()
+command! RS call RestoreSession()
 
 "vim: set noet :

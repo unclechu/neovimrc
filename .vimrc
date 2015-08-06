@@ -59,11 +59,14 @@ let NERDTreeMapHelp = '<Leader>?' "heals backward search
 let NERDTreeShowLineNumbers = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_exclude_preview = 1 "ctrlspace
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|bower_components|__pycache__)$',
 	\ 'file': '\v\.(exe|so|dll)$',
 	\ 'link': '',
 	\ }
+set hidden "ctrlspace
+"let g:ctrlspace_use_tabline = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
@@ -72,9 +75,6 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
-set hidden "ctrlspace
-let g:airline_exclude_preview = 1 "ctrlspace
-let g:ctrlspace_use_tabline = 1
 
 "load my modules
 syntax on
