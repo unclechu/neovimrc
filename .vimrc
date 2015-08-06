@@ -31,11 +31,13 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'briancollins/vim-jst'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'bling/vim-airline'
 Plugin 'ap/vim-css-color'
 Plugin 'henrik/vim-indexed-search'
 Plugin 'kristijanhusak/vim-multiple-cursors'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'majutsushi/tagbar'
+Plugin 'szw/vim-ctrlspace'
+Plugin 'bling/vim-airline'
 
 "snipmate
 Plugin 'tomtom/tlib_vim'
@@ -70,6 +72,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
+set hidden "ctrlspace
 
 "load my modules
 syntax on
