@@ -12,7 +12,6 @@ Plugin 'gmarik/Vundle.vim', {'pinned': 1} "provided by git-submodule
 "plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
@@ -68,11 +67,7 @@ set showtabline=2
 if has('gui_running')
 	set guioptions-=e
 endif
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|bower_components|__pycache__)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-	\ 'link': '',
-	\ }
+let g:CtrlSpaceIgnoredFiles = '\v(\.git|\.hg|\.svn|node_modules|bower_components|__pycache__)[\/]'
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
