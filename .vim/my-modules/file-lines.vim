@@ -2,7 +2,7 @@
 "Author: Viacheslav Lotsmanov
 
 " python wrapper
-function s:pybase64enc(to_encode)
+function! s:pybase64enc(to_encode)
 	let l:encoded = ''
 	python <<EOF
 import vim
@@ -15,7 +15,7 @@ EOF
 endfunction
 
 " shows selected lines in shell (for terminal copy-paste)
-function s:filelines() range
+function! s:filelines() range
 	let l:to_encode = ''
 	for l:linenum in range(a:firstline, a:lastline)
 		if l:linenum > a:firstline
@@ -26,6 +26,6 @@ function s:filelines() range
 	exec ":!echo '" . s:pybase64enc(l:to_encode) . "' | base64 --decode"
 endfunction
 
-command -range FileLines <line1>,<line2>call s:filelines()
+command! -range FileLines <line1>,<line2>call s:filelines()
 
 "vim: set noet :

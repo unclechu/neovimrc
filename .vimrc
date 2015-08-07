@@ -115,18 +115,6 @@ set cpoptions+=I "disable indent removing in insert mode (moving by arrow keys)
 set ssop-=options " do not store global and local values in a session
 set ssop-=folds   " do not store folds
 
-"dirty hacks for prevent unwanted trim trailing whitespace
-inoremap <CR> x<Backspace><CR>x<Backspace>
-inoremap <C-j> x<Backspace><C-j>x<Backspace>
-nnoremap o ox<Backspace>
-nnoremap O Ox<Backspace>
-vnoremap c cx<Backspace>
-vnoremap C Cx<Backspace>
-nnoremap s sx<Backspace>
-nnoremap S Sx<Backspace>
-vnoremap s sx<Backspace>
-vnoremap S Sx<Backspace>
-
 set showbreak=˪
 set linebreak
 "try-catch for old vim versions
@@ -135,6 +123,9 @@ try
 	set breakindent
 catch
 endtry
+
+call ResetKeyMap()
+call PreventIndentTrimHackOn()
 
 let mapleader = ','
 

@@ -19,6 +19,4 @@ if has('autocmd')
 	autocmd InsertLeave * call ResetKeyMap()
 endif
 
-call ResetKeyMap()
-
 "vim: set noet :

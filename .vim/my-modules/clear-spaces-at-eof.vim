@@ -84,6 +84,7 @@ function! ClearSpacesAtEOF()
 	endif
 	
 endfunction
-command ClearSpacesAtEOF call ClearSpacesAtEOF()
+
+command! ClearSpacesAtEOF call ClearSpacesAtEOF()
 
 "vim: set noet :
