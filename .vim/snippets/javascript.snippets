@@ -22,6 +22,14 @@ snippet ife
 	} else {
 		${3}
 	}
+snippet iffe
+	if (${1}) {
+		${2}
+	} else if (${3}) {
+		${4}
+	} else {
+		${5}
+	}
 snippet -a
 	[${1}]
 snippet -o
@@ -79,18 +87,14 @@ snippet ok
 	Object.keys(${1})
 snippet isa
 	Array.isArray(${1})
-snippet io
+snippet -io
 	${1} instanceof ${2:Object}
+snippet io
+	instanceof ${1:Object}
 snippet to
 	setTimeout(function () {
 		${1}
 	}, ${2:0});
-snippet cl
-	console.log(${1});
-snippet ce
-	console.error(${1});
-snippet dg
-	debugger;
 snippet dn
 	Date.now()
 snippet nd
@@ -122,3 +126,25 @@ snippet map
 		}
 	}, f = map[${1:x}];
 	f ? f() : map.otherwise();
+snippet dg
+	debugger;
+snippet cl
+	console.log(${1});
+snippet ci
+	console.info(${1});
+snippet ce
+	console.error(${1});
+snippet cw
+	console.warn(${1});
+snippet cg
+	console.group('${1}');
+snippet cge
+	console.groupEnd('${1}');
+snippet ct
+	console.time('${1}');
+snippet cte
+	console.timeEnd('${1}');
+snippet cp
+	console.profile('${1}');
+snippet cpe
+	console.profileEnd('${1}');
