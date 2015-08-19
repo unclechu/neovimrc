@@ -30,6 +30,26 @@ snippet iffe
 	} else {
 		${5}
 	}
+snippet ifn
+	if ( ! ${1}) {
+		${2}
+	}
+snippet ifn.
+	if ( ! (${1})) {
+		${2}
+	}
+snippet ifne
+	if ( ! ${1}) {
+		${2}
+	} else {
+		${3}
+	}
+snippet ifne.
+	if ( ! (${1})) {
+		${2}
+	} else {
+		${3}
+	}
 snippet -a
 	[${1}]
 snippet -o
@@ -150,3 +170,7 @@ snippet cpe
 	console.profileEnd('${1}');
 snippet ca
 	console.assert(${1}, '${2}');
+snippet !.
+	 ! (${1})
+snippet !
+	 ! ${1}
