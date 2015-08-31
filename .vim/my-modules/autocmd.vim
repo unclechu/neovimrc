@@ -10,6 +10,9 @@ if has('autocmd')
 	autocmd BufNewFile,BufRead *.yaml.example set ft=yaml
 	autocmd BufNewFile,BufRead Makefile set noexpandtab
 	
+	" because custom `indentexpr`s has annoying issues
+	autocmd BufNewFile,BufRead * set indentexpr=
+	
 	autocmd BufWritePre * call ClearSpacesAtEOF()
 	
 	autocmd CmdwinEnter * call PreventIndentTrimHackOff()
