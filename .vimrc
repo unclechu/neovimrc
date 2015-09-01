@@ -179,6 +179,11 @@ imap <F10> <Esc><F10>
 vmap <F10> <Esc><F10>
 "-------
 
+nmap <F11> :PasteToggle<CR>
+vmap <F11> <Esc><F11><CR>
+"only enable, cause can't handle keys in paste mode
+imap <F11> <Esc><F11>a
+
 nmap <F12> :
 imap <F12> <Esc><F12>
 vmap <F12> :
