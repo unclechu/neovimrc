@@ -11,7 +11,7 @@ if has('autocmd')
 	autocmd BufNewFile,BufRead Makefile set noexpandtab
 	
 	" because custom `indentexpr`s has annoying issues
-	autocmd BufNewFile,BufRead * set indentexpr=
+	autocmd FileType * set indentexpr=
 	
 	autocmd BufWritePre * call ClearSpacesAtEOF()
 	
