@@ -183,6 +183,8 @@ nmap <F12> :
 imap <F12> <Esc><F12>
 vmap <F12> :
 
+inoremap <C-V> <Esc>lv
+
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
