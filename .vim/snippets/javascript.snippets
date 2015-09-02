@@ -105,6 +105,8 @@ snippet .bind
 	.bind(${1:this})
 snippet ok
 	Object.keys(${1})
+snippet oc
+	Object.create(${1})
 snippet isa
 	Array.isArray(${1})
 snippet -io
@@ -115,6 +117,12 @@ snippet to
 	setTimeout(function () {
 		${1}
 	}, ${2:0});
+snippet nt
+	process.nextTick(${1});
+snippet ntf
+	process.nextTick(function () {
+		${1}
+	});
 snippet dn
 	Date.now()
 snippet nd
@@ -152,10 +160,12 @@ snippet cl
 	console.log(${1});
 snippet ci
 	console.info(${1});
-snippet ce
-	console.error(${1});
 snippet cw
 	console.warn(${1});
+snippet ce
+	console.error(${1});
+snippet cd
+	console.debug(${1});
 snippet cg
 	console.group('${1}');
 snippet cge
@@ -174,3 +184,5 @@ snippet !.
 	 ! (${1})
 snippet !
 	 ! ${1}
+snippet ::
+	.prototype.
