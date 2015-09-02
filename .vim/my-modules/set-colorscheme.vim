@@ -20,8 +20,8 @@ function! SetSolarized(mode)
 			
 			hi! NonText          guifg=#08333d
 			hi! SpecialKey       guibg=#072f38 guifg=#fd5570
-			hi! IndentGuidesOdd  guibg=#113943 guifg=#13414d
-			hi! IndentGuidesEven guibg=#123d47 guifg=#144552
+			hi! IndentGuidesOdd  guibg=#06323d guifg=#083a47
+			hi! IndentGuidesEven guibg=#073642 guifg=#083f4d
 		endif
 	catch
 	endtry
