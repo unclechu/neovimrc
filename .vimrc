@@ -193,6 +193,10 @@ inoremap <C-V> <Esc>lv
 nnoremap <C-Tab> :wincmd w<CR>
 nnoremap <C-S-Tab> :wincmd W<CR>
 
+nnoremap <C-Z> u
+inoremap <C-Z> <Esc>u
+vnoremap <C-Z> <Esc>u
+
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
