@@ -161,6 +161,10 @@ nmap <F5>  :NERDTreeMirrorToggle<CR>
 imap <F5>  <Esc><F5>
 vmap <F5>  <Esc><F5>
 
+nmap <F6>  :TagbarToggle<CR>
+imap <F6>  <Esc><F6>
+vmap <F6>  <Esc><F6>
+
 "buffers
 nmap <F7>  :bprev<CR>
 imap <F7>  <Esc><F7>
