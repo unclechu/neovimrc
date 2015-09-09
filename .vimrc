@@ -127,7 +127,7 @@ endtry
 call ResetKeyMap()
 call PreventIndentTrimHackOn()
 
-let mapleader = ','
+let mapleader = '\'
 
 "provide forward deleting in Insert and Command-Line modes
 inoremap <C-l> <Del>
