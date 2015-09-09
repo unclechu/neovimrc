@@ -165,24 +165,6 @@ nmap <F6>  :TagbarToggle<CR>
 imap <F6>  <Esc><F6>
 vmap <F6>  <Esc><F6>
 
-"buffers
-nmap <F7>  :bprev<CR>
-imap <F7>  <Esc><F7>
-vmap <F7>  <Esc><F7>
-"-------
-nmap <F8>  :ls<CR>:b<space>
-imap <F8>  <Esc><F8>
-vmap <F8>  <Esc><F8>
-"-------
-nmap <F9>  :bnext<CR>
-imap <F9>  <Esc><F9>
-vmap <F9>  <Esc><F9>
-"-------
-nmap <F10> :DeleteHiddenBuffers<CR>
-imap <F10> <Esc><F10>
-vmap <F10> <Esc><F10>
-"-------
-
 nmap <F11> :PasteToggle<CR>
 vmap <F11> <Esc><F11><CR>
 "only enable, cause can't handle keys in paste mode
