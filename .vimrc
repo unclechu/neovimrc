@@ -183,6 +183,13 @@ nnoremap <C-Z> u
 inoremap <C-Z> <Esc>u
 vnoremap <C-Z> <Esc>u
 
+nnoremap <C-Up>   g<Up>
+nnoremap <C-Down> g<Down>
+vnoremap <C-Up>   g<Up>
+vnoremap <C-Down> g<Down>
+inoremap <C-Up>   <Esc>g<Up>a
+inoremap <C-Down> <Esc>g<Down>a
+
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
