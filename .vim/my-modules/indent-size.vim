@@ -19,7 +19,7 @@ function! SpacesIndentSize(size)
 	IndentGuidesToggle
 endfunction
 
-command! -nargs=1 TabsIndentSize call TabsIndentSize(<f-args>)
+command! -nargs=1 TabsIndentSize   call TabsIndentSize(<f-args>)
 command! -nargs=1 SpacesIndentSize call SpacesIndentSize(<f-args>)
 
 "vim: set noet :

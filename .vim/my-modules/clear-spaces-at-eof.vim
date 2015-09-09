@@ -87,4 +87,8 @@ endfunction
 
 command! ClearSpacesAtEOF call ClearSpacesAtEOF()
 
+if has('autocmd')
+	autocmd BufWritePre * call ClearSpacesAtEOF()
+endif
+
 "vim: set noet :

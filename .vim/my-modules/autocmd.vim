@@ -3,6 +3,7 @@
 
 if has('autocmd')
 	
+	" disabled indent guides lines
 	autocmd FileType nerdtree,tagbar setlocal et ts=999 sts=999 sw=999
 	
 	autocmd BufNewFile,BufRead *.json.example set ft=json
@@ -14,11 +15,6 @@ if has('autocmd')
 	autocmd FileType
 		\ ls,coffee,stylus,jade,html,jst
 		\ set indentexpr=
-	
-	autocmd BufWritePre * call ClearSpacesAtEOF()
-	
-	autocmd CmdwinEnter * call PreventIndentTrimHackOff()
-	autocmd CmdwinLeave * call PreventIndentTrimHackOn()
 endif
 
 "vim: set noet :

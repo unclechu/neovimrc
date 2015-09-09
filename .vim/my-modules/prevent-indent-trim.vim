@@ -33,4 +33,9 @@ endfunction
 command! PreventIndentTrimHackOn  call PreventIndentTrimHackOn()
 command! PreventIndentTrimHackOff call PreventIndentTrimHackOff()
 
+if has('autocmd')
+	autocmd CmdwinEnter * call PreventIndentTrimHackOff()
+	autocmd CmdwinLeave * call PreventIndentTrimHackOn()
+endif
+
 "vim: set noet :
