@@ -165,8 +165,12 @@ nmap <F6>  :TagbarToggle<CR>
 imap <F6>  <Esc><F6>
 vmap <F6>  <Esc><F6>
 
+nmap <F10> :WrapToggle<CR>
+vmap <F10> <Esc><F10>
+imap <F10> <Esc><F10>a
+
 nmap <F11> :PasteToggle<CR>
-vmap <F11> <Esc><F11><CR>
+vmap <F11> <Esc><F11>
 "only enable, cause can't handle keys in paste mode
 imap <F11> <Esc><F11>a
 
