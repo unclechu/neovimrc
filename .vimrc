@@ -165,6 +165,10 @@ nmap <F6>  :TagbarToggle<CR>
 imap <F6>  <Esc><F6>
 vmap <F6>  <Esc><F6>
 
+nmap <F9>  :set ft=
+vmap <F9>  <Esc><F9>
+imap <F9>  <Esc><F9>
+
 nmap <F10> :WrapToggle<CR>
 vmap <F10> <Esc><F10>
 imap <F10> <Esc><F10>a
