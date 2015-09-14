@@ -13,7 +13,7 @@ if has('autocmd')
 	
 	" because some custom `indentexpr`s has annoying issues
 	autocmd FileType
-		\ ls,coffee,stylus,jade,html,jst,sh
+		\ ls,coffee,stylus,jade,html,jst,sh,faust
 		\ set indentexpr=
 endif
 
