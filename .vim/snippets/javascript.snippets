@@ -22,6 +22,10 @@ snippet ife
 	} else {
 		${3}
 	}
+snippet else
+	else {
+		${1}
+	}
 snippet iffe
 	if (${1}) {
 		${2}
@@ -29,6 +33,18 @@ snippet iffe
 		${4}
 	} else {
 		${5}
+	}
+snippet elif
+	else if (${1}) {
+		${2}
+	}
+snippet elifn
+	else if ( ! ${1}) {
+		${2}
+	}
+snippet elifn.
+	else if ( ! (${1})) {
+		${2}
 	}
 snippet ifn
 	if ( ! ${1}) {
