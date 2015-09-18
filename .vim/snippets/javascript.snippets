@@ -101,9 +101,15 @@ snippet .ca
 	.charAt(${1})
 snippet .ts
 	.toString()
+snippet ..,
+	.${1}(${2})
 snippet .apply
 	.apply(${1:this}, ${2:arguments})
+snippet ...
+	.apply(${1:this}, ${2:arguments})
 snippet .call
+	.call(${1:this})
+snippet ..=
 	.call(${1:this})
 snippet .bind
 	.bind(${1:this})
@@ -149,8 +155,6 @@ snippet -R
 	return;
 snippet -R-
 	return
-snippet ..
-	.${1}(${2})
 snippet tof
 	typeof ${1}
 snippet map
