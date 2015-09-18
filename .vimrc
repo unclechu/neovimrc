@@ -165,6 +165,9 @@ nmap <F6>  :TagbarToggle<CR>
 imap <F6>  <Esc><F6>
 vmap <F6>  <Esc><F6>
 
+"some hack for snippets
+imap <F8>  <Esc>a
+
 nmap <F9>  :set ft=
 vmap <F9>  <Esc><F9>
 imap <F9>  <Esc><F9>
