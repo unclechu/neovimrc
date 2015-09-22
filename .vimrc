@@ -37,6 +37,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'szw/vim-ctrlspace'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 "snipmate
 Plugin 'tomtom/tlib_vim'
