@@ -131,61 +131,19 @@ call PreventIndentTrimHackOn()
 
 let mapleader = '\'
 
-"provide forward deleting in Insert and Command-Line modes
-inoremap <C-l> <Del>
-cnoremap <C-l> <Del>
-
 " flying between buffers
 " (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>k :ls<CR>:bd<space>
 
-" fn-keys map
+nnoremap <leader>r  :let @/ = ''<CR>:echo 'Reset search'<CR>
 
-nmap <F1>  :tabnew<CR>
-imap <F1>  <Esc><F1>
-vmap <F1>  <Esc><F1>
+nnoremap <leader>n  :NERDTreeMirrorToggle<CR>
+nnoremap <leader>t  :TagbarToggle<CR>
+nnoremap <leader>w  :WrapToggle<CR>
+nnoremap <leader>p  :PasteToggle<CR>
 
-nmap <F2>  :w<CR>
-imap <F2>  <Esc><F2>
-vmap <F2>  <Esc><F2>
-
-"reset search by <F3>
-nmap <F3>  :let @/ = ""<CR>
-imap <F3>  <Esc><F3>
-vmap <F3>  <Esc><F3>
-
-nmap <F4>  <C-W><Right>:tabclose<CR>
-imap <F4>  <Esc><F4>
-vmap <F4>  <Esc><F4>
-
-nmap <F5>  :NERDTreeMirrorToggle<CR>
-imap <F5>  <Esc><F5>
-vmap <F5>  <Esc><F5>
-
-nmap <F6>  :TagbarToggle<CR>
-imap <F6>  <Esc><F6>
-vmap <F6>  <Esc><F6>
-
-"some hack for snippets
-imap <F8>  <Esc>a
-
-nmap <F9>  :set ft=
-vmap <F9>  <Esc><F9>
-imap <F9>  <Esc><F9>
-
-nmap <F10> :WrapToggle<CR>
-vmap <F10> <Esc><F10>
-imap <F10> <Esc><F10>a
-
-nmap <F11> :PasteToggle<CR>
-vmap <F11> <Esc><F11>
-"only enable, cause can't handle keys in paste mode
-imap <F11> <Esc><F11>a
-
-nmap <F12> :
-imap <F12> <Esc><F12>
-vmap <F12> :
+nnoremap <leader>ft :set ft=
 
 nnoremap <C-q> :wincmd q<CR>
 nnoremap <C-h> :wincmd h<CR>
