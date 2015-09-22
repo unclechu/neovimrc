@@ -187,21 +187,11 @@ nmap <F12> :
 imap <F12> <Esc><F12>
 vmap <F12> :
 
-inoremap <C-V> <Esc>lv
-
-nnoremap <C-Tab> :wincmd w<CR>
-nnoremap <C-S-Tab> :wincmd W<CR>
-
-nnoremap <C-Z> u
-inoremap <C-Z> <Esc>u
-vnoremap <C-Z> <Esc>u
-
-nnoremap <C-Up>   g<Up>
-nnoremap <C-Down> g<Down>
-vnoremap <C-Up>   g<Up>
-vnoremap <C-Down> g<Down>
-inoremap <C-Up>   <Esc>g<Up>a
-inoremap <C-Down> <Esc>g<Down>a
+nnoremap <C-q> :wincmd q<CR>
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
 
 "custom digraphs
 digraphs '' 769 "accent
