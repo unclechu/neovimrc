@@ -136,12 +136,12 @@ let mapleader = '\'
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>k :ls<CR>:bd<space>
 
-nnoremap <leader>r  :let @/ = ''<CR>:echo 'Reset search'<CR>
+nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
 
-nnoremap <leader>n  :NERDTreeMirrorToggle<CR>
-nnoremap <leader>t  :TagbarToggle<CR>
-nnoremap <leader>w  :WrapToggle<CR>
-nnoremap <leader>p  :PasteToggle<CR>
+nnoremap <leader>n :NERDTreeMirrorToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>w :WrapToggle<CR>
+nnoremap <leader>p :PasteToggle<CR>
 
 nnoremap <leader>ft :set ft=
 
