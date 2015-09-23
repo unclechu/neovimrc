@@ -151,6 +151,9 @@ nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-l> :wincmd l<CR>
 
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
