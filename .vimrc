@@ -145,7 +145,6 @@ nnoremap <leader>p :PasteToggle<CR>
 
 nnoremap <leader>ft :set ft=
 
-nnoremap <C-q> :wincmd q<CR>
 nnoremap <C-h> :wincmd h<CR>
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
