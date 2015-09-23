@@ -11,7 +11,8 @@ function! PreventIndentTrimHackOn()
 	nnoremap s sx<Backspace>
 	nnoremap S Sx<Backspace>
 	vnoremap s sx<Backspace>
-	vnoremap S Sx<Backspace>
+	"surround plugin need it
+	"vnoremap S Sx<Backspace>
 endfunction
 
 function! PreventIndentTrimHackOff()
@@ -25,7 +26,8 @@ function! PreventIndentTrimHackOff()
 		nunmap s
 		nunmap S
 		vunmap s
-		vunmap S
+		"surround plugin need it
+		"vunmap S
 	catch
 	endtry
 endfunction
