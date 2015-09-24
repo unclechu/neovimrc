@@ -39,6 +39,7 @@ Plugin 'bling/vim-airline'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'scrooloose/syntastic'
 
 "snipmate
 Plugin 'tomtom/tlib_vim'
@@ -78,6 +79,11 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
+let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
 "load my modules
 syntax on
