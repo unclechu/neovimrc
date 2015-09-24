@@ -152,6 +152,11 @@ nnoremap <leader>p :PasteToggle<CR>
 
 nnoremap <leader>ft :set ft=
 
+nnoremap <leader>si :SyntasticInfo<CR>
+nnoremap <leader>sc :SyntasticCheck<CR>
+nnoremap <leader>sr :SyntasticReset<CR>
+nnoremap <leader>sq :lclose<CR>
+
 nnoremap <C-h> :wincmd h<CR>
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
