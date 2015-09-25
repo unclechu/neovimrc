@@ -104,6 +104,7 @@ set smartcase
 
 set nowrap
 set number
+set relativenumber
 set nocursorline
 set nocursorcolumn
 if v:version >= 703
@@ -149,6 +150,7 @@ nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>w :WrapToggle<CR>
 nnoremap <leader>p :PasteToggle<CR>
+nnoremap <leader>[ :RelativeNumberToggle<CR>
 
 nnoremap <leader>ft :set ft=
 
