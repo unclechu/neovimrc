@@ -136,6 +136,7 @@ endtry
 
 call ResetKeyMap()
 call PreventIndentTrimHackOn()
+call AutoSurroundInputEnable(1)
 
 let mapleader = '\'
 
@@ -151,6 +152,7 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>w :WrapToggle<CR>
 nnoremap <leader>p :PasteToggle<CR>
 nnoremap <leader>[ :RelativeNumberToggle<CR>
+nnoremap <leader>] :AutoSurroundInputToggle<CR>
 
 nnoremap <leader>ft :set ft=
 
