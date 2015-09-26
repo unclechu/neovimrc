@@ -1,11 +1,7 @@
 "auto surround input
 "Author: Viacheslav Lotsmanov
 
-function! PutAsIs()
-	return input('Put as is: ')
-endfunction
-
-imap \ <C-R>=PutAsIs()<CR>
+imap \ <C-R>=input('Put as is: ')<CR>
 
 function! IsAutoSurroundInputEnabled()
 	return mapcheck("{", "i") == '<C-G>s{'
