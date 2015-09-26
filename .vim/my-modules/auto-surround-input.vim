@@ -1,7 +1,19 @@
 "auto surround input
 "Author: Viacheslav Lotsmanov
 
-imap \ <C-R>=input('Put as is: ')<CR>
+let g:surround_insert_tail = ''
+let g:surround_insert_tail__old_val = ''
+
+function! SetSurroundTailToSemicolon()
+	let g:surround_insert_tail__old_val = g:surround_insert_tail
+	let g:surround_insert_tail = ';'
+	return ''
+endfunction
+
+function! RestoreSurroundTail()
+	let g:surround_insert_tail = g:surround_insert_tail__old_val
+	return ''
+endfunction
 
 function! IsAutoSurroundInputEnabled()
 	return mapcheck('{', 'i') == '<C-G>s{'
@@ -18,20 +30,40 @@ function! AutoSurroundInputEnable(silent)
 		return
 	endif
 	
+	imap \\ <C-R>='\'<CR>
+	
 	imap { <C-G>s{
 	imap } <C-G>s}
+	imap \{{ <C-R>='{'<CR>
+	imap \}} <C-R>='}'<CR>
+	imap \{; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
+	imap \}; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
 	
 	imap [ <C-G>s[
 	imap ] <C-G>s]
+	imap \[[ <C-R>='['<CR>
+	imap \]] <C-R>=']'<CR>
+	imap \[; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
+	imap \]; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
 	
 	imap ( <C-G>s(
 	imap ) <C-G>s)
+	imap \(( <C-R>='('<CR>
+	imap \)) <C-R>=')'<CR>
+	imap \(; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
+	imap \); <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
 	
 	imap < <C-G>s<
 	imap > <C-G>s>
+	imap \< <C-R>='<'<CR>
+	imap \> <C-R>='>'<CR>
 	
 	imap ' <C-G>s'
 	imap " <C-G>s"
+	imap \'' <C-R>="'"<CR>
+	imap \"" <C-R>='"'<CR>
+	imap \'; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
+	imap \"; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s"<C-R>=RestoreSurroundTail()<CR>
 	
 	if ! a:silent
 		echo 'Auto surround input enabled'
