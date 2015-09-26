@@ -82,20 +82,40 @@ function! AutoSurroundInputDisable(silent)
 		return
 	endif
 	
+	iunmap \\
+	
 	iunmap {
 	iunmap }
+	iunmap \{{
+	iunmap \}}
+	iunmap \{;
+	iunmap \};
 	
 	iunmap [
 	iunmap ]
+	iunmap \[[
+	iunmap \]]
+	iunmap \[;
+	iunmap \];
 	
 	iunmap (
 	iunmap )
+	iunmap \((
+	iunmap \))
+	iunmap \(;
+	iunmap \);
 	
 	iunmap <
 	iunmap >
+	iunmap \<
+	iunmap \>
 	
 	iunmap '
 	iunmap "
+	iunmap \''
+	iunmap \""
+	iunmap \';
+	iunmap \";
 	
 	if ! a:silent
 		echo 'Auto surround input disabled'
