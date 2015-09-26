@@ -2,8 +2,7 @@
 "Author: Viacheslav Lotsmanov
 
 function! PutAsIs()
-	let symbol = input('Put as is: ')
-	return symbol
+	return input('Put as is: ')
 endfunction
 
 imap \ <C-R>=PutAsIs()<CR>
