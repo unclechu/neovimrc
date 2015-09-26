@@ -4,7 +4,7 @@
 imap \ <C-R>=input('Put as is: ')<CR>
 
 function! IsAutoSurroundInputEnabled()
-	return mapcheck("{", "i") == '<C-G>s{'
+	return mapcheck('{', 'i') == '<C-G>s{'
 endfunction
 
 function! AutoSurroundInputEnable(silent)
