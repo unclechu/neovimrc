@@ -14,7 +14,7 @@ endfunction
 
 function! AutoSurroundInputEnable(silent)
 	
-    if IsAutoSurroundInputEnabled()
+	if IsAutoSurroundInputEnabled()
 		
 		if ! a:silent
 			echo 'Auto surround input enabled already'
@@ -46,7 +46,7 @@ endfunction
 
 function! AutoSurroundInputDisable(silent)
 	
-    if ! IsAutoSurroundInputEnabled()
+	if ! IsAutoSurroundInputEnabled()
 		
 		if ! a:silent
 			echo 'Auto surround input disabled already'
@@ -77,7 +77,7 @@ function! AutoSurroundInputDisable(silent)
 endfunction
 
 function! AutoSurroundInputToggle(silent)
-    if IsAutoSurroundInputEnabled()
+	if IsAutoSurroundInputEnabled()
 		call AutoSurroundInputDisable(a:silent)
 	else
 		call AutoSurroundInputEnable(a:silent)
