@@ -53,11 +53,6 @@ function! AutoSurroundInputEnable(silent)
 	imap \(; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
 	imap \); <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
 	
-	imap < <C-G>s<
-	imap > <C-G>s>
-	imap \< <C-R>='<'<CR>
-	imap \> <C-R>='>'<CR>
-	
 	imap ' <C-G>s'
 	imap " <C-G>s"
 	imap \'' <C-R>="'"<CR>
@@ -104,11 +99,6 @@ function! AutoSurroundInputDisable(silent)
 	iunmap \))
 	iunmap \(;
 	iunmap \);
-	
-	iunmap <
-	iunmap >
-	iunmap \<
-	iunmap \>
 	
 	iunmap '
 	iunmap "
