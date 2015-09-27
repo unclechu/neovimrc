@@ -41,6 +41,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'scrooloose/syntastic'
 
+"clojure
+Plugin 'clojure-emacs/cider-nrepl'
+Plugin 'tpope/vim-fireplace'
+
 "snipmate
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
