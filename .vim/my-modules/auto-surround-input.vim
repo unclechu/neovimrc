@@ -58,57 +58,82 @@ function! AutoSurroundInputEnable(silent)
 		return
 	endif
 	
-	imap {{ <C-G>s{
-	imap }} <C-G>s}
 	imap {\ <C-R>='{'<CR>
 	imap }\ <C-R>='}'<CR>
+	imap {{ <C-G>s{
+	imap }} <C-G>s}
+	imap {<CR> <C-G>S}
 	imap {{: <C-R>=SetSurroundTailToColon()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
 	imap }}: <C-R>=SetSurroundTailToColon()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
+	imap {<CR>: <C-R>=SetSurroundTailToColon()<CR><C-G>S}<C-R>=RestoreSurroundTail()<CR>
 	imap {{; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
 	imap }}; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
+	imap {<CR>; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>S}<C-R>=RestoreSurroundTail()<CR>
 	imap {{, <C-R>=SetSurroundTailToComma()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
 	imap }}, <C-R>=SetSurroundTailToComma()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
+	imap {<CR>, <C-R>=SetSurroundTailToComma()<CR><C-G>S}<C-R>=RestoreSurroundTail()<CR>
 	imap {{. <C-R>=SetSurroundTailToDot()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
 	imap }}. <C-R>=SetSurroundTailToDot()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
+	imap {<CR>. <C-R>=SetSurroundTailToDot()<CR><C-G>S}<C-R>=RestoreSurroundTail()<CR>
 	
-	imap [[ <C-G>s[
-	imap ]] <C-G>s]
 	imap [\ <C-R>='['<CR>
 	imap ]\ <C-R>=']'<CR>
+	imap [[ <C-G>s[
+	imap ]] <C-G>s]
+	imap [<CR> <C-G>S]
 	imap [[: <C-R>=SetSurroundTailToColon()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
 	imap ]]: <C-R>=SetSurroundTailToColon()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
+	imap [<CR>: <C-R>=SetSurroundTailToColon()<CR><C-G>S]<C-R>=RestoreSurroundTail()<CR>
 	imap [[; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
 	imap ]]; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
+	imap [<CR>; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>S]<C-R>=RestoreSurroundTail()<CR>
 	imap [[, <C-R>=SetSurroundTailToComma()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
 	imap ]], <C-R>=SetSurroundTailToComma()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
+	imap [<CR>, <C-R>=SetSurroundTailToComma()<CR><C-G>S]<C-R>=RestoreSurroundTail()<CR>
 	imap [[. <C-R>=SetSurroundTailToDot()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
 	imap ]]. <C-R>=SetSurroundTailToDot()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
+	imap [<CR>. <C-R>=SetSurroundTailToDot()<CR><C-G>S]<C-R>=RestoreSurroundTail()<CR>
 	
-	imap (( <C-G>s(
-	imap )) <C-G>s)
 	imap (\ <C-R>='('<CR>
 	imap )\ <C-R>=')'<CR>
+	imap (( <C-G>s(
+	imap )) <C-G>s)
+	imap (<CR> <C-G>S)
 	imap ((: <C-R>=SetSurroundTailToColon()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
 	imap )): <C-R>=SetSurroundTailToColon()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
+	imap (<CR>: <C-R>=SetSurroundTailToColon()<CR><C-G>S)<C-R>=RestoreSurroundTail()<CR>
 	imap ((; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
 	imap )); <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
+	imap (<CR>; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>S)<C-R>=RestoreSurroundTail()<CR>
 	imap ((, <C-R>=SetSurroundTailToComma()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
 	imap )), <C-R>=SetSurroundTailToComma()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
+	imap (<CR>, <C-R>=SetSurroundTailToComma()<CR><C-G>S)<C-R>=RestoreSurroundTail()<CR>
 	imap ((. <C-R>=SetSurroundTailToDot()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
 	imap )). <C-R>=SetSurroundTailToDot()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
+	imap (<CR>. <C-R>=SetSurroundTailToDot()<CR><C-G>S)<C-R>=RestoreSurroundTail()<CR>
 	
-	imap '' <C-G>s'
-	imap "" <C-G>s"
 	imap '\ <C-R>="'"<CR>
 	imap "\ <C-R>='"'<CR>
+	imap '' <C-G>s'
+	imap "" <C-G>s"
+	imap '<CR> <C-G>S'
+	imap "<CR> <C-G>S"
 	imap '': <C-R>=SetSurroundTailToColon()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
 	imap "": <C-R>=SetSurroundTailToColon()<CR><C-G>s"<C-R>=RestoreSurroundTail()<CR>
+	imap '<CR>: <C-R>=SetSurroundTailToColon()<CR><C-G>S'<C-R>=RestoreSurroundTail()<CR>
+	imap "<CR>: <C-R>=SetSurroundTailToColon()<CR><C-G>S"<C-R>=RestoreSurroundTail()<CR>
 	imap ''; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
 	imap ""; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s"<C-R>=RestoreSurroundTail()<CR>
+	imap '<CR>; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>S'<C-R>=RestoreSurroundTail()<CR>
+	imap "<CR>; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>S"<C-R>=RestoreSurroundTail()<CR>
 	imap '', <C-R>=SetSurroundTailToComma()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
 	imap "", <C-R>=SetSurroundTailToComma()<CR><C-G>s"<C-R>=RestoreSurroundTail()<CR>
+	imap '<CR>, <C-R>=SetSurroundTailToComma()<CR><C-G>S'<C-R>=RestoreSurroundTail()<CR>
+	imap "<CR>, <C-R>=SetSurroundTailToComma()<CR><C-G>S"<C-R>=RestoreSurroundTail()<CR>
 	imap ''. <C-R>=SetSurroundTailToDot()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
 	imap "". <C-R>=SetSurroundTailToDot()<CR><C-G>s"<C-R>=RestoreSurroundTail()<CR>
+	imap '<CR>. <C-R>=SetSurroundTailToDot()<CR><C-G>S'<C-R>=RestoreSurroundTail()<CR>
+	imap "<CR>. <C-R>=SetSurroundTailToDot()<CR><C-G>S"<C-R>=RestoreSurroundTail()<CR>
 	
 	if ! a:silent
 		echo 'Auto surround input enabled'
@@ -127,57 +152,82 @@ function! AutoSurroundInputDisable(silent)
 		return
 	endif
 	
-	iunmap {{
-	iunmap }}
 	iunmap {\
 	iunmap }\
+	iunmap {{
+	iunmap }}
+	iunmap {<CR>
 	iunmap {{:
 	iunmap }}:
+	iunmap {<CR>:
 	iunmap {{;
 	iunmap }};
+	iunmap {<CR>;
 	iunmap {{,
 	iunmap }},
+	iunmap {<CR>,
 	iunmap {{.
 	iunmap }}.
+	iunmap {<CR>.
 	
-	iunmap [[
-	iunmap ]]
 	iunmap [\
 	iunmap ]\
+	iunmap [[
+	iunmap ]]
+	iunmap [<CR>
 	iunmap [[:
 	iunmap ]]:
+	iunmap [<CR>:
 	iunmap [[;
 	iunmap ]];
+	iunmap [<CR>;
 	iunmap [[,
 	iunmap ]],
+	iunmap [<CR>,
 	iunmap [[.
 	iunmap ]].
+	iunmap [<CR>.
 	
-	iunmap ((
-	iunmap ))
 	iunmap (\
 	iunmap )\
+	iunmap ((
+	iunmap ))
+	iunmap (<CR>
 	iunmap ((:
 	iunmap )):
+	iunmap (<CR>:
 	iunmap ((;
 	iunmap ));
+	iunmap (<CR>;
 	iunmap ((,
 	iunmap )),
+	iunmap (<CR>,
 	iunmap ((.
 	iunmap )).
+	iunmap (<CR>.
 	
-	iunmap ''
-	iunmap ""
 	iunmap '\
 	iunmap "\
+	iunmap ''
+	iunmap ""
+	iunmap '<CR>
+	iunmap "<CR>
 	iunmap '':
 	iunmap "":
+	iunmap '<CR>:
+	iunmap "<CR>:
 	iunmap '';
 	iunmap "";
+	iunmap '<CR>;
+	iunmap "<CR>;
 	iunmap '',
 	iunmap "",
+	iunmap '<CR>,
+	iunmap "<CR>,
 	iunmap ''.
 	iunmap "".
+	iunmap '<CR>.
+	iunmap "<CR>.
 	
 	if ! a:silent
 		echo 'Auto surround input disabled'
