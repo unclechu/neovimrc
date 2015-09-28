@@ -173,6 +173,9 @@ nnoremap <C-l> :wincmd l<CR>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
+"this shit happens over and over and here we are
+command! W write
+
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
