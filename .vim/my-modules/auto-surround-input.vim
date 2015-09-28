@@ -16,7 +16,7 @@ function! RestoreSurroundTail()
 endfunction
 
 function! IsAutoSurroundInputEnabled()
-	return mapcheck('{', 'i') == '<C-G>s{'
+	return mapcheck('{{', 'i') == '<C-G>s{'
 endfunction
 
 function! AutoSurroundInputEnable(silent)
@@ -30,35 +30,25 @@ function! AutoSurroundInputEnable(silent)
 		return
 	endif
 	
-	imap \\ <C-R>='\'<CR>
+	imap {{ <C-G>s{
+	imap }} <C-G>s}
+	imap {; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
+	imap }; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
 	
-	imap { <C-G>s{
-	imap } <C-G>s}
-	imap \{ <C-R>='{'<CR>
-	imap \} <C-R>='}'<CR>
-	imap \;{ <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
-	imap \;} <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
+	imap [[ <C-G>s[
+	imap ]] <C-G>s]
+	imap [; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
+	imap ]; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
 	
-	imap [ <C-G>s[
-	imap ] <C-G>s]
-	imap \[ <C-R>='['<CR>
-	imap \] <C-R>=']'<CR>
-	imap \;[ <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
-	imap \;] <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
+	imap (( <C-G>s(
+	imap )) <C-G>s)
+	imap (; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
+	imap ); <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
 	
-	imap ( <C-G>s(
-	imap ) <C-G>s)
-	imap \( <C-R>='('<CR>
-	imap \) <C-R>=')'<CR>
-	imap \;( <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
-	imap \;) <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
-	
-	imap ' <C-G>s'
-	imap " <C-G>s"
-	imap \' <C-R>="'"<CR>
-	imap \" <C-R>='"'<CR>
-	imap \;' <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
-	imap \;" <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s"<C-R>=RestoreSurroundTail()<CR>
+	imap '' <C-G>s'
+	imap "" <C-G>s"
+	imap '; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
+	imap "; <C-R>=SetSurroundTailToSemicolon()<CR><C-G>s"<C-R>=RestoreSurroundTail()<CR>
 	
 	if ! a:silent
 		echo 'Auto surround input enabled'
@@ -77,35 +67,25 @@ function! AutoSurroundInputDisable(silent)
 		return
 	endif
 	
-	iunmap \\
+	iunmap {{
+	iunmap }}
+	iunmap {;
+	iunmap };
 	
-	iunmap {
-	iunmap }
-	iunmap \{
-	iunmap \}
-	iunmap \;{
-	iunmap \;}
+	iunmap [[
+	iunmap ]]
+	iunmap [;
+	iunmap ];
 	
-	iunmap [
-	iunmap ]
-	iunmap \[
-	iunmap \]
-	iunmap \;[
-	iunmap \;]
+	iunmap ((
+	iunmap ))
+	iunmap (;
+	iunmap );
 	
-	iunmap (
-	iunmap )
-	iunmap \(
-	iunmap \)
-	iunmap \;(
-	iunmap \;)
-	
-	iunmap '
-	iunmap "
-	iunmap \'
-	iunmap \"
-	iunmap \;'
-	iunmap \;"
+	iunmap ''
+	iunmap ""
+	iunmap ';
+	iunmap ";
 	
 	if ! a:silent
 		echo 'Auto surround input disabled'
