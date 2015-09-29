@@ -133,6 +133,12 @@ snippet .ro "Reduce to object method" i
 }, {})
 endsnippet
 
+snippet .ra "Reduce to new list method" i
+.reduce(function (${1:result}, ${2:item}) {
+	return ${3:result}.concat(${4:item});
+}, ${5:[]})
+endsnippet
+
 snippet .rv "List reverse method" i
 .reverse()
 endsnippet
