@@ -38,7 +38,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
+if v:version >= 704
+	Plugin 'SirVer/ultisnips'
+endif
 
 "surround
 Plugin 'tpope/vim-surround'
