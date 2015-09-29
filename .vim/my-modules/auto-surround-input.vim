@@ -30,7 +30,7 @@ endfunction
 
 function! SetSurroundTailToComma()
 	call StoreOldSurroundTail()
-	let g:surround_insert_tail = ','
+	let g:surround_insert_tail = ', '
 	return ''
 endfunction
 
