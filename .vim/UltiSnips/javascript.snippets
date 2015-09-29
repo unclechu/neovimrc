@@ -382,17 +382,19 @@ snippet ! "Inverted boolean value" i
  ! ${1}
 endsnippet
 
+
 snippet :: "Prototype method or property" i
 .prototype.
 endsnippet
 
-snippet @ "Current context method or property" w
+snippet @ "Current context" i
+this
+endsnippet
+
+snippet @. "Current context method or property" i
 this.
 endsnippet
 
-snippet @@ "Current context" i
-this
-endsnippet
 
 snippet .* "Join string" i
 .join('${1}')
