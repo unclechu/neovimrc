@@ -43,7 +43,7 @@ endfunction
 
 
 function! IsAutoSurroundInputEnabled()
-	return mapcheck('{{:', 'i') == '<C-R>=SetSurroundTailToColon()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>'
+	return mapcheck('{{\', 'i') == "<C-R>='{{'<CR>"
 endfunction
 
 
@@ -62,6 +62,8 @@ function! AutoSurroundInputEnable(silent)
 	imap }\ <C-R>='}'<CR>
 	imap {{ <C-G>s{
 	imap }} <C-G>s}
+	imap {{\ <C-R>='{{'<CR>
+	imap }}\ <C-R>='}}'<CR>
 	imap {<CR> <C-G>S}
 	imap {{: <C-R>=SetSurroundTailToColon()<CR><C-G>s{<C-R>=RestoreSurroundTail()<CR>
 	imap }}: <C-R>=SetSurroundTailToColon()<CR><C-G>s}<C-R>=RestoreSurroundTail()<CR>
@@ -80,6 +82,8 @@ function! AutoSurroundInputEnable(silent)
 	imap ]\ <C-R>=']'<CR>
 	imap [[ <C-G>s[
 	imap ]] <C-G>s]
+	imap [[\ <C-R>='[['<CR>
+	imap ]]\ <C-R>=']]'<CR>
 	imap [<CR> <C-G>S]
 	imap [[: <C-R>=SetSurroundTailToColon()<CR><C-G>s[<C-R>=RestoreSurroundTail()<CR>
 	imap ]]: <C-R>=SetSurroundTailToColon()<CR><C-G>s]<C-R>=RestoreSurroundTail()<CR>
@@ -98,6 +102,8 @@ function! AutoSurroundInputEnable(silent)
 	imap )\ <C-R>=')'<CR>
 	imap (( <C-G>s(
 	imap )) <C-G>s)
+	imap ((\ <C-R>='(('<CR>
+	imap ))\ <C-R>='))'<CR>
 	imap (<CR> <C-G>S)
 	imap ((: <C-R>=SetSurroundTailToColon()<CR><C-G>s(<C-R>=RestoreSurroundTail()<CR>
 	imap )): <C-R>=SetSurroundTailToColon()<CR><C-G>s)<C-R>=RestoreSurroundTail()<CR>
@@ -116,6 +122,8 @@ function! AutoSurroundInputEnable(silent)
 	imap "\ <C-R>='"'<CR>
 	imap '' <C-G>s'
 	imap "" <C-G>s"
+	imap ''\ <C-R>="''"<CR>
+	imap ""\ <C-R>='""'<CR>
 	imap '<CR> <C-G>S'
 	imap "<CR> <C-G>S"
 	imap '': <C-R>=SetSurroundTailToColon()<CR><C-G>s'<C-R>=RestoreSurroundTail()<CR>
@@ -156,6 +164,8 @@ function! AutoSurroundInputDisable(silent)
 	iunmap }\
 	iunmap {{
 	iunmap }}
+	iunmap {{\
+	iunmap }}\
 	iunmap {<CR>
 	iunmap {{:
 	iunmap }}:
@@ -174,6 +184,8 @@ function! AutoSurroundInputDisable(silent)
 	iunmap ]\
 	iunmap [[
 	iunmap ]]
+	iunmap [[\
+	iunmap ]]\
 	iunmap [<CR>
 	iunmap [[:
 	iunmap ]]:
@@ -192,6 +204,8 @@ function! AutoSurroundInputDisable(silent)
 	iunmap )\
 	iunmap ((
 	iunmap ))
+	iunmap ((\
+	iunmap ))\
 	iunmap (<CR>
 	iunmap ((:
 	iunmap )):
@@ -210,6 +224,8 @@ function! AutoSurroundInputDisable(silent)
 	iunmap "\
 	iunmap ''
 	iunmap ""
+	iunmap ''\
+	iunmap ""\
 	iunmap '<CR>
 	iunmap "<CR>
 	iunmap '':
