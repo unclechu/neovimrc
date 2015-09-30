@@ -3,23 +3,23 @@ priority -50
 snippet f "Anonymous function" w
 function (${1}) {
 	${2}
-}
+}${3}
 endsnippet
 
 snippet fi "Inline anonymous function" w
-function (${1}) { ${2} }
+function (${1}) { ${2} }${3}
 endsnippet
 
 snippet fn "Named function" w
 function ${1}(${2}) {
 	${3}
-}
+}${4}
 endsnippet
 
 snippet fc "Clojure function" i
 (function (${2}) {
 	${1}
-})(${3})
+})(${3})${4}
 endsnippet
 
 snippet if "if condition" i
@@ -136,7 +136,7 @@ endsnippet
 snippet .ra "Reduce to new list method" i
 .reduce(function (${1:result}, ${2:item}) {
 	return ${3:result}.concat(${4:item});
-}, ${5:[]})
+}, ${5:[]})${6}
 endsnippet
 
 snippet .rv "List reverse method" i
@@ -146,35 +146,35 @@ endsnippet
 snippet .sm ".some() list method" i
 .some(function (${1:item}) {
 	return ${2:item};
-})
+})${3}
 endsnippet
 
 snippet .ev ".every() list method" i
 .every(function (${1:item}) {
 	return ${2:item};
-})
+})${4}
 endsnippet
 
 snippet .fl "List filter method" i
 .filter(function (${1:item}) {
 	return ${2:item};
-})
+})${3}
 endsnippet
 
 snippet +. "Push to list method" i
-.push(${1})
+.push(${1})${2}
 endsnippet
 
 snippet ++ "List concat method" i
-.concat(${1:[]})
+.concat(${1:[]})${2}
 endsnippet
 
 snippet .sp "Splice method" i
-.splice(${1:0}, ${2:1})
+.splice(${1:0}, ${2:1})${3}
 endsnippet
 
 snippet .iof "Index of method" i
-.indexOf(${1})
+.indexOf(${1})${2}
 endsnippet
 
 
@@ -183,7 +183,7 @@ snippet .ts "To string method" i
 endsnippet
 
 snippet .ca "Char at string method" i
-.charAt(${1})
+.charAt(${1})${2}
 endsnippet
 
 snippet .tlc "Lower case string method" i
@@ -200,31 +200,31 @@ endsnippet
 
 
 snippet ., "Call method" i
-.${1}(${2})
+.${1}(${2})${3}
 endsnippet
 
 snippet .. "Function delegate method" i
-.apply(${1:this}, ${2:arguments})
+.apply(${1:this}, ${2:arguments})${3}
 endsnippet
 
 snippet .= "Function call with context" i
-.call(${1:this})
+.call(${1:this})${2}
 endsnippet
 
 snippet .b "Bind method" i
-.bind(${1:this})
+.bind(${1:this})${2}
 endsnippet
 
 snippet ok "Get keys list of hash-map" i
-Object.keys(${1})
+Object.keys(${1})${2}
 endsnippet
 
 snippet oc "Create hash-map" i
-Object.create(${1})
+Object.create(${1})${2}
 endsnippet
 
 snippet isa "Check if is array" i
-Array.isArray(${1})
+Array.isArray(${1})${2}
 endsnippet
 
 snippet -io "Something instance of" i
@@ -260,7 +260,7 @@ new Date()
 endsnippet
 
 snippet ne "New exception instance" i
-new Error('${1}')
+new Error('${1}')${2}
 endsnippet
 
 snippet te "Throw new exception instance" i
@@ -375,11 +375,11 @@ console.assert(${1}, '${2}');
 endsnippet
 
 snippet !. "Inverted boolean value with brackets" i
- ! (${1})
+ ! (${1})${2}
 endsnippet
 
 snippet ! "Inverted boolean value" i
- ! ${1}
+ ! ${1}${2}
 endsnippet
 
 
@@ -397,11 +397,11 @@ endsnippet
 
 
 snippet .* "Join string" i
-.join('${1}')
+.join('${1}')${2}
 endsnippet
 
 snippet ./ "Split string" i
-.split('${1}')
+.split('${1}')${2}
 endsnippet
 
 snippet // "JSDoc comment" i
