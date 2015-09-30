@@ -12,6 +12,9 @@ if has('autocmd')
 	autocmd FileType
 		\ ls,coffee,stylus,jade,html,jst,sh,faust
 		\ set indentexpr=
+	
+	" haskell default indentation config
+	autocmd FileType haskell setlocal et ts=2 sts=2 sw=2
 endif
 
 "vim: set noet :
