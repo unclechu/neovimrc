@@ -168,9 +168,13 @@ nnoremap <leader>sr :SyntasticReset<CR>
 nnoremap <leader>sq :lclose<CR>
 
 nnoremap <C-h> :wincmd h<CR>
+vnoremap <C-h> <Esc>:wincmd h<CR>
 nnoremap <C-j> :wincmd j<CR>
+vnoremap <C-j> <Esc>:wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
+vnoremap <C-k> <Esc>:wincmd k<CR>
 nnoremap <C-l> :wincmd l<CR>
+vnoremap <C-l> <Esc>:wincmd l<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
