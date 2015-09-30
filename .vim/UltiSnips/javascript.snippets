@@ -99,38 +99,38 @@ if ( ! (${1})) {
 endsnippet
 
 snippet -o "Simple key-value object" i
-{ ${1}: ${2} }
+{ ${1}: ${2} }${3}
 endsnippet
 
 snippet .e "List each method" i
 .forEach(function (${1:item}) {
 	${2}
-})
+})${3}
 endsnippet
 
 snippet .m "List map method" i
 .map(function (${1:item}) {
 	return ${2:item};
-})
+})${3}
 endsnippet
 
 snippet .r "List reduce method" i
 .reduce(function (${1:prev}, ${2:next}) {
-	return ${4:prev} + ${5:next};
-})
+	return ${3:prev} + ${4:next};
+})${5}
 endsnippet
 
 snippet .rr "List reduce right method" i
 .reduceRight(function (${1:prev}, ${2:next}) {
-	return ${4:prev} + ${5:next};
-})
+	return ${3:prev} + ${4:next};
+})${5}
 endsnippet
 
 snippet .ro "Reduce to object method" i
 .reduce(function (${1:obj}, ${2:item}) {
 	${3}
 	return ${4:obj};
-}, {})
+}, {})${5}
 endsnippet
 
 snippet .ra "Reduce to new list method" i
