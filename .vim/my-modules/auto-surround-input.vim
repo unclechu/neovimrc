@@ -2,16 +2,16 @@
 "Author: Viacheslav Lotsmanov
 
 let g:surround_insert_tail = ''
-let g:surround_insert_tail__old_val = ''
+let s:surround_insert_tail__old_val = ''
 
 
 function! StoreOldSurroundTail()
-	let g:surround_insert_tail__old_val = g:surround_insert_tail
+	let s:surround_insert_tail__old_val = g:surround_insert_tail
 	return ''
 endfunction
 
 function! RestoreSurroundTail()
-	let g:surround_insert_tail = g:surround_insert_tail__old_val
+	let g:surround_insert_tail = s:surround_insert_tail__old_val
 	return ''
 endfunction
 
@@ -262,5 +262,20 @@ endfunction
 command! AutoSurroundInputEnable  call AutoSurroundInputEnable(0)
 command! AutoSurroundInputDisable call AutoSurroundInputDisable(0)
 command! AutoSurroundInputToggle  call AutoSurroundInputToggle(0)
+
+
+
+let s:old_clipboard_value = ''
+
+function! SurroundHackStoreLastClipboardValue()
+	let s:old_clipboard_value = @"
+endfunction
+
+function! SurroundHackRestoreLastClipboardValue()
+	let @" = s:old_clipboard_value
+	let s:old_clipboard_value = ''
+endfunction
+
+vnoremap S<CR> :<C-U>call SurroundHackStoreLastClipboardValue()<CR>gvc<CR><CR><Up><C-T><Esc>p:call SurroundHackRestoreLastClipboardValue()<CR>:echo<CR>
 
 "vim: set noet :
