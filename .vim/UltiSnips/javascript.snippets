@@ -209,11 +209,11 @@ snippet .. "Function delegate method" i
 endsnippet
 
 snippet .= "Function call with context" i
-.call(${1:this})${2}
+.call(${1:this}${2})${3}
 endsnippet
 
 snippet .b "Bind method" i
-.bind(${1:this})${2}
+.bind(${1:this}${2})${3}
 endsnippet
 
 snippet ok "Get keys list of hash-map" i
@@ -221,35 +221,35 @@ Object.keys(${1})${2}
 endsnippet
 
 snippet oc "Create hash-map" i
-Object.create(${1})${2}
+Object.create(${1:null})${2}
 endsnippet
 
 snippet isa "Check if is array" i
 Array.isArray(${1})${2}
 endsnippet
 
-snippet -io "Something instance of" i
+snippet io "Something is instance of something" i
 ${1} instanceof ${2:Object}
 endsnippet
 
-snippet io "Is instance of" i
-instanceof ${1:Object}
+snippet io- "Something instance of" i
+instanceof ${2}
 endsnippet
 
 snippet to "setTimeout (async hack)" i
 setTimeout(function () {
 	${1}
-}, ${2:0});
+}, ${2:0});${3}
 endsnippet
 
 snippet nt "Async call (node.js)" i
-process.nextTick(${1});
+process.nextTick(${1});${2}
 endsnippet
 
 snippet ntf "Async wrap (node.js)" i
 process.nextTick(function () {
 	${1}
-});
+});${2}
 endsnippet
 
 snippet dn "Current unix-time seconds" i
@@ -265,11 +265,11 @@ new Error('${1}')${2}
 endsnippet
 
 snippet te "Throw new exception instance" i
-throw new Error('${1}');
+throw new Error('${1}');${2}
 endsnippet
 
 snippet tt "Throw something" i
-throw ${1};
+throw ${1};${2}
 endsnippet
 
 snippet tt- "Throw something (without semicolon)" i
