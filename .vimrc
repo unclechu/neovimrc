@@ -41,6 +41,7 @@ Plugin 'scrooloose/syntastic'
 if v:version >= 704
 	Plugin 'SirVer/ultisnips'
 endif
+Plugin 'haya14busa/incsearch.vim'
 
 "surround
 Plugin 'tpope/vim-surround'
@@ -178,6 +179,10 @@ vnoremap <C-l> <Esc>:wincmd l<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+nmap g/ <Plug>(incsearch-forward)
+nmap g? <Plug>(incsearch-backward)
+nmap <leader>/ <Plug>(incsearch-stay)
 
 "this shit happens over and over and here we are
 command! W write
