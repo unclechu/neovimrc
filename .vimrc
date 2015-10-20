@@ -184,6 +184,11 @@ nmap g/ <Plug>(incsearch-forward)
 nmap g? <Plug>(incsearch-backward)
 nmap <leader>/ <Plug>(incsearch-stay)
 
+if &mouse == 'a'
+	nmap <C-ScrollWheelUp>   <leader><leader>+
+	nmap <C-ScrollWheelDown> <leader><leader>-
+endif
+
 "this shit happens over and over and here we are
 command! W write
 
