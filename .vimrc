@@ -141,6 +141,8 @@ try
 catch
 endtry
 
+set wildmenu
+
 call ResetKeyMap()
 call PreventIndentTrimHackOn()
 call AutoSurroundInputEnable(1)
