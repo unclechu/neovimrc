@@ -165,6 +165,7 @@ nnoremap <leader>] :AutoSurroundInputToggle<CR>
 
 nnoremap <leader>ft :set filetype=
 nnoremap <leader>fl :set foldlevel=
+nnoremap <leader>fn :NERDTreeFind<CR>
 
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sc :SyntasticCheck<CR>
