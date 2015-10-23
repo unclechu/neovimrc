@@ -42,6 +42,8 @@ if v:version >= 704
 	Plugin 'SirVer/ultisnips'
 endif
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 "surround
 Plugin 'tpope/vim-surround'
@@ -75,7 +77,7 @@ set showtabline=2
 if has('gui_running')
 	set guioptions-=e
 endif
-let g:CtrlSpaceIgnoredFiles = '\v(\.git|\.hg|\.svn|node_modules|bower_components|__pycache__)[\/]'
+let g:ctrlp_custom_ignore = '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|\/node_modules|\/bower_components|\/__pycache__)$'
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
