@@ -166,6 +166,7 @@ nnoremap <leader>w :WrapToggle<CR>
 nnoremap <leader>p :PasteToggle<CR>
 nnoremap <leader>[ :RelativeNumberToggle<CR>
 nnoremap <leader>] :AutoSurroundInputToggle<CR>
+nnoremap <leader>g :GundoToggle<CR>
 
 nnoremap <leader>ft :set filetype=
 nnoremap <leader>fl :set foldlevel=
