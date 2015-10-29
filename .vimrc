@@ -44,6 +44,8 @@ endif
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'sjl/gundo.vim'
+Plugin 'mhinz/vim-startify'
 
 "surround
 Plugin 'tpope/vim-surround'
@@ -164,6 +166,7 @@ nnoremap <leader>w :WrapToggle<CR>
 nnoremap <leader>p :PasteToggle<CR>
 nnoremap <leader>[ :RelativeNumberToggle<CR>
 nnoremap <leader>] :AutoSurroundInputToggle<CR>
+nnoremap <leader>g :GundoToggle<CR>
 
 nnoremap <leader>ft :set filetype=
 nnoremap <leader>fl :set foldlevel=
