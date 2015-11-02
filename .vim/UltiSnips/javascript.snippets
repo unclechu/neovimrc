@@ -409,8 +409,16 @@ snippet // "JSDoc comment" i
 /**
  * ${1:Description.}
  *
- * ${2:@public}
+ * @${2:public}
  */
+endsnippet
+
+snippet //c "JSDoc inline @const" i
+/** @${1:const} */ ${2}
+endsnippet
+
+snippet //p "JSDoc inline @private" i
+/** @${1:private} */ ${2}
 endsnippet
 
 snippet try "try/catch" i
