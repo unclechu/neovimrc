@@ -217,14 +217,14 @@ snippet .b "Bind method" i
 endsnippet
 
 snippet ok "Get keys list of hash-map" i
-Object.keys(${1})${2}
+Object.keys(${1:foo})${2}
 endsnippet
 
 snippet oc "Create hash-map" i
 Object.create(${1:null})${2}
 endsnippet
 
-snippet isa "Check if is array" i
+snippet isa "Check if it's array" i
 Array.isArray(${1})${2}
 endsnippet
 

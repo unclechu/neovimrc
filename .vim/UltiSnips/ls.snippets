@@ -1,0 +1,139 @@
+priority -50
+extends surround-hacks
+
+snippet f "Function" w
+-> ${1}
+endsnippet
+
+snippet fa "Function with named agruments" w
+(${1:foo}) -> ${2}
+endsnippet
+
+snippet p "Procedure" w
+!-> ${1}
+endsnippet
+
+snippet pa "Procedure with named agruments" w
+(${1:foo}) !-> ${2}
+endsnippet
+
+snippet c "Constant definition" b
+const ${1:foo} = ${2}
+endsnippet
+
+snippet rq "require!" b
+require! {
+	${1:foo}
+}${2}
+endsnippet
+
+snippet ok "Get keys list of hash-map" i
+Object.keys ${1:foo}
+endsnippet
+
+snippet oc "Create hash-map" i
+Object.create ${1:null}
+endsnippet
+
+snippet isa "Check if it's array" i
+Array.is-array ${1:foo}
+endsnippet
+
+snippet io "Something is instance of something" i
+${1} instanceof ${2:Object}
+endsnippet
+
+snippet io- "Something instance of" i
+instanceof ${2}
+endsnippet
+
+snippet dn "Current unix-time seconds" i
+do Date.now
+endsnippet
+
+snippet nd "New instance of Date object" i
+new Date
+endsnippet
+
+snippet ne "New exception instance" i
+new Error '${1:foo}'${2}
+endsnippet
+
+snippet te "Throw new exception instance" i
+throw new Error '${1:foo}'${2}
+endsnippet
+
+snippet tt "Throw something" i
+throw ${1}
+endsnippet
+
+snippet dg "Call debugger" i
+debugger
+endsnippet
+
+snippet cl "console.log" i
+console.log ${1:foo}
+endsnippet
+
+snippet ci "console.info" i
+console.info ${1:foo}
+endsnippet
+
+snippet cw "console.warn" i
+console.warn ${1:foo}
+endsnippet
+
+snippet ce "console.error" i
+console.error ${1:foo}
+endsnippet
+
+snippet cd "console.debug" i
+console.debug ${1:foo}
+endsnippet
+
+snippet cg "console.group" i
+console.group '${1:foo}'${2}
+endsnippet
+
+snippet cge "console.groupEnd" i
+console.group-end '${1:foo}'${2}
+endsnippet
+
+snippet ct "console.time (benchmark)" i
+console.time '${1:foo}'${2}
+endsnippet
+
+snippet cte "console.timeEnd (benchmark)" i
+console.time-end '${1:foo}'${2}
+endsnippet
+
+snippet cp "console.profile" i
+console.profile '${1:foo}'${2}
+endsnippet
+
+snippet cpe "console.profileEnd" i
+console.profile-end '${1:foo}'${2}
+endsnippet
+
+snippet ca "console.assert" i
+console.assert ${1:foo}, '${2:bar}'${3}
+endsnippet
+
+snippet ! "Inverted boolean value" i
+not ${1}
+endsnippet
+
+snippet // "JSDoc comment" i
+/**
+ * ${1:Description.}
+ *
+ * @${2:public}
+ */
+endsnippet
+
+snippet try "try/catch" i
+try
+	${1:foo}
+catch
+	${2:console.error e}
+endsnippet
