@@ -177,14 +177,22 @@ nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
 nnoremap <leader>sq :lclose<CR>
 
-nnoremap <C-h> :wincmd h<CR>
-vnoremap <C-h> <Esc>:wincmd h<CR>
-nnoremap <C-j> :wincmd j<CR>
-vnoremap <C-j> <Esc>:wincmd j<CR>
-nnoremap <C-k> :wincmd k<CR>
-vnoremap <C-k> <Esc>:wincmd k<CR>
-nnoremap <C-l> :wincmd l<CR>
-vnoremap <C-l> <Esc>:wincmd l<CR>
+nnoremap <C-h>     :wincmd h<CR>
+vnoremap <C-h>     <Esc>:wincmd h<CR>
+nnoremap <C-Left>  :wincmd h<CR>
+vnoremap <C-Left>  <Esc>:wincmd h<CR>
+nnoremap <C-j>     :wincmd j<CR>
+vnoremap <C-j>     <Esc>:wincmd j<CR>
+nnoremap <C-Down>  :wincmd j<CR>
+vnoremap <C-Down>  <Esc>:wincmd j<CR>
+nnoremap <C-k>     :wincmd k<CR>
+vnoremap <C-k>     <Esc>:wincmd k<CR>
+nnoremap <C-Up>    :wincmd k<CR>
+vnoremap <C-Up>    <Esc>:wincmd k<CR>
+nnoremap <C-l>     :wincmd l<CR>
+vnoremap <C-l>     <Esc>:wincmd l<CR>
+nnoremap <C-Right> :wincmd l<CR>
+vnoremap <C-Right> <Esc>:wincmd l<CR>
 
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
