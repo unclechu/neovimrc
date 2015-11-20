@@ -7,18 +7,36 @@ function (${1}) {
 }${3}
 endsnippet
 
+snippet ff "Anonymous function ES6" w
+(${1}) => {
+	${2}
+}${3}
+endsnippet
+
 snippet fi "Inline anonymous function" w
 function (${1}) { ${2} }${3}
 endsnippet
 
 snippet fn "Named function" w
-function ${1}(${2}) {
+function ${1:foo}(${2}) {
 	${3}
 }${4}
 endsnippet
 
+snippet fnn "Named function ES6" w
+const ${1:foo} = (${2}) => {
+	${3}
+};${4}
+endsnippet
+
 snippet fc "Clojure function" i
 (function (${2}) {
+	${1}
+})(${3})${4}
+endsnippet
+
+snippet fcc "Clojure function ES6" i
+((${2}) => {
 	${1}
 })(${3})${4}
 endsnippet
@@ -276,17 +294,47 @@ snippet tt- "Throw something (without semicolon)" i
 throw ${1}
 endsnippet
 
+
+
 snippet -v "Variable definition with value" i
 var ${1:foo} = ${2};
 endsnippet
 
-snippet -v- "Variable definition without value" i
-var ${1:foo};
+snippet -v- "Variable definition prefix" i
+var ${1:foo} = ${2}
 endsnippet
 
-snippet -V "Variable definition without value and without semicolon" i
-var ${1:foo}
+snippet -V "var prefix" i
+var ${1}
 endsnippet
+
+
+snippet -l "Block scope variable definition with value" i
+let ${1:foo} = ${2};
+endsnippet
+
+snippet -l- "Block scope variable definition without value" i
+let ${1:foo} = ${2}
+endsnippet
+
+snippet -L "let prefix" i
+let ${1}
+endsnippet
+
+
+snippet -c "Constant definition" i
+const ${1:foo} = ${2};
+endsnippet
+
+snippet -c- "Constant definition prefix" i
+const ${1:foo} = ${2}
+endsnippet
+
+snippet -C "const prefix" i
+const ${1}
+endsnippet
+
+
 
 snippet -r "Return value" i
 return ${1};
