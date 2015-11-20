@@ -297,7 +297,7 @@ endsnippet
 
 
 snippet -v "Variable definition with value" i
-var ${1:foo} = ${2};
+var ${1:foo} = ${2};${3}
 endsnippet
 
 snippet -v- "Variable definition prefix" i
@@ -310,7 +310,7 @@ endsnippet
 
 
 snippet -l "Block scope variable definition with value" i
-let ${1:foo} = ${2};
+let ${1:foo} = ${2};${3}
 endsnippet
 
 snippet -l- "Block scope variable definition without value" i
@@ -323,7 +323,7 @@ endsnippet
 
 
 snippet -c "Constant definition" i
-const ${1:foo} = ${2};
+const ${1:foo} = ${2};${3}
 endsnippet
 
 snippet -c- "Constant definition prefix" i
