@@ -81,6 +81,7 @@ if has('gui_running')
 	set guioptions-=e
 endif
 let g:ctrlp_custom_ignore = '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|\/node_modules|\/bower_components|\/__pycache__)$'
+let g:ctrlp_show_hidden = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
