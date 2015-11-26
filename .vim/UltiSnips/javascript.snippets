@@ -7,10 +7,14 @@ function (${1}) {
 }${3}
 endsnippet
 
-snippet ff "Anonymous function ES6" w
+snippet ff "Arrow function" w
 (${1}) => {
 	${2}
 }${3}
+endsnippet
+
+snippet f- "Arrow function (just value)" w
+(${1}) => ${2:foo}
 endsnippet
 
 snippet fi "Inline anonymous function" w
@@ -23,10 +27,14 @@ function ${1:foo}(${2}) {
 }${4}
 endsnippet
 
-snippet fnn "Named function ES6" w
+snippet fnn "Named arrow function" w
 const ${1:foo} = (${2}) => {
 	${3}
 };${4}
+endsnippet
+
+snippet fn- "Named arrow function (just value)" w
+const ${1:foo} = (${2}) => ${3:foo};
 endsnippet
 
 snippet fc "Clojure function" i
@@ -35,10 +43,14 @@ snippet fc "Clojure function" i
 })(${3})${4}
 endsnippet
 
-snippet fcc "Clojure function ES6" i
+snippet fcc "Clojure arrow function" i
 ((${2}) => {
 	${1}
 })(${3})${4}
+endsnippet
+
+snippet fc- "Clojure arrow function (just value)" i
+((${2}) => ${1})(${3})${4}
 endsnippet
 
 snippet if "if condition" i
@@ -126,11 +138,27 @@ snippet .e "List each method" i
 	${2}
 })${3}
 endsnippet
+snippet .ee "List each method (arrow function)" i
+.forEach((${1:item}) => {
+	${2}
+})${3}
+endsnippet
+snippet .e- "List each method (arrow function, just value)" i
+.forEach((${1:item}) => ${2:item})${3}
+endsnippet
 
 snippet .m "List map method" i
 .map(function (${1:item}) {
 	return ${2:item};
 })${3}
+endsnippet
+snippet .mm "List map method (arrow function)" i
+.map((${1:item}) => {
+	return ${2:item};
+})${3}
+endsnippet
+snippet .m- "List map method (arrow function, just value)" i
+.map((${1:item}) => ${2:item})${3}
 endsnippet
 
 snippet .r "List reduce method" i
@@ -138,11 +166,27 @@ snippet .r "List reduce method" i
 	return ${3:prev} + ${4:next};
 })${5}
 endsnippet
+snippet .rr "List reduce method (arrow function)" i
+.reduce((${1:prev}, ${2:next}) => {
+	return ${3:prev} + ${4:next};
+})${5}
+endsnippet
+snippet .r- "List reduce method (arrow function, just value)" i
+.reduce((${1:prev}, ${2:next}) => ${3:prev} + ${4:next})${5}
+endsnippet
 
-snippet .rr "List reduce right method" i
+snippet .R "List reduce right method" i
 .reduceRight(function (${1:prev}, ${2:next}) {
 	return ${3:prev} + ${4:next};
 })${5}
+endsnippet
+snippet .RR "List reduce right method (arrow function)" i
+.reduceRight((${1:prev}, ${2:next}) => {
+	return ${3:prev} + ${4:next};
+})${5}
+endsnippet
+snippet .R- "List reduce right method (arrow function, just value)" i
+.reduceRight((${1:prev}, ${2:next}) => ${3:prev} + ${4:next})${5}
 endsnippet
 
 snippet .ro "Reduce to object method" i
@@ -151,11 +195,28 @@ snippet .ro "Reduce to object method" i
 	return ${4:obj};
 }, {})${5}
 endsnippet
+snippet .roo "Reduce to object method (arrow function)" i
+.reduce((${1:obj}, ${2:item}) => {
+	${3}
+	return ${4:obj};
+}, {})${5}
+endsnippet
+snippet .ro- "Reduce to object method (arrow function, just value)" i
+.reduce((${1:obj}, ${2:item}) => ${3:obj}, {})${4}
+endsnippet
 
 snippet .ra "Reduce to new list method" i
 .reduce(function (${1:result}, ${2:item}) {
 	return ${3:result}.concat(${4:item});
 }, ${5:[]})${6}
+endsnippet
+snippet .raa "Reduce to new list method (arrow function)" i
+.reduce((${1:result}, ${2:item}) => {
+	return ${3:result}.concat(${4:item});
+}, ${5:[]})${6}
+endsnippet
+snippet .ra- "Reduce to new list method (arrow function, just value)" i
+.reduce((${1:result}, ${2:item}) => ${3:result}.concat(${4:[item]}), ${5:[]})${6}
 endsnippet
 
 snippet .rv "List reverse method" i
@@ -167,17 +228,41 @@ snippet .sm ".some() list method" i
 	return ${2:item};
 })${3}
 endsnippet
+snippet .smm ".some() list method (arrow function)" i
+.some((${1:item}) => {
+	return ${2:item};
+})${3}
+endsnippet
+snippet .sm- ".some() list method (arrow function, just value)" i
+.some((${1:item}) => ${2:item})${3}
+endsnippet
 
 snippet .ev ".every() list method" i
 .every(function (${1:item}) {
 	return ${2:item};
 })${4}
 endsnippet
+snippet .evv ".every() list method (arrow function)" i
+.every((${1:item}) => {
+	return ${2:item};
+})${4}
+endsnippet
+snippet .ev- ".every() list method (arrow function, just value)" i
+.every((${1:item}) => ${2:item})${4}
+endsnippet
 
 snippet .fl "List filter method" i
 .filter(function (${1:item}) {
 	return ${2:item};
 })${3}
+endsnippet
+snippet .fll "List filter method (arrow function)" i
+.filter((${1:item}) => {
+	return ${2:item};
+})${3}
+endsnippet
+snippet .fl- "List filter method (arrow function, just value)" i
+.filter((${1:item}) => ${2:item})${3}
 endsnippet
 
 snippet +. "Push to list method" i
@@ -259,15 +344,31 @@ setTimeout(function () {
 	${1}
 }, ${2:0});${3}
 endsnippet
+snippet too "setTimeout (async hack) (arrow function)" i
+setTimeout(() => {
+	${1}
+}, ${2:0});${3}
+endsnippet
+snippet to- "setTimeout (async hack) (arrow function, just value)" i
+setTimeout(() => ${1:foo}, ${2:0});${3}
+endsnippet
 
 snippet nt "Async call (node.js)" i
-process.nextTick(${1});${2}
+process.nextTick(${1:foo});${2}
 endsnippet
 
 snippet ntf "Async wrap (node.js)" i
 process.nextTick(function () {
 	${1}
 });${2}
+endsnippet
+snippet ntff "Async wrap (node.js) (arrow function)" i
+process.nextTick(() => {
+	${1}
+});${2}
+endsnippet
+snippet ntf- "Async wrap (node.js) (arrow function, just value)" i
+process.nextTick(() => ${1:foo});${2}
 endsnippet
 
 snippet dn "Current unix-time seconds" i
@@ -365,6 +466,42 @@ var map = {
 		${5}
 	},
 	otherwise: function () {
+		${6}
+	}
+}, f = map[${1:x}];
+f ? f() : map.otherwise();
+endsnippet
+snippet mapp "Function hash-map with otherwise (arrow function)" i
+var map = {
+	${2:foo}: () => {
+		${3}
+	},
+	${4:bar}: () => {
+		${5}
+	},
+	otherwise: () => {
+		${6}
+	}
+}, f = map[${1:x}];
+f ? f() : map.otherwise();
+endsnippet
+snippet map- "Function hash-map with otherwise (arrow function, just value)" i
+var map = {
+	${2:foo}: () => ${3:a},
+	${4:bar}: () => ${5:b},
+	otherwise: () => ${6:c}
+}, f = map[${1:x}];
+f ? f() : map.otherwise();
+endsnippet
+snippet mape "Function hash-map with otherwise (ES6 methods)" i
+var map = {
+	${2:foo}() {
+		${3}
+	},
+	${4:bar}() {
+		${5}
+	},
+	otherwise() {
 		${6}
 	}
 }, f = map[${1:x}];
