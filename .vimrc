@@ -11,7 +11,7 @@ Plugin 'gmarik/Vundle.vim', {'pinned': 1} "provided by git-submodule
 
 "plugins
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
