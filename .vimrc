@@ -164,6 +164,7 @@ nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>fn :NERDTreeFind<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>w :WrapToggle<CR>
 nnoremap <leader>p :PasteToggle<CR>
@@ -173,7 +174,7 @@ nnoremap <leader>g :GundoToggle<CR>
 
 nnoremap <leader>ft :set filetype=
 nnoremap <leader>fl :set foldlevel=
-nnoremap <leader>fn :NERDTreeFind<CR>
+nnoremap <leader>fm :set foldmethod=
 
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sc :SyntasticCheck<CR>
