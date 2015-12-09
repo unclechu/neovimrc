@@ -182,6 +182,8 @@ nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
 nnoremap <leader>sq :lclose<CR>
 
+nnoremap <leader>sl :ListToggle<CR>
+
 nnoremap <C-h>     :wincmd h<CR>
 vnoremap <C-h>     <Esc>:wincmd h<CR>
 nnoremap <C-Left>  :wincmd h<CR>
