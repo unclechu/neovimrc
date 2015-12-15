@@ -184,6 +184,8 @@ nnoremap <leader>sq :lclose<CR>
 
 nnoremap <leader>sl :ListToggle<CR>
 
+vnoremap <leader>: :'<,'>EasyAlign/:/<CR>
+
 nnoremap <C-h>     :wincmd h<CR>
 vnoremap <C-h>     <Esc>:wincmd h<CR>
 nnoremap <C-Left>  :wincmd h<CR>
