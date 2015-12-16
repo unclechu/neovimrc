@@ -184,6 +184,8 @@ nnoremap <leader>sq :lclose<CR>
 
 nnoremap <leader>sl :ListToggle<CR>
 
+nnoremap <leader>ac :AutoClearSpacesAtEOFToggle<CR>
+
 vnoremap <leader>: :'<,'>EasyAlign/:/<CR>
 
 nnoremap <C-h>     :wincmd h<CR>
