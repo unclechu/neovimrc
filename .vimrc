@@ -177,12 +177,14 @@ nnoremap <leader>ft :set filetype=
 nnoremap <leader>fl :set foldlevel=
 nnoremap <leader>fm :set foldmethod=
 
+" syntastic
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
 nnoremap <leader>sq :lclose<CR>
 
 nnoremap <leader>sl :ListToggle<CR>
+nnoremap <leader>ss :SetSolarized<Space>
 
 nnoremap <leader>ac :AutoClearSpacesAtEOFToggle<CR>
 
