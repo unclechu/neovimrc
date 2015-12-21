@@ -11,6 +11,9 @@ function! ClearSpacesAtEOF(doItAnyway)
 		return
 	endif
 	
+	let oldPosLine = line('.')
+	let oldPosCol  = col('.')
+	
 	" current line
 	let s:i = 0
 	" lines count
@@ -88,6 +91,8 @@ function! ClearSpacesAtEOF(doItAnyway)
 		catch
 		endtry
 	endif
+	
+	call cursor(oldPosLine, oldPosCol)
 	
 endfunction
 
