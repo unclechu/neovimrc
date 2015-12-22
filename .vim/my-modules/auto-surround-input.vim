@@ -41,15 +41,12 @@ function! SetSurroundTailToDot()
 endfunction
 
 
-
-function! IsAutoSurroundInputEnabled()
-	return mapcheck('{{\', 'i') == "<C-R>='{{'<CR>"
-endfunction
+let g:is_auto_surround_input_enabled = 0
 
 
 function! AutoSurroundInputEnable(silent)
 	
-	if IsAutoSurroundInputEnabled()
+	if g:is_auto_surround_input_enabled == 1
 		
 		if ! a:silent
 			echo 'Auto surround input enabled already'
@@ -146,6 +143,8 @@ function! AutoSurroundInputEnable(silent)
 	imap "<CR>.    <C-R>=SetSurroundTailToDot()<CR><C-G>S"<C-R>=RestoreSurroundTail()<CR>
 	imap `<CR>.    <C-R>=SetSurroundTailToDot()<CR><C-G>S`<C-R>=RestoreSurroundTail()<CR>
 	
+	let g:is_auto_surround_input_enabled = 1
+	
 	if ! a:silent
 		echo 'Auto surround input enabled'
 	endif
@@ -154,7 +153,7 @@ endfunction
 
 function! AutoSurroundInputDisable(silent)
 	
-	if ! IsAutoSurroundInputEnabled()
+	if g:is_auto_surround_input_enabled == 0
 		
 		if ! a:silent
 			echo 'Auto surround input disabled already'
@@ -251,6 +250,8 @@ function! AutoSurroundInputDisable(silent)
 	iunmap "<CR>.
 	iunmap `<CR>.
 	
+	let g:is_auto_surround_input_enabled = 0
+	
 	if ! a:silent
 		echo 'Auto surround input disabled'
 	endif
@@ -258,7 +259,7 @@ function! AutoSurroundInputDisable(silent)
 endfunction
 
 function! AutoSurroundInputToggle(silent)
-	if IsAutoSurroundInputEnabled()
+	if g:is_auto_surround_input_enabled == 1
 		call AutoSurroundInputDisable(a:silent)
 	else
 		call AutoSurroundInputEnable(a:silent)
