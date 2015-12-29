@@ -188,7 +188,7 @@ nnoremap <leader>ss :SetSolarized<Space>
 
 nnoremap <leader>ac :AutoClearSpacesAtEOFToggle<CR>
 
-vnoremap <leader>: :'<,'>EasyAlign/:/<CR>
+vnoremap <leader>: :EasyAlign/:/<CR>
 
 nnoremap <C-h>     :wincmd h<CR>
 vnoremap <C-h>     <Esc>:wincmd h<CR>
