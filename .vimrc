@@ -47,6 +47,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'mhinz/vim-startify'
+Plugin 'mileszs/ack.vim'
 
 "surround
 Plugin 'tpope/vim-surround'
