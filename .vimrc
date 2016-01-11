@@ -153,7 +153,6 @@ set wildmenu
 
 call ResetKeyMap()
 call PreventIndentTrimHackOn()
-call AutoSurroundInputEnable(1)
 
 let mapleader = '\'
 
