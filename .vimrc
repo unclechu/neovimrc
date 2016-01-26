@@ -219,6 +219,9 @@ if &mouse == 'a'
 	nmap <C-ScrollWheelDown> <leader><leader>-
 endif
 
+map Q  <Nop>
+map gQ <Nop>
+
 "this shit happens over and over and here we are
 command! W write
 
