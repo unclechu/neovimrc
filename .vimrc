@@ -37,6 +37,7 @@ Plugin 'kristijanhusak/vim-multiple-cursors'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'scrooloose/syntastic'
 if v:version >= 704
