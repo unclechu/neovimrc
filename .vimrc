@@ -49,6 +49,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-fugitive'
 
 "surround
 Plugin 'tpope/vim-surround'
