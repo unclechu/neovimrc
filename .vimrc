@@ -50,6 +50,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'embear/vim-localvimrc'
 
 "surround
 Plugin 'tpope/vim-surround'
