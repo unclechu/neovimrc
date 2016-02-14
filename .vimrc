@@ -59,6 +59,7 @@ Plugin 'tpope/vim-repeat'
 "clojure
 Plugin 'clojure-emacs/cider-nrepl'
 Plugin 'tpope/vim-fireplace'
+Plugin 'kien/rainbow_parentheses.vim'
 
 "colorschemes
 Plugin 'altercation/vim-colors-solarized'
