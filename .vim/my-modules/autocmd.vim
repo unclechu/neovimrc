@@ -3,7 +3,9 @@
 
 if has('autocmd')
 	
-	autocmd BufNewFile,BufRead *.json.example,.jshintrc,.babelrc set ft=json
+	autocmd BufNewFile,BufRead
+		\ *.json.example,.jshintrc,.babelrc,.eslintrc
+		\ set ft=json
 	autocmd BufNewFile,BufRead *.gyp set ft=json
 	autocmd BufNewFile,BufRead *.yaml.example set ft=yaml
 	autocmd BufNewFile,BufRead Makefile set noexpandtab
