@@ -349,6 +349,14 @@ snippet ofz- "Create frozen hash" i
 Object.freeze(${1:\{\}})${2}
 endsnippet
 
+snippet oa "Object assign" i
+Object.assign(${1:foo}, ${2:bar})${3}
+endsnippet
+
+snippet oac "Object clone via assign" i
+Object.assign({}, ${1:foo})${2}
+endsnippet
+
 
 snippet isa "Check if it's array" i
 Array.isArray(${1})${2}
