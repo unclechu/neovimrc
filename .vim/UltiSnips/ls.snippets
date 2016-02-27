@@ -1,21 +1,116 @@
 priority -50
 extends surround-hacks
 
+
+
 snippet f "Function" w
 -> ${1}
 endsnippet
+snippet cf "Curried function" w
+--> ${1}
+endsnippet
+snippet fc "Function (keep context)" w
+~> ${1}
+endsnippet
+snippet cfc "Curried function (keep context)" w
+~~> ${1}
+endsnippet
+
+snippet fb "Backward function" w
+<- ${1}
+endsnippet
+snippet cfb "Curried backward function" w
+<-- ${1}
+endsnippet
+snippet fbc "Backward function (keep context)" w
+<~ ${1}
+endsnippet
+snippet cfbc "Curried backward function (keep context)" w
+<~~ ${1}
+endsnippet
+
 
 snippet fa "Function with named agruments" w
-(${1:foo}) -> ${2}
+(${1:foo})-> ${2}
 endsnippet
+snippet cfa "Curried function with named agruments" w
+(${1:foo})--> ${2}
+endsnippet
+snippet fac "Function with named agruments (keep context)" w
+(${1:foo})~> ${2}
+endsnippet
+snippet cfac "Curried function with named agruments (keep context)" w
+(${1:foo})~~> ${2}
+endsnippet
+
+snippet fab "Backward function with named agruments" w
+${1:foo} <- ${2}
+endsnippet
+snippet cfab "Curried backward function with named agruments" w
+${1:foo} <-- ${2}
+endsnippet
+snippet fabc "Backward function with named agruments (keep context)" w
+${1:foo} <~ ${2}
+endsnippet
+snippet cfabc "Curried backward function with named agruments (keep context)" w
+${1:foo} <~~ ${2}
+endsnippet
+
 
 snippet p "Procedure" w
 !-> ${1}
 endsnippet
+snippet cp "Curried procedure" w
+!--> ${1}
+endsnippet
+snippet pc "Procedure (keep context)" w
+!~> ${1}
+endsnippet
+snippet cpc "Curried procedure (keep context)" w
+!~~> ${1}
+endsnippet
+
+snippet pb "Backward procedure" w
+<-! ${1}
+endsnippet
+snippet cpb "Curried backward procedure" w
+<--! ${1}
+endsnippet
+snippet pbc "Backward procedure (keep context)" w
+<~! ${1}
+endsnippet
+snippet cpbc "Curried backward procedure (keep context)" w
+<~~! ${1}
+endsnippet
+
 
 snippet pa "Procedure with named agruments" w
-(${1:foo}) !-> ${2}
+(${1:foo})!-> ${2}
 endsnippet
+snippet cpa "Curried procedure with named agruments" w
+(${1:foo})!--> ${2}
+endsnippet
+snippet pac "Procedure with named agruments (keep context)" w
+(${1:foo})!~> ${2}
+endsnippet
+snippet cpac "Curried procedure with named agruments (keep context)" w
+(${1:foo})!~~> ${2}
+endsnippet
+
+snippet pab "Backward procedure with named agruments" w
+${1:foo} <-! ${2}
+endsnippet
+snippet cpab "Curried backward procedure with named agruments" w
+${1:foo} <--! ${2}
+endsnippet
+snippet pabc "Backward procedure with named agruments (keep context)" w
+${1:foo} <~! ${2}
+endsnippet
+snippet cpabc "Curried backward procedure with named agruments (keep context)" w
+${1:foo} <~~! ${2}
+endsnippet
+
+
 
 snippet c "Constant definition" b
 const ${1:foo} = ${2}
@@ -31,13 +126,32 @@ require! {
 }${2}
 endsnippet
 
-snippet ok "Get keys list of hash-map" i
+
+snippet ok "Get keys list of hash" i
 Object.keys ${1:foo}
 endsnippet
 
-snippet oc "Create hash-map" i
+snippet oc "Create hash" i
 Object.create ${1:null}
 endsnippet
+
+snippet ofz "Create expanded frozen hash" i
+Object.freeze do
+	${1:foo}: ${2:\bar}
+endsnippet
+
+snippet ofz- "Create frozen hash" i
+Object.freeze ${1:\{\}}
+endsnippet
+
+snippet oa "Hash assign" i
+Object.assign ${1:foo}, ${2:bar}
+endsnippet
+
+snippet oac "Clone hash" i
+Object.assign {}, ${1:foo}
+endsnippet
+
 
 snippet isa "Check if it's array" i
 Array.is-array ${1:foo}
@@ -111,11 +225,11 @@ snippet cte "console.timeEnd (benchmark)" i
 console.time-end '${1:foo}'${2}
 endsnippet
 
-snippet cp "console.profile" i
+snippet clp "console.profile" i
 console.profile '${1:foo}'${2}
 endsnippet
 
-snippet cpe "console.profileEnd" i
+snippet clpe "console.profileEnd" i
 console.profile-end '${1:foo}'${2}
 endsnippet
 
