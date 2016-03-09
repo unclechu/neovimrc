@@ -6,6 +6,7 @@ function! PreventIndentTrimHackOn()
 	inoremap <C-j> x<Backspace><C-j>x<Backspace>
 	nnoremap o ox<Backspace>
 	nnoremap O Ox<Backspace>
+	nnoremap cc ccx<Backspace>
 	vnoremap c cx<Backspace>
 	vnoremap C Cx<Backspace>
 	nnoremap s sx<Backspace>
@@ -21,6 +22,7 @@ function! PreventIndentTrimHackOff()
 		iunmap <C-j>
 		nunmap o
 		nunmap O
+		nunmap cc
 		vunmap c
 		vunmap C
 		nunmap s
