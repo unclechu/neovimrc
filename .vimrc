@@ -51,6 +51,7 @@ Plugin 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'embear/vim-localvimrc'
+Plugin 'ihacklog/hicursorwords'
 
 "surround
 Plugin 'tpope/vim-surround'
@@ -103,6 +104,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal']
 let g:user_emmet_leader_key = '<C-Z>'
+let g:HiCursorWords_delay = 500
 
 "load my modules
 syntax on
