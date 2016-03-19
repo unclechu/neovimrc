@@ -102,7 +102,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal']
+let g:indent_guides_exclude_filetypes = [
+	\ 'help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal', 'startify']
 let g:user_emmet_leader_key = '<C-Z>'
 let g:HiCursorWords_delay = 500
 
