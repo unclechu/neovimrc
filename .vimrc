@@ -52,6 +52,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'embear/vim-localvimrc'
 Plugin 'ihacklog/hicursorwords'
+Plugin 'itchyny/vim-haskell-indent'
 
 "surround
 Plugin 'tpope/vim-surround'
