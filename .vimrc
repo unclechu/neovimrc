@@ -215,8 +215,13 @@ vnoremap <C-l>     <Esc>:wincmd l<CR>
 nnoremap <C-Right> :wincmd l<CR>
 vnoremap <C-Right> <Esc>:wincmd l<CR>
 
+"moving between history in command mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+"moving tabs by ctrl-shift-pageup/pagedown
+nmap <C-S-PageUp>   :tabm-1<CR>
+nmap <C-S-PageDown> :tabm+1<CR>
 
 nmap g/ <Plug>(incsearch-forward)
 nmap g? <Plug>(incsearch-backward)
@@ -227,6 +232,7 @@ if &mouse == 'a'
 	nmap <C-ScrollWheelDown> <leader><leader>-
 endif
 
+"get rid off randomly turning on ex-mode
 map Q  <Nop>
 map gQ <Nop>
 
