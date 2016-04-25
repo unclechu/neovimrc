@@ -253,7 +253,27 @@ map Q  <Nop>
 map gQ <Nop>
 
 "this shit happens over and over and here we are
-command! W write
+command!       Q q
+command! -bang Q q!
+"
+command! W w
+"
+command!       Wq wq
+command!       WQ wq
+command! -bang Wq wq!
+command! -bang WQ wq!
+"
+command!       Wqa wqa
+command!       WQa wqa
+command!       WQA wqa
+command! -bang Wqa wqa!
+command! -bang WQa wqa!
+command! -bang WQA wqa!
+"
+command!       Qa qa
+command! -bang Qa qa!
+command!       QA qa
+command! -bang QA qa!
 
 "custom digraphs
 digraphs '' 769 "accent
