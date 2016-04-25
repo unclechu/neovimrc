@@ -275,6 +275,10 @@ command! -bang Qa qa!
 command!       QA qa
 command! -bang QA qa!
 
+"thanks to Minoru for the advice
+noremap ; :
+noremap : ;
+
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
