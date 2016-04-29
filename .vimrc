@@ -201,20 +201,21 @@ vnoremap <leader>: :EasyAlign/:/<CR>
 
 nnoremap <C-h>     :wincmd h<CR>
 vnoremap <C-h>     <Esc>:wincmd h<CR>
-nnoremap <C-Left>  :wincmd h<CR>
-vnoremap <C-Left>  <Esc>:wincmd h<CR>
 nnoremap <C-j>     :wincmd j<CR>
 vnoremap <C-j>     <Esc>:wincmd j<CR>
-nnoremap <C-Down>  :wincmd j<CR>
-vnoremap <C-Down>  <Esc>:wincmd j<CR>
 nnoremap <C-k>     :wincmd k<CR>
 vnoremap <C-k>     <Esc>:wincmd k<CR>
-nnoremap <C-Up>    :wincmd k<CR>
-vnoremap <C-Up>    <Esc>:wincmd k<CR>
 nnoremap <C-l>     :wincmd l<CR>
 vnoremap <C-l>     <Esc>:wincmd l<CR>
-nnoremap <C-Right> :wincmd l<CR>
-vnoremap <C-Right> <Esc>:wincmd l<CR>
+
+nnoremap <C-Left>  zh
+vnoremap <C-Left>  zh
+nnoremap <C-Right> zl
+vnoremap <C-Right> zl
+nnoremap <C-Up>    <C-y>
+vnoremap <C-Up>    <C-y>
+nnoremap <C-Down>  <C-e>
+vnoremap <C-Down>  <C-e>
 
 "moving between history in command mode
 cnoremap <C-p> <Up>
