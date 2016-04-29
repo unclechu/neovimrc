@@ -209,23 +209,23 @@ vnoremap <C-k>     <Esc>:wincmd k<CR>
 nnoremap <C-l>     :wincmd l<CR>
 vnoremap <C-l>     <Esc>:wincmd l<CR>
 "arrow keys
-nnoremap <A-Left>  :wincmd h<CR>
-vnoremap <A-Left>  <Esc>:wincmd h<CR>
-nnoremap <A-Right> :wincmd l<CR>
-vnoremap <A-Right> <Esc>:wincmd l<CR>
-nnoremap <A-Up>    :wincmd k<CR>
-vnoremap <A-Up>    <Esc>:wincmd k<CR>
-nnoremap <A-Down>  :wincmd j<CR>
-vnoremap <A-Down>  <Esc>:wincmd j<CR>
+nnoremap <C-Left>  :wincmd h<CR>
+vnoremap <C-Left>  <Esc>:wincmd h<CR>
+nnoremap <C-Right> :wincmd l<CR>
+vnoremap <C-Right> <Esc>:wincmd l<CR>
+nnoremap <C-Up>    :wincmd k<CR>
+vnoremap <C-Up>    <Esc>:wincmd k<CR>
+nnoremap <C-Down>  :wincmd j<CR>
+vnoremap <C-Down>  <Esc>:wincmd j<CR>
 
-nnoremap <C-Left>  zh
-vnoremap <C-Left>  zh
-nnoremap <C-Right> zl
-vnoremap <C-Right> zl
-nnoremap <C-Up>    <C-y>
-vnoremap <C-Up>    <C-y>
-nnoremap <C-Down>  <C-e>
-vnoremap <C-Down>  <C-e>
+nnoremap <A-Left>  zh
+vnoremap <A-Left>  zh
+nnoremap <A-Right> zl
+vnoremap <A-Right> zl
+nnoremap <A-Up>    <C-y>
+vnoremap <A-Up>    <C-y>
+nnoremap <A-Down>  <C-e>
+vnoremap <A-Down>  <C-e>
 
 "moving between history in command mode
 cnoremap <C-p> <Up>
