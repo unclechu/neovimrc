@@ -199,6 +199,7 @@ nnoremap <leader>ac :AutoClearSpacesAtEOFToggle<CR>
 
 vnoremap <leader>: :EasyAlign/:/<CR>
 
+"hjkl
 nnoremap <C-h>     :wincmd h<CR>
 vnoremap <C-h>     <Esc>:wincmd h<CR>
 nnoremap <C-j>     :wincmd j<CR>
@@ -207,6 +208,15 @@ nnoremap <C-k>     :wincmd k<CR>
 vnoremap <C-k>     <Esc>:wincmd k<CR>
 nnoremap <C-l>     :wincmd l<CR>
 vnoremap <C-l>     <Esc>:wincmd l<CR>
+"arrow keys
+nnoremap <A-Left>  :wincmd h<CR>
+vnoremap <A-Left>  <Esc>:wincmd h<CR>
+nnoremap <A-Right> :wincmd l<CR>
+vnoremap <A-Right> <Esc>:wincmd l<CR>
+nnoremap <A-Up>    :wincmd k<CR>
+vnoremap <A-Up>    <Esc>:wincmd k<CR>
+nnoremap <A-Down>  :wincmd j<CR>
+vnoremap <A-Down>  <Esc>:wincmd j<CR>
 
 nnoremap <C-Left>  zh
 vnoremap <C-Left>  zh
