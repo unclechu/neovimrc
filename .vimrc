@@ -231,9 +231,9 @@ vnoremap <A-Down>  <C-e>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-"moving tabs by ctrl-shift-pageup/pagedown
-nmap <C-S-PageUp>   :tabm-1<CR>
-nmap <C-S-PageDown> :tabm+1<CR>
+"moving tabs
+nnoremap <C-S-PageUp>   :tabm-1<CR>
+nnoremap <C-S-PageDown> :tabm+1<CR>
 
 "jump by half of screen by pageup/pagedown
 nmap <PageUp>     <C-u>
