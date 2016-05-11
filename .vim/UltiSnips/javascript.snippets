@@ -438,7 +438,7 @@ snippet -v- "Variable definition prefix" i
 var ${1:foo} = ${2}
 endsnippet
 
-snippet -V "var prefix" i
+snippet -vv "var prefix" i
 var ${1}
 endsnippet
 
@@ -451,7 +451,7 @@ snippet -l- "Block scope variable definition without value" i
 let ${1:foo} = ${2}
 endsnippet
 
-snippet -L "let prefix" i
+snippet -ll "let prefix" i
 let ${1}
 endsnippet
 
@@ -464,7 +464,7 @@ snippet -c- "Constant definition prefix" i
 const ${1:foo} = ${2}
 endsnippet
 
-snippet -C "const prefix" i
+snippet -cc "const prefix" i
 const ${1}
 endsnippet
 
@@ -474,17 +474,14 @@ snippet -r "Return value" i
 return ${1};
 endsnippet
 
-snippet -r- "Return value without semicolon" i
+snippet -rr "Return value without semicolon" i
 return ${1}
 endsnippet
 
-snippet -R "Function break" i
+snippet -r; "Function break" i
 return;
 endsnippet
 
-snippet -R- "Function break without semicolon" i
-return
-endsnippet
 
 snippet tof "Get type of something" i
 typeof ${1}
@@ -492,53 +489,70 @@ endsnippet
 
 snippet map "Function hash-map with otherwise" i
 var map = {
-	${2:foo}: function () {
-		${3}
+	${3:foo}: function () {
+		${4}
 	},
-	${4:bar}: function () {
-		${5}
+	${5:bar}: function () {
+		${6}
 	},
 	otherwise: function () {
-		${6}
+		${7}
 	}
-}, f = map[${1:x}];
-f ? f() : map.otherwise();
+};
+
+if (map.hasOwnProperty(${1:x})) {
+	map[${2:x}]();
+} else {
+	map.otherwise();
+}
 endsnippet
 snippet mapp "Function hash-map with otherwise (arrow function)" i
-var map = {
-	${2:foo}: () => {
-		${3}
+const map = {
+	${3:foo}: () => {
+		${4}
 	},
-	${4:bar}: () => {
-		${5}
+	${5:bar}: () => {
+		${6}
 	},
 	otherwise: () => {
-		${6}
+		${7}
 	}
-}, f = map[${1:x}];
-f ? f() : map.otherwise();
+};
+
+if (map.hasOwnProperty(${1:x})) {
+	map[${2:x}]();
+} else {
+	map.otherwise();
+}
 endsnippet
 snippet map- "Function hash-map with otherwise (arrow function, just value)" i
-var map = {
-	${2:foo}: () => ${3:a},
-	${4:bar}: () => ${5:b},
-	otherwise: () => ${6:c}
-}, f = map[${1:x}];
-f ? f() : map.otherwise();
+const map = {
+	${4:foo}: () => ${5:a},
+	${6:bar}: () => ${7:b},
+	otherwise: () => ${8:c}
+};
+const ${3:baz} = (
+	map.hasOwnProperty(${1:x}) ? map[${2:x}]() : map.otherwise();
+);
 endsnippet
 snippet mape "Function hash-map with otherwise (ES6 methods)" i
-var map = {
-	${2:foo}() {
-		${3}
+const map = {
+	${3:foo}() {
+		${4}
 	},
-	${4:bar}() {
-		${5}
+	${5:bar}() {
+		${6}
 	},
 	otherwise() {
-		${6}
+		${7}
 	}
-}, f = map[${1:x}];
-f ? f() : map.otherwise();
+};
+
+if (map.hasOwnProperty(${1:x})) {
+	map[${2:x}]();
+} else {
+	map.otherwise();
+}
 endsnippet
 
 snippet dg "Call debugger" i
