@@ -108,6 +108,7 @@ let g:indent_guides_exclude_filetypes = [
 	\ 'help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal', 'startify']
 let g:user_emmet_leader_key = '<C-Z>'
 let g:HiCursorWords_delay = 500
+let g:indexed_search_mappings = 0
 
 "load my modules
 syntax on
@@ -266,6 +267,23 @@ map gQ <Nop>
 "thanks to Minoru for the advice
 noremap ; :
 noremap : ;
+
+"custom numbers line keys
+nmap ! <Plug>(indexed-search-#)
+nmap @ <Plug>(indexed-search-*)
+" noremap ! #
+" noremap @ *
+noremap # ^
+noremap $ g_
+"noremap %
+noremap ^ 0
+noremap & $
+noremap * @
+"because default maps disabled for plugin
+nmap / <Plug>(indexed-search-/)
+nmap ? <Plug>(indexed-search-?)
+nmap n <Plug>(indexed-search-n)zv
+nmap N <Plug>(indexed-search-N)zv
 
 "custom digraphs
 digraphs '' 769 "accent
