@@ -18,6 +18,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'gkz/vim-ls'
+"also: http://vimawesome.com/plugin/typescript-tools
+Plugin 'leafgarland/typescript-vim'
 Plugin 'groenewege/vim-less'
 Plugin 'wavded/vim-stylus'
 Plugin 'digitaltoad/vim-jade'
