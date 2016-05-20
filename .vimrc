@@ -272,15 +272,22 @@ noremap : ;
 
 "custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
+nmap g! <Plug>(indexed-search-#)
 nmap @ <Plug>(indexed-search-*)
+nmap g@ <Plug>(indexed-search-*)
 " noremap ! #
 " noremap @ *
 noremap # ^
+noremap g# g^
 noremap $ g_
+noremap g$ g$
 "noremap %
 noremap ^ 0
+noremap g^ g0
 noremap & $
+noremap g& g$
 noremap * @
+noremap g* g@
 "because default maps disabled for plugin
 nmap / <Plug>(indexed-search-/)
 nmap ? <Plug>(indexed-search-?)
