@@ -9,6 +9,7 @@ if has('autocmd')
 	autocmd BufNewFile,BufRead *.gyp set ft=json
 	autocmd BufNewFile,BufRead *.yaml.example set ft=yaml
 	autocmd BufNewFile,BufRead *.ts set ft=typescript
+	autocmd BufNewFile,BufRead *.tsx set ft=typescript.jsx
 	autocmd BufNewFile,BufRead Makefile set noexpandtab
 	
 	" because some custom `indentexpr`s has annoying issues
