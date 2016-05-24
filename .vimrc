@@ -106,6 +106,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_enable_highlighting = 0
+let g:syntastic_typescript_tsc_fname = '' "fix using tsconfig.json
 let g:indent_guides_exclude_filetypes = [
 	\ 'help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal', 'startify']
 let g:user_emmet_leader_key = '<C-Z>'
