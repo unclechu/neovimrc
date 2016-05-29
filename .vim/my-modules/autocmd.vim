@@ -19,6 +19,8 @@ if has('autocmd')
 	
 	" haskell default indentation config
 	autocmd FileType haskell,cabal setlocal et ts=2 sts=2 sw=2
+	
+	autocmd FileType python setlocal ts=4 sts=4 sw=4
 endif
 
 "vim: set noet :
