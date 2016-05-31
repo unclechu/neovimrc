@@ -224,6 +224,7 @@ vnoremap <C-Up>    <Esc>:wincmd k<CR>
 nnoremap <C-Down>  :wincmd j<CR>
 vnoremap <C-Down>  <Esc>:wincmd j<CR>
 
+"walk between windows by alt+arrow keys
 nnoremap <A-Left>  zh
 vnoremap <A-Left>  zh
 nnoremap <A-Right> zl
@@ -232,6 +233,16 @@ nnoremap <A-Up>    <C-y>
 vnoremap <A-Up>    <C-y>
 nnoremap <A-Down>  <C-e>
 vnoremap <A-Down>  <C-e>
+
+"resizing windows by alt+shift+arrow keys
+nnoremap <A-S-Left>  :wincmd <<CR>
+vnoremap <A-S-Left>  <Esc>:wincmd <<CR>
+nnoremap <A-S-Right> :wincmd ><CR>
+vnoremap <A-S-Right> <Esc>:wincmd ><CR>
+nnoremap <A-S-Up>    :wincmd -<CR>
+vnoremap <A-S-Up>    <Esc>:wincmd -<CR>
+nnoremap <A-S-Down>  :wincmd +<CR>
+vnoremap <A-S-Down>  <Esc>:wincmd +<CR>
 
 "moving between history in command mode
 cnoremap <C-p> <Up>
