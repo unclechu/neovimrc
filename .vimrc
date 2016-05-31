@@ -79,6 +79,7 @@ let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
 let NERDTreeMapHelp = '<Leader>?' "heals backward search
 let NERDTreeShowLineNumbers = 1
+let NERDTreeWinSize = 50
 let g:nerdtree_tabs_open_on_gui_startup     = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
 let g:nerdtree_tabs_open_on_new_tab         = 0
