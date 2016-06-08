@@ -239,10 +239,10 @@ nnoremap <A-S-Left>  :wincmd <<CR>
 vnoremap <A-S-Left>  <Esc>:wincmd <<CR>
 nnoremap <A-S-Right> :wincmd ><CR>
 vnoremap <A-S-Right> <Esc>:wincmd ><CR>
-nnoremap <A-S-Up>    :wincmd -<CR>
-vnoremap <A-S-Up>    <Esc>:wincmd -<CR>
-nnoremap <A-S-Down>  :wincmd +<CR>
-vnoremap <A-S-Down>  <Esc>:wincmd +<CR>
+nnoremap <A-S-Up>    :wincmd +<CR>
+vnoremap <A-S-Up>    <Esc>:wincmd +<CR>
+nnoremap <A-S-Down>  :wincmd -<CR>
+vnoremap <A-S-Down>  <Esc>:wincmd -<CR>
 
 "moving between history in command mode
 cnoremap <C-p> <Up>
