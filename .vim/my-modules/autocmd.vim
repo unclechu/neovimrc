@@ -4,7 +4,7 @@
 if has('autocmd')
 	
 	autocmd BufNewFile,BufRead
-		\ *.json.example,.jshintrc,.babelrc,.eslintrc
+		\ *.json.example,.jshintrc,.babelrc,.eslintrc,.modernizrrc
 		\ set ft=json
 	autocmd BufNewFile,BufRead *.gyp set ft=json
 	autocmd BufNewFile,BufRead *.yaml.example set ft=yaml
