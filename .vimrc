@@ -56,6 +56,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'embear/vim-localvimrc'
 Plugin 'ihacklog/hicursorwords'
 Plugin 'itchyny/vim-haskell-indent'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'matze/vim-move'
+Plugin 'raimondi/delimitmate'
+Plugin 'dyng/ctrlsf.vim'
 
 "surround
 Plugin 'tpope/vim-surround'
@@ -116,6 +120,8 @@ let g:indent_guides_exclude_filetypes = [
 let g:user_emmet_leader_key = '<C-Z>'
 let g:HiCursorWords_delay = 500
 let g:indexed_search_mappings = 0
+let g:EasyMotion_do_mapping = 0 "disable default mappings
+let g:EasyMotion_smartcase = 1 "turn on case insensitive feature
 
 "load my modules
 syntax on
@@ -176,7 +182,7 @@ let mapleader = '\'
 " flying between buffers
 " (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
 nnoremap <leader>l :ls<CR>:b<space>
-nnoremap <leader>k :ls<CR>:bd<space>
+nnoremap <leader>d :ls<CR>:bd<space>
 
 nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
 
@@ -187,7 +193,7 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>w :WrapToggle<CR>
 nnoremap <leader>p :PasteToggle<CR>
 nnoremap <leader>[ :RelativeNumberToggle<CR>
-nnoremap <leader>] :AutoSurroundInputToggle<CR>
+nnoremap <leader>] :DelimitMateSwitch<CR>
 nnoremap <leader>g :GundoToggle<CR>
 
 nnoremap <leader>ft :set filetype=
@@ -206,6 +212,24 @@ nnoremap <leader>ss :SetSolarized<Space>
 nnoremap <leader>ac :AutoClearSpacesAtEOFToggle<CR>
 
 vnoremap <leader>: :EasyAlign/:/<CR>
+
+" CtrlSF bindings
+nmap     <leader>sf <Plug>CtrlSFPrompt
+vmap     <leader>sf <Plug>CtrlSFVwordPath
+vmap     <leader>sF <Plug>CtrlSFVwordExec
+nmap     <leader>sn <Plug>CtrlSFCwordPath
+nmap     <leader>sp <Plug>CtrlSFPwordPath
+nnoremap <leader>so :CtrlSFOpen<CR>
+nnoremap <leader>st :CtrlSFToggle<CR>
+inoremap <leader>st <Esc>:CtrlSFToggle<CR>
+
+
+" EasyMotion bindings
+nmap <leader>' <Plug>(easymotion-overwin-f)
+nmap <leader>; <Plug>(easymotion-overwin-f2)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+
 
 "hjkl
 nnoremap <C-h>     :wincmd h<CR>
