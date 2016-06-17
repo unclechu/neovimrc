@@ -225,10 +225,12 @@ inoremap <leader>st <Esc>:CtrlSFToggle<CR>
 
 
 " EasyMotion bindings
-nmap <leader>' <Plug>(easymotion-overwin-f)
-nmap <leader>; <Plug>(easymotion-overwin-f2)
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
+map  s         <Plug>(easymotion-bd-f)
+map  <leader>e <Plug>(easymotion-bd-f2)
+nmap s         <Plug>(easymotion-overwin-f)
+nmap <leader>e <Plug>(easymotion-overwin-f2)
+map  <leader>j <Plug>(easymotion-j)
+map  <leader>k <Plug>(easymotion-k)
 
 
 "hjkl
