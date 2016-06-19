@@ -204,7 +204,6 @@ nnoremap <leader>fm :set foldmethod=
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
-nnoremap <leader>sq :lclose<CR>
 
 nnoremap <leader>sl :ListToggle<CR>
 nnoremap <leader>ss :SetSolarized<Space>
