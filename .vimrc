@@ -313,9 +313,9 @@ noremap : ;
 
 "custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
-nmap g! <Plug>(indexed-search-#)
+nmap g! <Plug>(indexed-search-#)N
 nmap @ <Plug>(indexed-search-*)
-nmap g@ <Plug>(indexed-search-*)
+nmap g@ <Plug>(indexed-search-*)N
 " noremap ! #
 " noremap @ *
 noremap # ^
