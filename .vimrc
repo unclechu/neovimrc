@@ -47,6 +47,7 @@ if v:version >= 704
 	Plugin 'SirVer/ultisnips'
 endif
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
@@ -294,9 +295,9 @@ vmap <S-PageDown> <C-f>
 imap <S-PageUp>   <Esc><C-b>i
 imap <S-PageDown> <Esc><C-f>i
 
-nmap g/ <Plug>(incsearch-forward)
-nmap g? <Plug>(incsearch-backward)
-nmap <leader>/ <Plug>(incsearch-stay)
+nmap g/ <Plug>(incsearch-easymotion-/)
+nmap g? <Plug>(incsearch-easymotion-?)
+nmap <leader>/ <Plug>(incsearch-easymotion-stay)
 
 if &mouse == 'a'
 	nmap <C-ScrollWheelUp>   <leader><leader>+
