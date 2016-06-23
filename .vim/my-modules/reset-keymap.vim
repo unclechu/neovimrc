@@ -12,7 +12,7 @@ function! ResetKeyMap()
 		\ ',ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Э\",ЯZ,ЧX,СC,МV,ИB,ТN'.
 		\ ',ЬM,Б\<,Ю\>,Ё\~'
 endfunction
-command ResetKeyMap call ResetKeyMap()
+command! ResetKeyMap call ResetKeyMap()
 
 if has('autocmd')
 	autocmd InsertEnter * call ResetKeyMap()
