@@ -182,8 +182,8 @@ let mapleader = '\'
 
 " flying between buffers
 " (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
-nnoremap <leader>l :ls<CR>:b<space>
-nnoremap <leader>d :ls<CR>:bd<space>
+nnoremap <leader>bl :ls<CR>:b<space>
+nnoremap <leader>bd :ls<CR>:bd<space>
 
 nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
 
@@ -225,10 +225,14 @@ inoremap <leader>st <Esc>:CtrlSFToggle<CR>
 
 
 " EasyMotion bindings
+
 map  s         <Plug>(easymotion-bd-f)
 map  <leader>e <Plug>(easymotion-bd-f2)
 nmap s         <Plug>(easymotion-overwin-f)
 nmap <leader>e <Plug>(easymotion-overwin-f2)
+
+map  <leader>l <Plug>(easymotion-lineforward)
+map  <leader>h <Plug>(easymotion-linebackward)
 map  <leader>j <Plug>(easymotion-j)
 map  <leader>k <Plug>(easymotion-k)
 
@@ -295,8 +299,8 @@ vmap <S-PageDown> <C-f>
 imap <S-PageUp>   <Esc><C-b>i
 imap <S-PageDown> <Esc><C-f>i
 
-nmap g/ <Plug>(incsearch-easymotion-/)
-nmap g? <Plug>(incsearch-easymotion-?)
+nmap g/        <Plug>(incsearch-easymotion-/)
+nmap g?        <Plug>(incsearch-easymotion-?)
 nmap <leader>/ <Plug>(incsearch-easymotion-stay)
 
 if &mouse == 'a'
