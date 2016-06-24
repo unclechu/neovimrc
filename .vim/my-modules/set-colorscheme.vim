@@ -23,6 +23,9 @@ function! SetSolarized(mode)
 			hi! IndentGuidesOdd  guibg=#06323d guifg=#083a47
 			hi! IndentGuidesEven guibg=#073642 guifg=#083f4d
 		endif
+		
+		"highlight only line number
+		hi! CursorLine ctermbg=NONE cterm=NONE guibg=NONE guisp=NONE
 	catch
 	endtry
 endfunction

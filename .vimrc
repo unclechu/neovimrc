@@ -143,8 +143,12 @@ set smartcase
 
 set nowrap
 set number
-set relativenumber
-set nocursorline
+set norelativenumber "disabled by default because easymotion is cool enough
+if has('gui_running')
+	set cursorline
+else
+	set nocursorline
+endif
 set nocursorcolumn
 if v:version >= 703
 	set colorcolumn=80
@@ -226,12 +230,15 @@ inoremap <leader>st <Esc>:CtrlSFToggle<CR>
 
 " EasyMotion bindings
 
-map  s         <Plug>(easymotion-bd-f)
+map  s         <Plug>(easymotion-bd-w)
+nmap s         <Plug>(easymotion-overwin-w)
+map  <leader>x <Plug>(easymotion-bd-jk)
+nmap <leader>x <Plug>(easymotion-overwin-line)
 map  <leader>e <Plug>(easymotion-bd-f2)
-nmap s         <Plug>(easymotion-overwin-f)
 nmap <leader>e <Plug>(easymotion-overwin-f2)
 
-map  <leader>L <Plug>(easymotion-overwin-line)
+nmap <leader>v v<Plug>(easymotion-bd-w)
+nmap <leader>V V<Plug>(easymotion-bd-jk)
 
 map  <leader>l <Plug>(easymotion-lineforward)
 map  <leader>h <Plug>(easymotion-linebackward)
