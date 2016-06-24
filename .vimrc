@@ -231,6 +231,8 @@ map  <leader>e <Plug>(easymotion-bd-f2)
 nmap s         <Plug>(easymotion-overwin-f)
 nmap <leader>e <Plug>(easymotion-overwin-f2)
 
+map  <leader>L <Plug>(easymotion-overwin-line)
+
 map  <leader>l <Plug>(easymotion-lineforward)
 map  <leader>h <Plug>(easymotion-linebackward)
 map  <leader>j <Plug>(easymotion-j)
