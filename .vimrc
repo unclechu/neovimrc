@@ -195,11 +195,11 @@ nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>fn :NERDTreeFind<CR>
 nnoremap <leader>t :TagbarToggle<CR>
-nnoremap <leader>w :WrapToggle<CR>
-nnoremap <leader>p :PasteToggle<CR>
+nnoremap <leader>g :GundoToggle<CR>
+nnoremap <leader>mw :WrapToggle<CR>
+nnoremap <leader>mp :PasteToggle<CR>
 nnoremap <leader>[ :RelativeNumberToggle<CR>
 nnoremap <leader>] :DelimitMateSwitch<CR>
-nnoremap <leader>g :GundoToggle<CR>
 
 nnoremap <leader>ft :set filetype=
 nnoremap <leader>fl :set foldlevel=
@@ -234,8 +234,8 @@ map  s         <Plug>(easymotion-bd-w)
 nmap s         <Plug>(easymotion-overwin-w)
 map  <leader>x <Plug>(easymotion-bd-jk)
 nmap <leader>x <Plug>(easymotion-overwin-line)
-map  <leader>e <Plug>(easymotion-bd-f2)
-nmap <leader>e <Plug>(easymotion-overwin-f2)
+map  <leader>w <Plug>(easymotion-bd-f2)
+nmap <leader>w <Plug>(easymotion-overwin-f2)
 
 nmap <leader>v v<Plug>(easymotion-bd-w)
 nmap <leader>V V<Plug>(easymotion-bd-jk)
@@ -244,6 +244,13 @@ map  <leader>l <Plug>(easymotion-lineforward)
 map  <leader>h <Plug>(easymotion-linebackward)
 map  <leader>j <Plug>(easymotion-j)
 map  <leader>k <Plug>(easymotion-k)
+
+
+" remove word selection symbold after paste from search
+nmap <leader>d/ ds\ds>
+" paste searched word and clean it
+nmap <leader>s/ "/phds\ds>
+nmap <leader>s? "/Phds\ds>
 
 
 "hjkl
@@ -343,6 +350,7 @@ noremap & $
 noremap g& g$
 noremap * @
 noremap g* g@
+
 "because default maps disabled for plugin
 nmap / <Plug>(indexed-search-/)
 nmap ? <Plug>(indexed-search-?)
