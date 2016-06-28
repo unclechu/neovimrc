@@ -225,25 +225,28 @@ nmap     <leader>sn <Plug>CtrlSFCwordPath
 nmap     <leader>sp <Plug>CtrlSFPwordPath
 nnoremap <leader>so :CtrlSFOpen<CR>
 nnoremap <leader>st :CtrlSFToggle<CR>
-inoremap <leader>st <Esc>:CtrlSFToggle<CR>
 
 
 " EasyMotion bindings
 
-map  s         <Plug>(easymotion-bd-w)
 nmap s         <Plug>(easymotion-overwin-w)
-map  <leader>x <Plug>(easymotion-bd-jk)
+vmap s         <Plug>(easymotion-bd-w)
 nmap <leader>x <Plug>(easymotion-overwin-line)
-map  <leader>w <Plug>(easymotion-bd-f2)
+vmap <leader>x <Plug>(easymotion-bd-jk)
 nmap <leader>w <Plug>(easymotion-overwin-f2)
+vmap <leader>w <Plug>(easymotion-bd-f2)
 
 nmap <leader>v v<Plug>(easymotion-bd-w)
 nmap <leader>V V<Plug>(easymotion-bd-jk)
 
-map  <leader>l <Plug>(easymotion-lineforward)
-map  <leader>h <Plug>(easymotion-linebackward)
-map  <leader>j <Plug>(easymotion-j)
-map  <leader>k <Plug>(easymotion-k)
+nmap <leader>l <Plug>(easymotion-lineforward)
+vmap <leader>l <Plug>(easymotion-lineforward)
+nmap <leader>h <Plug>(easymotion-linebackward)
+vmap <leader>h <Plug>(easymotion-linebackward)
+nmap <leader>j <Plug>(easymotion-j)
+vmap <leader>j <Plug>(easymotion-j)
+nmap <leader>k <Plug>(easymotion-k)
+vmap <leader>k <Plug>(easymotion-k)
 
 
 " remove word selection symbold after paste from search
