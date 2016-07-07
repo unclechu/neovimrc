@@ -11,6 +11,7 @@ if has('autocmd')
 	autocmd BufNewFile,BufRead *.ts set ft=typescript
 	autocmd BufNewFile,BufRead *.tsx set ft=typescript.jsx
 	autocmd BufNewFile,BufRead Makefile set noexpandtab
+	autocmd BufNewFile,BufRead nginx.conf set ft=nginx
 	
 	" because some custom `indentexpr`s has annoying issues
 	autocmd FileType
