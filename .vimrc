@@ -56,7 +56,6 @@ Plugin 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'embear/vim-localvimrc'
-Plugin 'ihacklog/hicursorwords'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'matze/vim-move'
@@ -64,6 +63,7 @@ Plugin 'raimondi/delimitmate'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bronson/vim-visual-star-search'
+Plugin 't9md/vim-quickhl'
 
 "surround
 Plugin 'tpope/vim-surround'
@@ -122,7 +122,6 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:indent_guides_exclude_filetypes = [
 	\ 'help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal', 'startify']
 let g:user_emmet_leader_key = '<C-Z>'
-let g:HiCursorWords_delay = 500
 let g:indexed_search_mappings = 0
 let g:EasyMotion_do_mapping = 0 "disable default mappings
 let g:EasyMotion_smartcase = 1 "turn on case insensitive feature
@@ -265,6 +264,13 @@ nmap <leader>j <Plug>(easymotion-j)
 vmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 vmap <leader>k <Plug>(easymotion-k)
+
+" quickhl
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+nmap <Space>w <Plug>(quickhl-cword-toggle)
 
 
 " remove word selection symbols after paste from search

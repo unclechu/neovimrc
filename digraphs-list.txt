@@ -2,7 +2,7 @@ Vim digraphs mnenomic codes
 Insert mode: Ctrl+K {mnemonic-code}
 
 French, Russian     German, Russian (inner)
-<<  «    >>  »      :9  „    "6  “               
+<<  «    >>  »      :9  „    "6  “
 
 English (single)    English (double)
 '6  ‘    '9  ’      "6  “    "9  ”
