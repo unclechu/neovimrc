@@ -62,6 +62,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'matze/vim-move'
 Plugin 'raimondi/delimitmate'
 Plugin 'dyng/ctrlsf.vim'
+Plugin 'airblade/vim-gitgutter'
 
 "surround
 Plugin 'tpope/vim-surround'
@@ -124,6 +125,7 @@ let g:HiCursorWords_delay = 500
 let g:indexed_search_mappings = 0
 let g:EasyMotion_do_mapping = 0 "disable default mappings
 let g:EasyMotion_smartcase = 1 "turn on case insensitive feature
+let g:gitgutter_map_keys = 0
 
 "load my modules
 syntax on
@@ -196,27 +198,41 @@ nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>fn :NERDTreeFind<CR>
 nnoremap <leader>t :TagbarToggle<CR>
-nnoremap <leader>g :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
+
+" GitGutter keys
+nnoremap <leader>gv :GitGutterPreviewHunk<CR>
+nnoremap <Leader>ga :GitGutterStageHunk<CR>
+nnoremap <Leader>gr :GitGutterRevertHunk<CR>
+nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>GitGutterPrevHunk
+
+" modes togglers
 nnoremap <leader>mw :WrapToggle<CR>
 nnoremap <leader>mp :PasteToggle<CR>
-nnoremap <leader>[ :RelativeNumberToggle<CR>
-nnoremap <leader>] :DelimitMateSwitch<CR>
+nnoremap <leader>ml :ListToggle<CR>
+nnoremap <leader>mn :RelativeNumberToggle<CR>
+nnoremap <leader>m] :DelimitMateSwitch<CR>
+nnoremap <leader>mg :GitGutterToggle<CR>
+nnoremap <leader>mc :AutoClearSpacesAtEOFToggle<CR>
 
+" some buffer configs
 nnoremap <leader>ft :set filetype=
 nnoremap <leader>fl :set foldlevel=
 nnoremap <leader>fm :set foldmethod=
 
-" syntastic
+" Syntastic
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
 
-nnoremap <leader>sl :ListToggle<CR>
+" switching between 'dark' and 'light' Solarized colorschemes
 nnoremap <leader>ss :SetSolarized<Space>
 
-nnoremap <leader>ac :AutoClearSpacesAtEOFToggle<CR>
-
+" short EasyAlign aliases
 vnoremap <leader>: :EasyAlign/:/<CR>
+nnoremap <leader>a :EasyAlign
+vnoremap <leader>a :EasyAlign
 
 " CtrlSF bindings
 nmap     <leader>sf <Plug>CtrlSFPrompt
@@ -250,11 +266,11 @@ nmap <leader>k <Plug>(easymotion-k)
 vmap <leader>k <Plug>(easymotion-k)
 
 
-" remove word selection symbold after paste from search
-nmap <leader>d/ ds\ds>
+" remove word selection symbols after paste from search
+nmap <leader>c/ ds\ds>
 " paste searched word and clean it
-nmap <leader>s/ "/phds\ds>
-nmap <leader>s? "/Phds\ds>
+nmap <leader>p/ "/phds\ds>
+nmap <leader>P/ "/Phds\ds>
 
 
 "hjkl
