@@ -414,6 +414,31 @@ snippet nd "New instance of Date object" i
 new Date()
 endsnippet
 
+
+snippet npp "New Promise wrapper" i
+new Promise(function (resolve, reject) {
+	${1}
+})${2}
+endsnippet
+
+snippet np "New Promise wrapper (arrow function)" i
+new Promise((resolve, reject) => {
+	${1}
+})${2}
+endsnippet
+
+snippet pr "Promise.resolve()" i
+Promise.resolve(${1})${2}
+endsnippet
+snippet pe "Promise.reject()" i
+Promise.reject(${1})${2}
+endsnippet
+
+snippet pa "Promise.all([])" i
+Promise.all(${1:[]})${2}
+endsnippet
+
+
 snippet ne "New exception instance" i
 new Error('${1}')${2}
 endsnippet
