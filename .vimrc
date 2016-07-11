@@ -62,7 +62,6 @@ Plugin 'matze/vim-move'
 Plugin 'raimondi/delimitmate'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'bronson/vim-visual-star-search'
 Plugin 't9md/vim-quickhl'
 
 "surround
@@ -384,10 +383,6 @@ nmap ? <Plug>(indexed-search-?)
 nmap n <Plug>(indexed-search-n)zv
 nmap N <Plug>(indexed-search-N)zv
 
-if maparg('*', 'x') != ''
-	xunmap *
-	xunmap #
-endif
 xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 
