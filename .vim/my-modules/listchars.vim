@@ -8,3 +8,5 @@ else
 endif
 
 set list
+
+"vim: set noet :
