@@ -318,6 +318,10 @@ vnoremap <A-S-Up>    <Esc>:wincmd +<CR>
 nnoremap <A-S-Down>  :wincmd -<CR>
 vnoremap <A-S-Down>  <Esc>:wincmd -<CR>
 
+"zoom buffer hack
+nnoremap <leader>z :999wincmd ><CR>:999wincmd +<CR>
+vnoremap <leader>z <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
+
 "moving between history in command mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
