@@ -438,6 +438,38 @@ snippet pa "Promise.all([])" i
 Promise.all(${1:[]})${2}
 endsnippet
 
+snippet pt "Promise.then()" i
+.then(${1:foo} => {
+	${2}
+})${3}
+endsnippet
+snippet pt- "Promise.then() (just return)" i
+.then(${1:foo} => ${2:bar})${3}
+endsnippet
+
+snippet pc "Promise.catch()" i
+.catch(${1:foo} => {
+	${2}
+})${3}
+endsnippet
+snippet pc- "Promise.catch() (just return)" i
+.catch(${1:foo} => ${2:bar})${3}
+endsnippet
+
+snippet ptc "Promise.then(A, B)" i
+.then(${1:foo} => {
+	${2}
+}, (${3:err}) => {
+	${4}
+})${5}
+endsnippet
+snippet ptc- "Promise.then(A, B) (just return)" i
+.then(
+	(${1:foo}) => ${2:bar},
+	(${3:err}) => ${4:baz}
+)${5}
+endsnippet
+
 
 snippet ne "New exception instance" i
 new Error('${1}')${2}
