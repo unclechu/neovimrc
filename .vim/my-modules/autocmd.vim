@@ -15,7 +15,7 @@ if has('autocmd')
 	
 	" because some custom `indentexpr`s has annoying issues
 	autocmd FileType
-		\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx
+		\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx,typescript.jsx
 		\ set indentexpr=
 	
 	" haskell default indentation config
