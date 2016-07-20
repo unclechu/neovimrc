@@ -724,6 +724,33 @@ try {
 }
 endsnippet
 
+
 snippet -x "export" i
 export ${1}
+endsnippet
+
+
+snippet -cls "class" i
+class ${1:Name} {
+	${2}
+}${3}
+endsnippet
+
+snippet -clx "class extends" i
+class ${1:Name} extends ${2:Parent} {
+	${3}
+}${4}
+endsnippet
+
+
+snippet -im "import module" i
+import "${1:foo}";${2}
+endsnippet
+
+snippet -ia "import all as" i
+import * as ${1:foo} from "${2:bar}";${3}
+endsnippet
+
+snippet -is "import something from" i
+import { ${1:foo} } from "${2:bar}";${3}
 endsnippet
