@@ -362,6 +362,11 @@ map gQ <Nop>
 noremap ; :
 noremap : ;
 
+"because working with clipboard buffers more important
+noremap ' "
+noremap " '
+noremap "" ''
+
 "custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
 nmap g! <Plug>(indexed-search-#)N
