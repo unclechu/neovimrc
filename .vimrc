@@ -278,6 +278,9 @@ nmap <leader>c/ ds\ds>
 nmap <leader>p/ "/phds\ds>
 nmap <leader>P/ "/Phds\ds>
 
+" system buffer
+noremap <leader>' "+
+
 
 "hjkl
 nnoremap <C-h>     :wincmd h<CR>
