@@ -247,6 +247,12 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 
 nmap s         <Plug>(easymotion-overwin-w)
 vmap s         <Plug>(easymotion-bd-w)
+" see more about it: https://github.com/easymotion/vim-easymotion/issues/296
+function! s:FixEasyMotionIssue()
+	nmap s <Plug>(easymotion-overwin-w)
+	vmap s <Plug>(easymotion-bd-w)
+endfunction
+command! FixEasyMotionIssue call s:FixEasyMotionIssue()
 nmap <leader>x <Plug>(easymotion-overwin-line)
 vmap <leader>x <Plug>(easymotion-bd-jk)
 nmap <leader>w <Plug>(easymotion-overwin-f2)
@@ -365,7 +371,7 @@ map gQ <Nop>
 noremap ; :
 noremap : ;
 
-"because working with clipboard buffers more important
+"because working with clipboard buffers is more important
 noremap ' "
 noremap " '
 noremap "" ''
