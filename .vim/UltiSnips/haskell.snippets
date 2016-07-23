@@ -1,0 +1,90 @@
+priority -50
+
+
+snippet unicode "Unicode support directive" w
+{-# LANGUAGE UnicodeSyntax #-}
+endsnippet
+
+
+# digraphs aliases in comments
+
+
+# Ob
+snippet . "Function compose" i
+∘ ${1}
+endsnippet
+
+snippet ? "Function compose (left-to-right)" i
+⬥ ${1}
+endsnippet
+
+snippet & "Pipe (unicode)" i
+⎎ ${1}
+endsnippet
+
+# ::
+snippet :: "Proportion" i
+∷ ${1}
+endsnippet
+
+# =>
+snippet => "Rightwards double arrow" i
+⇒ ${1}
+endsnippet
+
+# ->
+snippet -> "Rightwards arrow" i
+→ ${1}
+endsnippet
+
+# <-
+snippet <- "Leftwards arrow" i
+← ${1}
+endsnippet
+
+
+# FA
+snippet forall "For all" i
+∀ ${1}
+endsnippet
+
+# TE
+snippet exists "Exists" i
+∃ ${1}
+endsnippet
+
+# !=
+snippet != "Not equal" i
+≠ ${1}
+endsnippet
+
+# =<
+snippet <= "Less or equal" i
+≤ ${1}
+endsnippet
+
+# >=
+snippet >= "Greater or equal" i
+≥ ${1}
+endsnippet
+
+
+snippet .u "Declaration of unicode compose" w
+(∘) = (.)
+endsnippet
+
+
+# pipes
+
+snippet pipes "Declare pipe operators" w
+-- pipes
+(&) = flip ($)
+(?) = flip (.)
+endsnippet
+
+# sadly it doesn't work like I expected
+snippet pipesu "Declare unicode syntax pipe operators" w
+-- pipes
+(⎎) = flip ($)
+(⬥) = flip (∘)
+endsnippet
