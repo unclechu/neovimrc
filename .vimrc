@@ -286,6 +286,8 @@ nmap <leader>P/ "/Phds\ds>
 
 " system buffer
 noremap <leader>' "+
+noremap <leader>= "+
+noremap '<leader> "+
 
 
 "hjkl
