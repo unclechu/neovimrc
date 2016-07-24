@@ -94,9 +94,6 @@ let g:airline#extensions#whitespace#enabled = 0
 set laststatus=2 "airline always
 set hidden "ctrlspace
 set showtabline=2
-if has('gui_running')
-	set guioptions-=e
-endif
 let g:ctrlp_custom_ignore = '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|\/node_modules|\/bower_components|\/__pycache__)$'
 let g:ctrlp_show_hidden = 1
 let g:indentLine_enabled = 0
@@ -147,11 +144,7 @@ set smartcase
 set nowrap
 set number
 set norelativenumber "disabled by default because easymotion is cool enough
-if has('gui_running')
-	set cursorline
-else
-	set nocursorline
-endif
+set nocursorline
 set nocursorcolumn
 if v:version >= 703
 	set colorcolumn=80
