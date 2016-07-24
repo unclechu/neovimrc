@@ -1,4 +1,4 @@
-".vimrc
+"NeoVim config
 "Author: Viacheslav Lotsmanov
 "vim: set noet fenc=utf-8 :
 
@@ -181,7 +181,9 @@ endtry
 
 set wildmenu
 
-call ResetKeyMap()
+set clipboard=unnamedplus
+set termguicolors
+
 call PreventIndentTrimHackOn()
 
 let mapleader = '\'
@@ -412,8 +414,8 @@ xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
 
-"include local vimrc
-let g:vimrcpost = expand('~') . '/.vimrc-local-post'
-if filereadable(g:vimrcpost)
-	exec 'source ' . g:vimrcpost
+"include local rc
+let g:neovimrc = expand('~') . '/.neovimrc-local-post'
+if filereadable(g:neovimrc)
+	exec 'source ' . g:neovimrc
 endif
