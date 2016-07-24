@@ -74,8 +74,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'kien/rainbow_parentheses.vim'
 
 "colorschemes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'darkburn'
+Plugin 'morhetz/gruvbox'
 
 "required for vundle
 call vundle#end()
@@ -103,7 +102,7 @@ let g:ctrlp_show_hidden = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
@@ -131,6 +130,8 @@ syntax on
 runtime! my-modules/**/*.vim
 
 "some vim configs
+
+let $NVIM_ENABLE_TRUE_COLOR=1
 
 set backspace=indent,eol,start
 set tabstop=4
@@ -228,9 +229,6 @@ nnoremap <leader>fm :set foldmethod=
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
-
-" switching between 'dark' and 'light' Solarized colorschemes
-nnoremap <leader>ss :SetSolarized<Space>
 
 " short EasyAlign aliases
 vnoremap <leader>: :EasyAlign/:/<CR>
@@ -413,6 +411,9 @@ xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 "custom digraphs
 digraphs '' 769 "accent
 digraphs 3. 8230 "dots
+
+colorscheme gruvbox
+set background=dark
 
 "include local rc
 let g:neovimrc = expand('~') . '/.neovimrc-local-post'
