@@ -1,31 +1,22 @@
 NeoVimRC
 ========
 
-Hot to use it
--------------
+How to use
+----------
 
-1. Clone somewhere this repo and init submodules:
-
-  ```bash
-  $ git clone https://github.com/unclechu/neovimrc ~/.neovimrc-git
-  $ cd ~/.neovimrc-git
-  $ git submodule update --init # need for Vundle
-  ```
-
-2. Create some symbolic links in your `HOME`:
+1. Clone this repo (with `Vundle` submodule by `--recursive` flag):
 
   ```bash
-  $ cd ~/.config
-  $ ln -s ~/.neovimrc-git nvim
+  $ git clone --recursive https://github.com/unclechu/neovimrc ~/.config/nvim
   ```
 
-3. Install [Vundle](https://github.com/gmarik/Vundle.vim) dependencies:
+2. Install [Vundle](https://github.com/gmarik/Vundle.vim) dependencies:
 
   ```bash
   $ nvim +BundleInstall
   ```
 
-4. Enjoy!
+3. Enjoy!
 
 Author
 ------
