@@ -5,8 +5,8 @@
 "required for vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin("~/.config/nvim/bundle")
 Plugin 'gmarik/Vundle.vim', {'pinned': 1} "provided by git-submodule
 
 "plugins
@@ -185,6 +185,8 @@ call ResetKeyMap()
 call PreventIndentTrimHackOn()
 
 let mapleader = '\'
+
+noremap <C-Space> :CtrlSpace<CR>
 
 " flying between buffers
 " (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
