@@ -1,8 +1,0 @@
-#!/bin/bash
-
-bin=''
-[ -x '/usr/local/bin/gvim' ]            && bin='/usr/local/bin/gvim'
-[ -z "$bin" ] && [ -x '/usr/bin/gvim' ] && bin='/usr/bin/gvim'
-[ -z "$bin" ]                           && { echo 'gvim not found'; exit 1; }
-
-env GTK2_RC_FILES="$HOME/.gvimgtk2rc" "$bin" "$@"

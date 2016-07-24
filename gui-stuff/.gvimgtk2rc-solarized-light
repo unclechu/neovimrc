@@ -1,9 +1,0 @@
-gtk-icon-theme=GVim
-
-style "default"
-{
-  bg[NORMAL] = "#fdf6e3"
-  fg[NORMAL] = "#839496"
-}
-
-class "GtkWidget" style "default"
