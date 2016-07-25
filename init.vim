@@ -175,7 +175,7 @@ endtry
 
 set wildmenu
 
-set clipboard+=unnamedplus
+set clipboard-=unnamedplus
 set termguicolors
 
 call PreventIndentTrimHackOn()
