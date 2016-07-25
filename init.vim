@@ -13,7 +13,6 @@ Plugin 'gmarik/Vundle.vim', {'pinned': 1} "provided by git-submodule
 Plugin 'scrooloose/nerdtree'
 " Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'xuyuanp/nerdtree-git-plugin'
-Plugin 'drmikehenry/vim-fontsize'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -44,9 +43,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'scrooloose/syntastic'
-if v:version >= 704
-	Plugin 'SirVer/ultisnips'
-endif
+Plugin 'SirVer/ultisnips'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-commentary'
@@ -128,7 +125,7 @@ runtime! my-modules/**/*.vim
 
 "some vim configs
 
-let $NVIM_ENABLE_TRUE_COLOR=1
+let $NVIM_ENABLE_TRUE_COLOR = 1
 
 set backspace=indent,eol,start
 set tabstop=4
@@ -146,9 +143,7 @@ set number
 set norelativenumber "disabled by default because easymotion is cool enough
 set nocursorline
 set nocursorcolumn
-if v:version >= 703
-	set colorcolumn=80
-endif
+set colorcolumn=80
 
 if has('mouse')
 	set mouse=a
