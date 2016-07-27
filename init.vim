@@ -274,6 +274,9 @@ nmap <leader>c/ ds\ds>
 nmap <leader>p/ "/phds\ds>
 nmap <leader>P/ "/Phds\ds>
 
+" paste before cursor without shift modifier
+nnoremap zp P
+
 " system buffer
 noremap <leader>' "+
 noremap <leader>= "+
