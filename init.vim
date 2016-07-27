@@ -274,13 +274,16 @@ nmap <leader>c/ ds\ds>
 nmap <leader>p/ "/phds\ds>
 nmap <leader>P/ "/Phds\ds>
 
-" paste before cursor without shift modifier
-nnoremap zp P
-
 " system buffer
 noremap <leader>' "+
 noremap <leader>= "+
 noremap '<leader> "+
+
+" paste before cursor without shift modifier
+noremap zp P
+
+" previous tab without shift modifier
+noremap g<leader>t gT
 
 
 "hjkl
