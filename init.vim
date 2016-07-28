@@ -286,6 +286,9 @@ noremap zp P
 " previous tab without shift modifier
 noremap g<leader>t gT
 
+" forward version of <C-h> in insert mode
+inoremap <C-l> <Del>
+
 
 "hjkl
 nnoremap <C-h>     :wincmd h<CR>
