@@ -289,6 +289,8 @@ noremap g<leader>t gT
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>
 
+noremap <leader>ss <Esc>:set background=
+
 
 "hjkl
 nnoremap <C-h>     :wincmd h<CR>
