@@ -274,10 +274,11 @@ nmap <leader>c/ ds\ds>
 nmap <leader>p/ "/phds\ds>
 nmap <leader>P/ "/Phds\ds>
 
-" system buffer
+" system buffer aliases without shift modifier
 noremap <leader>' "+
 noremap <leader>= "+
 noremap '<leader> "+
+noremap <leader>q "+
 
 " paste before cursor without shift modifier
 noremap zp P
