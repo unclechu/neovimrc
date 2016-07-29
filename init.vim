@@ -278,8 +278,9 @@ nmap <Space>w <Plug>(quickhl-cword-toggle)
 " remove word selection symbols after paste from search
 nmap <leader>c/ ds\ds>
 " paste searched word and clean it
-nmap <leader>p/ "/phds\ds>
-nmap <leader>P/ "/Phds\ds>
+nmap <leader>p/ '/phds\ds>
+nmap <leader>P/ '/Phds\ds>
+nmap <leader>zp/ '/Phds\ds>
 
 " system buffer aliases without shift modifier
 noremap <leader>' "+
@@ -339,8 +340,8 @@ nnoremap <A-S-Down>  :wincmd -<CR>
 vnoremap <A-S-Down>  <Esc>:wincmd -<CR>
 
 "zoom buffer hack
-nnoremap <leader>z :999wincmd ><CR>:999wincmd +<CR>
-vnoremap <leader>z <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
+nnoremap <leader>zz :999wincmd ><CR>:999wincmd +<CR>
+vnoremap <leader>zz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
 
 "moving between history in command mode
 cnoremap <C-p> <Up>
