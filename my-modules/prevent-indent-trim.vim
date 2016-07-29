@@ -9,9 +9,15 @@ function! PreventIndentTrimHackOn()
 	nnoremap cc ccx<Backspace>
 	vnoremap c cx<Backspace>
 	vnoremap C Cx<Backspace>
-	nnoremap s sx<Backspace>
+	
+	"taken by easymotion
+	"nnoremap s sx<Backspace
+	
 	nnoremap S Sx<Backspace>
-	vnoremap s sx<Backspace>
+	
+	"taken by easymotion
+	"vnoremap s sx<Backspace>
+	
 	"surround plugin need it
 	"vnoremap S Sx<Backspace>
 endfunction
@@ -25,9 +31,15 @@ function! PreventIndentTrimHackOff()
 		nunmap cc
 		vunmap c
 		vunmap C
-		nunmap s
+		
+		"taken by easymotion
+		"nunmap s
+		
 		nunmap S
-		vunmap s
+		
+		"taken by easymotion
+		"vunmap s
+		
 		"surround plugin need it
 		"vunmap S
 	catch

@@ -152,9 +152,7 @@ set nocursorline
 set nocursorcolumn
 set colorcolumn=80
 
-if has('mouse')
-	set mouse=a
-endif
+set mouse=a
 
 set fileencodings=utf8,cp1251
 set modeline
@@ -244,12 +242,6 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 
 nmap s         <Plug>(easymotion-overwin-w)
 vmap s         <Plug>(easymotion-bd-w)
-" see more about it: https://github.com/easymotion/vim-easymotion/issues/296
-function! s:FixEasyMotionIssue()
-	nmap s <Plug>(easymotion-overwin-w)
-	vmap s <Plug>(easymotion-bd-w)
-endfunction
-command! FixEasyMotionIssue call s:FixEasyMotionIssue()
 nmap <leader>x <Plug>(easymotion-overwin-line)
 vmap <leader>x <Plug>(easymotion-bd-jk)
 nmap <leader>w <Plug>(easymotion-overwin-f2)
