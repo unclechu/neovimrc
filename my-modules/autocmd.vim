@@ -24,4 +24,7 @@ autocmd FileType python setlocal ts=4 sts=4 sw=4
 " disable tabs highlight on empty lines
 autocmd BufRead * syntax match whitespaceEOL /\s\+$/
 
+autocmd InsertEnter * set norelativenumber
+autocmd InsertLeave * set relativenumber
+
 "vim: set noet :

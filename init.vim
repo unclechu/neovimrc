@@ -97,7 +97,9 @@ let g:airline#extensions#whitespace#enabled = 0
 set laststatus=2 "airline always
 set hidden "ctrlspace
 set showtabline=2
-let g:ctrlp_custom_ignore = '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|\/node_modules|\/bower_components|\/__pycache__)$'
+let g:ctrlp_custom_ignore =
+	\ '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|'
+	\ . '\/node_modules|\/bower_components|\/__pycache__)$'
 let g:ctrlp_show_hidden = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
@@ -147,7 +149,7 @@ set smartcase
 
 set nowrap
 set number
-set norelativenumber "disabled by default because easymotion is cool enough
+set relativenumber
 set nocursorline
 set nocursorcolumn
 set colorcolumn=80
