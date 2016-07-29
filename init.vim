@@ -18,8 +18,14 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'gkz/vim-ls'
+
+"typescript
 "also: http://vimawesome.com/plugin/typescript-tools
 Plugin 'leafgarland/typescript-vim'
+"WARNING! requires to run `make` inside bundle/vimproc.vim by bare hands!
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
+
 Plugin 'groenewege/vim-less'
 Plugin 'wavded/vim-stylus'
 Plugin 'digitaltoad/vim-jade'
@@ -108,13 +114,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_enable_highlighting = 0
-" let g:syntastic_typescript_tsc_fname = '' "fix using tsconfig.json
-function! FindTypescriptRoot()
-	return fnamemodify(findfile('tsconfig.json', './;'), ':h')
-endfunction
-let g:syntastic_typescript_tsc_exec = ['env']
-let g:syntastic_typescript_tsc_args = ['tsc', '-p', FindTypescriptRoot()]
-let g:syntastic_typescript_checkers = ['tsc', 'tslint']
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:syntastic_python_checkers = ['python']
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:indent_guides_exclude_filetypes = [
