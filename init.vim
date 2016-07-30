@@ -243,9 +243,12 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 " EasyMotion bindings
 
 nmap s         <Plug>(easymotion-overwin-w)
+nmap <Space>s  <Plug>(easymotion-bd-w)
 vmap s         <Plug>(easymotion-bd-w)
 nmap <leader>x <Plug>(easymotion-overwin-line)
 vmap <leader>x <Plug>(easymotion-bd-jk)
+nmap <Space>x  <Plug>(easymotion-bd-jk)
+vmap <Space>x  <Plug>(easymotion-bd-jk)
 nmap <leader>w <Plug>(easymotion-overwin-f2)
 vmap <leader>w <Plug>(easymotion-bd-f2)
 
@@ -254,12 +257,20 @@ nmap <leader>V V<Plug>(easymotion-bd-jk)
 
 nmap <leader>l <Plug>(easymotion-lineforward)
 vmap <leader>l <Plug>(easymotion-lineforward)
+nmap <Space>l  <Plug>(easymotion-lineforward)
+vmap <Space>l  <Plug>(easymotion-lineforward)
 nmap <leader>h <Plug>(easymotion-linebackward)
 vmap <leader>h <Plug>(easymotion-linebackward)
+nmap <Space>h  <Plug>(easymotion-linebackward)
+vmap <Space>h  <Plug>(easymotion-linebackward)
 nmap <leader>j <Plug>(easymotion-j)
 vmap <leader>j <Plug>(easymotion-j)
+nmap <Space>j  <Plug>(easymotion-j)
+vmap <Space>j  <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 vmap <leader>k <Plug>(easymotion-k)
+nmap <Space>k  <Plug>(easymotion-k)
+vmap <Space>k  <Plug>(easymotion-k)
 
 " quickhl
 nmap <Space>m <Plug>(quickhl-manual-this)
