@@ -254,6 +254,8 @@ vmap <leader>w <Plug>(easymotion-bd-f2)
 
 nmap <leader>v v<Plug>(easymotion-bd-w)
 nmap <leader>V V<Plug>(easymotion-bd-jk)
+nmap <Space>v  v<Plug>(easymotion-bd-w)
+nmap <Space>V  V<Plug>(easymotion-bd-jk)
 
 nmap <leader>l <Plug>(easymotion-lineforward)
 vmap <leader>l <Plug>(easymotion-lineforward)
