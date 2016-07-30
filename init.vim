@@ -1,15 +1,15 @@
-"NeoVim config
-"Author: Viacheslav Lotsmanov
-"vim: set noet fenc=utf-8 :
+" NeoVim config
+" Author: Viacheslav Lotsmanov
+" vim: set noet fenc=utf-8 :
 
-"required for vundle
+" required for vundle
 set nocompatible
 filetype off
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
-Plugin 'gmarik/Vundle.vim', {'pinned': 1} "provided by git-submodule
+Plugin 'gmarik/Vundle.vim', {'pinned': 1} " provided by git-submodule
 
-"plugins
+" plugins
 Plugin 'scrooloose/nerdtree'
 " Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'xuyuanp/nerdtree-git-plugin'
@@ -19,10 +19,10 @@ Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'gkz/vim-ls'
 
-"typescript
-"also: http://vimawesome.com/plugin/typescript-tools
+" typescript
+" also: http://vimawesome.com/plugin/typescript-tools
 Plugin 'leafgarland/typescript-vim'
-"WARNING! requires to run `make` inside bundle/vimproc.vim by bare hands!
+" WARNING! requires to run `make` inside bundle/vimproc.vim by bare hands!
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 
@@ -67,26 +67,26 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 't9md/vim-quickhl'
 
-"surround
+" surround
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
-"clojure
+" clojure
 Plugin 'clojure-emacs/cider-nrepl'
 Plugin 'tpope/vim-fireplace'
 Plugin 'kien/rainbow_parentheses.vim'
 
-"colorschemes
+" colorschemes
 Plugin 'morhetz/gruvbox'
 
-"required for vundle
+" required for vundle
 call vundle#end()
 filetype plugin indent on
 
-"plugins config
+" plugins config
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
-let NERDTreeShowHidden = 1 "always show hidden files in NERDTree
-let NERDTreeMapHelp = '<Leader>?' "heals backward search
+let NERDTreeShowHidden = 1 " always show hidden files in NERDTree
+let NERDTreeMapHelp = '<Leader>?' " heals backward search
 let NERDTreeShowLineNumbers = 1
 let NERDTreeWinSize = 50
 let g:nerdtree_tabs_open_on_gui_startup     = 0
@@ -94,8 +94,8 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 let g:nerdtree_tabs_open_on_new_tab         = 0
 let g:airline#extensions#tabline#enabled    = 0
 let g:airline#extensions#whitespace#enabled = 0
-set laststatus=2 "airline always
-set hidden "ctrlspace
+set laststatus=2 " airline always
+set hidden " ctrlspace
 set showtabline=2
 let g:ctrlp_custom_ignore =
 	\ '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|'
@@ -124,15 +124,15 @@ let g:indent_guides_exclude_filetypes = [
 	\ 'help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal', 'startify']
 let g:user_emmet_leader_key = '<C-Z>'
 let g:indexed_search_mappings = 0
-let g:EasyMotion_do_mapping = 0 "disable default mappings
-let g:EasyMotion_smartcase = 1 "turn on case insensitive feature
+let g:EasyMotion_do_mapping = 0 " disable default mappings
+let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
 
-"load my modules
+" load my modules
 syntax on
 runtime! my-modules/**/*.vim
 
-"some vim configs
+" some vim configs
 
 let $NVIM_ENABLE_TRUE_COLOR = 1
 
@@ -160,15 +160,15 @@ set fileencodings=utf8,cp1251
 set modeline
 set foldmethod=indent
 set foldlevelstart=999
-set cpoptions+=I "disable indent removing in insert mode (moving by arrow keys)
+set cpoptions+=I " disable indent removing in insert mode (moving by arrow keys)
 
-"sessions
+" sessions
 set ssop-=options " do not store global and local values in a session
 set ssop-=folds   " do not store folds
 
 set showbreak=˪
 set linebreak
-"try-catch for old vim versions
+" try-catch for old vim versions
 try
 	set breakindentopt=shift:4,sbr
 	set breakindent
@@ -182,7 +182,7 @@ set termguicolors
 
 call PreventIndentTrimHackOn()
 
-let mapleader = '\'
+let mapleader = ','
 
 noremap <C-Space> :CtrlSpace<CR>
 
@@ -294,7 +294,7 @@ inoremap <C-l> <Del>
 noremap <leader>ss <Esc>:set background=
 
 
-"hjkl
+" hjkl
 nnoremap <C-h>     :wincmd h<CR>
 vnoremap <C-h>     <Esc>:wincmd h<CR>
 nnoremap <C-j>     :wincmd j<CR>
@@ -303,7 +303,7 @@ nnoremap <C-k>     :wincmd k<CR>
 vnoremap <C-k>     <Esc>:wincmd k<CR>
 nnoremap <C-l>     :wincmd l<CR>
 vnoremap <C-l>     <Esc>:wincmd l<CR>
-"arrow keys
+" arrow keys
 nnoremap <C-Left>  :wincmd h<CR>
 vnoremap <C-Left>  <Esc>:wincmd h<CR>
 nnoremap <C-Right> :wincmd l<CR>
@@ -313,7 +313,7 @@ vnoremap <C-Up>    <Esc>:wincmd k<CR>
 nnoremap <C-Down>  :wincmd j<CR>
 vnoremap <C-Down>  <Esc>:wincmd j<CR>
 
-"walk between windows by alt+arrow keys
+" walk between windows by alt+arrow keys
 nnoremap <A-Left>  zh
 vnoremap <A-Left>  zh
 nnoremap <A-Right> zl
@@ -323,7 +323,7 @@ vnoremap <A-Up>    <C-y>
 nnoremap <A-Down>  <C-e>
 vnoremap <A-Down>  <C-e>
 
-"resizing windows by alt+shift+arrow keys
+" resizing windows by alt+shift+arrow keys
 nnoremap <A-S-Left>  :wincmd <<CR>
 vnoremap <A-S-Left>  <Esc>:wincmd <<CR>
 nnoremap <A-S-Right> :wincmd ><CR>
@@ -333,26 +333,26 @@ vnoremap <A-S-Up>    <Esc>:wincmd +<CR>
 nnoremap <A-S-Down>  :wincmd -<CR>
 vnoremap <A-S-Down>  <Esc>:wincmd -<CR>
 
-"zoom buffer hack
+" zoom buffer hack
 nnoremap <leader>zz :999wincmd ><CR>:999wincmd +<CR>
 vnoremap <leader>zz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
 
-"moving between history in command mode
+" moving between history in command mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-"moving tabs
+" moving tabs
 nnoremap <C-S-PageUp>   :tabm-1<CR>
 nnoremap <C-S-PageDown> :tabm+1<CR>
 
-"jump by half of screen by pageup/pagedown
+" jump by half of screen by pageup/pagedown
 nmap <PageUp>     <C-u>
 nmap <PageDown>   <C-d>
 vmap <PageUp>     <C-u>
 vmap <PageDown>   <C-d>
 imap <PageUp>     <Esc><C-u>i
 imap <PageDown>   <Esc><C-d>i
-"default jump by pageup/pagedown with shift prefix
+" default jump by pageup/pagedown with shift prefix
 nmap <S-PageUp>   <C-b>
 nmap <S-PageDown> <C-f>
 vmap <S-PageUp>   <C-b>
@@ -369,20 +369,24 @@ if &mouse == 'a'
 	nmap <C-ScrollWheelDown> <leader><leader>-
 endif
 
-"get rid off randomly turning on ex-mode
+" get rid off randomly turning on ex-mode
 map Q  <Nop>
 map gQ <Nop>
 
-"thanks to Minoru for the advice
+" thanks to Minoru for the advice
 noremap ; :
 noremap : ;
 
-"because working with clipboard buffers is more important
+" thanks to r3lgar for the advice (swap default <leader> and comma)
+noremap \ ;
+noremap \| ,
+
+" because working with clipboard buffers is more important
 noremap ' "
 noremap " '
 noremap "" ''
 
-"custom numbers line keys
+" custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
 nmap g! <Plug>(indexed-search-#)N
 nmap @ <Plug>(indexed-search-*)
@@ -393,7 +397,7 @@ noremap # ^
 noremap g# g^
 noremap $ g_
 noremap g$ g$
-"noremap %
+" noremap %
 noremap ^ 0
 noremap g^ g0
 noremap & $
@@ -401,7 +405,7 @@ noremap g& g$
 noremap * @
 noremap g* g@
 
-"because default maps disabled for plugin
+" because default maps disabled for plugin
 nmap / <Plug>(indexed-search-/)
 nmap ? <Plug>(indexed-search-?)
 nmap n <Plug>(indexed-search-n)zv
@@ -410,14 +414,14 @@ nmap N <Plug>(indexed-search-N)zv
 xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 
-"custom digraphs
-digraphs '' 769 "accent
-digraphs 3. 8230 "dots
+" custom digraphs
+digraphs '' 769 " accent
+digraphs 3. 8230 " dots
 
 colorscheme gruvbox
 set background=dark
 
-"include local rc
+" include local rc
 let g:neovimrc = expand('~') . '/.neovimrc-local-post'
 if filereadable(g:neovimrc)
 	exec 'source ' . g:neovimrc
