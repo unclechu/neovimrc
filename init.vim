@@ -3,7 +3,6 @@
 " vim: set noet fenc=utf-8 :
 
 " required for vundle
-set nocompatible
 filetype off
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
@@ -285,9 +284,9 @@ nmap <Space>w <Plug>(quickhl-cword-toggle)
 " remove word selection symbols after paste from search
 nmap <leader>c/ ds\ds>
 " paste searched word and clean it
-nmap <leader>p/ '/phds\ds>
-nmap <leader>P/ '/Phds\ds>
-nmap <leader>zp/ '/Phds\ds>
+map <leader>p/  '/phds\ds>
+map <leader>P/  '/Phds\ds>
+map <leader>zp/ '/Phds\ds>
 
 " system buffer aliases without shift modifier
 noremap <leader>' "+
