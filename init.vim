@@ -224,6 +224,9 @@ nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
 
+" show hint
+nnoremap <leader>sh :ShowHint<CR>
+
 " short EasyAlign aliases
 vnoremap <leader>: :EasyAlign/:/<CR>
 nnoremap <leader>a :EasyAlign
