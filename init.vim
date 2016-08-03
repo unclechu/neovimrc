@@ -404,9 +404,9 @@ noremap "" ''
 
 " custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
-nnoremap g! yiw:let @/ = '<C-R>0'<CR>
+nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>
 nmap @ <Plug>(indexed-search-*)
-nnoremap g@ yiw:let @/ = '<C-R>0'<CR>
+nnoremap g@ yiw:let @/ = '\V\<<C-R>0\>'<CR>
 " noremap ! #
 " noremap @ *
 noremap # ^
