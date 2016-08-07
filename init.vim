@@ -243,46 +243,41 @@ nnoremap <leader>so :CtrlSFOpen<CR>
 nnoremap <leader>st :CtrlSFToggle<CR>
 
 
-" EasyMotion bindings
+" EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
 
-nmap s         <Plug>(easymotion-overwin-w)
-nmap <Space>s  <Plug>(easymotion-bd-w)
+nmap s         <Plug>(easymotion-bd-w)
 vmap s         <Plug>(easymotion-bd-w)
-nmap <leader>x <Plug>(easymotion-overwin-line)
+nmap <Space>s  <Plug>(easymotion-overwin-w)
+
+nmap <leader>x <Plug>(easymotion-bd-jk)
 vmap <leader>x <Plug>(easymotion-bd-jk)
-nmap <Space>x  <Plug>(easymotion-bd-jk)
-vmap <Space>x  <Plug>(easymotion-bd-jk)
-nmap <leader>w <Plug>(easymotion-overwin-f2)
+nmap <Space>x  <Plug>(easymotion-overwin-line)
+vmap <Space>x  <Nop>
+
+nmap <leader>w <Plug>(easymotion-bd-f2)
 vmap <leader>w <Plug>(easymotion-bd-f2)
+nmap <Space>w  <Plug>(easymotion-overwin-f2)
+vmap <Space>w  <Nop>
 
 nmap <leader>v v<Plug>(easymotion-bd-w)
 nmap <leader>V V<Plug>(easymotion-bd-jk)
-nmap <Space>v  v<Plug>(easymotion-bd-w)
-nmap <Space>V  V<Plug>(easymotion-bd-jk)
 
 nmap <leader>l <Plug>(easymotion-lineforward)
 vmap <leader>l <Plug>(easymotion-lineforward)
-nmap <Space>l  <Plug>(easymotion-lineforward)
-vmap <Space>l  <Plug>(easymotion-lineforward)
 nmap <leader>h <Plug>(easymotion-linebackward)
 vmap <leader>h <Plug>(easymotion-linebackward)
-nmap <Space>h  <Plug>(easymotion-linebackward)
-vmap <Space>h  <Plug>(easymotion-linebackward)
 nmap <leader>j <Plug>(easymotion-j)
 vmap <leader>j <Plug>(easymotion-j)
-nmap <Space>j  <Plug>(easymotion-j)
-vmap <Space>j  <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 vmap <leader>k <Plug>(easymotion-k)
-nmap <Space>k  <Plug>(easymotion-k)
-vmap <Space>k  <Plug>(easymotion-k)
+
 
 " quickhl
 nmap <Space>m <Plug>(quickhl-manual-this)
 xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
 xmap <Space>M <Plug>(quickhl-manual-reset)
-nmap <Space>w <Plug>(quickhl-cword-toggle)
+nmap <Space>n <Plug>(quickhl-cword-toggle)
 
 
 " remove word selection symbols after paste from search
