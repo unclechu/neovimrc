@@ -27,4 +27,7 @@ autocmd BufRead * syntax match whitespaceEOL /\s\+$/
 autocmd InsertEnter * set norelativenumber
 autocmd InsertLeave * set relativenumber
 
+" fix easymotion bug https://github.com/easymotion/vim-easymotion/issues/294
+autocmd WinLeave * silent
+
 "vim: set noet :
