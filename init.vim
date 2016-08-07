@@ -290,19 +290,9 @@ nmap <leader>c/ ds\ds>
 " paste searched word and clean it
 map <leader>p/  '/phds\ds>
 map <leader>P/  '/Phds\ds>
-map <leader>zp/ '/Phds\ds>
 
-" system buffer aliases without shift modifier
-noremap <leader>' "+
-noremap <leader>= "+
-noremap '<leader> "+
-noremap <leader>q "+
-
-" paste before cursor without shift modifier
-noremap zp P
-
-" previous tab without shift modifier
-noremap g<leader>t gT
+" system buffer alias without shift modifier (like <Space> is specific buffer)
+noremap '<Space> "+
 
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>
