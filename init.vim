@@ -248,6 +248,9 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 nmap s         <Plug>(easymotion-bd-w)
 vmap s         <Plug>(easymotion-bd-w)
 nmap <Space>s  <Plug>(easymotion-overwin-w)
+vmap <Space>s  <Nop>
+nmap <leader>s <Nop>
+vmap <leader>s <Nop>
 
 nmap <leader>x <Plug>(easymotion-bd-jk)
 vmap <leader>x <Plug>(easymotion-bd-jk)
