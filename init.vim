@@ -101,6 +101,8 @@ let g:ctrlp_custom_ignore =
 	\ '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|'
 	\ . '\/node_modules|\/bower_components|\/__pycache__)$'
 let g:ctrlp_show_hidden = 1
+let g:CtrlSpaceDefaultMappingKey = "<C-Space>"
+let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
@@ -183,8 +185,6 @@ set termguicolors
 call PreventIndentTrimHackOn()
 
 let mapleader = ','
-
-noremap <C-Space> :CtrlSpace<CR>
 
 " flying between buffers
 " (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
@@ -389,6 +389,9 @@ noremap \| ,
 noremap ' "
 noremap " '
 noremap "" ''
+
+" custom behavior of big R in visual mode
+vnoremap R r<Space>R
 
 " custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
