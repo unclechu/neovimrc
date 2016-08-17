@@ -354,15 +354,11 @@ nmap <PageUp>     <C-u>
 nmap <PageDown>   <C-d>
 vmap <PageUp>     <C-u>
 vmap <PageDown>   <C-d>
-imap <PageUp>     <Esc><C-u>i
-imap <PageDown>   <Esc><C-d>i
 " default jump by pageup/pagedown with shift prefix
 nmap <S-PageUp>   <C-b>
 nmap <S-PageDown> <C-f>
 vmap <S-PageUp>   <C-b>
 vmap <S-PageDown> <C-f>
-imap <S-PageUp>   <Esc><C-b>i
-imap <S-PageDown> <Esc><C-f>i
 
 nmap g/        <Plug>(incsearch-easymotion-/)
 nmap g?        <Plug>(incsearch-easymotion-?)
