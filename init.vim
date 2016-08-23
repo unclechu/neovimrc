@@ -46,7 +46,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'szw/vim-ctrlspace'
+Plugin 'unclechu/vim-ctrlspace'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'haya14busa/incsearch.vim'
@@ -102,7 +102,7 @@ let g:ctrlp_custom_ignore =
 	\ . '\/node_modules|\/bower_components|\/__pycache__)$'
 let g:ctrlp_show_hidden = 1
 let g:CtrlSpaceDefaultMappingKey = "<C-Space>"
-let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
+let g:CtrlSpaceUseArrowsInTerm = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
