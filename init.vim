@@ -206,6 +206,9 @@ nnoremap <Leader>gr :GitGutterRevertHunk<CR>
 nmap ]c <Plug>GitGutterNextHunk
 nmap [c <Plug>GitGutterPrevHunk
 
+" git status in new tab
+nnoremap <leader>gs :tabnew %<CR>:Gstatus<CR><C-w>o
+
 " modes togglers
 nnoremap <leader>mw :WrapToggle<CR>
 nnoremap <leader>mp :PasteToggle<CR>
