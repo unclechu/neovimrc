@@ -384,10 +384,11 @@ noremap : ;
 noremap \ ;
 noremap \| ,
 
-" because working with clipboard buffers is more important
+" because working with clipboard registers is more important
 noremap ' "
 noremap " '
 noremap "" ''
+nnoremap <silent> '' :registers<CR>
 
 " custom behavior of big R in visual mode
 vnoremap R r<Space>R
