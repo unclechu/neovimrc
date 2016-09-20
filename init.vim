@@ -434,3 +434,5 @@ let g:neovimrc = expand('~') . '/.neovimrc-local-post'
 if filereadable(g:neovimrc)
 	exec 'source ' . g:neovimrc
 endif
+
+let $BASH_ENV = "~/.bash_aliases"
