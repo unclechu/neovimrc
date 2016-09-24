@@ -435,4 +435,5 @@ if filereadable(g:neovimrc)
 	exec 'source ' . g:neovimrc
 endif
 
+set shell=/bin/bash
 let $BASH_ENV = "~/.bash_aliases"
