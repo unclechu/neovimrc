@@ -20,7 +20,7 @@ function! s:GruvboxContrastRotate()
 			let g:gruvbox_contrast_dark = 'soft'
 		endif
 		let s:contrast = g:gruvbox_contrast_dark
-	else
+	elseif &background == 'light'
 		if g:gruvbox_contrast_light == 'soft'
 			let g:gruvbox_contrast_light = 'medium'
 		elseif g:gruvbox_contrast_light == 'medium'
