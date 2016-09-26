@@ -299,7 +299,11 @@ noremap '<Space> "+
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>
 
+
+" colorscheme stuff
 noremap <leader>ss <Esc>:set background=
+noremap <leader>sb :BackgroundToggle<CR>
+noremap <leader>sc :GruvboxContrastRotate<CR>
 
 
 " hjkl
@@ -426,6 +430,8 @@ xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 digraphs '' 769 " accent
 digraphs 3. 8230 " dots
 
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_light = 'soft'
 colorscheme gruvbox
 set background=dark
 
