@@ -66,6 +66,7 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 't9md/vim-quickhl'
 Plugin 'tweekmonster/braceless.vim'
+Plugin 'equalsraf/neovim-gui-shim'
 
 " surround
 Plugin 'tpope/vim-surround'
