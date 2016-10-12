@@ -304,8 +304,8 @@ map <leader>P/  '/Phds\ds>
 " system buffer alias without shift modifier (like <Space> is specific buffer)
 noremap '<Space> "+
 
-" bash-like forward deleting in insert mode
-inoremap <C-d> <Del>
+" forward version of <C-h> in insert mode
+inoremap <C-l> <Del>
 
 
 " colorscheme stuff
