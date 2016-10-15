@@ -443,12 +443,6 @@ let g:gruvbox_contrast_light = 'soft'
 colorscheme gruvbox
 set background=dark
 
-" include local rc
-let g:neovimrc = expand('~') . '/.neovimrc-local-post'
-if filereadable(g:neovimrc)
-	exec 'source ' . g:neovimrc
-endif
-
 set shell=/bin/bash
 let $BASH_ENV = "~/.bash_aliases"
 
@@ -469,3 +463,9 @@ let g:terminal_color_12 = '#839496'
 let g:terminal_color_13 = '#6c71c4'
 let g:terminal_color_14 = '#93a1a1'
 let g:terminal_color_15 = '#fdf6e3'
+
+" include local rc
+let g:neovimrc = expand('~') . '/.neovimrc-local-post'
+if filereadable(g:neovimrc)
+	exec 'source ' . g:neovimrc
+endif
