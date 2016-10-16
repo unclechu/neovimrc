@@ -140,7 +140,7 @@ let g:unite_source_menu_menus.ls.command_candidates = [
 	\ ['Compile selected chunk using lsc', "'<,'>!lsc -cbps | sed 1d"]
 	\]
 call unite#custom#source(
-	\ 'file_rec,file_rec/async',
+	\ 'file_rec,file_rec/async,file_rec/neovim',
 	\ 'ignore_pattern',
 	\ '\v\.git/|\.hg/|\.svn/|__pycache__/|node_modules/|bower_components/'
 	\   . '\.exe$|\.so$|\.dll$|\.swp$|\.swo$'
