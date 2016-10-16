@@ -53,7 +53,7 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'Shougo/unite.vim'   " unite
-Plugin 'Shougo/denite.nvim' " unite async (neovim)
+" Plugin 'Shougo/denite.nvim' " future async replacement for unite
 Plugin 'Shougo/neomru.vim'  " unite 'file_mru'
 Plugin 'Shougo/neoyank.vim' " unite clipboard history 'history/yank'
 Plugin 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} " async autocompletion
@@ -218,9 +218,10 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Unite
 nnoremap <C-p>     :Unite -start-insert file_rec/async buffer<CR>
-nnoremap <leader>; :Unite -start-insert menu<CR>
-vnoremap <leader>; :Unite -start-insert menu<CR>
 nnoremap <leader>y :Unite history/yank<CR>
+nnoremap <leader>s :Unite line<CR>
+nnoremap <leader>; :Unite menu<CR>
+vnoremap <leader>; :Unite menu<CR>
 
 " GitGutter keys
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
@@ -282,7 +283,8 @@ nmap s         <Plug>(easymotion-bd-w)
 vmap s         <Plug>(easymotion-bd-w)
 nmap <Space>s  <Plug>(easymotion-overwin-w)
 vmap <Space>s  <Nop>
-nmap <leader>s <Nop>
+" now it's :Unite line
+" nmap <leader>s <Nop>
 vmap <leader>s <Nop>
 
 nmap <leader>x <Plug>(easymotion-bd-jk)
