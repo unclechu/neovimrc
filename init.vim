@@ -52,7 +52,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-commentary'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Shougo/unite.vim'   " unite
+Plugin 'Shougo/denite.nvim' " unite async (neovim)
+Plugin 'Shougo/neomru.vim'  " unite 'file_mru'
+Plugin 'Shougo/neoyank.vim' " unite clipboard history 'history/yank'
+Plugin 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} " async autocompletion
 Plugin 'sjl/gundo.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
@@ -99,10 +103,6 @@ let g:airline#extensions#whitespace#enabled = 0
 set laststatus=2 " airline always
 set hidden " ctrlspace
 set showtabline=2
-let g:ctrlp_custom_ignore =
-	\ '\v(\.exe|\.so|\.dll|\.swp|\.git|\.hg|\.svn|'
-	\ . '\/node_modules|\/bower_components|\/__pycache__)$'
-let g:ctrlp_show_hidden = 1
 let g:CtrlSpaceDefaultMappingKey = "<C-Space>"
 let g:CtrlSpaceUseArrowsInTerm = 1
 let g:indentLine_enabled = 0
@@ -131,6 +131,20 @@ let g:indexed_search_mappings = 0
 let g:EasyMotion_do_mapping = 0 " disable default mappings
 let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
+let g:deoplete#enable_at_startup = 1
+let g:unite_source_menu_menus = get(g:, 'unite_source_menu_menus', {})
+let g:unite_source_menu_menus.ls = {
+	\ 'description': 'LiveScript'
+	\}
+let g:unite_source_menu_menus.ls.command_candidates = [
+	\ ['Compile selected chunk using lsc', "'<,'>!lsc -cbps | sed 1d"]
+	\]
+call unite#custom#source(
+	\ 'file_rec,file_rec/async',
+	\ 'ignore_pattern',
+	\ '\v\.git/|\.hg/|\.svn/|__pycache__/|node_modules/|bower_components/'
+	\   . '\.exe$|\.so$|\.dll$|\.swp$|\.swo$'
+	\)
 
 " load my modules
 syntax on
@@ -157,6 +171,7 @@ set relativenumber
 set nocursorline
 set nocursorcolumn
 set colorcolumn=80
+set showcmd " show combos at the right bottom corner
 
 set mouse=a
 
@@ -200,6 +215,12 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>fn :NERDTreeFind<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
+
+" Unite
+nnoremap <C-p>     :Unite -start-insert file_rec/async buffer<CR>
+nnoremap <leader>; :Unite -start-insert menu<CR>
+vnoremap <leader>; :Unite -start-insert menu<CR>
+nnoremap <leader>y :Unite history/yank<CR>
 
 " GitGutter keys
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
@@ -385,9 +406,13 @@ if &mouse == 'a'
 	nmap <C-ScrollWheelDown> <leader><leader>-
 endif
 
-" get rid off randomly turning on ex-mode
+" get rid off randomly turning ex-mode on
 map Q  <Nop>
 map gQ <Nop>
+
+" get rid off randomly turning macros-writing on
+map q  <Nop>
+noremap gq q
 
 " thanks to Minoru for the advice
 noremap ; :
@@ -463,6 +488,9 @@ let g:terminal_color_12 = '#839496'
 let g:terminal_color_13 = '#6c71c4'
 let g:terminal_color_14 = '#93a1a1'
 let g:terminal_color_15 = '#fdf6e3'
+
+command! MakeTags !ctags -R .
+set path+=** " recursively deal with files
 
 " include local rc
 let g:neovimrc = expand('~') . '/.neovimrc-local-post'

@@ -2,3 +2,5 @@
 *.swo
 bundle
 .netrwhist
+.init.vim-rplugin~
+tags
