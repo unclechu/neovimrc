@@ -217,12 +217,15 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 
 " Unite
-nnoremap <C-p>     :Unite -auto-resize -start-insert file_rec/async buffer<CR>
-nnoremap <leader>y :Unite -auto-resize history/yank<CR>
-nnoremap <leader>Y :Unite -auto-resize register<CR>
-nnoremap <leader>s :Unite -auto-resize line<CR>
-nnoremap <leader>; :Unite -auto-resize menu<CR>
-vnoremap <leader>; :Unite -auto-resize menu<CR>
+nnoremap <C-p>      :Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
+nnoremap <leader>y  :Unite -auto-resize history/yank<CR>
+nnoremap <leader>Y  :Unite -auto-resize register<CR>
+" sl - show lines
+nnoremap <leader>sl :Unite -auto-resize line<CR>
+" sa - show all
+nnoremap <leader>sa :Unite -auto-resize line:buffers<CR>
+nnoremap <leader>;  :Unite -auto-resize menu<CR>
+vnoremap <leader>;  :Unite -auto-resize menu<CR>
 
 " GitGutter keys
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
@@ -284,8 +287,7 @@ nmap s         <Plug>(easymotion-bd-w)
 vmap s         <Plug>(easymotion-bd-w)
 nmap <Space>s  <Plug>(easymotion-overwin-w)
 vmap <Space>s  <Nop>
-" now it's :Unite line
-" nmap <leader>s <Nop>
+nmap <leader>s <Nop>
 vmap <leader>s <Nop>
 
 nmap <leader>x <Plug>(easymotion-bd-jk)
