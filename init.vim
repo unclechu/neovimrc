@@ -219,6 +219,7 @@ nnoremap <leader>u :GundoToggle<CR>
 " Unite
 nnoremap <C-p>     :Unite -auto-resize -start-insert file_rec/async buffer<CR>
 nnoremap <leader>y :Unite -auto-resize history/yank<CR>
+nnoremap <leader>Y :Unite -auto-resize register<CR>
 nnoremap <leader>s :Unite -auto-resize line<CR>
 nnoremap <leader>; :Unite -auto-resize menu<CR>
 vnoremap <leader>; :Unite -auto-resize menu<CR>
