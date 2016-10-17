@@ -133,11 +133,18 @@ let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
 let g:unite_source_menu_menus = get(g:, 'unite_source_menu_menus', {})
-let g:unite_source_menu_menus.ls = {
-	\ 'description': 'LiveScript'
-	\}
+let g:unite_source_menu_menus.ls = { 'description': 'LiveScript' }
 let g:unite_source_menu_menus.ls.command_candidates = [
 	\ ['Compile selected chunk using lsc', "'<,'>!lsc -cbps | sed 1d"]
+	\]
+let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
+let g:unite_source_menu_menus.unite.command_candidates = [
+	\ ['MRU', 'Unite -auto-resize file_mru'],
+	\ ['Buffers (insert)', 'Unite -auto-resize -start-insert buffer'],
+	\ [
+	\  'MRU + Buffers (insert)',
+	\  'Unite -auto-resize -start-insert file_mru buffer'
+	\ ]
 	\]
 call unite#custom#source(
 	\ 'file_rec,file_rec/async,file_rec/neovim',
@@ -219,13 +226,16 @@ nnoremap <leader>u :GundoToggle<CR>
 " Unite
 nnoremap <C-p>      :Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
 nnoremap <leader>y  :Unite -auto-resize history/yank<CR>
-nnoremap <leader>Y  :Unite -auto-resize register<CR>
+nnoremap ''         :Unite -auto-resize register<CR>
 " sl - show lines
 nnoremap <leader>sl :Unite -auto-resize -start-insert line<CR>
 " sa - show all
 nnoremap <leader>sa :Unite -auto-resize -start-insert line:buffers<CR>
 nnoremap <leader>;  :Unite -auto-resize menu<CR>
 vnoremap <leader>;  :Unite -auto-resize menu<CR>
+" feels kinda like ctrlspace
+nnoremap <leader><Space> :Unite -auto-resize -start-insert buffer<CR>
+nnoremap <Space><leader> :Unite -auto-resize file_mru<CR>
 
 " GitGutter keys
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
@@ -431,7 +441,6 @@ noremap \| ,
 noremap ' "
 noremap " '
 noremap "" ''
-nnoremap <silent> '' :registers<CR>
 
 " custom behavior of big R in visual mode
 vnoremap R r<Space>R
