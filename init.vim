@@ -140,7 +140,7 @@ let g:unite_source_menu_menus.ls.command_candidates = [
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
 	\ ['MRU', 'Unite -auto-resize file_mru'],
-	\ ['Buffers (insert)', 'Unite -auto-resize -start-insert buffer'],
+	\ ['Buffers', 'Unite -auto-resize buffer'],
 	\ [
 	\  'MRU + Buffers (insert)',
 	\  'Unite -auto-resize -start-insert file_mru buffer'
@@ -234,7 +234,7 @@ nnoremap <leader>sa :Unite -auto-resize -start-insert line:buffers<CR>
 nnoremap <leader>;  :Unite -auto-resize menu<CR>
 vnoremap <leader>;  :Unite -auto-resize menu<CR>
 " feels kinda like ctrlspace
-nnoremap <leader><Space> :Unite -auto-resize -start-insert buffer<CR>
+nnoremap <leader><Space> :Unite -auto-resize buffer<CR>
 nnoremap <Space><leader> :Unite -auto-resize file_mru<CR>
 
 " GitGutter keys
