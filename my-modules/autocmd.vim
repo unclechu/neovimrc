@@ -38,9 +38,7 @@ function! s:PreviousTab_TabClosed()
 	if s:tab_current > 1 && s:tab_current < s:tab_last
 		exec 'tabp'
 	endif
-	call s:PreviousTab_StoreState()
 endfunction
-call s:PreviousTab_StoreState()
 autocmd TabEnter,TabLeave * call s:PreviousTab_StoreState()
 autocmd TabClosed * call s:PreviousTab_TabClosed()
 
