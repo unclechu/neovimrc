@@ -133,7 +133,7 @@ let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
 let g:unite_source_menu_menus = get(g:, 'unite_source_menu_menus', {})
-let g:unite_source_menu_menus.ls = { 'description': 'LiveScript' }
+let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
 let g:unite_source_menu_menus.ls.command_candidates = [
 	\ ['Compile selected chunk using lsc', "'<,'>!lsc -cbps | sed 1d"]
 	\]
@@ -146,6 +146,33 @@ let g:unite_source_menu_menus.unite.command_candidates = [
 	\  'Unite -auto-resize -start-insert file_mru buffer'
 	\ ]
 	\]
+
+" merge all menu items to single group
+let s:u_all = []
+let s:u_max_prefix_length = 0
+for [k, v] in items(g:unite_source_menu_menus)
+	if s:u_max_prefix_length < len(v.description)
+		let s:u_max_prefix_length = len(v.description)
+	endif
+	for item in v.command_candidates
+		call add(s:u_all, [v.description, item[0], item[1]])
+	endfor
+endfor
+let s:u_all_pfx = []
+for item in s:u_all
+	let s:u_desc = item[0]
+	while len(s:u_desc) < s:u_max_prefix_length
+		let s:u_desc = s:u_desc . ' '
+	endwhile
+	call add(s:u_all_pfx, [s:u_desc . ' | ' . item[1], item[2]])
+endfor
+let g:unite_source_menu_menus.all = { 'description': 'All actions' }
+let g:unite_source_menu_menus.all.command_candidates = s:u_all_pfx
+unlet s:u_all
+unlet s:u_all_pfx
+unlet s:u_max_prefix_length
+unlet s:u_desc
+
 call unite#custom#source(
 	\ 'file_rec,file_rec/async,file_rec/neovim',
 	\ 'ignore_pattern',
@@ -231,8 +258,9 @@ nnoremap ''         :Unite -auto-resize register<CR>
 nnoremap <leader>sl :Unite -auto-resize -start-insert line<CR>
 " sa - show all
 nnoremap <leader>sa :Unite -auto-resize -start-insert line:buffers<CR>
-nnoremap <leader>;  :Unite -auto-resize menu<CR>
-vnoremap <leader>;  :Unite -auto-resize menu<CR>
+nnoremap <leader>;  :Unite -auto-resize -start-insert menu:all<CR>
+vnoremap <leader>;  :Unite -auto-resize -start-insert menu:all<CR>
+nnoremap <leader>:  :Unite -auto-resize<Space>
 " feels kinda like ctrlspace
 nnoremap <leader><Space> :Unite -auto-resize buffer<CR>
 nnoremap <Space><leader> :Unite -auto-resize file_mru<CR>
