@@ -132,6 +132,7 @@ let g:EasyMotion_do_mapping = 0 " disable default mappings
 let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
+
 let g:unite_source_menu_menus = get(g:, 'unite_source_menu_menus', {})
 let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
 let g:unite_source_menu_menus.ls.command_candidates = [
