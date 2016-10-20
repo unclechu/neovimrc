@@ -245,7 +245,7 @@ nmap ]c <Plug>GitGutterNextHunk
 nmap [c <Plug>GitGutterPrevHunk
 
 " git status in new tab
-nnoremap <leader>gs :tabnew %<CR>:Gstatus<CR><C-w>o:tabm-1<CR>
+nnoremap <leader>gs :tabnew %<CR>:Gstatus<CR><C-w>o
 nnoremap <leader>gS :Gstatus<CR><C-w>o
 
 " modes togglers
