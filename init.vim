@@ -136,7 +136,8 @@ let g:deoplete#enable_at_startup = 1
 let g:unite_source_menu_menus = get(g:, 'unite_source_menu_menus', {})
 let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
 let g:unite_source_menu_menus.ls.command_candidates = [
-	\ ['Compile selected chunk using lsc', "'<,'>!lsc -cbps | sed 1d"]
+	\ ['Compile selected chunk to JS using LSC', "'<,'>!lsc -cbps | sed 1d"],
+	\ ['Get AST from selected chunk using LSC', "'<,'>!lsc -cbpsa"]
 	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
