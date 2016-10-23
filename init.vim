@@ -277,7 +277,7 @@ nnoremap <Space><leader> :Unite -auto-resize file_mru<CR>
 " GitGutter keys
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
 nnoremap <Leader>ga :GitGutterStageHunk<CR>
-nnoremap <Leader>gr :GitGutterRevertHunk<CR>
+nnoremap <Leader>gr :GitGutterUndoHunk<CR>
 nmap ]c <Plug>GitGutterNextHunk
 nmap [c <Plug>GitGutterPrevHunk
 
