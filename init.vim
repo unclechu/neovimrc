@@ -261,7 +261,7 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Unite
 nnoremap <C-p>      :Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
-nnoremap <leader>y  :Unite -auto-resize history/yank<CR>
+nnoremap <leader>y  :Unite -auto-resize history/yank -default-action=append<CR>
 nnoremap ''         :Unite -auto-resize register<CR>
 " sl - show lines
 nnoremap <leader>sl :Unite -auto-resize -start-insert line<CR>
