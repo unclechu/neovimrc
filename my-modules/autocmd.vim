@@ -10,6 +10,7 @@ autocmd BufNewFile,BufRead *.ts set ft=typescript
 autocmd BufNewFile,BufRead *.tsx set ft=typescript.jsx
 autocmd BufNewFile,BufRead Makefile set noexpandtab
 autocmd BufNewFile,BufRead nginx.conf set ft=nginx
+autocmd BufNewFile,BufRead *.hsc set ft=haskell
 
 " because some custom `indentexpr`s has annoying issues
 autocmd FileType
