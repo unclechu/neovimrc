@@ -30,6 +30,8 @@ autocmd InsertLeave * set relativenumber
 " fix easymotion bug https://github.com/easymotion/vim-easymotion/issues/294
 autocmd WinLeave * silent
 
+autocmd TermOpen * set number relativenumber
+
 function! s:PreviousTab_StoreState()
 	let s:tab_current = tabpagenr()
 	let s:tab_last = tabpagenr('$')
