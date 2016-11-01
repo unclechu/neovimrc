@@ -12,6 +12,10 @@ autocmd BufNewFile,BufRead Makefile set noexpandtab
 autocmd BufNewFile,BufRead nginx.conf set ft=nginx
 autocmd BufNewFile,BufRead *.hsc set ft=haskell
 
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
 " because some custom `indentexpr`s has annoying issues
 autocmd FileType
 	\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx,typescript.jsx
