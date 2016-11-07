@@ -263,6 +263,7 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 
 " Unite
+nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
 nnoremap <C-p>      :Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
 nnoremap <leader>y  :Unite -auto-resize history/yank -default-action=append<CR>
 nnoremap ''         :Unite -auto-resize register<CR>
