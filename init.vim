@@ -487,9 +487,9 @@ vnoremap R r<Space>R
 
 " custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
-nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>
+nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
 nmap @ <Plug>(indexed-search-*)
-nnoremap g@ yiw:let @/ = '\V\<<C-R>0\>'<CR>
+nnoremap g@ yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
 " noremap ! #
 " noremap @ *
 noremap # ^
