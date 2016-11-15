@@ -392,6 +392,10 @@ noremap <leader>ss <Esc>:set background=
 noremap <leader>sb :BackgroundToggle<CR>
 noremap <leader>sc :GruvboxContrastRotate<CR>
 
+nnoremap gy Y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
+nnoremap gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
+vnoremap gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
+vnoremap gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
 
 " hjkl
 nnoremap <C-h>     :wincmd h<CR>
