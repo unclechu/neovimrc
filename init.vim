@@ -262,7 +262,7 @@ nnoremap <leader>fn :NERDTreeFind<CR>
 nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
-nmap <leader>fb <leader>fo<leader>t
+nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
 
 " Unite
 nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
