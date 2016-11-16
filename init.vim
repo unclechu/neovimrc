@@ -101,6 +101,7 @@ let NERDTreeMapOpenVSplit = 'S' " for easymotion 's' map
 let g:nerdtree_tabs_open_on_gui_startup     = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
 let g:nerdtree_tabs_open_on_new_tab         = 0
+let g:tagbar_show_linenumbers               = 2
 let g:airline#extensions#tabline#enabled    = 0
 let g:airline#extensions#whitespace#enabled = 0
 set laststatus=2 " airline always
