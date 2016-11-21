@@ -337,6 +337,7 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
 
+" move anywhere
 nmap s         <Plug>(easymotion-bd-w)
 vmap s         <Plug>(easymotion-bd-w)
 nmap <Space>s  <Plug>(easymotion-overwin-w)
@@ -344,19 +345,28 @@ vmap <Space>s  <Nop>
 nmap <leader>s <Nop>
 vmap <leader>s <Nop>
 
+" move between lines
+" (also between empty lines with indentation)
 nmap <leader>x <Plug>(easymotion-bd-jk)
 vmap <leader>x <Plug>(easymotion-bd-jk)
 nmap <Space>x  <Plug>(easymotion-overwin-line)
 vmap <Space>x  <Nop>
 
+" move over the line
+nmap <leader>z <Plug>(easymotion-lineanywhere)
+vmap <leader>z <Plug>(easymotion-lineanywhere)
+
+" move to place with specific symbols
 nmap <leader>w <Plug>(easymotion-bd-f2)
 vmap <leader>w <Plug>(easymotion-bd-f2)
 nmap <Space>w  <Plug>(easymotion-overwin-f2)
 vmap <Space>w  <Nop>
 
+" turn on visual mode and select to specific place
 nmap <leader>v v<Plug>(easymotion-bd-w)
 nmap <leader>V V<Plug>(easymotion-bd-jk)
 
+" move by direction
 nmap <leader>l <Plug>(easymotion-lineforward)
 vmap <leader>l <Plug>(easymotion-lineforward)
 nmap <leader>h <Plug>(easymotion-linebackward)
@@ -437,9 +447,9 @@ vnoremap <A-S-Up>    <Esc>:wincmd +<CR>
 nnoremap <A-S-Down>  :wincmd -<CR>
 vnoremap <A-S-Down>  <Esc>:wincmd -<CR>
 
-" zoom buffer hack
-nnoremap <leader>zz :999wincmd ><CR>:999wincmd +<CR>
-vnoremap <leader>zz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
+" zoom buffer hack ('fz' means 'full size')
+nnoremap <leader>fz :999wincmd ><CR>:999wincmd +<CR>
+vnoremap <leader>fz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
 
 " moving between history in command mode
 cnoremap <C-p> <Up>
