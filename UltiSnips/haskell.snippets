@@ -1,90 +1,89 @@
 priority -50
 
 
-snippet unicode "Unicode support directive" w
-{-# LANGUAGE UnicodeSyntax #-}
+snippet pr "Pragma LANGUAGE" w
+{-# LANGUAGE ${1:Foo} #-}
 endsnippet
 
 
-# digraphs aliases in comments
-
-
-# Ob
-snippet . "Function compose" i
-∘ ${1}
-endsnippet
-
-snippet ? "Function compose (left-to-right)" i
-⬥ ${1}
-endsnippet
-
-snippet & "Pipe (unicode)" i
-⎎ ${1}
-endsnippet
-
-# ::
-snippet :: "Proportion" i
-∷ ${1}
-endsnippet
-
-# =>
-snippet => "Rightwards double arrow" i
-⇒ ${1}
-endsnippet
-
-# ->
-snippet -> "Rightwards arrow" i
-→ ${1}
-endsnippet
-
-# <-
-snippet <- "Leftwards arrow" i
-← ${1}
-endsnippet
-
-
-# FA
-snippet forall "For all" i
-∀ ${1}
-endsnippet
-
-# TE
-snippet exists "Exists" i
-∃ ${1}
-endsnippet
-
-# !=
-snippet != "Not equal" i
-≠ ${1}
-endsnippet
-
-# =<
-snippet <= "Less or equal" i
-≤ ${1}
-endsnippet
-
-# >=
-snippet >= "Greater or equal" i
-≥ ${1}
-endsnippet
-
-
-snippet .u "Declaration of unicode compose" w
-(∘) = (.)
-endsnippet
-
-
-# pipes
-
-snippet pipes "Declare pipe operators" w
--- pipes
+snippet p$ "Declare pipe version of ($)" w
+(&) :: a -> (a -> b) -> b
 (&) = flip ($)
-(?) = flip (.)
+infixl 0 &
 endsnippet
 
-# sadly it doesn't work like I expected
-snippet pipesu "Declare unicode syntax pipe operators" w
--- pipes
-(⎎) = flip ($)
-(⬥) = flip (∘)
+snippet p. "Declare pipe version of (.)" w
+(.>) :: (a -> b) -> (b -> c) -> a -> c
+(.>) = flip (.)
+infixl 9 .>
+endsnippet
+
+snippet p "Declare pipe version of ($) and (.) both" w
+(&) :: a -> (a -> b) -> b
+(&) = flip ($)
+infixl 0 &
+
+(.>) :: (a -> b) -> (b -> c) -> a -> c
+(.>) = flip (.)
+infixl 9 .>
+endsnippet
+
+
+snippet u "undefined" w
+undefined
+endsnippet
+
+
+snippet i "import" w
+import ${1}
+endsnippet
+
+snippet iq "qualified import" w
+import qualified ${1}
+endsnippet
+
+snippet is "qualified import as" w
+import qualified ${1:Foo} as ${2:Bar}
+endsnippet
+
+snippet ix "explicit import" w
+import ${1:Foo} (${2:Bar})
+endsnippet
+
+
+snippet m "module" w
+module ${1:Foo} where
+endsnippet
+
+snippet mx "module with explicit export" w
+module ${1:Foo} (${2:Bar}) where
+endsnippet
+
+snippet mm "module with multiline explicit export" w
+module ${1:Foo}
+	( ${2:Bar}
+	) where
+endsnippet
+
+
+# wrapping name of the function to ${} doesn't make sense
+# becase we need to edit function name two times, let's
+# do it later.
+snippet f "declare a function" w
+f :: ${1:Foo}
+f = ${2:undefined}
+endsnippet
+
+snippet l "declare a lambda" i
+\\${1:x} -> ${2:undefined}
+endsnippet
+
+snippet lb "declare a lambda wrapped to brackets" w
+(\\${1:x} -> ${2:undefined})
+endsnippet
+
+
+snippet main "main monad" w
+main :: IO ()
+main = ${1:undefined}
 endsnippet
