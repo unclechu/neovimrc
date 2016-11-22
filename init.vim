@@ -137,7 +137,7 @@ let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
 
-let g:unite_source_menu_menus = get(g:, 'unite_source_menu_menus', {})
+let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
 let g:unite_source_menu_menus.ls.command_candidates = [
 	\ ['Compile selected chunk to JS using LSC', "'<,'>!lsc -cbps | sed 1d"],
@@ -261,6 +261,9 @@ nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>bd :ls<CR>:bd<space>
 
 nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
+
+" 'cr' means 'config reload'
+nnoremap <leader>cr :source $MYVIMRC<CR>
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
