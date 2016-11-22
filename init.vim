@@ -143,6 +143,11 @@ let g:unite_source_menu_menus.ls.command_candidates = [
 	\ ['Compile selected chunk to JS using LSC', "'<,'>!lsc -cbps | sed 1d"],
 	\ ['Get AST from selected chunk using LSC', "'<,'>!lsc -cbpsa"]
 	\]
+let g:unite_source_menu_menus.haskell = { 'description': 'Haskell' }
+let g:unite_source_menu_menus.haskell.command_candidates = [
+	\ ['ghc-mod: Get type', "GhcModType"],
+	\ ['ghc-mod: Clear type highlight', "GhcModTypeClear"]
+	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
 	\ ['MRU', 'Unite -auto-resize file_mru'],
