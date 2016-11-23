@@ -145,25 +145,26 @@ let g:unite_source_menu_menus.ls.command_candidates = [
 	\]
 let g:unite_source_menu_menus.haskell = { 'description': 'Haskell' }
 let g:unite_source_menu_menus.haskell.command_candidates = [
-	\ ['ghc-mod: Get type', "GhcModType"],
-	\ ['ghc-mod: Get type (ignore unsaved)', "GhcModType!"],
+	\ ['ghc-mod: Get type', "GhcModType!"],
 	\ ['ghc-mod: Get type (redir to @t)',
-	\   "redir @t | exec 'GhcModType' | redir END | echo ''"],
-	\ ['ghc-mod: Get type (redir to @t and ignore unsaved)',
-	\   "redir @t | exec 'GhcModType!' | redir END | echo ''"],
-	\ ['ghc-mod: Clear type highlight', "GhcModTypeClear"]
+	\    "redir @t | exec 'GhcModType!' | redir END | echo ''"],
+	\ ['ghc-mod: Clear type highlight', "GhcModTypeClear"],
+	\ ['ghc-mod: Insert type', "GhcModTypeInsert!"],
+	\ ['ghc-mod: Check for errors/warnings', "GhcModCheckAsync!"],
+	\ ['ghc-mod: Lint', "GhcModLintAsync!"]
 	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
 	\ ['MRU', 'Unite -auto-resize file_mru'],
 	\ ['Buffers', 'Unite -auto-resize buffer'],
 	\ ['MRU + Buffers (insert)',
-	\   'Unite -auto-resize -start-insert file_mru buffer'],
+	\    'Unite -auto-resize -start-insert file_mru buffer'],
 	\ ['Grep by Git files', 'Unite -auto-resize grep/git:.'],
-	\ ['Grep by Git files (case insensitive)', 'Unite -auto-resize grep/git:.:-i'],
+	\ ['Grep by Git files (case insensitive)',
+	\    'Unite -auto-resize grep/git:.:-i'],
 	\ ['Grep by Git files (bare string)', 'Unite -auto-resize grep/git:.:-F'],
 	\ ['Grep by Git files (bare string and case insensitive)',
-	\   'Unite -auto-resize grep/git:.:-iF']
+	\    'Unite -auto-resize grep/git:.:-iF']
 	\]
 
 " merge all menu items to single group
