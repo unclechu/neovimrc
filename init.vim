@@ -496,8 +496,8 @@ map Q  <Nop>
 map gQ <Nop>
 
 " get rid off randomly turning macros-writing on
-map q  <Nop>
-noremap gq q
+map q <Nop>
+noremap <leader>q q
 
 " thanks to Minoru for the advice
 noremap ; :
