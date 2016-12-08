@@ -1,0 +1,1 @@
+../haskell-vim-proto/vim/syntax/alex.vim
