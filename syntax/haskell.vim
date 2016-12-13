@@ -28,6 +28,10 @@ sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
 sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::"
 	\ contains=hs_FunctionName,hs_OpFunctionName,hs_TypeDeclaration
+" overwritten from parent (added `hs_TypeDeclaration` to `contains`)
+sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*::"
+	\ keepend
+	\ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hs_OpFunctionName,hs_hlFunctionName,hs_TypeDeclaration
 
 sy match hs_LambdaFuncDeclBackslash "\\"
 
