@@ -33,6 +33,10 @@ sy match hs_LambdaFuncDeclBackslash "\\"
 
 sy match hs_MyBoolean "\<\(True\|False\)\>"
 
+sy match hs_MyImport "^\s*\<import\>"
+
+
+hi def link hs_MyImport Include
 
 hi def link hs_LambdaFuncDeclBackslash Keyword
 
