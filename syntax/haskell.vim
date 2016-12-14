@@ -32,15 +32,15 @@ sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::"
 sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*::"
 	\ keepend
 	\ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hs_OpFunctionName,hs_hlFunctionName,hs_TypeDeclaration
+" copy-pasted from parent just to make it be applied after root function hl
+sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
+	\ contains=hsModuleName,hsImportLabel
+	\ nextgroup=hsImportParams,hsImportIllegal skipwhite
 
 sy match hs_LambdaFuncDeclBackslash "\\"
 
 sy match hs_MyBoolean "\<\(True\|False\)\>"
 
-sy match hs_MyImport "^\s*\<import\>"
-
-
-hi def link hs_MyImport Include
 
 hi def link hs_LambdaFuncDeclBackslash Keyword
 
