@@ -6,6 +6,8 @@ if exists("b:current_syntax")
 	finish
 endif
 
+sy match hs_MyMoreOperators "\(\s\|^\)\(\$\|&\|\.\|\.>\||\|?\|>>=\?\|=\?<<\|<[|&*$]\+>\|[|&*$]\+>\|<[|&*$]\+\|[%+*-.=$^][~.=%$*^][~=-^]\?\|++\|:\)\(\s\|$\)"
+
 " parent
 let s:path = expand('<sfile>:p:h:h') . "/haskell-vim-proto/vim/syntax/haskell.vim"
 exec "source " . s:path
@@ -19,7 +21,7 @@ sy match hs_EqualsSymbol "\(\s\|^\)=\(\s\|$\)"
 sy match hs_MonadExtract "\s<-\s"
 
 sy match hs_NothingStuff "\(()\|\<undefined\>\)"
-sy match hs_BackQuotesOperator "`[a-zA-Z0-9_']\+`"
+sy match hs_BackQuotesOperator "`[a-zA-Z0-9_'.]\+`"
 
 " overwritten from parent
 " (added `hs_EqualsSymbol` and `hs_NothingStuff` to `contains`)
@@ -40,6 +42,8 @@ sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
 sy match hs_LambdaFuncDeclBackslash "\\"
 
 sy match hs_MyBoolean "\<\(True\|False\)\>"
+sy match hs_MyOperators "\(\s\|^\)\(&&\|||\|==\|/=\|:\|<=\?\|>=\?\)\(\s\|$\)"
+sy match hs_MyWarn "(\.\.)"
 
 
 hi def link hs_LambdaFuncDeclBackslash Keyword
@@ -53,6 +57,9 @@ hi def link hs_BackQuotesOperator Identifier
 
 hi def link hs_NothingStuff StorageClass
 hi def link hs_MyBoolean StorageClass
+hi def link hs_MyOperators Identifier
+hi def link hs_MyMoreOperators Identifier
+hi def link hs_MyWarn WarningMsg
 
 hi def link hs_EqualsSymbol Constant
 hi def link hs_MonadExtract Constant
