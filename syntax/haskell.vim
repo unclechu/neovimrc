@@ -6,19 +6,17 @@ if exists("b:current_syntax")
 	finish
 endif
 
-sy match hs_MyMoreOperators "\(\s\|^\)\(\$\|&\|\.\|\.>\||\|?\|>>=\?\|=\?<<\|<[|&*$]\+>\|[|&*$]\+>\|<[|&*$]\+\|[%+*-.=$^][~.=%$*^][~=-^]\?\|++\|:\)\(\s\|$\)"
-
 " parent
 let s:path = expand('<sfile>:p:h:h') . "/haskell-vim-proto/vim/syntax/haskell.vim"
 exec "source " . s:path
 unlet s:path
 
 
-sy match hs_TypeDeclaration "\(\s\|^\)::\(\s\|$\)"
-sy match hs_TypeDeclNext "\(\s\|^\)->\(\s\|$\)"
-sy match hs_TypeDeclConstraint "\(\s\|^\)=>\(\s\|$\)"
-sy match hs_EqualsSymbol "\(\s\|^\)=\(\s\|$\)"
-sy match hs_MonadExtract "\s<-\s"
+sy match hs_TypeDeclaration "\(\s\|^\)\@<=::\(\s\|$\)\@="
+sy match hs_TypeDeclNext "\(\s\|^\)\@<=->\(\s\|$\)\@="
+sy match hs_TypeDeclConstraint "\(\s\|^\)\@<==>\(\s\|$\)\@="
+sy match hs_EqualsSymbol "\(\s\|^\)\@<==\(\s\|$\)\@="
+sy match hs_MonadExtract "\s\@<=<-\s\@="
 
 sy match hs_NothingStuff "\(()\|\<undefined\>\)"
 sy match hs_BackQuotesOperator "`[a-zA-Z0-9_'.]\+`"
@@ -42,7 +40,8 @@ sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
 sy match hs_LambdaFuncDeclBackslash "\\"
 
 sy match hs_MyBoolean "\<\(True\|False\)\>"
-sy match hs_MyOperators "\(\s\|^\)\(&&\|||\|==\|/=\|:\|<=\?\|>=\?\)\(\s\|$\)"
+sy match hs_MyOperators "\(\s\|^\)\@<=\(&&\|||\|==\|/=\|:\|<=\?\|>=\?\)\(\s\|$\)\@="
+sy match hs_MyMoreOperators "\(\s\|^\)\@<=\(\$\|&\|\.\|\.>\||\|?\|>>=\?\|=\?<<\|<[|&*$]\+>\|[|&*$]\+>\|<[|&*$]\+\|[%+*-.=$^][~.=%$*^][~=-^]\?\|++\|:\)\(\s\|$\)\@="
 sy match hs_MyWarn "(\.\.)"
 
 
