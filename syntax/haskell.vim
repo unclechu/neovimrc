@@ -44,6 +44,10 @@ sy match hs_MyOperators "\(\s\|^\)\@<=\(&&\|||\|==\|/=\|:\|<=\?\|>=\?\)\(\s\|$\)
 sy match hs_MyMoreOperators "\(\s\|^\)\@<=\(\$\|&\|\.\|\.>\||\|?\|>>=\?\|=\?<<\|<[|&*$]\+>\|[|&*$]\+>\|<[|&*$]\+\|[%+*-.=$^][~.=%$*^][~=-^]\?\|++\|:\)\(\s\|$\)\@="
 sy match hs_MyWarn "(\.\.)"
 
+sy match hs_MyImportAsFix "\(\<import\>\s\+.\+\s\+\)\@<=\<as\>"
+
+
+hi def link hs_MyImportAsFix Include
 
 hi def link hs_LambdaFuncDeclBackslash Keyword
 
