@@ -16,7 +16,7 @@ sy match hs_TypeDeclaration "\(\s\|^\)\@<=::\(\s\|$\)\@="
 sy match hs_TypeDeclNext "\(\s\|^\)\@<=->\(\s\|$\)\@="
 sy match hs_TypeDeclConstraint "\(\s\|^\)\@<==>\(\s\|$\)\@="
 sy match hs_EqualsSymbol "\(\s\|^\)\@<==\(\s\|$\)\@="
-sy match hs_MonadExtract "\s\@<=<-\s\@="
+sy match hs_MonadExtract "\s\@<=<-\(\s\|$\)\@="
 
 sy match hs_NothingStuff "\(()\|\<undefined\>\)"
 sy match hs_BackQuotesOperator "`[a-zA-Z0-9_'.]\+`"
