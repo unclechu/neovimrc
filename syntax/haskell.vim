@@ -46,6 +46,9 @@ sy match hs_MyWarn "(\.\.)"
 
 sy match hs_MyImportAsFix "\(\<import\>\s\+.\+\s\+\)\@<=\<as\>"
 
+" just overwritten `hsType` match to fix '(' bracket highlight (kinda hack)
+sy match hs_MyBracketFix "\<[A-Z]\(\S\&[^,.(]\)*\>"
+
 
 hi def link hs_MyImportAsFix Include
 
