@@ -45,12 +45,14 @@ sy match hs_MyMoreOperators "\(\s\|^\)\@<=\(\$\|&\|\.\|\.>\||\|?\|>>=\?\|=\?<<\|
 sy match hs_MyWarn "(\.\.)"
 
 sy match hs_MyImportAsFix "\(\<import\>\s\+.\+\s\+\)\@<=\<as\>"
+sy match hs_MyImportHidingFix "\(\<import\>\s\+.\+\s\+\)\@<=\<hiding\>"
 
 " just overwritten `hsType` match to fix '(' bracket highlight (kinda hack)
 sy match hs_MyBracketFix "\<[A-Z]\(\S\&[^,.(]\)*\>"
 
 
 hi def link hs_MyImportAsFix Include
+hi def link hs_MyImportHidingFix Include
 
 hi def link hs_LambdaFuncDeclBackslash Keyword
 
