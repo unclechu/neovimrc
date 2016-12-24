@@ -75,6 +75,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 't9md/vim-quickhl'
 Plugin 'tweekmonster/braceless.vim'
 Plugin 'equalsraf/neovim-gui-shim'
+Plugin 'blueyed/vim-diminactive'
 
 " surround
 Plugin 'tpope/vim-surround'
