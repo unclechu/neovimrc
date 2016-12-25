@@ -21,10 +21,14 @@ sy match hs_MonadExtract "\s\@<=<-\(\s\|$\)\@="
 sy match hs_NothingStuff "\(()\|\<undefined\>\)"
 sy match hs_BackQuotesOperator "`[a-zA-Z0-9_'.]\+`"
 
+" custom fork from parent to fix highlight bug
+" when use infix functions inside ViewPatterns.
+sy match hs_My_InfixFunctionName "^\S[^=(]*`[a-z_][^`]*`"me=e-1 contained
+	\ contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
 " overwritten from parent
 " (added `hs_EqualsSymbol` and `hs_NothingStuff` to `contains`)
 sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)"
-	\ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter,hs_EqualsSymbol,hs_NothingStuff
+	\ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_My_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter,hs_EqualsSymbol,hs_NothingStuff
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
 sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::"
 	\ contains=hs_FunctionName,hs_OpFunctionName,hs_TypeDeclaration
