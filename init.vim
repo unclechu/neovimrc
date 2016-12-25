@@ -516,6 +516,8 @@ noremap "" ''
 " custom behavior of big R in visual mode
 vnoremap R r<Space>R
 
+imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>v0c<C-R>0
+
 " custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
 nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
