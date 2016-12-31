@@ -516,7 +516,7 @@ noremap "" ''
 " custom behavior of big R in visual mode
 vnoremap R r<Space>R
 
-imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>v0c<C-R>0
+imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>d0i<C-R>0
 
 " custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
