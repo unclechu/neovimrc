@@ -363,6 +363,9 @@ nmap     <leader>sP <Plug>CtrlSFPwordExec
 nnoremap <leader>so :CtrlSFOpen<CR>
 nnoremap <leader>st :CtrlSFToggle<CR>
 
+" CtrlSpace panel open
+nnoremap <C-Space> :CtrlSpace<CR>
+
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
 
