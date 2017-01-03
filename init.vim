@@ -94,6 +94,8 @@ call vundle#end()
 filetype plugin indent on
 
 " plugins config
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 " always show hidden files in NERDTree
 let NERDTreeMapHelp = '<Leader>?' " heals backward search
