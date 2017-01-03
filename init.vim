@@ -224,6 +224,9 @@ set autoindent
 set smartindent
 set noexpandtab
 
+set splitright
+set splitbelow
+
 set hlsearch
 set smartcase
 
