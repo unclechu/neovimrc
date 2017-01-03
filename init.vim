@@ -252,7 +252,7 @@ set cpoptions+=I " disable indent removing in insert mode (moving by arrow keys)
 set ssop-=options " do not store global and local values in a session
 set ssop-=folds   " do not store folds
 
-set showbreak=˪
+set showbreak=↪
 set linebreak
 " try-catch for old vim versions
 try
