@@ -2,7 +2,7 @@
 "Author: Viacheslav Lotsmanov
 
 
-if exists("b:current_syntax")
+if exists("b:current_syntax") || (exists('g:default_haskell_syntax') && g:default_haskell_syntax == 1)
 	finish
 endif
 

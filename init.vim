@@ -88,6 +88,12 @@ Plugin 'kien/rainbow_parentheses.vim'
 
 " colorschemes
 Plugin 'morhetz/gruvbox'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'nanotech/jellybeans.vim'
+" also:
+"   - codeschool
+"   - railscasts
+"   - twilight
 
 " required for vundle
 call vundle#end()
