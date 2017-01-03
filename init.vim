@@ -238,6 +238,7 @@ set nocursorcolumn
 set colorcolumn=80
 set showcmd " show combos at the right bottom corner
 set inccommand=split
+set virtualedit=all
 
 set mouse=a
 
