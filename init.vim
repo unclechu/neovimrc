@@ -521,7 +521,7 @@ noremap <leader>q q
 
 " thanks to Minoru for the advice
 noremap ; :
-noremap : ;
+" noremap : ;
 
 " thanks to r3lgar for the advice (swap default <leader> and comma)
 noremap \ ;
@@ -548,8 +548,12 @@ noremap # ^
 noremap g# g^
 noremap $ g_
 noremap g$ g$
+" default behavior of %
 " noremap %
-noremap ^ 0
+" noremap ^ 0
+" we already have 0, I never use this key this way
+" let's remap it to '|' that in case was remapped too
+noremap ^ \|
 noremap g^ g0
 noremap & $
 noremap g& g$
