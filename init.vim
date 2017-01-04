@@ -369,13 +369,12 @@ nnoremap <C-Space> :CtrlSpace<CR>
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
 
-" move anywhere
-nmap s         <Plug>(easymotion-bd-w)
-vmap s         <Plug>(easymotion-bd-w)
-nmap <Space>s  <Plug>(easymotion-overwin-w)
-vmap <Space>s  <Nop>
-nmap <leader>s <Nop>
-vmap <leader>s <Nop>
+" move anywhere ('q' means 'quick (move)')
+nmap q         <Plug>(easymotion-bd-w)
+vmap q         <Plug>(easymotion-bd-w)
+nmap <Space>q  <Plug>(easymotion-overwin-w)
+" doesn't make sense with 'overwin' mode
+vmap <Space>q  <Nop>
 
 " move between lines
 " (also between empty lines with indentation)
@@ -515,8 +514,8 @@ endif
 map Q  <Nop>
 map gQ <Nop>
 
-" get rid off randomly turning macros-writing on
-map q <Nop>
+" remap macros key under leader
+" default 'q' remapped to easymotion call
 noremap <leader>q q
 
 " thanks to Minoru for the advice
