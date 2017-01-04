@@ -369,6 +369,10 @@ nnoremap <C-Space> :CtrlSpace<CR>
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
 
+"  L----  ('L' - with <leader> or ' ' - without it)
+" QWerty  (uppercase means it have map)
+" SS----  ('S' - overwin with <space>)
+
 " move anywhere ('q' means 'quick (move)')
 nmap q         <Plug>(easymotion-bd-w)
 vmap q         <Plug>(easymotion-bd-w)
@@ -376,22 +380,26 @@ nmap <Space>q  <Plug>(easymotion-overwin-w)
 " doesn't make sense with 'overwin' mode
 vmap <Space>q  <Nop>
 
+" move to place with specific symbols
+nmap <leader>w <Plug>(easymotion-bd-f2)
+vmap <leader>w <Plug>(easymotion-bd-f2)
+nmap <Space>w  <Plug>(easymotion-overwin-f2)
+vmap <Space>w  <Nop>
+
+" LL-L  ('L' - with <leader> or ' ' - without it)
+" ZXcV  (uppercase means it have map)
+" -S--  ('S' - overwin with <space>)
+
+" move over the line
+nmap <leader>z <Plug>(easymotion-lineanywhere)
+vmap <leader>z <Plug>(easymotion-lineanywhere)
+
 " move between lines
 " (also between empty lines with indentation)
 nmap <leader>x <Plug>(easymotion-bd-jk)
 vmap <leader>x <Plug>(easymotion-bd-jk)
 nmap <Space>x  <Plug>(easymotion-overwin-line)
 vmap <Space>x  <Nop>
-
-" move over the line
-nmap <leader>z <Plug>(easymotion-lineanywhere)
-vmap <leader>z <Plug>(easymotion-lineanywhere)
-
-" move to place with specific symbols
-nmap <leader>w <Plug>(easymotion-bd-f2)
-vmap <leader>w <Plug>(easymotion-bd-f2)
-nmap <Space>w  <Plug>(easymotion-overwin-f2)
-vmap <Space>w  <Nop>
 
 " turn on visual mode and select to specific place
 nmap <leader>v v<Plug>(easymotion-bd-w)
