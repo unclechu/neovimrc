@@ -384,7 +384,15 @@ vmap <Space>q  <Nop>
 nmap <leader>w <Plug>(easymotion-bd-f2)
 vmap <leader>w <Plug>(easymotion-bd-f2)
 nmap <Space>w  <Plug>(easymotion-overwin-f2)
+" doesn't make sense with 'overwin' mode
 vmap <Space>w  <Nop>
+
+" just another hook as `<leader>e` but for single symbol
+nmap <leader>e <Plug>(easymotion-bd-f)
+vmap <leader>e <Plug>(easymotion-bd-f)
+nmap <Space>e  <Plug>(easymotion-overwin-f)
+" doesn't make sense with 'overwin' mode
+vmap <Space>e  <Nop>
 
 " LL-L  ('L' - with <leader> or ' ' - without it)
 " ZXcV  (uppercase means it have map)
