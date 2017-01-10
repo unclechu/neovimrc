@@ -448,7 +448,7 @@ inoremap <C-l> <Del>
 " colorscheme stuff
 noremap <leader>ss <Esc>:set background=
 noremap <leader>sb :BackgroundToggle<CR>
-noremap <leader>sc :GruvboxContrastRotate<CR>
+noremap <leader>sB :GruvboxContrastRotate<CR>
 
 nnoremap gy Y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
 nnoremap gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
