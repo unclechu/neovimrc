@@ -550,6 +550,7 @@ noremap "" ''
 " custom behavior of big R in visual mode
 vnoremap R r<Space>R
 
+" break line but keep same column position for rest of the line
 imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>v0c<C-R>0
 
 " custom numbers line keys
@@ -583,6 +584,17 @@ nmap N <Plug>(indexed-search-N)zv
 
 xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
+
+" quick hook for 'IndentText'
+inoremap <A-i> <C-r>=IndentText('')<Left><Left>
+
+" useful for multi-line visual block editing with decorative indentation.
+" inserts N (length of input text) spaces and copies original text to default
+" clipboard register.
+function! g:IndentText(text)
+	let @" = a:text
+	return substitute(a:text, '.', ' ', 'g')
+endfunction
 
 " custom digraphs
 digraphs '' 769 " accent
