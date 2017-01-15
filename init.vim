@@ -586,6 +586,7 @@ xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 
 nnoremap <A-t> :tabnew<CR>
+nnoremap <A-w> :tabclose<CR>
 
 " quick hook for 'IndentText'
 inoremap <A-i> <C-r>=IndentText('')<Left><Left>
