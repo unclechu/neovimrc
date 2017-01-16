@@ -553,6 +553,9 @@ vnoremap R r<Space>R
 " break line but keep same column position for rest of the line
 imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>v0c<C-R>0
 
+nnoremap <A-o> mzo<Esc>`z
+nnoremap <A-O> mzO<Esc>`z
+
 " custom numbers line keys
 nmap ! <Plug>(indexed-search-#)
 nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
