@@ -551,7 +551,7 @@ noremap "" ''
 vnoremap R r<Space>R
 
 " break line but keep same column position for rest of the line
-imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>v0c<C-R>0
+imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>#d0i<C-R>0
 
 nnoremap <A-o> mzo<Esc>`z
 nnoremap <A-O> mzO<Esc>`z
