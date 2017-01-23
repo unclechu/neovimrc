@@ -1,8 +1,8 @@
-"additional surround bindings
-"Author: Viacheslav Lotsmanov
+" additional surround bindings
+" Author: Viacheslav Lotsmanov
 
 
-"hack for wrap to <CR> with indentation
+" hack for wrap to <CR> with indentation
 
 vmap S<CR> S<C-j>gvVkoj>
 
@@ -39,4 +39,4 @@ nmap ysi`<CR> ysi`<C-j>gvVkoj>
 nmap ysa`<CR> ysa`<C-j>gvVkoj>
 
 
-"vim: set noet :
+" vim: set noet :

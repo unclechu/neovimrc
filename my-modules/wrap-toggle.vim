@@ -1,5 +1,5 @@
 " wrap toggle
-"Author: Viacheslav Lotsmanov
+" Author: Viacheslav Lotsmanov
 
 function! WrapToggle()
 	let &wrap = ! &wrap
@@ -12,4 +12,4 @@ endfunction
 
 command! WrapToggle call WrapToggle()
 
-"vim: set noet :
+" vim: set noet :

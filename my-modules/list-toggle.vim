@@ -1,5 +1,5 @@
 " list toggle
-"Author: Viacheslav Lotsmanov
+" Author: Viacheslav Lotsmanov
 
 function! ListToggle()
 	let &list = ! &list
@@ -12,4 +12,4 @@ endfunction
 
 command! ListToggle call ListToggle()
 
-"vim: set noet :
+" vim: set noet :

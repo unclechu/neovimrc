@@ -1,5 +1,5 @@
-"indent size
-"Author: Viacheslav Lotsmanov
+" indent size
+" Author: Viacheslav Lotsmanov
 
 function! TabsIndentSize(size)
 	set noet
@@ -22,4 +22,4 @@ endfunction
 command! -nargs=1 TabsIndentSize   call TabsIndentSize(<f-args>)
 command! -nargs=1 SpacesIndentSize call SpacesIndentSize(<f-args>)
 
-"vim: set noet :
+" vim: set noet :

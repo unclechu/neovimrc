@@ -1,5 +1,5 @@
-"get file lines for CLI
-"Author: Viacheslav Lotsmanov
+" get file lines for CLI
+" Author: Viacheslav Lotsmanov
 
 " python wrapper
 function! s:pybase64enc(to_encode)
@@ -28,4 +28,4 @@ endfunction
 
 command! -range FileLines <line1>,<line2>call s:filelines()
 
-"vim: set noet :
+" vim: set noet :

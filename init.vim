@@ -329,6 +329,7 @@ nnoremap <leader>mn :RelativeNumberToggle<CR>
 nnoremap <leader>m] :DelimitMateSwitch<CR>
 nnoremap <leader>mg :GitGutterToggle<CR>
 nnoremap <leader>mc :AutoClearSpacesAtEOFToggle<CR>
+nnoremap <leader>mt :AutoTrimSpacesAtEOFToggle<CR>
 
 " some buffer configs
 nnoremap <leader>ft :set filetype=

@@ -1,5 +1,5 @@
-"backups and swap config
-"Author: Viacheslav Lotsmanov
+" backups and swap config
+" Author: Viacheslav Lotsmanov
 
 set backup
 
@@ -20,4 +20,4 @@ let &directory = g:tmp_dir . ',.,/tmp'
 unlet g:backups_and_swap_home_dir
 unlet g:tmp_dir
 
-"vim: set noet :
+" vim: set noet :

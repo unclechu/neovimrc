@@ -1,18 +1,21 @@
 " clear spaces at EOF and tabs at end of not empty lines
-"Author: Viacheslav Lotsmanov
+" Author: Viacheslav Lotsmanov
 
-let g:auto_clear_spaces_at_eof = 1
 
-function! ClearSpacesAtEOF(doItAnyway)
+
+let g:auto_clear_spaces_at_eof = 1 " for non empty lines
+let g:auto_trim_spaces_at_eof  = 0 " for every line
+
+
+
+" clear spaces and tabs at EOF of not empty lines
+function! s:ClearSpacesAtEOF(do_it_anyway)
 	
-	" clear spaces and tabs at EOF of not empty lines
-	
-	if g:auto_clear_spaces_at_eof == 0 && a:doItAnyway == 0
+	if g:auto_clear_spaces_at_eof == 0 && a:do_it_anyway == 0
 		return
 	endif
 	
-	let oldPosLine = line('.')
-	let oldPosCol  = col('.')
+	let s:view = winsaveview()
 	
 	" current line
 	let s:i = 0
@@ -30,14 +33,14 @@ function! ClearSpacesAtEOF(doItAnyway)
 		if   &filetype == 'javascript'
 		\ || &filetype == 'ls'
 			
-			let s:hasComments = 1
+			let s:has_comments = 1
 			
 			" /* */ comments
-			while s:hasComments == 1
-				let s:hasComments = 0
+			while s:has_comments == 1
+				let s:has_comments = 0
 				if s:isoc == 0
 					if s:line =~ '/\*'
-						let s:hasComments = 1
+						let s:has_comments = 1
 						let s:isoc = 1
 						let s:linesub = substitute(
 							\ s:line,
@@ -52,7 +55,7 @@ function! ClearSpacesAtEOF(doItAnyway)
 					endif
 				else
 					if s:line =~ '\*/'
-						let s:hasComments = 1
+						let s:has_comments = 1
 						let s:isoc = 0
 						let s:line = substitute(s:line, '^.\{-}\*/', 'x', '')
 					endif
@@ -78,30 +81,24 @@ function! ClearSpacesAtEOF(doItAnyway)
 	
 	" clear all spaces at EOF if we using tabs for indentation
 	if ! &expandtab
-		try
-			silent %s/[ ]\+$//g
-		catch
-		endtry
+		silent %s/[ ]\+$//ge
 	endif
 	
 	" clear tabs after spaces if we using tabs for indentation
 	if ! &expandtab
-		try
-			silent %s/[ ]\+[ \t]\+$//g
-		catch
-		endtry
+		silent %s/[ ]\+[ \t]\+$//ge
 	endif
 	
-	call cursor(oldPosLine, oldPosCol)
+	call winrestview(s:view)
 	
 endfunction
 
-function! AutoClearSpacesAtEOF(status)
+function! s:AutoClearSpacesAtEOF(status)
 	if a:status == -1 " toggle
 		if g:auto_clear_spaces_at_eof == 0
-			call AutoClearSpacesAtEOF(1)
+			call s:AutoClearSpacesAtEOF(1)
 		else
-			call AutoClearSpacesAtEOF(0)
+			call s:AutoClearSpacesAtEOF(0)
 		endif
 	elseif a:status == 0 " disable
 		let g:auto_clear_spaces_at_eof = 0
@@ -112,14 +109,56 @@ function! AutoClearSpacesAtEOF(status)
 	endif
 endfunction
 
-command! AutoClearSpacesAtEOFToggle  call AutoClearSpacesAtEOF(-1)
-command! AutoClearSpacesAtEOFEnable  call AutoClearSpacesAtEOF(1)
-command! AutoClearSpacesAtEOFDisable call AutoClearSpacesAtEOF(0)
+command! AutoClearSpacesAtEOFToggle  call s:AutoClearSpacesAtEOF(-1)
+command! AutoClearSpacesAtEOFEnable  call s:AutoClearSpacesAtEOF(1)
+command! AutoClearSpacesAtEOFDisable call s:AutoClearSpacesAtEOF(0)
 
-command! ClearSpacesAtEOF call ClearSpacesAtEOF(1)
+command! ClearSpacesAtEOF call s:ClearSpacesAtEOF(1)
+
+
+
+" clear any space characters at EOF for every line
+function! s:TrimSpacesAtEOF(do_it_anyway)
+	
+	if g:auto_trim_spaces_at_eof == 0 && a:do_it_anyway == 0
+		return
+	endif
+	
+	let s:view = winsaveview()
+	silent %s/\s\+$//e
+	call winrestview(s:view)
+	
+endfunction
+
+function! s:AutoTrimSpacesAtEOF(status)
+	if a:status == -1 " toggle
+		if g:auto_trim_spaces_at_eof == 0
+			call s:AutoTrimSpacesAtEOF(1)
+		else
+			call s:AutoTrimSpacesAtEOF(0)
+		endif
+	elseif a:status == 0 " disable
+		let g:auto_trim_spaces_at_eof = 0
+		echo 'Auto trim spaces at EOF is disabled'
+	elseif a:status == 1 " enable
+		let g:auto_trim_spaces_at_eof = 1
+		echo 'Auto trim spaces at EOF is enabled'
+	endif
+endfunction
+
+command! AutoTrimSpacesAtEOFToggle  call s:AutoTrimSpacesAtEOF(-1)
+command! AutoTrimSpacesAtEOFEnable  call s:AutoTrimSpacesAtEOF(1)
+command! AutoTrimSpacesAtEOFDisable call s:AutoTrimSpacesAtEOF(0)
+
+command! TrimSpacesAtEOF call s:TrimSpacesAtEOF(1)
+
+
 
 if has('autocmd')
-	autocmd BufWritePre * call ClearSpacesAtEOF(0)
+	autocmd BufWritePre * call s:ClearSpacesAtEOF(0)
+	autocmd BufWritePre * call s:TrimSpacesAtEOF(0)
 endif
 
-"vim: set noet :
+
+
+" vim: set noet :

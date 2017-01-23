@@ -1,5 +1,5 @@
-"vim-javascript plugin configs
-"Author: Viacheslav Lotsmanov
+" vim-javascript plugin configs
+" Author: Viacheslav Lotsmanov
 
 if has('autocmd')
 	autocmd FileType javascript setlocal conceallevel=1
@@ -12,4 +12,4 @@ let g:javascript_conceal_return     = "⇐"
 let g:javascript_conceal_undefined  = "¿"
 let g:javascript_conceal_prototype  = "∷"
 
-"vim: set noet :
+" vim: set noet :

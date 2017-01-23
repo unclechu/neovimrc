@@ -41,4 +41,4 @@ endfunction
 command! BackgroundToggle      call s:BackgroundToggle()
 command! GruvboxContrastRotate call s:GruvboxContrastRotate()
 
-"vim: set noet :
+" vim: set noet :

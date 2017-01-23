@@ -1,5 +1,5 @@
-"dirty hacks for prevent unwanted trim trailing whitespace
-"Author: Viacheslav Lotsmanov
+" dirty hacks for prevent unwanted trim trailing whitespace
+" Author: Viacheslav Lotsmanov
 
 function! PreventIndentTrimHackOn()
 	inoremap <CR> x<Backspace><CR>x<Backspace>
@@ -54,4 +54,4 @@ if has('autocmd')
 	autocmd CmdwinLeave * call PreventIndentTrimHackOn()
 endif
 
-"vim: set noet :
+" vim: set noet :

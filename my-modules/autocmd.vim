@@ -1,5 +1,5 @@
-"autocmd commands
-"Author: Viacheslav Lotsmanov
+" autocmd commands
+" Author: Viacheslav Lotsmanov
 
 autocmd BufNewFile,BufRead
 	\ *.json.example,.jshintrc,.babelrc,.eslintrc,.modernizrrc
@@ -49,4 +49,4 @@ endfunction
 autocmd TabEnter,TabLeave * call s:PreviousTab_StoreState()
 autocmd TabClosed * call s:PreviousTab_TabClosed()
 
-"vim: set noet :
+" vim: set noet :

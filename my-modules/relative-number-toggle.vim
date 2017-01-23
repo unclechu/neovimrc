@@ -1,5 +1,5 @@
 " relative number toggle
-"Author: Viacheslav Lotsmanov
+" Author: Viacheslav Lotsmanov
 
 function! RelativeNumberToggle()
 	let &relativenumber = ! &relativenumber
@@ -12,4 +12,4 @@ endfunction
 
 command! RelativeNumberToggle call RelativeNumberToggle()
 
-"vim: set noet :
+" vim: set noet :

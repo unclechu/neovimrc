@@ -1,4 +1,4 @@
-"Author: Viacheslav Lotsmanov
+" Author: Viacheslav Lotsmanov
 
 function! s:PrettifyJSON(str, indent)
 	let l:prepared =
