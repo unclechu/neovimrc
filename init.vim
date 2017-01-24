@@ -349,9 +349,10 @@ nnoremap <leader>sr :SyntasticReset<CR>
 nnoremap <leader>sh :ShowHint<CR>
 
 " short EasyAlign aliases
-vnoremap <leader>: :EasyAlign/:/<CR>
-nnoremap <leader>a :EasyAlign
-vnoremap <leader>a :EasyAlign
+vnoremap <leader>:  :EasyAlign/:/<CR>
+vnoremap <leader>g: :EasyAlign : { 'lm': 0, 'stl': 0 }<CR>
+nnoremap <leader>a  :EasyAlign
+vnoremap <leader>a  :EasyAlign
 
 " CtrlSF bindings
 nmap     <leader>sf <Plug>CtrlSFPrompt
