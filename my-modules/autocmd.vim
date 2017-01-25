@@ -26,6 +26,8 @@ autocmd FileType haskell,cabal setlocal et ts=2 sts=2 sw=2
 
 autocmd FileType python setlocal ts=4 sts=4 sw=4
 
+autocmd FileType gitcommit setlocal cc=75 | 1 | startinsert
+
 " disable tabs highlight on empty lines
 autocmd BufRead * syntax match whitespaceEOL /\s\+$/
 
