@@ -756,13 +756,29 @@ endsnippet
 snippet -im "import module" i
 import "${1:foo}";${2}
 endsnippet
+snippet -im' "import module (single quotes)" i
+import '${1:foo}';${2}
+endsnippet
+
+snippet -id "import default" i
+import ${1:foo} from "${2:bar}";${3}
+endsnippet
+snippet -id' "import default (single quotes)" i
+import ${1:foo} from '${2:bar}';${3}
+endsnippet
 
 snippet -ia "import all as" i
 import * as ${1:foo} from "${2:bar}";${3}
 endsnippet
+snippet -ia' "import all as (single quotes)" i
+import * as ${1:foo} from '${2:bar}';${3}
+endsnippet
 
 snippet -is "import something from" i
 import { ${1:foo} } from "${2:bar}";${3}
+endsnippet
+snippet -is' "import something from (single quotes)" i
+import { ${1:foo} } from '${2:bar}';${3}
 endsnippet
 
 
