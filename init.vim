@@ -436,9 +436,12 @@ nmap <Space>n <Plug>(quickhl-cword-toggle)
 
 " remove word selection symbols after paste from search
 nmap <leader>c/ ds\ds>
+" plugs to prevent mess about triggering default 'p' or 'P'
+map  <leader>p  <Nop>
+map  <leader>P  <Nop>
 " paste searched word and clean it
-map <leader>p/  '/phds\ds>
-map <leader>P/  '/Phds\ds>
+map  <leader>p/ '/phds\ds>
+map  <leader>P/ '/Phds\ds>
 
 " system buffer alias without shift modifier (like <Space> is specific buffer)
 noremap '<Space> "+
