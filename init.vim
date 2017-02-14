@@ -170,7 +170,7 @@ let g:unite_source_menu_menus.haskell.command_candidates = [
 	\ ['ghc-mod: Insert type', "GhcModTypeInsert!"],
 	\ ['ghc-mod: Check for errors/warnings', "GhcModCheckAsync!"],
 	\ ['ghc-mod: Lint', "GhcModLintAsync!"],
-	\ ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle']
+	\ ['Hoogle', 'Unite -auto-resize -start-insert hoogle']
 	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
