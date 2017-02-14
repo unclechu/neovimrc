@@ -47,7 +47,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'unclechu/vim-ctrlspace'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'neomake/neomake'
 Plugin 'SirVer/ultisnips'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
@@ -127,17 +128,16 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
-let g:syntastic_enable_signs = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-let g:syntastic_enable_highlighting = 0
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
-let g:syntastic_python_checkers = ['python']
-let g:syntastic_python_python_exec = '/usr/bin/python3'
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 2
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_enable_highlighting = 0
+" let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
+" let g:syntastic_python_checkers = ['python']
+" let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:indent_guides_exclude_filetypes =
 	\ ['help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal', 'startify']
 let g:user_emmet_leader_key = '<C-Z>'
@@ -150,6 +150,7 @@ let g:EasyMotion_do_mapping = 0 " disable default mappings
 let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
+let g:tsuquyomi_disable_quickfix = 1
 let g:necoghc_enable_detailed_browse = 1
 
 let g:unite_source_menu_menus = {}
@@ -341,10 +342,17 @@ nnoremap <leader>fm :set foldmethod=
 nnoremap <leader>sww :set winwidth=
 nnoremap <leader>swh :set winheight=
 
+
 " Syntastic
-nnoremap <leader>si :SyntasticInfo<CR>
-nnoremap <leader>sc :SyntasticCheck<CR>
-nnoremap <leader>sr :SyntasticReset<CR>
+" nnoremap <leader>si :SyntasticInfo<CR>
+" nnoremap <leader>sc :SyntasticCheck<CR>
+" nnoremap <leader>sr :SyntasticReset<CR>
+
+" Neomake
+nnoremap <leader>si :NeomakeInfo<CR>
+nnoremap <leader>sc :Neomake<CR>
+" nnoremap <leader>sr :<CR>
+
 
 " show hint
 nnoremap <leader>sh :ShowHint<CR>

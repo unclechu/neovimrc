@@ -52,4 +52,6 @@ endfunction
 autocmd TabEnter,TabLeave * call s:PreviousTab_StoreState()
 autocmd TabClosed * call s:PreviousTab_TabClosed()
 
+autocmd BufWritePost * Neomake
+
 " vim: set noet :
