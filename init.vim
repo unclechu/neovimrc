@@ -170,7 +170,8 @@ let g:unite_source_menu_menus.haskell.command_candidates = [
 	\ ['ghc-mod: Insert type', "GhcModTypeInsert!"],
 	\ ['ghc-mod: Check for errors/warnings', "GhcModCheckAsync!"],
 	\ ['ghc-mod: Lint', "GhcModLintAsync!"],
-	\ ['Hoogle', 'Unite -auto-resize -start-insert hoogle']
+	\ ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle'],
+	\ ['Hoogle (command)', "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""]
 	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
@@ -380,6 +381,10 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 " CtrlSpace panel open
 nnoremap <C-Space> :CtrlSpace<CR>
 
+" Make Hoogle search easier (because I use it very often)
+nnoremap <A-f> :Hoogle<space>
+vnoremap <A-f> y:Hoogle <C-R>0<CR>gv
+
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
 
@@ -537,11 +542,6 @@ vmap <S-PageDown> <C-f>
 nmap g/        <Plug>(incsearch-easymotion-/)
 nmap g?        <Plug>(incsearch-easymotion-?)
 nmap <leader>/ <Plug>(incsearch-easymotion-stay)
-
-if &mouse == 'a'
-	nmap <C-ScrollWheelUp>   <leader><leader>+
-	nmap <C-ScrollWheelDown> <leader><leader>-
-endif
 
 " get rid off randomly turning ex-mode on
 map Q  <Nop>
