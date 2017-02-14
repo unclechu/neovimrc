@@ -58,6 +58,7 @@ Plugin 'Shougo/unite.vim'   " unite
 Plugin 'Shougo/neomru.vim'  " unite 'file_mru'
 Plugin 'Shougo/neoyank.vim' " unite clipboard history 'history/yank'
 Plugin 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} " async autocompletion
+Plugin 'eagletmt/unite-haddock' " hoogle and haddock for Unite
 Plugin 'sjl/gundo.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'mileszs/ack.vim'
@@ -152,6 +153,7 @@ let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:necoghc_enable_detailed_browse = 1
+let g:unite_source_hoogle_max_candidates = 1000
 
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
@@ -167,7 +169,8 @@ let g:unite_source_menu_menus.haskell.command_candidates = [
 	\ ['ghc-mod: Clear type highlight', "GhcModTypeClear"],
 	\ ['ghc-mod: Insert type', "GhcModTypeInsert!"],
 	\ ['ghc-mod: Check for errors/warnings', "GhcModCheckAsync!"],
-	\ ['ghc-mod: Lint', "GhcModLintAsync!"]
+	\ ['ghc-mod: Lint', "GhcModLintAsync!"],
+	\ ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle']
 	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
