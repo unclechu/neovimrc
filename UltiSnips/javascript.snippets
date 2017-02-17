@@ -56,6 +56,52 @@ snippet fc- "Clojure arrow function (just value)" i
 ((${2}) => ${1})(${3})${4}
 endsnippet
 
+snippet af "Async anonymous function" w
+async function (${1}) {
+	${2}
+}${3}
+endsnippet
+
+snippet afn "Async named function" w
+async function ${1:foo}(${2}) {
+	${3}
+}${4}
+endsnippet
+
+snippet aw "Await" i
+await ${1:foo};
+endsnippet
+
+snippet aw- "Await (just prefix)" i
+await ${1}
+endsnippet
+
+snippet g "Anonymous generator" w
+function* (${2}) {
+	${1}
+}${3}
+endsnippet
+
+snippet gn "Named generator" w
+function* ${1:foo}(${3}) {
+	${2}
+}${4}
+endsnippet
+
+snippet y "Yield" i
+yield ${1:foo};
+endsnippet
+snippet yd "Yield (delegate)" i
+yield* ${1:foo};
+endsnippet
+
+snippet y- "Yield (just prefix)" i
+yield ${1}
+endsnippet
+snippet yd- "Yield (delegate, just prefix)" i
+yield* ${1}
+endsnippet
+
 snippet if "if condition" i
 if (${1}) {
 	${2}
@@ -320,11 +366,15 @@ snippet .hop "Check for has own property method" i
 endsnippet
 
 
+snippet . "Spread operator" i
+...
+endsnippet
+
 snippet ., "Call method" i
 .${1}(${2})${3}
 endsnippet
 
-snippet .. "Function delegate method" i
+snippet .a "Function delegate method (using .apply)" i
 .apply(${1:this}, ${2:arguments})${3}
 endsnippet
 
@@ -779,6 +829,13 @@ import { ${1:foo} } from "${2:bar}";${3}
 endsnippet
 snippet -is' "import something from (single quotes)" i
 import { ${1:foo} } from '${2:bar}';${3}
+endsnippet
+
+snippet -ix "import something from (without extra-spacing)" i
+import {${1:foo}} from "${2:bar}";${3}
+endsnippet
+snippet -ix' "import something from (without extra-spacing, single quotes)" i
+import {${1:foo}} from '${2:bar}';${3}
 endsnippet
 
 
