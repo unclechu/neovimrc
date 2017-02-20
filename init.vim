@@ -626,8 +626,13 @@ digraphs 3. 8230 " dots
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_contrast_light = 'soft'
-colorscheme gruvbox
 set background=dark
+
+if $TMUX == ''
+	colorscheme gruvbox
+else
+	colorscheme molokai
+endif
 
 set shell=/bin/bash
 let $BASH_ENV = "~/.bash_aliases"
