@@ -90,6 +90,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 
 " colorschemes
 Plugin 'morhetz/gruvbox'
+Plugin 'tomasr/molokai'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'nanotech/jellybeans.vim'
 " also:
