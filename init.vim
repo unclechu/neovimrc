@@ -344,8 +344,10 @@ nnoremap <leader>fl :set foldlevel=
 nnoremap <leader>fm :set foldmethod=
 
 " some windows things
-nnoremap <leader>sww :set winwidth=
-nnoremap <leader>swh :set winheight=
+nnoremap <leader>sww :9999wincmd < \| set winwidth=
+nnoremap <leader>swh :9999wincmd - \| set winheight=
+nnoremap <leader>swW :set wfw \| 9999wincmd < \| set winwidth=
+nnoremap <leader>swH :set wfh \| 9999wincmd - \| set winheight=
 
 
 " Syntastic
