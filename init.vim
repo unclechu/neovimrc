@@ -187,6 +187,15 @@ let g:unite_source_menu_menus.unite.command_candidates = [
 	\ ['Grep by Git files (bare string and case insensitive)',
 	\    'Unite -auto-resize grep/git:.:-iF']
 	\]
+let g:unite_source_menu_menus.view = { 'description': 'View' }
+let g:unite_source_menu_menus.view.command_candidates = [
+	\ ['Top field',
+	\    "exec \"let x = input('Field height: ') | winc n | winc K"
+	\      . "| se ro | se noma | se wfh | 9999winc - | let &wh = x\""],
+	\ ['Left field',
+	\    "exec \"let x = input('Field width: ') | winc n | winc H"
+	\      . "| se ro | se noma | se wfw | 9999winc < | let &wiw = x\""]
+	\]
 
 " merge all menu items to single group
 let s:u_all = []
