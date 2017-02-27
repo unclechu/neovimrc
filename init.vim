@@ -574,37 +574,49 @@ imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>#d0i<C-R>0
 nnoremap <A-o> mzo<Esc>`z
 nnoremap <A-O> mzO<Esc>`z
 
+
 " custom numbers line keys
+
 nmap ! <Plug>(indexed-search-#)
 nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
+xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap g! :<C-u>call VisualStarSearchSet('?')<CR>
 nmap @ <Plug>(indexed-search-*)
 nnoremap g@ yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
+xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap g@ :<C-u>call VisualStarSearchSet('/')<CR>
 " noremap ! #
 " noremap @ *
+
+" begin/end of line ignoring indentation and trailing whitespaces
 noremap # ^
 noremap g# g^
 noremap $ g_
 noremap g$ g$
+
 " default behavior of %
 " noremap %
+
 " noremap ^ 0
-" we already have 0, I never use this key this way
+" we already have 0, I never use this key (^) this way
 " let's remap it to '|' that in case was remapped too
 noremap ^ \|
 noremap g^ g0
+
+" opposite to 0
 noremap & $
 noremap g& g$
+
+" macros call
 noremap * @
 noremap g* g@
+
 
 " because default maps disabled for plugin
 nmap / <Plug>(indexed-search-/)
 nmap ? <Plug>(indexed-search-?)
 nmap n <Plug>(indexed-search-n)zv
 nmap N <Plug>(indexed-search-N)zv
-
-xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
-xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 
 nnoremap <A-t> :tabnew<CR>
 nnoremap <A-w> :tabclose<CR>
