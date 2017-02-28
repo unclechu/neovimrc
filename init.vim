@@ -190,11 +190,11 @@ let g:unite_source_menu_menus.unite.command_candidates = [
 let g:unite_source_menu_menus.view = { 'description': 'View' }
 let g:unite_source_menu_menus.view.command_candidates = [
 	\ ['Top field',
-	\    "exec \"let x = input('Field height: ') | winc n | winc K"
-	\      . "| se ro | se noma | se wfh | 9999winc - | let &wh = x\""],
+	\    "exec \"let x = input('Field height: ') | winc n | winc K | se ro"
+	\      . "| se noma | se wfh | 9999winc - | let &wh = x | winc p\""],
 	\ ['Left field',
-	\    "exec \"let x = input('Field width: ') | winc n | winc H"
-	\      . "| se ro | se noma | se wfw | 9999winc < | let &wiw = x\""]
+	\    "exec \"let x = input('Field width: ') | winc n | winc H | se ro"
+	\      . "| se noma | se wfw | 9999winc < | let &wiw = x | winc p\""]
 	\]
 
 " merge all menu items to single group
