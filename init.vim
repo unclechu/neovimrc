@@ -8,13 +8,82 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
 Plugin 'gmarik/Vundle.vim', {'pinned': 1} " provided by git-submodule
 
+
 " plugins
+
+" utils/functionality
 Plugin 'scrooloose/nerdtree'
 " Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'henrik/vim-indexed-search'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'unclechu/vim-ctrlspace'
+Plugin 'SirVer/ultisnips'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'Shougo/unite.vim'   " unite
+" Plugin 'Shougo/denite.nvim' " future async replacement for unite
+Plugin 'Shougo/neomru.vim'  " unite 'file_mru'
+Plugin 'Shougo/neoyank.vim' " unite clipboard history 'history/yank'
+Plugin 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} " async autocompletion
+Plugin 'sjl/gundo.vim'
+Plugin 'mhinz/vim-startify'
+Plugin 'mileszs/ack.vim'
+" Plugin 'embear/vim-localvimrc'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'matze/vim-move'
+Plugin 'raimondi/delimitmate'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 't9md/vim-quickhl'
+Plugin 'tweekmonster/braceless.vim'
+Plugin 'equalsraf/neovim-gui-shim'
+Plugin 'blueyed/vim-diminactive'
+
+" surround
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+
+" linting
+" Plugin 'scrooloose/syntastic'
+Plugin 'neomake/neomake'
+
+" git
+Plugin 'xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+" haskell
+Plugin 'eagletmt/neco-ghc'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'bitc/lushtags'
+Plugin 'twinside/vim-hoogle'
+Plugin 'itchyny/vim-haskell-indent'
+Plugin 'eagletmt/unite-haddock' " hoogle and haddock for Unite
+
+" faust
+Bundle 'gmoe/vim-faust'
+
+" nim
+Bundle 'zah/nimrod.vim'
+
+" clojure
+Plugin 'clojure-emacs/cider-nrepl'
+Plugin 'tpope/vim-fireplace'
+Plugin 'kien/rainbow_parentheses.vim'
+
+" asscript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'flowtype/vim-flow'
+
+" coffee/live-script
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'gkz/vim-ls'
 
@@ -25,78 +94,33 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 
+" styles
 Plugin 'groenewege/vim-less'
 Plugin 'wavded/vim-stylus'
+Plugin 'ap/vim-css-color'
+
+" markup/data
+Plugin 'plasticboy/vim-markdown'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'briancollins/vim-jst'
 Bundle 'chase/vim-ansible-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'niklasl/vim-rdf'
-Bundle 'gmoe/vim-faust'
-Plugin 'plasticboy/vim-markdown'
-Bundle 'zah/nimrod.vim'
-Plugin 'nginx.vim'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'briancollins/vim-jst'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'ap/vim-css-color'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'unclechu/vim-ctrlspace'
-" Plugin 'scrooloose/syntastic'
-Plugin 'neomake/neomake'
-Plugin 'SirVer/ultisnips'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'Shougo/unite.vim'   " unite
-" Plugin 'Shougo/denite.nvim' " future async replacement for unite
-Plugin 'Shougo/neomru.vim'  " unite 'file_mru'
-Plugin 'Shougo/neoyank.vim' " unite clipboard history 'history/yank'
-Plugin 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} " async autocompletion
-Plugin 'eagletmt/unite-haddock' " hoogle and haddock for Unite
-Plugin 'sjl/gundo.vim'
-Plugin 'mhinz/vim-startify'
-Plugin 'mileszs/ack.vim'
-Plugin 'tpope/vim-fugitive'
-" Plugin 'embear/vim-localvimrc'
-Plugin 'itchyny/vim-haskell-indent'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'bitc/lushtags'
-Plugin 'twinside/vim-hoogle'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'matze/vim-move'
-Plugin 'raimondi/delimitmate'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 't9md/vim-quickhl'
-Plugin 'tweekmonster/braceless.vim'
-Plugin 'equalsraf/neovim-gui-shim'
-Plugin 'blueyed/vim-diminactive'
 
-" surround
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-
-" clojure
-Plugin 'clojure-emacs/cider-nrepl'
-Plugin 'tpope/vim-fireplace'
-Plugin 'kien/rainbow_parentheses.vim'
+" configs
+Plugin 'nginx.vim'
 
 " colorschemes
 Plugin 'morhetz/gruvbox'
 Plugin 'tomasr/molokai'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'nanotech/jellybeans.vim'
-" also:
+" also (as files, not packages):
 "   - codeschool
 "   - railscasts
 "   - twilight
+
 
 " required for vundle
 call vundle#end()
@@ -140,6 +164,7 @@ let g:snipMate.scope_aliases = {}
 " let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 " let g:syntastic_python_checkers = ['python']
 " let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:flow#enable = 0
 let g:indent_guides_exclude_filetypes =
 	\ ['help', 'nerdtree', 'tagbar', 'clojure', 'haskell', 'cabal', 'startify']
 let g:user_emmet_leader_key = '<C-Z>'
