@@ -44,7 +44,7 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 't9md/vim-quickhl'
 Plugin 'tweekmonster/braceless.vim'
 Plugin 'equalsraf/neovim-gui-shim'
-Plugin 'blueyed/vim-diminactive'
+" Plugin 'blueyed/vim-diminactive' " works bad with NERDTree for example
 
 " surround
 Plugin 'tpope/vim-surround'
