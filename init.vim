@@ -282,7 +282,8 @@ set number
 set relativenumber
 set nocursorline
 set nocursorcolumn
-set colorcolumn=80
+set colorcolumn=81 " one column after limit
+set textwidth=80
 set showcmd " show combos at the right bottom corner
 set inccommand=split
 set virtualedit=all
