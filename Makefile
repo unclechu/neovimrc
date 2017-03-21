@@ -1,5 +1,5 @@
 all: clean
-	(cd ~/.config/ && ln -s "$(shell pwd)/" nvim)
+	./make.pl create-symlink
 
 clean:
-	[ -L ~/.config/nvim -o ! -e ~/.config/nvim ] && rm -f ~/.config/nvim
+	./make.pl clean
