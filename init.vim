@@ -683,7 +683,13 @@ else
 	colorscheme molokai
 endif
 
-set shell=/bin/bash
+if filereadable('/bin/bash') " gnu/linux
+	set shell=/bin/bash
+elseif filereadable('/usr/local/bin/bash') " freebsd
+	set shell=/usr/local/bin/bash
+else
+	echo 'ERROR: bash interpreter not found!'
+endif
 let $BASH_ENV = "~/.bash_aliases"
 
 " :terminal colorscheme
