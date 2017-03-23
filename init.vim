@@ -593,6 +593,7 @@ noremap <leader>q q
 inoremap jk    <esc>
 cnoremap jk    <c-c>
 xnoremap <tab> <esc>
+snoremap <tab> <esc>
 
 " thanks to Minoru for the advice
 noremap ; :
