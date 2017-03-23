@@ -295,6 +295,7 @@ set modeline
 set foldmethod=indent
 set foldlevelstart=999
 set cpoptions+=I " disable indent removing in insert mode (moving by arrow keys)
+set timeoutlen=500
 
 " sessions
 set ssop-=options " do not store global and local values in a session
@@ -588,6 +589,10 @@ map gQ <Nop>
 " remap macros key under leader
 " default 'q' remapped to easymotion call
 noremap <leader>q q
+
+inoremap jk    <esc>
+cnoremap jk    <c-c>
+xnoremap <tab> <esc>
 
 " thanks to Minoru for the advice
 noremap ; :
