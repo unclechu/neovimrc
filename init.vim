@@ -154,6 +154,9 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
+let g:UltiSnipsExpandTrigger = "<Nop>"
+let g:UltiSnipsListSnippets = "<Nop>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 " let g:syntastic_enable_signs = 1
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 2
@@ -336,6 +339,10 @@ nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
+
+" UltiSnips map without conflicts
+" with own <Tab> maps for visual and select modes.
+inoremap <silent> <Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
 
 " Unite
 nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
