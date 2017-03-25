@@ -342,7 +342,9 @@ nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
 
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
-inoremap <silent> <Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
+if exists('g:_uspy')
+	inoremap <silent> <Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
+endif
 
 " Unite
 nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
@@ -506,8 +508,40 @@ map  <leader>P  <Nop>
 map  <leader>p/ '/phds\ds>
 map  <leader>P/ '/Phds\ds>
 
-" system buffer alias without shift modifier (like <Space> is specific buffer)
-noremap '<Space> "+
+" copying to and pasting from buffer '0' to system X clipboard
+if systemlist('uname') == ['FreeBSD']
+	function! s:XClipYank()
+		call system('xclip -i -selection clipboard', @@)
+	endfunction
+	
+	function! s:XClipPaste()
+		let @@ = system('xclip -o -selection clipboard')
+	endfunction
+	
+	function! s:XClipNXYank(m)
+		exec "nnoremap '<Space>".a:m." ".a:m.":call <SID>XClipYank()<CR>"
+		exec "xnoremap '<Space>".a:m." ".a:m.":call <SID>XClipYank()<CR>"
+	endfunction
+	
+	function! s:XClipNXPaste(m)
+		exec "nnoremap '<Space>".a:m." ".a:m.":call <SID>XClipPaste()<CR>"
+		exec "xnoremap '<Space>".a:m." ".a:m.":call <SID>XClipPaste()<CR>"
+	endfunction
+	
+	nnoremap '<Space>yy yy:call <SID>XClipYank()<CR>
+	xnoremap '<Space>y y:call <SID>XClipYank()<CR>
+	
+	call s:XClipNXYank('Y')
+	call s:XClipNXYank('d')
+	call s:XClipNXYank('D')
+	call s:XClipNXYank('x')
+	call s:XClipNXYank('X')
+	
+	call s:XClipNXPaste('p')
+	call s:XClipNXPaste('P')
+else
+	noremap '<Space> "+
+endif
 
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>
