@@ -68,10 +68,10 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'eagletmt/unite-haddock' " hoogle and haddock for Unite
 
 " faust
-Bundle 'gmoe/vim-faust'
+Plugin 'gmoe/vim-faust'
 
 " nim
-Bundle 'zah/nimrod.vim'
+Plugin 'zah/nimrod.vim'
 
 " clojure
 Plugin 'clojure-emacs/cider-nrepl'
@@ -90,7 +90,7 @@ Plugin 'gkz/vim-ls'
 " typescript
 " also: http://vimawesome.com/plugin/typescript-tools
 Plugin 'leafgarland/typescript-vim'
-" WARNING! requires to run `make` inside bundle/vimproc.vim by bare hands!
+" WARNING! requires to run `make` inside `bundle/vimproc.vim` by bare hands!
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 
@@ -103,7 +103,7 @@ Plugin 'ap/vim-css-color'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'briancollins/vim-jst'
-Bundle 'chase/vim-ansible-yaml'
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'niklasl/vim-rdf'
 Plugin 'mattn/emmet-vim'
@@ -508,40 +508,8 @@ map  <leader>P  <Nop>
 map  <leader>p/ '/phds\ds>
 map  <leader>P/ '/Phds\ds>
 
-" copying to and pasting from buffer '0' to system X clipboard
-if systemlist('uname') == ['FreeBSD']
-	function! s:XClipYank()
-		call system('xclip -i -selection clipboard', @@)
-	endfunction
-	
-	function! s:XClipPaste()
-		let @@ = system('xclip -o -selection clipboard')
-	endfunction
-	
-	function! s:XClipNXYank(m)
-		exec "nnoremap '<Space>".a:m." ".a:m.":call <SID>XClipYank()<CR>"
-		exec "xnoremap '<Space>".a:m." ".a:m.":call <SID>XClipYank()<CR>"
-	endfunction
-	
-	function! s:XClipNXPaste(m)
-		exec "nnoremap '<Space>".a:m." ".a:m.":call <SID>XClipPaste()<CR>"
-		exec "xnoremap '<Space>".a:m." ".a:m.":call <SID>XClipPaste()<CR>"
-	endfunction
-	
-	nnoremap '<Space>yy yy:call <SID>XClipYank()<CR>
-	xnoremap '<Space>y y:call <SID>XClipYank()<CR>
-	
-	call s:XClipNXYank('Y')
-	call s:XClipNXYank('d')
-	call s:XClipNXYank('D')
-	call s:XClipNXYank('x')
-	call s:XClipNXYank('X')
-	
-	call s:XClipNXPaste('p')
-	call s:XClipNXPaste('P')
-else
-	noremap '<Space> "+
-endif
+" another alias to system X clipboard
+noremap '<Space> "+
 
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>

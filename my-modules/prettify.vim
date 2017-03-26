@@ -1,4 +1,5 @@
 " Author: Viacheslav Lotsmanov
+" TODO refactoring
 
 function! s:PrettifyJSON(str, indent)
 	let l:prepared =
