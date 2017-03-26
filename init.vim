@@ -342,7 +342,7 @@ nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
 
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
-if exists('g:_uspy')
+if has('python3') || has('python')
 	inoremap <silent> <Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
 endif
 
