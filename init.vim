@@ -24,7 +24,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'unclechu/vim-ctrlspace'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
+Plugin 'unclechu/my-ultisnips'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-commentary'
@@ -343,7 +344,13 @@ nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
 if has('python3') || has('python')
-	inoremap <silent> <Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
+
+	function! s:MyUltiExpand()
+		call UltiSnips#isExpandable()
+		return g:ulti_is_expandable
+	endfunction
+
+	inoremap <expr> <Tab> <SID>MyUltiExpand() ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 endif
 
 " Unite
