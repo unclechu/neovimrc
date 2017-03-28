@@ -590,8 +590,14 @@ map gQ <Nop>
 " default 'q' remapped to easymotion call
 noremap <leader>q q
 
-inoremap jk <esc>
-cnoremap jk <c-c>
+inoremap jk <Esc>
+cnoremap jk <C-c>
+" no need to press with modifier as for <C-[>/<C-c>
+" also it wont conflict with original <C-i>/<Tab>
+nnoremap <Leader><Tab> <Esc>
+xnoremap <Leader><Tab> <Esc>
+snoremap <Leader><Tab> <Esc>
+tnoremap <Leader><Tab> <C-\><C-n>
 
 " thanks to Minoru for the advice
 noremap ; :
