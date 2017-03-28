@@ -24,7 +24,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'unclechu/vim-ctrlspace'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
+Plugin 'unclechu/my-ultisnips'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-commentary'
@@ -154,6 +155,9 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
+let g:UltiSnipsExpandTrigger = "<Nop>"
+let g:UltiSnipsListSnippets = "<Nop>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 " let g:syntastic_enable_signs = 1
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 2
@@ -336,6 +340,18 @@ nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
+
+" UltiSnips map without conflicts
+" with own <Tab> maps for visual and select modes.
+if has('python3') || has('python')
+
+	function! s:MyUltiExpand()
+		call UltiSnips#isExpandable()
+		return g:ulti_is_expandable
+	endfunction
+
+	inoremap <expr> <Tab> <SID>MyUltiExpand() ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
+endif
 
 " Unite
 nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
@@ -592,11 +608,8 @@ noremap <leader>q q
 
 inoremap jk <Esc>
 cnoremap jk <C-c>
-" no need to press with modifier as for <C-[>/<C-c>
-" also it wont conflict with original <C-i>/<Tab>
-nnoremap <Leader><Tab> <Esc>
-xnoremap <Leader><Tab> <Esc>
-snoremap <Leader><Tab> <Esc>
+xnoremap <Tab> <Esc>
+snoremap <Tab> <Esc>
 tnoremap <Leader><Tab> <C-\><C-n>
 
 " thanks to Minoru for the advice
