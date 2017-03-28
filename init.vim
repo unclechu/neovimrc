@@ -24,8 +24,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'unclechu/vim-ctrlspace'
-" Plugin 'SirVer/ultisnips'
-Plugin 'unclechu/my-ultisnips'
+Plugin 'SirVer/ultisnips'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-commentary'
@@ -341,18 +340,6 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
 
-" UltiSnips map without conflicts
-" with own <Tab> maps for visual and select modes.
-if has('python3') || has('python')
-
-	function! s:MyUltiExpand()
-		call UltiSnips#isExpandable()
-		return g:ulti_is_expandable
-	endfunction
-
-	inoremap <expr> <Tab> <SID>MyUltiExpand() ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
-endif
-
 " Unite
 nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
 nnoremap <C-p>      :Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
@@ -606,10 +593,8 @@ map gQ <Nop>
 " default 'q' remapped to easymotion call
 noremap <leader>q q
 
-inoremap jk    <esc>
-cnoremap jk    <c-c>
-xnoremap <tab> <esc>
-snoremap <tab> <esc>
+inoremap jk <esc>
+cnoremap jk <c-c>
 
 " thanks to Minoru for the advice
 noremap ; :
