@@ -626,7 +626,7 @@ noremap " '
 noremap "" ''
 
 " custom behavior of big R in visual mode
-vnoremap R r<Space>R
+xnoremap R r<Space>R
 
 " break line but keep same column position for rest of the line
 imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>#d0i<C-R>0
