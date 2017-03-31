@@ -151,7 +151,7 @@ let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 0
-vmap <Enter> <Plug>(EasyAlign)
+xmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
@@ -363,7 +363,7 @@ nnoremap <leader>sl :Unite -auto-resize -start-insert line<CR>
 " sa - show all
 nnoremap <leader>sa :Unite -auto-resize -start-insert line:buffers<CR>
 nnoremap <leader>;  :Unite -auto-resize -start-insert menu:all<CR>
-vnoremap <leader>;  :Unite -auto-resize -start-insert menu:all<CR>
+xnoremap <leader>;  :Unite -auto-resize -start-insert menu:all<CR>
 nnoremap <leader>:  :Unite -auto-resize<Space>
 " feels kinda like ctrlspace
 nnoremap <leader><Space> :Unite -auto-resize buffer<CR>
@@ -417,15 +417,15 @@ nnoremap <leader>sc :Neomake<CR>
 nnoremap <leader>sh :ShowHint<CR>
 
 " short EasyAlign aliases
-vnoremap <leader>:  :EasyAlign/:/<CR>
-vnoremap <leader>g: :EasyAlign : { 'lm': 0, 'stl': 0 }<CR>
+xnoremap <leader>:  :EasyAlign/:/<CR>
+xnoremap <leader>g: :EasyAlign : { 'lm': 0, 'stl': 0 }<CR>
 nnoremap <leader>a  :EasyAlign
-vnoremap <leader>a  :EasyAlign
+xnoremap <leader>a  :EasyAlign
 
 " CtrlSF bindings
 nmap     <leader>sf <Plug>CtrlSFPrompt
-vmap     <leader>sf <Plug>CtrlSFVwordPath
-vmap     <leader>sF <Plug>CtrlSFVwordExec
+xmap     <leader>sf <Plug>CtrlSFVwordPath
+xmap     <leader>sF <Plug>CtrlSFVwordExec
 nmap     <leader>sn <Plug>CtrlSFCwordPath
 nmap     <leader>sN <Plug>CtrlSFCwordExec
 nmap     <leader>sp <Plug>CtrlSFPwordPath
@@ -438,7 +438,7 @@ nnoremap <C-Space> :CtrlSpace<CR>
 
 " Make Hoogle search easier (because I use it very often)
 nnoremap <A-f> :Hoogle<space>
-vnoremap <A-f> y:Hoogle <C-R>0<CR>gv
+xnoremap <A-f> y:Hoogle <C-R>0<CR>gv
 
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
@@ -449,24 +449,24 @@ vnoremap <A-f> y:Hoogle <C-R>0<CR>gv
 
 " move anywhere ('q' means 'quick (move)')
 nmap q         <Plug>(easymotion-bd-w)
-vmap q         <Plug>(easymotion-bd-w)
+xmap q         <Plug>(easymotion-bd-w)
 nmap <Space>q  <Plug>(easymotion-overwin-w)
 " doesn't make sense with 'overwin' mode
-vmap <Space>q  <Nop>
+xmap <Space>q  <Nop>
 
 " move to place with specific symbols
 nmap <leader>w <Plug>(easymotion-bd-f2)
-vmap <leader>w <Plug>(easymotion-bd-f2)
+xmap <leader>w <Plug>(easymotion-bd-f2)
 nmap <Space>w  <Plug>(easymotion-overwin-f2)
 " doesn't make sense with 'overwin' mode
-vmap <Space>w  <Nop>
+xmap <Space>w  <Nop>
 
 " just another hook as `<leader>e` but for single symbol
 nmap <leader>e <Plug>(easymotion-bd-f)
-vmap <leader>e <Plug>(easymotion-bd-f)
+xmap <leader>e <Plug>(easymotion-bd-f)
 nmap <Space>e  <Plug>(easymotion-overwin-f)
 " doesn't make sense with 'overwin' mode
-vmap <Space>e  <Nop>
+xmap <Space>e  <Nop>
 
 " LL-L  ('L' - with <leader> or ' ' - without it)
 " ZXcV  (uppercase means it have map)
@@ -474,14 +474,14 @@ vmap <Space>e  <Nop>
 
 " move over the line
 nmap <leader>z <Plug>(easymotion-lineanywhere)
-vmap <leader>z <Plug>(easymotion-lineanywhere)
+xmap <leader>z <Plug>(easymotion-lineanywhere)
 
 " move between lines
 " (also between empty lines with indentation)
 nmap <leader>x <Plug>(easymotion-bd-jk)
-vmap <leader>x <Plug>(easymotion-bd-jk)
+xmap <leader>x <Plug>(easymotion-bd-jk)
 nmap <Space>x  <Plug>(easymotion-overwin-line)
-vmap <Space>x  <Nop>
+xmap <Space>x  <Nop>
 
 " turn on visual mode and select to specific place
 nmap <leader>v v<Plug>(easymotion-bd-w)
@@ -489,13 +489,13 @@ nmap <leader>V V<Plug>(easymotion-bd-jk)
 
 " move by direction
 nmap <leader>l <Plug>(easymotion-lineforward)
-vmap <leader>l <Plug>(easymotion-lineforward)
+xmap <leader>l <Plug>(easymotion-lineforward)
 nmap <leader>h <Plug>(easymotion-linebackward)
-vmap <leader>h <Plug>(easymotion-linebackward)
+xmap <leader>h <Plug>(easymotion-linebackward)
 nmap <leader>j <Plug>(easymotion-j)
-vmap <leader>j <Plug>(easymotion-j)
+xmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
-vmap <leader>k <Plug>(easymotion-k)
+xmap <leader>k <Plug>(easymotion-k)
 
 
 " quickhl
@@ -529,51 +529,51 @@ noremap <leader>sB :GruvboxContrastRotate<CR>
 
 nnoremap gy Y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
 nnoremap gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
-vnoremap gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
-vnoremap gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
+xnoremap gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
+xnoremap gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
 
 " hjkl
 nnoremap <C-h>     :wincmd h<CR>
-vnoremap <C-h>     <Esc>:wincmd h<CR>
+xnoremap <C-h>     <Esc>:wincmd h<CR>
 nnoremap <C-j>     :wincmd j<CR>
-vnoremap <C-j>     <Esc>:wincmd j<CR>
+xnoremap <C-j>     <Esc>:wincmd j<CR>
 nnoremap <C-k>     :wincmd k<CR>
-vnoremap <C-k>     <Esc>:wincmd k<CR>
+xnoremap <C-k>     <Esc>:wincmd k<CR>
 nnoremap <C-l>     :wincmd l<CR>
-vnoremap <C-l>     <Esc>:wincmd l<CR>
+xnoremap <C-l>     <Esc>:wincmd l<CR>
 " arrow keys
 nnoremap <C-Left>  :wincmd h<CR>
-vnoremap <C-Left>  <Esc>:wincmd h<CR>
+xnoremap <C-Left>  <Esc>:wincmd h<CR>
 nnoremap <C-Right> :wincmd l<CR>
-vnoremap <C-Right> <Esc>:wincmd l<CR>
+xnoremap <C-Right> <Esc>:wincmd l<CR>
 nnoremap <C-Up>    :wincmd k<CR>
-vnoremap <C-Up>    <Esc>:wincmd k<CR>
+xnoremap <C-Up>    <Esc>:wincmd k<CR>
 nnoremap <C-Down>  :wincmd j<CR>
-vnoremap <C-Down>  <Esc>:wincmd j<CR>
+xnoremap <C-Down>  <Esc>:wincmd j<CR>
 
 " walk between windows by alt+arrow keys
 nnoremap <A-Left>  zh
-vnoremap <A-Left>  zh
+xnoremap <A-Left>  zh
 nnoremap <A-Right> zl
-vnoremap <A-Right> zl
+xnoremap <A-Right> zl
 nnoremap <A-Up>    <C-y>
-vnoremap <A-Up>    <C-y>
+xnoremap <A-Up>    <C-y>
 nnoremap <A-Down>  <C-e>
-vnoremap <A-Down>  <C-e>
+xnoremap <A-Down>  <C-e>
 
 " resizing windows by alt+shift+arrow keys
 nnoremap <A-S-Left>  :wincmd <<CR>
-vnoremap <A-S-Left>  <Esc>:wincmd <<CR>
+xnoremap <A-S-Left>  <Esc>:wincmd <<CR>
 nnoremap <A-S-Right> :wincmd ><CR>
-vnoremap <A-S-Right> <Esc>:wincmd ><CR>
+xnoremap <A-S-Right> <Esc>:wincmd ><CR>
 nnoremap <A-S-Up>    :wincmd +<CR>
-vnoremap <A-S-Up>    <Esc>:wincmd +<CR>
+xnoremap <A-S-Up>    <Esc>:wincmd +<CR>
 nnoremap <A-S-Down>  :wincmd -<CR>
-vnoremap <A-S-Down>  <Esc>:wincmd -<CR>
+xnoremap <A-S-Down>  <Esc>:wincmd -<CR>
 
 " zoom buffer hack ('fz' means 'full size')
 nnoremap <leader>fz :999wincmd ><CR>:999wincmd +<CR>
-vnoremap <leader>fz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
+xnoremap <leader>fz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
 
 " moving between history in command mode
 cnoremap <C-p> <Up>
@@ -586,13 +586,13 @@ nnoremap <C-S-PageDown> :tabm+1<CR>
 " jump by half of screen by pageup/pagedown
 nmap <PageUp>     <C-u>
 nmap <PageDown>   <C-d>
-vmap <PageUp>     <C-u>
-vmap <PageDown>   <C-d>
+xmap <PageUp>     <C-u>
+xmap <PageDown>   <C-d>
 " default jump by pageup/pagedown with shift prefix
 nmap <S-PageUp>   <C-b>
 nmap <S-PageDown> <C-f>
-vmap <S-PageUp>   <C-b>
-vmap <S-PageDown> <C-f>
+xmap <S-PageUp>   <C-b>
+xmap <S-PageDown> <C-f>
 
 nmap g/        <Plug>(incsearch-easymotion-/)
 nmap g?        <Plug>(incsearch-easymotion-?)
