@@ -299,7 +299,7 @@ set modeline
 set foldmethod=indent
 set foldlevelstart=999
 set cpoptions+=I " disable indent removing in insert mode (moving by arrow keys)
-set timeoutlen=500
+set timeoutlen=1000
 
 " sessions
 set ssop-=options " do not store global and local values in a session
