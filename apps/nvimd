@@ -1,0 +1,56 @@
+#!/usr/bin/env perl
+use v5.10; use strict; use warnings; use autodie qw(:all);
+
+use Env qw(USER);
+use constant ARGC => scalar(@ARGV);
+
+if (ARGC < 1 || ARGC > 2) {
+	say STDERR 'incorrect arguments count: ', ARGC;
+	say STDERR 'suffix-name of socket file is required' if ARGC == 0;
+	exit 1;
+}
+
+my $socket_path = "/tmp/${USER}-nvim-${ARGV[0]}";
+my $nvim_bin = (ARGC > 1) ? $ARGV[1] : 'nvim';
+my $exit_code = 0;
+my $nvim_is_done = 0;
+
+sub done {
+	if (scalar(@_) > 0) {
+		my ($signal) = @_;
+		say STDERR qq/caught $signal signal/;
+	}
+
+	unless ($nvim_is_done) {
+		say STDERR qq/asking Neovim to terminate.../;
+		my $ppid = $$;
+
+		if (fork == 0) {
+			exec 'pkill', '-TERM', '-P', $ppid;
+			return;
+		}
+
+		wait;
+	}
+
+	say STDERR qq/it's done with $exit_code exit code/;
+	unlink $socket_path if -e $socket_path;
+	exit $exit_code;
+}
+
+$SIG{$_} = \&done
+	foreach ('INT', 'HUP', 'ABRT', 'QUIT', 'TRAP', 'STOP', 'TERM');
+
+unlink $socket_path if -e $socket_path; # remove old socket file if exists
+say STDERR 'Neovim server socket file path: ', $socket_path;
+say STDERR 'Neovim binary: ', $nvim_bin;
+
+eval {
+	$exit_code = system
+		'env', 'TMUX=', "NVIM_LISTEN_ADDRESS=$socket_path",
+		$nvim_bin, '--headless';
+};
+
+$exit_code = 1 if $@;
+$nvim_is_done = 1;
+done;

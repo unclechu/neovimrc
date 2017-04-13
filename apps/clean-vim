@@ -1,0 +1,37 @@
+#!/usr/bin/env perl
+use v5.10; use strict; use warnings; use autodie qw(:all);
+
+use Env qw(HOME);
+use List::Util qw(first);
+use File::Glob qw(:bsd_glob);
+use constant TARGET     => $ARGV[0];
+use constant ARGC       => scalar(@ARGV);
+use constant SWAP_DIR   => "$HOME/.vim_swap/";
+use constant BACKUP_DIR => "$HOME/.vim_backup/";
+
+sub get_help {'usage: clean-vim (swap|backup|all)'}
+
+if (ARGC != 1) {
+	say STDERR 'incorrect arguments count: ', ARGC;
+	say STDERR 'target argument is required' if ARGC == 0;
+	say STDERR 'it should be only one argument' if ARGC > 1;
+	say STDERR get_help();
+	exit 1;
+} elsif (TARGET eq 'help') {
+	say get_help();
+	exit 0;
+} elsif (! defined(first {TARGET eq $_} qw(all swap backup))) {
+	say STDERR qq/unknown target argument: '@{[TARGET]}'/;
+	say STDERR get_help();
+	exit 1;
+}
+
+if ((TARGET eq 'all' || TARGET eq 'swap') && -d SWAP_DIR) {
+	chdir SWAP_DIR;
+	unlink <{,.}*.{swp,swo}>;
+}
+
+if ((TARGET eq 'all' || TARGET eq 'backup') && -d BACKUP_DIR) {
+	chdir BACKUP_DIR;
+	unlink <{,.}*~>;
+}
