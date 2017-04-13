@@ -703,7 +703,7 @@ set background=dark
 if $TMUX == ''
 	colorscheme gruvbox
 else
-	colorscheme molokai
+	colorscheme twilight
 endif
 
 if filereadable('/bin/bash') " gnu/linux
