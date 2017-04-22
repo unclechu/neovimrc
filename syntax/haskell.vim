@@ -12,11 +12,11 @@ exec "source " . s:path
 unlet s:path
 
 
-sy match hs_TypeDeclaration "\(\s\|^\)\@<=::\(\s\|$\)\@="
-sy match hs_TypeDeclNext "\(\s\|^\)\@<=->\(\s\|$\)\@="
-sy match hs_TypeDeclConstraint "\(\s\|^\)\@<==>\(\s\|$\)\@="
+sy match hs_TypeDeclaration "\(\s\|^\)\@<=\(::\|∷\)\(\s\|$\)\@="
+sy match hs_TypeDeclNext "\(\s\|^\)\@<=\(->\|→\)\(\s\|$\)\@="
+sy match hs_TypeDeclConstraint "\(\s\|^\)\@<=\(=>\|⇒\)\(\s\|$\)\@="
 sy match hs_EqualsSymbol "\(\s\|^\)\@<==\(\s\|$\)\@="
-sy match hs_MonadExtract "\s\@<=<-\(\s\|$\)\@="
+sy match hs_MonadExtract "\s\@<=\(<-\|←\)\(\s\|$\)\@="
 
 sy match hs_NothingStuff "\(()\|\<undefined\>\)"
 sy match hs_BackQuotesOperator "`[a-zA-Z0-9_'.]\+`"
@@ -30,10 +30,10 @@ sy match hs_My_InfixFunctionName "^\S[^=(]*`[a-z_][^`]*`"me=e-1 contained
 sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)"
 	\ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_My_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter,hs_EqualsSymbol,hs_NothingStuff
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
-sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::"
+sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*\(::\|∷\)"
 	\ contains=hs_FunctionName,hs_OpFunctionName,hs_TypeDeclaration
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
-sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*::"
+sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*\(::\|∷\)"
 	\ keepend
 	\ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hs_OpFunctionName,hs_hlFunctionName,hs_TypeDeclaration
 " copy-pasted from parent just to make it be applied after root function hl
