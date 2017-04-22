@@ -4,8 +4,8 @@
 
 " required for vundle
 filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin("~/.config/nvim/bundle")
+exec 'set rtp+='. ($HOME) .'/.config/nvim/bundle/Vundle.vim'
+call vundle#begin($HOME . '/.config/nvim/bundle')
 Plugin 'gmarik/Vundle.vim', {'pinned': 1} " provided by git-submodule
 
 
@@ -713,7 +713,7 @@ elseif filereadable('/usr/local/bin/bash') " freebsd
 else
 	echo 'ERROR: bash interpreter not found!'
 endif
-let $BASH_ENV = "~/.bash_aliases"
+let $BASH_ENV = $HOME . "/.bash_aliases"
 
 " :terminal colorscheme
 let g:terminal_color_0  = '#073642'
@@ -737,7 +737,7 @@ command! MakeTags !ctags -R .
 set path+=** " recursively deal with files
 
 " include local rc
-let g:neovimrc = expand('~') . '/.neovimrc-local-post'
-if filereadable(g:neovimrc)
-	exec 'source ' . g:neovimrc
+let g:local_rc_post = $HOME . '/.neovimrc-local-post'
+if filereadable(g:local_rc_post)
+	exec 'source ' . g:local_rc_post
 endif
