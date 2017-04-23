@@ -2,7 +2,8 @@
 "Author: Viacheslav Lotsmanov
 
 
-if exists("b:current_syntax") || (exists('g:default_haskell_syntax') && g:default_haskell_syntax == 1)
+if exists("b:current_syntax") ||
+\ (exists('g:default_haskell_syntax') && g:default_haskell_syntax == 1)
 	finish
 endif
 
@@ -75,6 +76,12 @@ hi def link hs_MyWarn WarningMsg
 
 hi def link hs_EqualsSymbol Constant
 hi def link hs_MonadExtract Constant
+
+
+if exists('g:hs_MyCustomOperators')
+	exec 'sy match hs_MyCustomOperators "'. g:hs_MyCustomOperators .'"'
+	hi def link hs_MyCustomOperators Identifier
+endif
 
 
 let b:current_syntax = "haskell"
