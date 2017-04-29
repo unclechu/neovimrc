@@ -9,15 +9,15 @@ function! PreventIndentTrimHackOn()
 	nnoremap cc ccx<Backspace>
 	vnoremap c cx<Backspace>
 	vnoremap C Cx<Backspace>
-	
+
 	"taken by easymotion
 	"nnoremap s sx<Backspace
-	
+
 	nnoremap S Sx<Backspace>
-	
+
 	"taken by easymotion
 	"vnoremap s sx<Backspace>
-	
+
 	"surround plugin need it
 	"vnoremap S Sx<Backspace>
 endfunction
@@ -31,15 +31,15 @@ function! PreventIndentTrimHackOff()
 		nunmap cc
 		vunmap c
 		vunmap C
-		
+
 		"taken by easymotion
 		"nunmap s
-		
+
 		nunmap S
-		
+
 		"taken by easymotion
 		"vunmap s
-		
+
 		"surround plugin need it
 		"vunmap S
 	catch
@@ -49,9 +49,10 @@ endfunction
 command! PreventIndentTrimHackOn  call PreventIndentTrimHackOn()
 command! PreventIndentTrimHackOff call PreventIndentTrimHackOff()
 
-if has('autocmd')
+if !exists('s:loaded')
 	autocmd CmdwinEnter * call PreventIndentTrimHackOff()
 	autocmd CmdwinLeave * call PreventIndentTrimHackOn()
+	let s:loaded = 1
 endif
 
 " vim: set noet :

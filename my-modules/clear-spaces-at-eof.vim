@@ -1,96 +1,92 @@
 " clear spaces at EOF and tabs at end of not empty lines
 " Author: Viacheslav Lotsmanov
 
-
-
 let g:auto_clear_spaces_at_eof = 1 " for non empty lines
 let g:auto_trim_spaces_at_eof  = 0 " for every line
 
 
-
 " clear spaces and tabs at EOF of not empty lines
 function! s:ClearSpacesAtEOF(do_it_anyway)
-	
+
 	if g:auto_clear_spaces_at_eof == 0 && a:do_it_anyway == 0
 		return
 	endif
-	
-	let s:view = winsaveview()
-	
-	" current line
-	let s:i = 0
-	" lines count
-	let s:c = line('$')
-	" is multiline comment opened
-	let s:isoc = 0
-	
-	while s:i < s:c
-		
-		let s:i        = s:i + 1
-		let s:line     = getline(s:i)
-		let s:lineorig = s:line
-		
+
+	let l:view = winsaveview()
+	let l:i    = 0 " current line
+	let l:c    = line('$') " lines count
+	let l:isoc = 0 " is multiline comment opened
+
+	while l:i < l:c
+
+		let l:i        = l:i + 1
+		let l:line     = getline(l:i)
+		let l:lineorig = l:line " original line contents (immutable variable)
+
 		if   &filetype == 'javascript'
 		\ || &filetype == 'ls'
-			
-			let s:has_comments = 1
-			
+
+			let l:has_comments = 1
+
 			" /* */ comments
-			while s:has_comments == 1
-				let s:has_comments = 0
-				if s:isoc == 0
-					if s:line =~ '/\*'
-						let s:has_comments = 1
-						let s:isoc = 1
-						let s:linesub = substitute(
-							\ s:line,
-							\ '^.\{-}/\*.\{-}\*/', 'x', '')
+			while l:has_comments == 1
+				let l:has_comments = 0
+
+				if l:isoc == 0
+					if l:line =~ '/\*'
+						let l:has_comments = 1
+						let l:isoc = 1
+
+						let l:linesub = substitute(
+							\ l:line, '^.\{-}/\*.\{-}\*/', 'x', ''
+						\ )
+
 						" if previous regex didn't match
-						if s:linesub == s:line
-							let s:line = ''
+						if l:linesub == l:line
+							let l:line = ''
 						else
-							let s:line = s:linesub
-							let s:isoc = 0
+							let l:line = l:linesub
+							let l:isoc = 0
 						endif
 					endif
 				else
-					if s:line =~ '\*/'
-						let s:has_comments = 1
-						let s:isoc = 0
-						let s:line = substitute(s:line, '^.\{-}\*/', 'x', '')
+					if l:line =~ '\*/'
+						let l:has_comments = 1
+						let l:isoc = 0
+						let l:line = substitute(l:line, '^.\{-}\*/', 'x', '')
 					endif
 				endif
 			endwhile
-			
+
 			if &filetype == 'ls'
 				" # comments
-				let s:line = substitute(s:line, '[ \t]*#.*$', '', '')
-			else "javascript
+				let l:line = substitute(l:line, '[ \t]*#.*$', '', '')
+			else " javascript
 				" // comments
-				let s:line = substitute(s:line, '[ \t]*//.*$', '', '')
+				let l:line = substitute(l:line, '[ \t]*//.*$', '', '')
 			endif
 		endif
-		
-		if s:isoc == 0 && s:line =~ '\([^ \t]\)[ \t]\+$'
+
+		if l:isoc == 0 && l:line =~ '\([^ \t]\)[ \t]\+$'
 			call setline(
-				\ s:i,
-				\ substitute(s:lineorig, '\([^ \t]\)[ \t]\+$', '\1', '')
+				\ l:i,
+				\ substitute(l:lineorig, '\([^ \t]\)[ \t]\+$', '\1', '')
 			\ )
 		endif
 	endwhile
-	
+
 	" clear all spaces at EOF if we using tabs for indentation
 	if ! &expandtab
 		silent %s/[ ]\+$//ge
 	endif
-	
+
 	" clear tabs after spaces if we using tabs for indentation
 	if ! &expandtab
 		silent %s/[ ]\+[ \t]\+$//ge
 	endif
-	
-	call winrestview(s:view)
-	
+
+	call winrestview(l:view)
+
 endfunction
 
 function! s:AutoClearSpacesAtEOF(status)
@@ -112,22 +108,20 @@ endfunction
 command! AutoClearSpacesAtEOFToggle  call s:AutoClearSpacesAtEOF(-1)
 command! AutoClearSpacesAtEOFEnable  call s:AutoClearSpacesAtEOF(1)
 command! AutoClearSpacesAtEOFDisable call s:AutoClearSpacesAtEOF(0)
-
 command! ClearSpacesAtEOF call s:ClearSpacesAtEOF(1)
-
 
 
 " clear any space characters at EOF for every line
 function! s:TrimSpacesAtEOF(do_it_anyway)
-	
+
 	if g:auto_trim_spaces_at_eof == 0 && a:do_it_anyway == 0
 		return
 	endif
-	
-	let s:view = winsaveview()
+
+	let l:view = winsaveview()
 	silent %s/\s\+$//e
-	call winrestview(s:view)
-	
+	call winrestview(l:view)
+
 endfunction
 
 function! s:AutoTrimSpacesAtEOF(status)
@@ -149,16 +143,13 @@ endfunction
 command! AutoTrimSpacesAtEOFToggle  call s:AutoTrimSpacesAtEOF(-1)
 command! AutoTrimSpacesAtEOFEnable  call s:AutoTrimSpacesAtEOF(1)
 command! AutoTrimSpacesAtEOFDisable call s:AutoTrimSpacesAtEOF(0)
-
 command! TrimSpacesAtEOF call s:TrimSpacesAtEOF(1)
 
 
-
-if has('autocmd')
+if !exists('s:loaded')
 	autocmd BufWritePre * call s:ClearSpacesAtEOF(0)
 	autocmd BufWritePre * call s:TrimSpacesAtEOF(0)
+	let s:loaded = 1
 endif
-
-
 
 " vim: set noet :

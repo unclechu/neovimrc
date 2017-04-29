@@ -2,22 +2,20 @@
 " Author: Viacheslav Lotsmanov
 
 set backup
+let s:backups_and_swap_home_dir = $HOME
+let s:tmp_dir = s:backups_and_swap_home_dir . '/.vim_backup'
 
-let g:backups_and_swap_home_dir = expand('~')
-
-let g:tmp_dir = g:backups_and_swap_home_dir . '/.vim_backup'
-if !isdirectory(g:tmp_dir)
-	call mkdir(g:tmp_dir)
+if !isdirectory(s:tmp_dir)
+	call mkdir(s:tmp_dir)
 endif
-let &backupdir = g:tmp_dir . ',.,/tmp'
 
-let g:tmp_dir = g:backups_and_swap_home_dir . '/.vim_swap'
-if !isdirectory(g:tmp_dir)
-	call mkdir(g:tmp_dir)
+let &backupdir = s:tmp_dir . ',.,/tmp'
+let s:tmp_dir = s:backups_and_swap_home_dir . '/.vim_swap'
+
+if !isdirectory(s:tmp_dir)
+	call mkdir(s:tmp_dir)
 endif
-let &directory = g:tmp_dir . ',.,/tmp'
 
-unlet g:backups_and_swap_home_dir
-unlet g:tmp_dir
+let &directory = s:tmp_dir . ',.,/tmp'
 
 " vim: set noet :

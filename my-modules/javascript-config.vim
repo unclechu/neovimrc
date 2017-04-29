@@ -1,8 +1,11 @@
 " vim-javascript plugin configs
 " Author: Viacheslav Lotsmanov
 
-" conceals is disabled
-" autocmd FileType javascript setlocal conceallevel=1
+if !exists('s:loaded')
+	" conceals is disabled
+	" autocmd FileType javascript setlocal conceallevel=1
+	let s:loaded = 1
+endif
 
 let g:javascript_conceal_function   = "ƒ"
 let g:javascript_conceal_null       = "ø"

@@ -3,11 +3,7 @@
 
 function! ListToggle()
 	let &list = ! &list
-	if &list
-		echo 'Special chars highlighting is enabled'
-	else
-		echo 'Special chars highlighting is disabled'
-	endif
+	echo 'Special chars highlighting is ' . (&list ? 'enabled' : 'disabled')
 endfunction
 
 command! ListToggle call ListToggle()

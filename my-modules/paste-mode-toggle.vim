@@ -3,11 +3,7 @@
 
 function! PasteToggle()
 	let &paste = ! &paste
-	if &paste
-		echo 'Paste mode is enabled'
-	else
-		echo 'Paste mode is disabled'
-	endif
+	echo 'Paste mode is ' . (&paste ? 'enabled' : 'disabled')
 endfunction
 
 command! PasteToggle call PasteToggle()

@@ -1,9 +1,14 @@
 " autocmd commands
 " Author: Viacheslav Lotsmanov
 
+if exists('s:loaded')
+	finish
+endif
+
 autocmd BufNewFile,BufRead
 	\ *.json.example,.jshintrc,.babelrc,.eslintrc,.modernizrrc
 	\ set ft=json
+
 autocmd BufNewFile,BufRead *.gyp set ft=json
 autocmd BufNewFile,BufRead *.yaml.example set ft=yaml
 autocmd BufNewFile,BufRead *.ts set ft=typescript
@@ -26,7 +31,6 @@ autocmd FileType
 autocmd FileType haskell,cabal setlocal et ts=2 sts=2 sw=2
 
 autocmd FileType python setlocal ts=4 sts=4 sw=4
-
 autocmd FileType gitcommit setlocal cc=73 tw=72
 
 " disable tabs highlight on empty lines
@@ -44,14 +48,16 @@ function! s:PreviousTab_StoreState()
 	let s:tab_current = tabpagenr()
 	let s:tab_last = tabpagenr('$')
 endfunction
+
 function! s:PreviousTab_TabClosed()
 	if s:tab_current > 1 && s:tab_current < s:tab_last
 		exec 'tabp'
 	endif
 endfunction
+
 autocmd TabEnter,TabLeave * call s:PreviousTab_StoreState()
 autocmd TabClosed * call s:PreviousTab_TabClosed()
-
 autocmd BufWritePost * Neomake
+let s:loaded = 1
 
 " vim: set noet :

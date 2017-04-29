@@ -10,8 +10,10 @@ function! s:BackgroundToggle()
 endfunction
 
 function! s:GruvboxContrastRotate()
-	let s:contrast = ''
+	let l:contrast = ''
+
 	if &background == 'dark'
+
 		if g:gruvbox_contrast_dark == 'soft'
 			let g:gruvbox_contrast_dark = 'medium'
 		elseif g:gruvbox_contrast_dark == 'medium'
@@ -19,8 +21,11 @@ function! s:GruvboxContrastRotate()
 		elseif g:gruvbox_contrast_dark == 'hard'
 			let g:gruvbox_contrast_dark = 'soft'
 		endif
-		let s:contrast = g:gruvbox_contrast_dark
+
+		let l:contrast = g:gruvbox_contrast_dark
+
 	elseif &background == 'light'
+
 		if g:gruvbox_contrast_light == 'soft'
 			let g:gruvbox_contrast_light = 'medium'
 		elseif g:gruvbox_contrast_light == 'medium'
@@ -28,14 +33,17 @@ function! s:GruvboxContrastRotate()
 		elseif g:gruvbox_contrast_light == 'hard'
 			let g:gruvbox_contrast_light = 'soft'
 		endif
-		let s:contrast = g:gruvbox_contrast_light
+
+		let l:contrast = g:gruvbox_contrast_light
 	endif
+
 	call s:BackgroundToggle()
 	call s:BackgroundToggle()
+
 	echo
 		\ "Gruvbox " . &background
 		\ . " colorscheme contrast set to: "
-		\ . s:contrast
+		\ . l:contrast
 endfunction
 
 command! BackgroundToggle      call s:BackgroundToggle()

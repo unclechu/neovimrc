@@ -3,11 +3,7 @@
 
 function! WrapToggle()
 	let &wrap = ! &wrap
-	if &wrap
-		echo 'Wrap mode is enabled'
-	else
-		echo 'Wrap mode is disabled'
-	endif
+	echo 'Wrap mode is ' . (&wrap ? 'enabled' : 'disabled')
 endfunction
 
 command! WrapToggle call WrapToggle()

@@ -17,12 +17,15 @@ endfunction
 " shows selected lines in shell (for terminal copy-paste)
 function! s:filelines() range
 	let l:to_encode = ''
+
 	for l:linenum in range(a:firstline, a:lastline)
 		if l:linenum > a:firstline
 			let l:to_encode = to_encode . "\n"
 		endif
+
 		let l:to_encode = l:to_encode . getline(l:linenum)
 	endfor
+
 	exec ":!echo '" . s:pybase64enc(l:to_encode) . "' | base64 --decode"
 endfunction
 

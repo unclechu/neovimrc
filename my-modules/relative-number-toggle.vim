@@ -3,11 +3,7 @@
 
 function! RelativeNumberToggle()
 	let &relativenumber = ! &relativenumber
-	if &relativenumber
-		echo 'Relative numbers is enabled'
-	else
-		echo 'Relative numbers is disabled'
-	endif
+	echo 'Relative numbers is ' . (&relativenumber ? 'enabled' : 'disabled')
 endfunction
 
 command! RelativeNumberToggle call RelativeNumberToggle()
