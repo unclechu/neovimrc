@@ -143,6 +143,7 @@ let g:nerdtree_tabs_open_on_new_tab         = 0
 let g:tagbar_show_linenumbers               = 2
 let g:airline#extensions#tabline#enabled    = 0
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts               = 1
 set laststatus=2 " airline always
 set hidden " ctrlspace
 set showtabline=2
