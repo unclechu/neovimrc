@@ -46,6 +46,7 @@ Plugin 't9md/vim-quickhl'
 Plugin 'tweekmonster/braceless.vim'
 Plugin 'equalsraf/neovim-gui-shim'
 " Plugin 'blueyed/vim-diminactive' " works bad with NERDTree for example
+Plugin 'ryanoasis/vim-devicons'
 
 " surround
 Plugin 'tpope/vim-surround'
