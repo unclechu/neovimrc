@@ -7,8 +7,8 @@ function! PreventIndentTrimHackOn()
 	nnoremap o ox<Backspace>
 	nnoremap O Ox<Backspace>
 	nnoremap cc ccx<Backspace>
-	vnoremap c cx<Backspace>
-	vnoremap C Cx<Backspace>
+	xnoremap c cx<Backspace>
+	xnoremap C Cx<Backspace>
 
 	"taken by easymotion
 	"nnoremap s sx<Backspace
@@ -16,10 +16,10 @@ function! PreventIndentTrimHackOn()
 	nnoremap S Sx<Backspace>
 
 	"taken by easymotion
-	"vnoremap s sx<Backspace>
+	"xnoremap s sx<Backspace>
 
 	"surround plugin need it
-	"vnoremap S Sx<Backspace>
+	"xnoremap S Sx<Backspace>
 endfunction
 
 function! PreventIndentTrimHackOff()
@@ -29,8 +29,8 @@ function! PreventIndentTrimHackOff()
 		nunmap o
 		nunmap O
 		nunmap cc
-		vunmap c
-		vunmap C
+		xunmap c
+		xunmap C
 
 		"taken by easymotion
 		"nunmap s
@@ -38,10 +38,10 @@ function! PreventIndentTrimHackOff()
 		nunmap S
 
 		"taken by easymotion
-		"vunmap s
+		"xunmap s
 
 		"surround plugin need it
-		"vunmap S
+		"xunmap S
 	catch
 	endtry
 endfunction

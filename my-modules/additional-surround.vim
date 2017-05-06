@@ -4,7 +4,7 @@
 
 " hack for wrap to <CR> with indentation
 
-vmap S<CR> S<C-j>gvVkoj>
+xmap S<CR> S<C-j>gvVkoj>
 
 nmap ysiw<CR> ysiw<C-j>gvVkoj>
 nmap ysaw<CR> ysaw<C-j>gvVkoj>
