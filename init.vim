@@ -157,8 +157,8 @@ xmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
-let g:UltiSnipsExpandTrigger = "<Nop>"
-let g:UltiSnipsListSnippets = "<Nop>"
+let g:UltiSnipsExpandTrigger = "<Nul>"
+let g:UltiSnipsListSnippets  = "<Nul>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 " let g:syntastic_enable_signs = 1
 " let g:syntastic_always_populate_loc_list = 1
