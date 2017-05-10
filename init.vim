@@ -4,7 +4,7 @@
 
 " required for vundle
 filetype off
-exec 'set rtp+='. ($HOME) .'/.config/nvim/bundle/Vundle.vim'
+set rtp+=$HOME/.config/nvim/bundle/Vundle.vim
 call vundle#begin($HOME . '/.config/nvim/bundle')
 Plugin 'gmarik/Vundle.vim', {'pinned': 1} " provided by git-submodule
 
@@ -185,6 +185,11 @@ let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:necoghc_enable_detailed_browse = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:unite_source_hoogle_max_candidates = 1000
 
 let g:unite_source_menu_menus = {}
