@@ -136,7 +136,6 @@ let NERDTreeShowHidden = 1 " always show hidden files in NERDTree
 let NERDTreeMapHelp = '<Leader>?' " heals backward search
 let NERDTreeShowLineNumbers = 1
 let NERDTreeWinSize = 40
-let NERDTreeMapOpenVSplit = 'S' " for easymotion 's' map
 let g:nerdtree_tabs_open_on_gui_startup     = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
 let g:nerdtree_tabs_open_on_new_tab         = 0
