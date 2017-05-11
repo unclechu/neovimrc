@@ -146,18 +146,16 @@ let g:airline_powerline_fonts               = 1
 set laststatus=2 " airline always
 set hidden " ctrlspace
 set showtabline=2
-let g:CtrlSpaceDefaultMappingKey = "<C-Space>"
+let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm = 1
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 0
-xmap <Enter> <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
-let g:UltiSnipsExpandTrigger = "<Nul>"
-let g:UltiSnipsListSnippets  = "<Nul>"
+let g:UltiSnipsExpandTrigger = '<Nul>'
+let g:UltiSnipsListSnippets  = '<Nul>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 " let g:syntastic_enable_signs = 1
 " let g:syntastic_always_populate_loc_list = 1
@@ -199,13 +197,13 @@ let g:unite_source_menu_menus.ls.command_candidates = [
 	\]
 let g:unite_source_menu_menus.haskell = { 'description': 'Haskell' }
 let g:unite_source_menu_menus.haskell.command_candidates = [
-	\ ['ghc-mod: Get type', "GhcModType!"],
+	\ ['ghc-mod: Get type', 'GhcModType!'],
 	\ ['ghc-mod: Get type (redir to @t)',
 	\    "redir @t | exec 'GhcModType!' | redir END | echo ''"],
-	\ ['ghc-mod: Clear type highlight', "GhcModTypeClear"],
-	\ ['ghc-mod: Insert type', "GhcModTypeInsert!"],
-	\ ['ghc-mod: Check for errors/warnings', "GhcModCheckAsync!"],
-	\ ['ghc-mod: Lint', "GhcModLintAsync!"],
+	\ ['ghc-mod: Clear type highlight', 'GhcModTypeClear'],
+	\ ['ghc-mod: Insert type', 'GhcModTypeInsert!'],
+	\ ['ghc-mod: Check for errors/warnings', 'GhcModCheckAsync!'],
+	\ ['ghc-mod: Lint', 'GhcModLintAsync!'],
 	\ ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle'],
 	\ ['Hoogle (command)', "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""]
 	\]
@@ -258,12 +256,18 @@ unlet s:u_all_pfx
 unlet s:u_max_prefix_length
 unlet s:u_desc
 
-call unite#custom#source(
-	\ 'file_rec,file_rec/async,file_rec/neovim',
-	\ 'ignore_pattern',
-	\ '\v\.git/|\.hg/|\.svn/|__pycache__/|node_modules/|bower_components/'
-	\   . '\.exe$|\.so$|\.dll$|\.swp$|\.swo$'
-	\)
+try
+	call unite#custom#source(
+		\ 'file_rec,file_rec/async,file_rec/neovim',
+		\ 'ignore_pattern',
+		\ '\v\.git/|\.hg/|\.svn/|__pycache__/|node_modules/|bower_components/'
+		\   . '\.exe$|\.so$|\.dll$|\.swp$|\.swo$'
+		\)
+catch
+	if stridx(v:exception, ':E117:') == -1
+		echoe v:exception
+	endif
+endtry
 
 " load my modules
 syntax on
@@ -325,6 +329,8 @@ set wildmenu
 set clipboard-=unnamedplus
 set termguicolors
 
+set path+=** " recursively deal with files
+
 call PreventIndentTrimHackOn()
 
 let mapleader = ','
@@ -346,6 +352,9 @@ nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
+
+xmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
@@ -690,19 +699,15 @@ nnoremap <A-w> :tabclose<CR>
 " quick hook for 'IndentText'
 inoremap <A-i> <C-r>=IndentText('')<Left><Left>
 
-" useful for multi-line visual block editing with decorative indentation.
-" inserts N (length of input text) spaces and copies original text to default
-" clipboard register.
-function! g:IndentText(text)
-	let @" = a:text
-	return substitute(a:text, '.', ' ', 'g')
-endfunction
 
 " custom digraphs
 digraphs '' 769 " accent
 digraphs 3. 8230 " dots
 
-let g:gruvbox_contrast_dark = 'medium'
+
+" colorscheme
+
+let g:gruvbox_contrast_dark  = 'medium'
 let g:gruvbox_contrast_light = 'soft'
 set background=dark
 
@@ -712,14 +717,17 @@ else
 	colorscheme twilight
 endif
 
+
 if filereadable('/bin/bash') " gnu/linux
 	set shell=/bin/bash
 elseif filereadable('/usr/local/bin/bash') " freebsd
 	set shell=/usr/local/bin/bash
 else
-	echo 'ERROR: bash interpreter not found!'
+	echoe 'bash interpreter not found'
 endif
-let $BASH_ENV = $HOME . "/.bash_aliases"
+
+let $BASH_ENV = $HOME . '/.bash_aliases'
+
 
 " :terminal colorscheme
 let g:terminal_color_0  = '#073642'
@@ -739,11 +747,21 @@ let g:terminal_color_13 = '#6c71c4'
 let g:terminal_color_14 = '#93a1a1'
 let g:terminal_color_15 = '#fdf6e3'
 
-command! MakeTags !ctags -R .
-set path+=** " recursively deal with files
 
-" include local rc
+" healing conceals in NERDTree
+try
+	call webdevicons#refresh()
+catch
+	if stridx(v:exception, ':E117:') == -1
+		echoe v:exception
+	endif
+endtry
+
+
+" applying local additional config
+
 let g:local_rc_post = $HOME . '/.neovimrc-local-post'
+
 if filereadable(g:local_rc_post)
 	exec 'source ' . g:local_rc_post
 endif
