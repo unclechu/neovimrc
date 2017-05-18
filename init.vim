@@ -185,6 +185,7 @@ let g:necoghc_enable_detailed_browse = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:webdevicons_enable_nerdtree = 0 " disabled because it is laggy and buggy
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:unite_source_hoogle_max_candidates = 1000
