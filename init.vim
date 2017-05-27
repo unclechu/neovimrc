@@ -6,7 +6,7 @@
 filetype off
 set rtp+=$HOME/.config/nvim/bundle/Vundle.vim
 call vundle#begin($HOME . '/.config/nvim/bundle')
-Plugin 'gmarik/Vundle.vim', {'pinned': 1} " provided by git-submodule
+Plugin 'VundleVim/Vundle.vim', {'pinned': 1} " provided by git-submodule
 
 
 " plugins
