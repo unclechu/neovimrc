@@ -97,8 +97,16 @@ snippet la "declare a lambda" i
 \\${1:x} -> ${2:undefined}
 endsnippet
 
+snippet lau "declare a lambda (unicode)" i
+\\${1:x} → ${2:undefined}
+endsnippet
+
 snippet lb "declare a lambda wrapped to brackets" w
 (\\${1:x} -> ${2:undefined})
+endsnippet
+
+snippet lbu "declare a lambda wrapped to brackets (unicode)" w
+(\\${1:x} → ${2:undefined})
 endsnippet
 
 
@@ -117,40 +125,46 @@ endsnippet
 
 # From the UnicodeSyntax extension
 snippet :: "Unicode :: = ∷" w
-∷
+∷ ${1}
 endsnippet
 snippet : "Unicode : = ∷" w
-∷
+∷ ${1}
 endsnippet
 snippet => "Unicode => = ⇒" w
-⇒
+⇒ ${1}
 endsnippet
 snippet forall "Unicode forall = ∀" w
-∀
+∀ ${1}
 endsnippet
 snippet A "Unicode A = ∀" w
-∀
+∀ ${1}
 endsnippet
 snippet -> "Unicode -> = →" w
-→
+→ ${1}
+endsnippet
+snippet > "Unicode > = →" w
+→ ${1}
 endsnippet
 snippet <- "Unicode <- = ←" w
-←
+← ${1}
+endsnippet
+snippet < "Unicode < = ←" w
+← ${1}
 endsnippet
 snippet >- "Unicode >- = ⤚" w
-⤚
+⤚ ${1}
 endsnippet
 snippet -< "Unicode -< = ⤙" w
-⤙
+⤙ ${1}
 endsnippet
 snippet -<< "Unicode -<< = ⤛" w
-⤛
+⤛ ${1}
 endsnippet
 snippet >>- "Unicode >>- = ⤜" w
-⤜
+⤜ ${1}
 endsnippet
 snippet *t "Unicode * = ★" w
-★
+★ ${1}
 endsnippet
 
 
@@ -161,68 +175,80 @@ snippet not "Unicode not = (¬)" w
 ¬
 endsnippet
 snippet && "Unicode (&&) = (∧)" w
-∧
+∧ ${1}
+endsnippet
+snippet & "Unicode & = ∧" w
+∧ ${1}
 endsnippet
 snippet || "Unicode (||) = (∨)" w
-∨
+∨ ${1}
+endsnippet
+snippet | "Unicode | = ∨" w
+∨ ${1}
 endsnippet
 snippet == "Unicode (==) = (≡)" w
-≡
+≡ ${1}
+endsnippet
+snippet = "Unicode = to ≡" w
+≡ ${1}
 endsnippet
 snippet /= "Unicode (/=) = (≠)" w
-≠
+≠ ${1}
 endsnippet
 snippet /≡ "Unicode (/=) = (≢)" w
 ≢
 endsnippet
 snippet /== "Unicode (/=) = (≢)" w
-≢
+≢ ${1}
 endsnippet
 snippet <= "Unicode <= = ≤" w
-≤
+≤ ${1}
 endsnippet
 snippet /> "Unicode <= = ≯" w
-≯
+≯ ${1}
 endsnippet
 snippet >= "Unicode >= = ≥" w
-≥
+≥ ${1}
 endsnippet
 snippet /< "Unicode >= = ≮" w
-≮
+≮ ${1}
 endsnippet
 snippet PI "Unicode pi = π" w
-π
+π ${1}
 endsnippet
 snippet / "Unicode (/) = (÷)" w
-÷
+÷ ${1}
 endsnippet
 snippet * "Unicode (*) = (⋅)" w
-⋅
+⋅ ${1}
 endsnippet
 snippet . "Unicode (.) = (∘)" w
-∘
+∘ ${1}
 endsnippet
 # my own
 snippet .> "Unicode (.>) = (∘>)" w
-∘>
+∘> ${1}
 endsnippet
 snippet ++ "Unicode (++) = (⧺)" w
-⧺
+⧺ ${1}
+endsnippet
+snippet + "Unicode + = ⧺" w
+⧺ ${1}
 endsnippet
 snippet elem "Unicode elem = (∈)" w
-∈
+∈ ${1}
 endsnippet
 snippet E "Unicode E = (∈)" w
-∈
+∈ ${1}
 endsnippet
 snippet notElem "Unicode notElem = (∉)" w
-∉
+∉ ${1}
 endsnippet
 snippet /E "Unicode /E = (∉)" w
-∉
+∉ ${1}
 endsnippet
 snippet E/ "Unicode E/ = (∉)" w
-∉
+∉ ${1}
 endsnippet
 snippet undefined "Unicode undefined = (⊥)" w
 ⊥
@@ -230,16 +256,16 @@ endsnippet
 
 # Types
 snippet Integer "Unicode Integer = ℤ" w
-ℤ
+ℤ ${1}
 endsnippet
 snippet Z "Unicode Z = ℤ" w
-ℤ
+ℤ ${1}
 endsnippet
 snippet Rational "Unicode Rational = ℚ" w
-ℚ
+ℚ ${1}
 endsnippet
 snippet Q "Unicode Q = ℚ" w
-ℚ
+ℚ ${1}
 endsnippet
 
 
@@ -306,7 +332,7 @@ snippet ∈ "Unicode flip elem = (∋)" w
 ∋
 endsnippet
 snippet 3 "Unicode 3 = (∋)" w
-∋
+∋ ${1}
 endsnippet
 # notElem = (∉)
 # flip notElem = (∌)
@@ -314,10 +340,10 @@ snippet ∉ "Unicode flip notElem = (∌)" w
 ∌
 endsnippet
 snippet /3 "Unicode /3 = (∌)" w
-∌
+∌ ${1}
 endsnippet
 snippet 3/ "Unicode 3/ = (∌)" w
-∌
+∌ ${1}
 endsnippet
 
 
