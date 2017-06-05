@@ -13,20 +13,38 @@ snippet (&) "Declare pipe version of ($) operator" w
 infixl 1 &
 endsnippet
 
+snippet u(&) "Declare pipe version of ($) operator (unicode)" w
+(&) ∷ a → (a → b) → b
+(&) = flip ($)
+infixl 1 &
+endsnippet
+
 snippet (.>) "Declare pipe version of (.) operator" w
 (.>) :: (a -> b) -> (b -> c) -> a -> c
 (.>) = flip (.)
 infixl 9 .>
 endsnippet
 
-snippet (∘>) "Declare pipe version of (∘) Unicode operator"
-(∘>) :: (a -> b) -> (b -> c) -> a -> c
+snippet u(.>) "Declare pipe version of (.) operator (unicode)" w
+(.>) ∷ (a → b) → (b → c) → a → c
+(.>) = flip (.)
+infixl 9 .>
+endsnippet
+
+snippet (∘>) "Declare pipe version of (∘) Unicode operator" w
+(∘>) :: (a → b) → (b → c) → a → c
 (∘>) = flip (.)
 infixl 9 ∘>
 endsnippet
 
-snippet (<&>) "Declare pipe version of <$> operator"
+snippet (<&>) "Declare pipe version of <$> operator" w
 (<&>) :: Functor f => f a -> (a -> b) -> f b
+(<&>) = flip (<$>)
+infixr 5 <&>
+endsnippet
+
+snippet u(<&>) "Declare pipe version of <$> operator" w
+(<&>) ∷ Functor f ⇒ f a → (a → b) → f b
 (<&>) = flip (<$>)
 infixr 5 <&>
 endsnippet
@@ -93,11 +111,16 @@ f :: ${1:Foo}
 f = ${2:undefined}
 endsnippet
 
+snippet fu "declare a function (unicode)" w
+f ∷ ${1:Foo}
+f = ${2:undefined}
+endsnippet
+
 snippet la "declare a lambda" i
 \\${1:x} -> ${2:undefined}
 endsnippet
 
-snippet lau "declare a lambda (unicode)" i
+snippet lu "declare a lambda (unicode)" i
 \\${1:x} → ${2:undefined}
 endsnippet
 
@@ -113,6 +136,16 @@ endsnippet
 snippet main "main monad" w
 main :: IO ()
 main = ${1:undefined}
+endsnippet
+
+snippet mainu "main monad (unicode)" w
+main ∷ IO ()
+main = ${1:undefined}
+endsnippet
+
+
+snippet qm "qm interpolated string quasi-quote" w
+[qm| ${1:foo} |]${2}
 endsnippet
 
 
@@ -180,10 +213,16 @@ endsnippet
 snippet & "Unicode & = ∧" w
 ∧ ${1}
 endsnippet
+snippet a "Unicode a = ∧" w
+∧ ${1}
+endsnippet
 snippet || "Unicode (||) = (∨)" w
 ∨ ${1}
 endsnippet
 snippet | "Unicode | = ∨" w
+∨ ${1}
+endsnippet
+snippet o "Unicode o = ∨" w
 ∨ ${1}
 endsnippet
 snippet == "Unicode (==) = (≡)" w
