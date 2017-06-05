@@ -32,7 +32,7 @@ infixl 9 .>
 endsnippet
 
 snippet (∘>) "Declare pipe version of (∘) Unicode operator" w
-(∘>) :: (a → b) → (b → c) → a → c
+(∘>) ∷ (a → b) → (b → c) → a → c
 (∘>) = flip (.)
 infixl 9 ∘>
 endsnippet
