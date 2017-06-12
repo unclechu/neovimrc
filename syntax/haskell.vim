@@ -13,14 +13,14 @@ exec "source " . s:path
 unlet s:path
 
 
-sy match hs_TypeDeclaration "\(\s\|^\)\@<=\(::\|∷\)\(\s\|$\)\@="
-sy match hs_TypeDeclNext "\(\s\|^\)\@<=\(->\|→\)\(\s\|$\)\@="
-sy match hs_TypeDeclConstraint "\(\s\|^\)\@<=\(=>\|⇒\)\(\s\|$\)\@="
-sy match hs_EqualsSymbol "\(\s\|^\)\@<==\(\s\|$\)\@="
-sy match hs_MonadExtract "\s\@<=\(<-\|←\)\(\s\|$\)\@="
+sy match hs_TypeDeclaration "\v(\s|^)@<=(::|∷)(\s|$)@="
+sy match hs_TypeDeclNext "\v(\s|^)@<=(-\>|→)(\s|$)@="
+sy match hs_TypeDeclConstraint "\v(\s|^)@<=(\=\>|⇒)(\s|$)@="
+sy match hs_EqualsSymbol "\v(\s|^)@<=\=(\s|$)@="
+sy match hs_MonadExtract "\v\s@<=(\<-|←)(\s|$)@="
 
-sy match hs_NothingStuff "\(()\|\<undefined\>\)"
-sy match hs_BackQuotesOperator "`[a-zA-Z0-9_'.]\+`"
+sy match hs_NothingStuff "\v(\(\)|<undefined>)"
+sy match hs_BackQuotesOperator "\v`[a-zA-Z0-9_'.]+`"
 
 " custom fork from parent to fix highlight bug
 " when use infix functions inside ViewPatterns.
@@ -44,13 +44,17 @@ sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
 
 sy match hs_LambdaFuncDeclBackslash "\\"
 
-sy match hs_MyBoolean "\<\(True\|False\)\>"
-sy match hs_MyOperators "\(\s\|^\)\@<=\(&&\|||\|==\|/=\|:\|<=\?\|>=\?\||?|\|!!\|.|.\|.&.\|&&&\|\*\*\*\|∀\|★\|¬\|∧\|∨\|≡\|≠\|≢\|≤\|≥\|∘\|∘>\|∈\|∉\|∌\|∋\|⊥\|⧺\|⤚\|⤙\|⤛\|⤜\|⋅\|÷\|+\|-\)\(\s\|$\)\@="
-sy match hs_MyMoreOperators "\(\s\|^\)\@<=\(\$\|&\|\.\|\.>\||\|?\|>>=\?\|=\?<<\|>=>\|<=<\|<[|&*$]\+>\|[|&*$]\+>\|<[|&*$]\+\|[%+*-.=$^][~.=%$*^][~=-^]\?\|++\|:\|:>\|:<|>\|.:\|:.\)\(\s\|$\)\@="
-sy match hs_MyWarn "(\.\.)"
+sy match hs_MyBoolean "\v<(True|False)>"
 
-sy match hs_MyImportAsFix "\(\<import\>\s\+.\+\s\+\)\@<=\<as\>"
-sy match hs_MyImportHidingFix "\(\<import\>\s\+.\+\s\+\)\@<=\<hiding\>"
+
+sy match hs_MyOperators "\v(\s|^)@<=(:|!!|∀|★|¬|∧|∨|≡|≠|≢|≤|≥|∘|∘>|∈|∉|∌|∋|⊥|⧺|⤚|⤙|⤛|⤜|⋅|÷|-)(\s|$)@="
+sy match hs_MyOperators2 "\v(\s|^)@<=([|&]{2}|[/=]{2}|\<?[|&*$]+\>?|[%+*-.=$^][~.=%$*^][~=-^]?)(\s|$)@="
+sy match hs_MyOperators3 "\V\(\s\|\^\)\@<=\(?\||?|\|.&.\|&&&\|***\|+\|++\|:>\|:<|>\|.:\|:.\)\(\s\|\$\)\@="
+sy match hs_MyOperators4 "\V\(\s\|\^\)\@<=\(.\|.>\|.|.\|<=\?\|>=\?\|>>=\?\|=\?<<\|>=>\|<=<\)\(\s\|\$\)\@="
+sy match hs_MyWarn "\V(..)"
+
+sy match hs_MyImportAsFix "\v(<import>\s+.+\s+)@<=<as>"
+sy match hs_MyImportHidingFix "\v(<import>\s+.+\s+)@<=<hiding>"
 
 " just overwritten `hsType` match to fix '(' bracket highlight (kinda hack)
 sy match hs_MyBracketFix "\<[A-Z]\(\S\&[^,.(]\)*\>"
@@ -71,7 +75,9 @@ hi def link hs_BackQuotesOperator Identifier
 hi def link hs_NothingStuff StorageClass
 hi def link hs_MyBoolean StorageClass
 hi def link hs_MyOperators Identifier
-hi def link hs_MyMoreOperators Identifier
+hi def link hs_MyOperators2 Identifier
+hi def link hs_MyOperators3 Identifier
+hi def link hs_MyOperators4 Identifier
 hi def link hs_MyWarn WarningMsg
 
 hi def link hs_EqualsSymbol Constant
