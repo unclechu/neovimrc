@@ -28,7 +28,9 @@ sy match hs_My_InfixFunctionName "^\S[^=(]*`[a-z_][^`]*`"me=e-1 contained
 	\ contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
 " overwritten from parent
 " (added `hs_EqualsSymbol` and `hs_NothingStuff` to `contains`)
-sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)"
+" WARN it is blocked to fix `module` highlight when some explicitly exported
+"      operator contains equality symbol (`=`).
+sy region hs_Function start="^xxx BLOCKED xxx["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)"
 	\ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_My_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter,hs_EqualsSymbol,hs_NothingStuff
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
 sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*\(::\|∷\)"
@@ -51,10 +53,12 @@ sy match hs_MyOperators "\v(\s|^)@<=(:|!!|∀|★|¬|∧|∨|≡|≠|≢|≤|≥
 sy match hs_MyOperators2 "\v(\s|^)@<=([|&]{2}|[/=]{2}|\<?[|&*$]+\>?|[%+*-.=$^][~.=%$*^][~=-^]?)(\s|$)@="
 sy match hs_MyOperators3 "\V\(\s\|\^\)\@<=\(?\||?|\|.&.\|&&&\|***\|+\|++\|:>\|:<|>\|.:\|:.\)\(\s\|\$\)\@="
 sy match hs_MyOperators4 "\V\(\s\|\^\)\@<=\(.\|.>\|.|.\|<=\?\|>=\?\|>>=\?\|=\?<<\|>=>\|<=<\)\(\s\|\$\)\@="
+sy match hs_MyOperators5Lens "\V\(\s\|\^\)\@<=\(&~\|?=\)\(\s\|\$\)\@="
 sy match hs_MyWarn "\V(..)"
 
 sy match hs_MyImportAsFix "\v(<import>\s+.+\s+)@<=<as>"
 sy match hs_MyImportHidingFix "\v(<import>\s+.+\s+)@<=<hiding>"
+sy match hs_MyImportKwFix "\v(^<import>(\s+|$)@=|(^<import>\s+)@<=qualified(\s+|$)@=)"
 
 " just overwritten `hsType` match to fix '(' bracket highlight (kinda hack)
 sy match hs_MyBracketFix "\<[A-Z]\(\S\&[^,.(]\)*\>"
@@ -62,6 +66,7 @@ sy match hs_MyBracketFix "\<[A-Z]\(\S\&[^,.(]\)*\>"
 
 hi def link hs_MyImportAsFix Include
 hi def link hs_MyImportHidingFix Include
+hi def link hs_MyImportKwFix Include
 
 hi def link hs_LambdaFuncDeclBackslash Keyword
 
@@ -78,6 +83,7 @@ hi def link hs_MyOperators Identifier
 hi def link hs_MyOperators2 Identifier
 hi def link hs_MyOperators3 Identifier
 hi def link hs_MyOperators4 Identifier
+hi def link hs_MyOperators5Lens Identifier
 hi def link hs_MyWarn WarningMsg
 
 hi def link hs_EqualsSymbol Constant
