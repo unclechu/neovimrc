@@ -647,8 +647,8 @@ xnoremap R r<Space>R
 " break line but keep same column position for rest of the line
 imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>#d0i<C-R>0
 
-nnoremap <A-o> mzo<Esc>`z
-nnoremap <A-O> mzO<Esc>`z
+nnoremap <A-o> mzo<Esc>S<Esc>`z
+nnoremap <A-O> mzO<Esc>S<Esc>`z
 
 
 " custom numbers line keys
