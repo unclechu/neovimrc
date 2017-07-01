@@ -46,7 +46,7 @@ sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
 
 sy match hs_LambdaFuncDeclBackslash "\\\(\\\)\@!"
 
-sy match hs_MyWarn "\V(..)"
+sy match hs_MyWarn "\V\((..)\|\(\s\|\^\|(\)\@<=!\(\[a-zA-Z0-9_]\)\@=\)"
 
 " TODO FIXME
 sy match hs_MyBoolean "\v(\s|^)@<=(True|False)(\s|$)@="
