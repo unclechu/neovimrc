@@ -44,17 +44,24 @@ sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
 	\ contains=hsModuleName,hsImportLabel
 	\ nextgroup=hsImportParams,hsImportIllegal skipwhite
 
-sy match hs_LambdaFuncDeclBackslash "\\"
+sy match hs_LambdaFuncDeclBackslash "\\\(\\\)\@!"
 
-sy match hs_MyBoolean "\v<(True|False)>"
-
-
-sy match hs_MyOperators "\v(\s|^)@<=(:|!|!!|∀|★|¬|∧|∨|≡|≠|≢|≤|≥|∘|∘>|∈|∉|∌|∋|⊥|⧺|⤚|⤙|⤛|⤜|⋅|÷|-)(\s|$)@="
-sy match hs_MyOperators2 "\v(\s|^)@<=([|&]{2}|[/=]{2}|\<?[|&*$]+\>?|[%+*-.=$^][~.=%$*^][~=-^]?)(\s|$)@="
-sy match hs_MyOperators3 "\V\(\s\|\^\)\@<=\(?\||?|\|.&.\|&&&\|***\|+\|++\|:>\|:<|>\|.:\|:.\)\(\s\|\$\)\@="
-sy match hs_MyOperators4 "\V\(\s\|\^\)\@<=\(.\|.>\|.|.\|<=\?\|>=\?\|>>=\?\|=\?<<\|>=>\|<=<\)\(\s\|\$\)\@="
-sy match hs_MyOperators5Lens "\V\(\s\|\^\)\@<=\(&~\|?=\)\(\s\|\$\)\@="
 sy match hs_MyWarn "\V(..)"
+
+" TODO FIXME
+sy match hs_MyBoolean "\v(\s|^)@<=(True|False)(\s|$)@="
+
+" \[\\/:=|?!@#$%^&*+.<>~-]\{3,}                  3s and more (anything)
+" \[/:?!@#$%^&*+.<>~-]                           1s excluding (=) and (\)
+" \[\\/|?!@#$%^&*+.>~]\[\\/:=|?!@#$%^&*+.<>~-]   2s etc
+" \[\\/:=|?!@#$%^&*+.<>~-]\[\\/=|?!@#$%^&*+.<~]  2s etc
+" =\[\\/:=|?!@#$%^&*+.<~-]                       2s excluding (=>)
+" -\[\\/:=|?!@#$%^&*+.<~]                        2s excluding (->) and (--)
+" \[\\/:=|?!@#$%^&*+.>~]-                        2s excluding (<-) and (--)
+" \[\\/=|?!@#$%^&*+.<>~-]:                       2s excluding (::)
+" :\[\\/=|?!@#$%^&*+.<>~-]                       2s excluding (::)
+sy match hs_MyOperators "\V\(\s\|\^\)\@<=\(\[\\/:=|?!@#$%^&*+.<>~-]\{3,}\|\[/:?!@#$%^&*+.<>~-]\|\[\\/|?!@#$%^&*+.>~]\[\\/:=|?!@#$%^&*+.<>~-]\|\[\\/:=|?!@#$%^&*+.<>~-]\[\\/=|?!@#$%^&*+.<~]\|=\[\\/:=|?!@#$%^&*+.<~-]\|-\[\\/:=|?!@#$%^&*+.<~]\|\[\\/:=|?!@#$%^&*+.>~]-\|\[\\/=|?!@#$%^&*+.<>~-]:\|:\[\\/=|?!@#$%^&*+.<>~-]\)\(\s\|\$\)\@="
+sy match hs_MyOperatorsUnicode "\v(\s|^)@<=(∀|★|¬|∧|∨|≡|≠|≢|≤|≥|∘|∘>|∈|∉|∌|∋|⊥|⧺|⤚|⤙|⤛|⤜|⋅|÷)(\s|$)@="
 
 sy match hs_MyImportAsFix "\v(<import>\s+.+\s+)@<=<as>"
 sy match hs_MyImportHidingFix "\v(<import>\s+.+\s+)@<=<hiding>"
@@ -80,10 +87,7 @@ hi def link hs_BackQuotesOperator Identifier
 hi def link hs_NothingStuff StorageClass
 hi def link hs_MyBoolean StorageClass
 hi def link hs_MyOperators Identifier
-hi def link hs_MyOperators2 Identifier
-hi def link hs_MyOperators3 Identifier
-hi def link hs_MyOperators4 Identifier
-hi def link hs_MyOperators5Lens Identifier
+hi def link hs_MyOperatorsUnicode Identifier
 hi def link hs_MyWarn WarningMsg
 
 hi def link hs_EqualsSymbol Constant
