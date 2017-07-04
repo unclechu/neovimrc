@@ -63,37 +63,37 @@ snippet i "import" w
 import ${1}
 endsnippet
 snippet pi "import (from explicit package)" w
-import "${1:foo}" ${2}
+import "${1:base}" ${2}
 endsnippet
 
 snippet iq "qualified import" w
 import qualified ${1}
 endsnippet
 snippet piq "qualified import (from explicit package)" w
-import qualified "${1:foo}" ${2}
+import qualified "${1:base}" ${2}
 endsnippet
 
 snippet is "qualified import as" w
-import qualified ${1:Foo} as ${2:Bar}
+import qualified ${1:Data.List} as ${2:L}
 endsnippet
 snippet pis "qualified import as (from explicit package)" w
-import qualified "${1:foo}" ${2:Foo} as ${3:Bar}
+import qualified "${1:base}" ${2:Data.List} as ${3:L}
 endsnippet
 
 snippet ix "explicit import" w
-import ${1:Foo} (${2:Bar})
+import ${1:Control.Monad} (${2:(>=>)})
 endsnippet
 snippet pix "explicit import (from explicit package)" w
-import "${1:foo}" ${2:Foo} (${3:Bar})
+import "${1:base}" ${2:Control.Monad} (${3:(>=>)})
 endsnippet
 
 
 snippet m "module" w
-module ${1:Foo} where
+module ${1:Main} where
 endsnippet
 
 snippet mx "module with explicit export" w
-module ${1:Foo} (${2:Bar}) where
+module ${1:Main} (${2:main}) where
 endsnippet
 
 snippet mm "module with multiline explicit export" w
