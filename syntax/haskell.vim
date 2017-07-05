@@ -33,8 +33,10 @@ sy match hs_My_InfixFunctionName "^\S[^=(]*`[a-z_][^`]*`"me=e-1 contained
 sy region hs_Function start="^xxx BLOCKED xxx["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)"
 	\ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_My_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter,hs_EqualsSymbol,hs_NothingStuff
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
-sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*\(::\|∷\)"
-	\ contains=hs_FunctionName,hs_OpFunctionName,hs_TypeDeclaration
+sy match hs_DeclareFunction "^[a-z_(]\S*\(\(\s\|\n\)*,\(\s\|\n\)*[a-z_(]\S*\)*\(\s\|\n\)*\(::\|∷\)"
+	\ contains=hs_FunctionName,hs_OpFunctionName,hs_TypeDeclaration,hs_MyDeclFunctionName,hs_MyDeclFunctionComma
+sy match hs_MyDeclFunctionName "\v(,(\s|\n)*)@<=[a-z_][^,[:blank:]]*((.|\n)*(::|∷))@=" contained
+sy match hs_MyDeclFunctionComma "," contained
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
 sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*\(::\|∷\)"
 	\ keepend
@@ -92,6 +94,9 @@ hi def link hs_MyWarn WarningMsg
 
 hi def link hs_EqualsSymbol Constant
 hi def link hs_MonadExtract Constant
+
+hi def link hs_MyDeclFunctionName Function
+hi def link hs_MyDeclFunctionComma Identifier
 
 
 if exists('g:hs_MyCustomOperators')
