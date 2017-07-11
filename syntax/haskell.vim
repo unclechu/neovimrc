@@ -30,7 +30,7 @@ sy match hs_My_InfixFunctionName "^\S[^=(]*`[a-z_][^`]*`"me=e-1 contained
 " (added `hs_EqualsSymbol` and `hs_NothingStuff` to `contains`)
 " WARN it is blocked to fix `module` highlight when some explicitly exported
 "      operator contains equality symbol (`=`).
-sy region hs_Function start="^xxx BLOCKED xxx["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)"
+sy region hs_Function start="^\(module\|\s*{-\)\@!["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)"
 	\ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_My_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter,hs_EqualsSymbol,hs_NothingStuff
 " overwritten from parent (added `hs_TypeDeclaration` to `contains`)
 sy match hs_DeclareFunction "^[a-z_(]\S*\(\(\s\|\n\)*,\(\s\|\n\)*[a-z_(]\S*\)*\(\s\|\n\)*\(::\|∷\)"
