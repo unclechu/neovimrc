@@ -24,7 +24,7 @@ sy match hs_BackQuotesOperator "\v`[a-zA-Z0-9_'.]+`"
 
 " custom fork from parent to fix highlight bug
 " when use infix functions inside ViewPatterns.
-sy match hs_My_InfixFunctionName "^\S[^=(]*`[a-z_][^`]*`"me=e-1 contained
+sy match hs_My_InfixFunctionName "^\S[^=(|]*`[a-z_][^`]*`"me=e-1 contained
 	\ contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
 " overwritten from parent
 " (added `hs_EqualsSymbol` and `hs_NothingStuff` to `contains`)
