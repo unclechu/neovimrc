@@ -63,6 +63,7 @@ sy match hs_MyBoolean "\v(\s|^)@<=(True|False)(\s|$)@="
 " \[\\/=|?!@#$%^&*+.<>~-]:                       2s excluding (::)
 " :\[\\/=|?!@#$%^&*+.<>~-]                       2s excluding (::)
 sy match hs_MyOperators "\V\(\^\s\*---\)\@!\(\s\|\^\)\@<=\(\[\\/:=|?!@#$%^&*+.<>~-]\{3,}\|\[/:|?!@#$%^&*+.<>~-]\|\[\\/|?!@#$%^&*+.>~]\[\\/:=|?!@#$%^&*+.<>~-]\|\[\\/:=|?!@#$%^&*+.<>~-]\[\\/=|?!@#$%^&*+.<~]\|=\[\\/:=|?!@#$%^&*+.<~-]\|-\[\\/:=|?!@#$%^&*+.<~]\|\[\\/:=|?!@#$%^&*+.>~]-\|\[\\/=|?!@#$%^&*+.<>~-]:\|:\[\\/=|?!@#$%^&*+.<>~-]\)\(\s\|\$\)\@="
+sy match hs_MyOperators2 "\V\(\s\|\^\)\@<=\(<>\)\(\s\|\$\)\@="
 sy match hs_MyOperatorsUnicode "\v(\s|^)@<=(∀|★|¬|∧|∨|≡|≠|≢|≤|≥|∘|∘\>|∈|∉|∌|∋|⊥|⧺|⤚|⤙|⤛|⤜|⋅|÷)(\s|$)@="
 
 sy match hs_MyImportAsFix "\v(<import>\s+.+\s+)@<=<as>"
@@ -89,6 +90,7 @@ hi def link hs_BackQuotesOperator Identifier
 hi def link hs_NothingStuff StorageClass
 hi def link hs_MyBoolean StorageClass
 hi def link hs_MyOperators Identifier
+hi def link hs_MyOperators2 Identifier
 hi def link hs_MyOperatorsUnicode Identifier
 hi def link hs_MyWarn WarningMsg
 
