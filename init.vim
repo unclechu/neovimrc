@@ -113,6 +113,9 @@ Plugin 'mattn/emmet-vim'
 " configs
 Plugin 'nginx.vim'
 
+" sql
+Plugin 'exu/pgsql.vim'
+
 " colorschemes
 Plugin 'morhetz/gruvbox'
 Plugin 'tomasr/molokai'
