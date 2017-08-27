@@ -701,7 +701,8 @@ nnoremap <A-t> :tabnew<CR>
 nnoremap <A-w> :tabclose<CR>
 
 " quick hook for 'IndentText'
-inoremap <A-i> <C-r>=IndentText('')<Left><Left>
+xnoremap <A-i> ym0gvc<Esc>`0:call<space>IndentText()<CR>
+xnoremap <A-S-i> ym0gvI<Esc>`0:call<space>IndentText()<CR>
 
 
 " custom digraphs
