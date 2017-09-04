@@ -126,6 +126,9 @@ Plugin 'nanotech/jellybeans.vim'
 "   - railscasts
 "   - twilight
 
+" utils
+Plugin 'sl4m/left-pad.vim'
+
 
 " required for vundle
 call vundle#end()
