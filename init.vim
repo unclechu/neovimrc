@@ -103,7 +103,7 @@ Plugin 'ap/vim-css-color'
 
 " markup/data
 Plugin 'plasticboy/vim-markdown'
-Plugin 'digitaltoad/vim-jade'
+Plugin 'digitaltoad/vim-pug'
 Plugin 'briancollins/vim-jst'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'elzr/vim-json'
