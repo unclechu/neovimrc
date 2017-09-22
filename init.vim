@@ -657,6 +657,8 @@ imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>#d0i<C-R>0
 
 nnoremap <A-o> mzo<Esc>:let tmp=@"<CR>S<Esc>:let @"=tmp<CR>`z
 nnoremap <A-O> mzO<Esc>:let tmp=@"<CR>S<Esc>:let @"=tmp<CR>`z
+nmap <leader>o <A-o>ji
+nmap <leader>O <A-O>ki
 
 
 " custom numbers line keys
