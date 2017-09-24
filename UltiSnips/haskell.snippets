@@ -233,60 +233,60 @@ endsnippet
 snippet o "Unicode o = ∨" w
 ∨ ${1}
 endsnippet
-snippet == "Unicode (==) = (≡)" w
-≡ ${1}
+snippet "(^|[^/])==" "Unicode (==) = (≡)" r
+`!p snip.rv = match.group(1)`≡ ${1}
 endsnippet
-snippet = "Unicode = to ≡" w
-≡ ${1}
+snippet "(^|[^=/><])=" "Unicode = to ≡" r
+`!p snip.rv = match.group(1)`≡ ${1}
 endsnippet
-snippet /= "Unicode (/=) = (≠)" w
+snippet /= "Unicode (/=) = (≠)" i
 ≠ ${1}
 endsnippet
-snippet /≡ "Unicode (/=) = (≢)" w
+snippet /≡ "Unicode (/=) = (≢)" i
 ≢
 endsnippet
-snippet /== "Unicode (/=) = (≢)" w
+snippet /== "Unicode (/=) = (≢)" i
 ≢ ${1}
 endsnippet
-snippet <= "Unicode <= = ≤" w
+snippet <= "Unicode <= = ≤" i
 ≤ ${1}
 endsnippet
-snippet /> "Unicode <= = ≯" w
+snippet /> "Unicode <= = ≯" i
 ≯ ${1}
 endsnippet
-snippet >= "Unicode >= = ≥" w
+snippet >= "Unicode >= = ≥" i
 ≥ ${1}
 endsnippet
-snippet /< "Unicode >= = ≮" w
+snippet /< "Unicode >= = ≮" i
 ≮ ${1}
 endsnippet
 snippet PI "Unicode pi = π" w
 π ${1}
 endsnippet
-snippet / "Unicode (/) = (÷)" w
+snippet / "Unicode (/) = (÷)" i
 ÷ ${1}
 endsnippet
-snippet * "Unicode (*) = (⋅)" w
+snippet * "Unicode (*) = (⋅)" i
 ⋅ ${1}
 endsnippet
-snippet . "Unicode (.) = (∘)" w
+snippet . "Unicode (.) = (∘)" i
 ∘ ${1}
 endsnippet
 # my own
 snippet .> "Unicode (.>) = (∘>)" w
 ∘> ${1}
 endsnippet
-snippet ++ "Unicode (++) = (⧺)" w
+snippet ++ "Unicode (++) = (⧺)" i
 ⧺ ${1}
 endsnippet
-snippet + "Unicode + = ⧺" w
-⧺ ${1}
+snippet "(^|[^\+])\+" "Unicode + = ⧺" r
+`!p snip.rv = match.group(1)`⧺ ${1}
 endsnippet
 snippet elem "Unicode elem = (∈)" w
 ∈ ${1}
 endsnippet
-snippet E "Unicode E = (∈)" w
-∈ ${1}
+snippet "(^|[^/])E" "Unicode E = (∈)" r
+`!p snip.rv = match.group(1)`∈ ${1}
 endsnippet
 snippet notElem "Unicode notElem = (∉)" w
 ∉ ${1}
@@ -375,21 +375,21 @@ endsnippet
 # From the Data.Foldable.Unicode module
 # elem = (∈)
 # flip elem = (∋)
-snippet ∈ "Unicode flip elem = (∋)" w
+snippet ∈ "Unicode flip elem = (∋)" i
 ∋
 endsnippet
-snippet 3 "Unicode 3 = (∋)" w
-∋ ${1}
+snippet "(^|[^\/])3" "Unicode 3 = (∋)" r
+`!p snip.rv = match.group(1)`∋ ${1}
 endsnippet
 # notElem = (∉)
 # flip notElem = (∌)
-snippet ∉ "Unicode flip notElem = (∌)" w
+snippet ∉ "Unicode flip notElem = (∌)" i
 ∌
 endsnippet
-snippet /3 "Unicode /3 = (∌)" w
+snippet /3 "Unicode /3 = (∌)" i
 ∌ ${1}
 endsnippet
-snippet 3/ "Unicode 3/ = (∌)" w
+snippet 3/ "Unicode 3/ = (∌)" i
 ∌ ${1}
 endsnippet
 
