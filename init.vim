@@ -443,6 +443,8 @@ nnoremap <leader>sh :ShowHint<CR>
 " short EasyAlign aliases
 xnoremap <leader>:  :EasyAlign/:/<CR>
 xnoremap <leader>g: :EasyAlign : { 'lm': 0, 'stl': 0 }<CR>
+" haskell record syntax (align by '=' inside braces)
+xnoremap <leader>=  :EasyAlign/\({.*\\|,.*\)\@<==/<CR>
 nnoremap <leader>a  :EasyAlign
 xnoremap <leader>a  :EasyAlign
 
@@ -726,6 +728,7 @@ digraphs ZZ 8484   " ℤ
 digraphs QQ 8474   " ℚ
 digraphs RR 8477   " ℝ
 digraphs BL 120121 " 𝔹
+digraphs Xb 8226   " • (filled 'Ob' -> ∘ version)
 
 
 " colorscheme

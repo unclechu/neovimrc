@@ -25,16 +25,16 @@ snippet (.>) "Declare pipe version of (.) operator" w
 infixl 9 .>
 endsnippet
 
-snippet u(.>) "Declare pipe version of (.) operator (unicode)" w
-(.>) ∷ (a → b) → (b → c) → a → c
-(.>) = flip (.)
-infixl 9 .>
+snippet "(u\(.>\)|\(∘>\))" "Declare pipe version of (∘) Unicode operator (∘>)" r
+(∘>) ∷ (a → b) → (b → c) → a → c
+(∘>) = flip (∘)
+infixl 9 ∘>
 endsnippet
 
-snippet (∘>) "Declare pipe version of (∘) Unicode operator" w
-(∘>) ∷ (a → b) → (b → c) → a → c
-(∘>) = flip (.)
-infixl 9 ∘>
+snippet (•) "Declare pipe version of (∘) Unicode operator (•)" w
+(•) ∷ (a → b) → (b → c) → a → c
+(•) = flip (∘)
+infixl 9 •
 endsnippet
 
 snippet (<&>) "Declare pipe version of <$> operator" w
