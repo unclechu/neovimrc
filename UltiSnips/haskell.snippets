@@ -165,11 +165,11 @@ endsnippet
 
 
 # From the UnicodeSyntax extension
-snippet :: "Unicode :: = ∷" w
+snippet :: "Unicode :: = ∷" i
 ∷ ${1}
 endsnippet
-snippet : "Unicode : = ∷" w
-∷ ${1}
+snippet "(^|[^:]):" "Unicode : = ∷" r
+`!p snip.rv = match.group(1)`∷ ${1}
 endsnippet
 snippet => "Unicode => = ⇒" w
 ⇒ ${1}
