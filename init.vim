@@ -445,6 +445,8 @@ xnoremap <leader>:  :EasyAlign/:/<CR>
 xnoremap <leader>g: :EasyAlign : { 'lm': 0, 'stl': 0 }<CR>
 " haskell record syntax (align by '=' inside braces)
 xnoremap <leader>=  :EasyAlign/\({.*\\|,.*\)\@<==/<CR>
+" haskell alone '='
+xnoremap <space>=   :EasyAlign/ = /{'lm':0,'rm':0}<CR>
 nnoremap <leader>a  :EasyAlign
 xnoremap <leader>a  :EasyAlign
 
