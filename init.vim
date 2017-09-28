@@ -356,12 +356,12 @@ nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
 nnoremap <leader>cr :source $MYVIMRC<CR>
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>n  :NERDTreeToggle<CR>
 nnoremap <leader>fn :NERDTreeFind<CR>
 nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
-nnoremap <leader>t :TagbarToggle<CR>
-nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
+nnoremap <leader>t  :TagbarToggle<CR>
+nnoremap <leader>u  :GundoToggle<CR>
 
 xmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -536,17 +536,19 @@ nmap <Space>n <Plug>(quickhl-cword-toggle)
 
 
 " remove word selection symbols after paste from search
-nmap <leader>c/ ds\ds>
+nmap <leader>c/  ds\ds>
 " plugs to prevent mess about triggering default 'p' or 'P'
-map  <leader>p  <Nop>
-map  <leader>P  <Nop>
+map  <leader>p   <Nop>
+map  <leader>P   <Nop>
 " paste searched word and clean it
-map  <leader>p/ '/phds\ds>
-map  <leader>P/ '/Phds\ds>
-nmap <leader>po <A-o>jp
-nmap <leader>Po <A-o>jP
-nmap <leader>pO <A-O>kp
-nmap <leader>PO <A-O>kP
+map  <leader>p/  '/phds\ds>
+map  <leader>P/  '/Phds\ds>
+nmap <leader>po  <A-o>jp
+nmap <leader>ppo <A-o>jP
+nmap <leader>Po  <A-o>jP
+nmap <leader>pO  <A-O>kp
+nmap <leader>ppO <A-O>kP
+nmap <leader>PO  <A-O>kP
 
 " another alias to system X clipboard
 noremap '<Space> "+
