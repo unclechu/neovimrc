@@ -543,12 +543,9 @@ map  <leader>P   <Nop>
 " paste searched word and clean it
 map  <leader>p/  '/phds\ds>
 map  <leader>P/  '/Phds\ds>
-nmap <leader>po  <A-o>jp
-nmap <leader>ppo <A-o>jP
-nmap <leader>Po  <A-o>jP
-nmap <leader>pO  <A-O>kp
-nmap <leader>ppO <A-O>kP
-nmap <leader>PO  <A-O>kP
+nmap <leader>po  <A-o>jP
+nmap <leader>pO  <A-O>kP
+nmap <leader>ppo <A-O>kP
 
 " another alias to system X clipboard
 noremap '<Space> "+
