@@ -661,8 +661,10 @@ noremap "" ''
 xnoremap R r<Space>R
 
 " break line but keep same column position for rest of the line
-imap <A-CR> <C-o>mp<Esc>`py0`pD<A-o>jP`pji
-imap <A-\>  <C-o>mp<Esc>`py0`pD<A-O>kP`pki
+imap <A-CR> <C-o>mp<Esc>`py0`pD`p<A-o>jP`pji
+imap <A-'>  <C-o>mp<Esc>`py0`pD`p<A-o>jP`pi
+imap <A-\>  <C-o>mp<Esc>`py0`pD`p<A-O>kP`pki
+imap <A-]>  <C-o>mp<Esc>`py0`pD`p<A-O>kP`pi
 
 nnoremap <A-o> mpo
 	\<Esc>:let __tmp_A_o=@"<CR>S

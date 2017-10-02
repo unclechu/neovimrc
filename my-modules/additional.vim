@@ -36,3 +36,10 @@ function! g:IndentText()
 	unlet s:tmp
 	
 endfunction
+
+
+function! g:GetNSpaces(n)
+	let l:result = ''
+	for i in range(a:n) | let l:result = l:result . ' ' | endfor
+	return l:result
+endfunction
