@@ -661,10 +661,17 @@ noremap "" ''
 xnoremap R r<Space>R
 
 " break line but keep same column position for rest of the line
-imap <A-CR> <Esc>v0gygvo<Esc>li<CR><Esc>#d0i<C-R>0
+imap <A-CR> <C-o>mp<Esc>`py0`pD<A-o>jP`pji
+imap <A-\>  <C-o>mp<Esc>`py0`pD<A-O>kP`pki
 
-nnoremap <A-o> mzo<Esc>:let tmp=@"<CR>S<Esc>:let @"=tmp<CR>`z
-nnoremap <A-O> mzO<Esc>:let tmp=@"<CR>S<Esc>:let @"=tmp<CR>`z
+nnoremap <A-o> mpo
+	\<Esc>:let __tmp_A_o=@"<CR>S
+	\<Esc>:let @"=__tmp_A_o
+	\<Esc>:unlet __tmp_A_o<CR>`p
+nnoremap <A-O> mpO
+	\<Esc>:let __tmp_A_O=@"<CR>S
+	\<Esc>:let @"=__tmp_A_O
+	\<Esc>:unlet __tmp_A_O<CR>`p
 nmap <leader>o <A-o>ji
 nmap <leader>O <A-O>ki
 
