@@ -103,7 +103,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	" also: http://vimawesome.com/plugin/typescript-tools
 	call dein#add('leafgarland/typescript-vim')
 	" WARNING! requires to run `make` inside `bundle/vimproc.vim` by bare hands!
-	call dein#add('Shougo/vimproc.vim')
+	call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 	call dein#add('Quramy/tsuquyomi')
 
 	" styles
