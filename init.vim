@@ -2,14 +2,25 @@
 " Author: Viacheslav Lotsmanov
 " vim: set noet fenc=utf-8 :
 
+
+" applying local additional config
+let g:local_rc_pre = $HOME . '/.neovimrc-local-pre'
+if filereadable(g:local_rc_pre) | exec 'source ' . g:local_rc_pre | endif
+
+
 let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
 
-" required for vundle
-set rtp+=$HOME/.config/nvim/dein
-let $DEIN_BASE_PATH = $HOME . '/.cache/nvim-dein-plugins'
+if $DEIN_DIR == '' | let $DEIN_DIR = $HOME . '/.config/nvim/dein' | endif
+
+if $DEIN_BASE_PATH == ''
+	let $DEIN_BASE_PATH = $HOME . '/.cache/nvim-dein-plugins'
+endif
+
+set rtp+=$DEIN_DIR
 
 if dein#load_state($DEIN_BASE_PATH)
 	call dein#begin($DEIN_BASE_PATH)
+	call dein#add($DEIN_DIR)
 
 	" utils/functionality
 	call dein#add('scrooloose/nerdtree')
@@ -808,9 +819,5 @@ endtry
 
 
 " applying local additional config
-
 let g:local_rc_post = $HOME . '/.neovimrc-local-post'
-
-if filereadable(g:local_rc_post)
-	exec 'source ' . g:local_rc_post
-endif
+if filereadable(g:local_rc_post) | exec 'source ' . g:local_rc_post | endif
