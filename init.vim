@@ -2,137 +2,140 @@
 " Author: Viacheslav Lotsmanov
 " vim: set noet fenc=utf-8 :
 
-" required for vundle
-filetype off
-set rtp+=$HOME/.config/nvim/bundle/Vundle.vim
-call vundle#begin($HOME . '/.config/nvim/bundle')
-Plugin 'VundleVim/Vundle.vim', {'pinned': 1} " provided by git-submodule
-
-
-" plugins
-
-" utils/functionality
-Plugin 'scrooloose/nerdtree'
-" Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'unclechu/vim-ctrlspace'
-" Plugin 'SirVer/ultisnips'
-Plugin 'unclechu/my-ultisnips'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'Shougo/unite.vim'   " unite
-" Plugin 'Shougo/denite.nvim' " future async replacement for unite
-Plugin 'Shougo/neomru.vim'  " unite 'file_mru'
-Plugin 'Shougo/neoyank.vim' " unite clipboard history 'history/yank'
-Plugin 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} " async autocompletion
-Plugin 'sjl/gundo.vim'
-Plugin 'mhinz/vim-startify'
-Plugin 'mileszs/ack.vim'
-" Plugin 'embear/vim-localvimrc'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'matze/vim-move'
-Plugin 'raimondi/delimitmate'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 't9md/vim-quickhl'
-Plugin 'tweekmonster/braceless.vim'
-Plugin 'equalsraf/neovim-gui-shim'
-" Plugin 'blueyed/vim-diminactive' " works bad with NERDTree for example
-Plugin 'ryanoasis/vim-devicons'
-
-" surround
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-
-" linting
-" Plugin 'scrooloose/syntastic'
-Plugin 'neomake/neomake'
-
-" git
-Plugin 'xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-
-" haskell
-Plugin 'eagletmt/neco-ghc'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'bitc/lushtags'
-Plugin 'twinside/vim-hoogle'
-Plugin 'itchyny/vim-haskell-indent'
-Plugin 'eagletmt/unite-haddock' " hoogle and haddock for Unite
-
-" faust
-Plugin 'gmoe/vim-faust'
-
-" nim
-Plugin 'zah/nimrod.vim'
-
-" clojure
-Plugin 'clojure-emacs/cider-nrepl'
-Plugin 'tpope/vim-fireplace'
-Plugin 'kien/rainbow_parentheses.vim'
-
-" asscript
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'flowtype/vim-flow'
-
-" coffee/live-script
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'gkz/vim-ls'
-
-" typescript
-" also: http://vimawesome.com/plugin/typescript-tools
-Plugin 'leafgarland/typescript-vim'
-" WARNING! requires to run `make` inside `bundle/vimproc.vim` by bare hands!
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
-
-" styles
-Plugin 'groenewege/vim-less'
-Plugin 'wavded/vim-stylus'
-Plugin 'ap/vim-css-color'
-
-" markup/data
-Plugin 'plasticboy/vim-markdown'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'briancollins/vim-jst'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'elzr/vim-json'
-Plugin 'niklasl/vim-rdf'
-Plugin 'mattn/emmet-vim'
-
-" configs
-Plugin 'nginx.vim'
-
-" sql
-Plugin 'exu/pgsql.vim'
-
-" colorschemes
-Plugin 'morhetz/gruvbox'
-Plugin 'tomasr/molokai'
-Plugin 'Lokaltog/vim-distinguished'
-Plugin 'nanotech/jellybeans.vim'
-" also (as files, not packages):
-"   - codeschool
-"   - railscasts
-"   - twilight
-
-" utils
-Plugin 'sl4m/left-pad.vim'
-
+let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
 
 " required for vundle
-call vundle#end()
+set rtp+=$HOME/.config/nvim/dein
+let $DEIN_BASE_PATH = $HOME . '/.cache/nvim-dein-plugins'
+
+if dein#load_state($DEIN_BASE_PATH)
+	call dein#begin($DEIN_BASE_PATH)
+
+	" utils/functionality
+	call dein#add('scrooloose/nerdtree')
+	" dein#add('jistr/vim-nerdtree-tabs')
+	call dein#add('scrooloose/nerdcommenter')
+	call dein#add('editorconfig/editorconfig-vim')
+	call dein#add('junegunn/vim-easy-align')
+	call dein#add('henrik/vim-indexed-search')
+	call dein#add('terryma/vim-multiple-cursors')
+	call dein#add('nathanaelkane/vim-indent-guides')
+	call dein#add('majutsushi/tagbar')
+	call dein#add('vim-airline/vim-airline')
+	call dein#add('vim-airline/vim-airline-themes')
+	call dein#add('unclechu/vim-ctrlspace')
+	call dein#add('unclechu/my-ultisnips') " dein#add('SirVer/ultisnips')
+	call dein#add('haya14busa/incsearch.vim')
+	call dein#add('haya14busa/incsearch-easymotion.vim')
+	call dein#add('tpope/vim-commentary')
+	call dein#add('Shougo/unite.vim')   " unite
+	" dein#add('Shougo/denite.nvim') " future async replacement for unite
+	call dein#add('Shougo/neomru.vim')  " unite 'file_mru'
+	call dein#add('Shougo/neoyank.vim') " unite clipboard history 'history/yank'
+	call dein#add('Shougo/deoplete.nvim') " async autocompletion
+	call dein#add('sjl/gundo.vim')
+	call dein#add('mhinz/vim-startify')
+	call dein#add('mileszs/ack.vim')
+	" dein#add('embear/vim-localvimrc')
+	call dein#add('easymotion/vim-easymotion')
+	call dein#add('matze/vim-move')
+	call dein#add('raimondi/delimitmate')
+	call dein#add('dyng/ctrlsf.vim')
+	call dein#add('t9md/vim-quickhl')
+	call dein#add('tweekmonster/braceless.vim')
+	call dein#add('equalsraf/neovim-gui-shim')
+	" dein#add('blueyed/vim-diminactive') " works bad with NERDTree for example
+	call dein#add('ryanoasis/vim-devicons')
+
+	" surround
+	call dein#add('tpope/vim-surround')
+	call dein#add('tpope/vim-repeat')
+
+	" linting
+	" dein#add('scrooloose/syntastic')
+	call dein#add('neomake/neomake')
+
+	" git
+	call dein#add('xuyuanp/nerdtree-git-plugin')
+	call dein#add('tpope/vim-fugitive')
+	call dein#add('airblade/vim-gitgutter')
+
+	" haskell
+	call dein#add('eagletmt/neco-ghc')
+	call dein#add('eagletmt/ghcmod-vim')
+	call dein#add('bitc/lushtags')
+	call dein#add('twinside/vim-hoogle')
+	call dein#add('itchyny/vim-haskell-indent')
+	call dein#add('eagletmt/unite-haddock') " hoogle and haddock for Unite
+
+	" faust
+	call dein#add('gmoe/vim-faust')
+
+	" nim
+	call dein#add('zah/nimrod.vim')
+
+	" clojure
+	call dein#add('clojure-emacs/cider-nrepl')
+	call dein#add('tpope/vim-fireplace')
+	call dein#add('kien/rainbow_parentheses.vim')
+
+	" asscript
+	call dein#add('pangloss/vim-javascript')
+	call dein#add('mxw/vim-jsx')
+	call dein#add('flowtype/vim-flow')
+
+	" coffee/live-script
+	call dein#add('kchmck/vim-coffee-script')
+	call dein#add('gkz/vim-ls')
+
+	" typescript
+	" also: http://vimawesome.com/plugin/typescript-tools
+	call dein#add('leafgarland/typescript-vim')
+	" WARNING! requires to run `make` inside `bundle/vimproc.vim` by bare hands!
+	call dein#add('Shougo/vimproc.vim')
+	call dein#add('Quramy/tsuquyomi')
+
+	" styles
+	call dein#add('groenewege/vim-less')
+	call dein#add('wavded/vim-stylus')
+	call dein#add('ap/vim-css-color')
+
+	" markup/data
+	call dein#add('plasticboy/vim-markdown')
+	call dein#add('digitaltoad/vim-pug')
+	call dein#add('briancollins/vim-jst')
+	call dein#add('chase/vim-ansible-yaml')
+	call dein#add('elzr/vim-json')
+	call dein#add('niklasl/vim-rdf')
+	call dein#add('mattn/emmet-vim')
+
+	" configs
+	call dein#add('vim-scripts/nginx.vim')
+
+	" sql
+	call dein#add('exu/pgsql.vim')
+
+	" colorschemes
+	call dein#add('morhetz/gruvbox')
+	call dein#add('tomasr/molokai')
+	call dein#add('Lokaltog/vim-distinguished')
+	call dein#add('nanotech/jellybeans.vim')
+	" also (as files, not packages):
+	"   - codeschool
+	"   - railscasts
+	"   - twilight
+
+	" utils
+	call dein#add('sl4m/left-pad.vim')
+
+	call dein#end()
+	call dein#save_state()
+endif
+
+" from dein's readme
 filetype plugin indent on
+syntax enable
+
 
 " plugins config
 let g:startify_change_to_dir = 0
@@ -279,9 +282,15 @@ catch
 	endif
 endtry
 
+
 " load my modules
+
 syntax on
-runtime! my-modules/**/*.vim
+
+for module in split(expand($MYVIMRC_DIR . '/my-modules/**/*.vim'), '\n')
+	exec 'source ' . module
+endfor
+
 
 " some vim configs
 
@@ -375,7 +384,8 @@ if has('python3') || has('python')
 		return g:ulti_is_expandable
 	endfunction
 
-	inoremap <expr> <Tab> <SID>MyUltiExpand() ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
+	inoremap <expr> <Tab> <SID>MyUltiExpand()
+		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 endif
 
 " Unite

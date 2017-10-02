@@ -17,6 +17,11 @@ if ($ARGV[0] eq 'create-symlink') {
   chdir "$HOME/.config/";
   unlink 'nvim' if -l 'nvim';
 
+} elsif ($ARGV[0] eq 'clean-old-vundle-stuff') {
+
+  my $dir = "$__dirname/bundle";
+  runx 'rm', '-rf', '--', $dir if -d $dir;
+
 } else {
   die "unknown argument: '$ARGV[0]'";
 }
