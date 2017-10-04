@@ -20,7 +20,7 @@ set rtp+=$DEIN_DIR
 
 if dein#load_state($DEIN_BASE_PATH)
 	call dein#begin($DEIN_BASE_PATH)
-	call dein#add($DEIN_DIR)
+	call dein#add($DEIN_DIR, {'frozen': 1})
 
 	" utils/functionality
 	call dein#add('scrooloose/nerdtree')
