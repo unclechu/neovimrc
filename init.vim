@@ -402,6 +402,11 @@ if has('python3') || has('python')
 		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 endif
 
+function! g:UniteMapsForGit()
+	nnoremap <A-p>  :tabnew<CR>:Unite -auto-resize -start-insert file_rec/git buffer<CR>
+	nnoremap <C-p>  :Unite -auto-resize -start-insert file_rec/git buffer<CR>
+endfunction
+
 " Unite
 nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
 nnoremap <C-p>      :Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
