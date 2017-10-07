@@ -83,7 +83,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('gmoe/vim-faust')
 
 	" nim
-	call dein#add('zah/nimrod.vim')
+	call dein#add('zah/nim.vim')
 
 	" clojure
 	call dein#add('clojure-emacs/cider-nrepl')
