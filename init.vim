@@ -84,6 +84,7 @@ if dein#load_state($DEIN_BASE_PATH)
 
 	" nim
 	call dein#add('zah/nim.vim')
+	" call dein#add('baabelfish/nvim-nim')
 
 	" clojure
 	call dein#add('clojure-emacs/cider-nrepl')
