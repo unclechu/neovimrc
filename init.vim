@@ -233,7 +233,8 @@ let g:unite_source_menu_menus.haskell.command_candidates = [
 	\ ['ghc-mod: Check for errors/warnings', 'GhcModCheckAsync!'],
 	\ ['ghc-mod: Lint', 'GhcModLintAsync!'],
 	\ ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle'],
-	\ ['Hoogle (command)', "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""]
+	\ ['Hoogle (command)',
+	\    "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""]
 	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
@@ -256,6 +257,12 @@ let g:unite_source_menu_menus.view.command_candidates = [
 	\ ['Left field',
 	\    "exec \"let x = input('Field width: ') | winc n | winc H | se ro"
 	\      . "| se noma | se wfw | 9999winc < | let &wiw = x | winc p\""]
+	\]
+let g:unite_source_menu_menus.ctrlspace = { 'description': 'CtrlSpace' }
+let g:unite_source_menu_menus.ctrlspace.command_candidates = [
+	\ ['Save workspace',
+	\    "let x = input('Workspace name: ') | echo ' '"
+	\      . "| exec 'CtrlSpaceSaveWorkspace ' . x"]
 	\]
 
 " merge all menu items to single group
