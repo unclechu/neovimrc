@@ -17,6 +17,9 @@ autocmd BufNewFile,BufRead Makefile set noexpandtab
 autocmd BufNewFile,BufRead nginx.conf set ft=nginx
 autocmd BufNewFile,BufRead *.hsc set ft=haskell
 
+" autocmd FileType nim nnoremap <buffer> <c-]> :NimDefinition<cr>
+" autocmd FileType nim nnoremap <buffer> gf    :call util#goto_file()<cr>
+
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc

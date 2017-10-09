@@ -84,7 +84,7 @@ if dein#load_state($DEIN_BASE_PATH)
 
 	" nim
 	call dein#add('zah/nim.vim')
-	" call dein#add('baabelfish/nvim-nim')
+	" call dein#add('unclechu/nvim-nim')
 
 	" clojure
 	call dein#add('clojure-emacs/cider-nrepl')
@@ -201,6 +201,7 @@ let g:user_emmet_settings = {
 	\  'javascript.jsx' : { 'extends' : 'jsx' },
 	\  'typescript.jsx' : { 'extends' : 'jsx' },
 	\ }
+let g:nvim_nim_enable_default_binds = 0
 let g:indexed_search_mappings = 0
 let g:EasyMotion_do_mapping = 0 " disable default mappings
 let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
