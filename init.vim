@@ -222,7 +222,7 @@ let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
 let g:unite_source_menu_menus.ls.command_candidates = [
 	\ ['Compile selected chunk to JS using LSC', "'<,'>!lsc -cbps | sed 1d"],
-	\ ['Get AST from selected chunk using LSC', "'<,'>!lsc -cbpsa"]
+	\ ['Get AST from selected chunk using LSC', "'<,'>!lsc -cbpsa"],
 	\]
 let g:unite_source_menu_menus.haskell = { 'description': 'Haskell' }
 let g:unite_source_menu_menus.haskell.command_candidates = [
@@ -235,7 +235,7 @@ let g:unite_source_menu_menus.haskell.command_candidates = [
 	\ ['ghc-mod: Lint', 'GhcModLintAsync!'],
 	\ ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle'],
 	\ ['Hoogle (command)',
-	\    "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""]
+	\    "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""],
 	\]
 let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
 let g:unite_source_menu_menus.unite.command_candidates = [
@@ -248,7 +248,7 @@ let g:unite_source_menu_menus.unite.command_candidates = [
 	\    'Unite -auto-resize grep/git:.:-i'],
 	\ ['Grep by Git files (bare string)', 'Unite -auto-resize grep/git:.:-F'],
 	\ ['Grep by Git files (bare string and case insensitive)',
-	\    'Unite -auto-resize grep/git:.:-iF']
+	\    'Unite -auto-resize grep/git:.:-iF'],
 	\]
 let g:unite_source_menu_menus.view = { 'description': 'View' }
 let g:unite_source_menu_menus.view.command_candidates = [
@@ -257,19 +257,20 @@ let g:unite_source_menu_menus.view.command_candidates = [
 	\      . "| se noma | se wfh | 9999winc - | let &wh = x | winc p\""],
 	\ ['Left field',
 	\    "exec \"let x = input('Field width: ') | winc n | winc H | se ro"
-	\      . "| se noma | se wfw | 9999winc < | let &wiw = x | winc p\""]
+	\      . "| se noma | se wfw | 9999winc < | let &wiw = x | winc p\""],
 	\]
 let g:unite_source_menu_menus.ctrlspace = { 'description': 'CtrlSpace' }
 let g:unite_source_menu_menus.ctrlspace.command_candidates = [
 	\ ['Save workspace',
 	\    "let x = input('Workspace name: ') | echo ' '"
-	\      . "| exec 'CtrlSpaceSaveWorkspace ' . x"]
+	\      . "| exec 'CtrlSpaceSaveWorkspace ' . x"],
 	\]
 let g:unite_source_menu_menus.quickhl = { 'description': 'Quickhl' }
 let g:unite_source_menu_menus.quickhl.command_candidates = [
 	\ ['Manual add pattern',
 	\    "let x = input('Pattern: ') | echo ' '"
-	\      . "| exec 'QuickhlManualAdd ' . x"]
+	\      . "| exec 'QuickhlManualAdd ' . x"],
+	\ ['Manual remove pattern', 'QuickhlManualDelete'],
 	\]
 
 " merge all menu items to single group
