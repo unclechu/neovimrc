@@ -265,6 +265,12 @@ let g:unite_source_menu_menus.ctrlspace.command_candidates = [
 	\    "let x = input('Workspace name: ') | echo ' '"
 	\      . "| exec 'CtrlSpaceSaveWorkspace ' . x"]
 	\]
+let g:unite_source_menu_menus.quickhl = { 'description': 'Quickhl' }
+let g:unite_source_menu_menus.quickhl.command_candidates = [
+	\ ['Manual add pattern',
+	\    "let x = input('Pattern: ') | echo ' '"
+	\      . "| exec 'QuickhlManualAdd ' . x"]
+	\]
 
 " merge all menu items to single group
 let s:u_all = []
