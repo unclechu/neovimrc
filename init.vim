@@ -275,6 +275,10 @@ let g:unite_source_menu_menus.quickhl.command_candidates = [
 	\ ['Manual lock (temporarily hide highlights)', 'QuickhlManualLock'],
 	\ ['Manual unlock (restore hidden highlights)', 'QuickhlManualUnlock'],
 	\]
+let g:unite_source_menu_menus.dein = { 'description': 'Dein' }
+let g:unite_source_menu_menus.dein.command_candidates = [
+	\ ['Update plugins', 'call dein#update()'],
+	\]
 
 " merge all menu items to single group
 let s:u_all = []
