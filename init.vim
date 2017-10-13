@@ -271,6 +271,9 @@ let g:unite_source_menu_menus.quickhl.command_candidates = [
 	\    "let x = input('Pattern: ') | echo ' '"
 	\      . "| exec 'QuickhlManualAdd ' . x"],
 	\ ['Manual remove pattern', 'QuickhlManualDelete'],
+	\ ['Manual list', 'QuickhlManualList'],
+	\ ['Manual lock (temporarily hide highlights)', 'QuickhlManualLock'],
+	\ ['Manual unlock (restore hidden highlights)', 'QuickhlManualUnlock'],
 	\]
 
 " merge all menu items to single group
