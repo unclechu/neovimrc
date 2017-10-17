@@ -502,9 +502,9 @@ xnoremap <leader>=  :EasyAlign/\({.*\\|,.*\)\@<==/<CR>
 xnoremap <space>=   :EasyAlign/ = /{'lm':0,'rm':0}<CR>
 nnoremap <leader>a  :EasyAlign
 xnoremap <leader>a  :EasyAlign
-xnoremap <leader>A  :EasyAlign/  /{'lm':0,'stl':0}
+xnoremap <leader>A  :EasyAlign/  /{'lm':0,'rm':0}
 	\<left><left><left><left><left><left><left><left><left>
-	\<left><left><left><left><left><left><left><left><left>
+	\<left><left><left><left><left><left><left><left>
 
 " CtrlSF bindings
 nmap     <leader>sf <Plug>CtrlSFPrompt
