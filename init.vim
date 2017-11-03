@@ -795,8 +795,12 @@ xnoremap <A-i> ym0gvc<Esc>`0:call<space>IndentText()<CR>
 xnoremap <A-S-i> ym0gvI<Esc>`0:call<space>IndentText()<CR>
 
 inoremap <expr> <A-n> deoplete#manual_complete()
-inoremap <A-p> <C-r>"
+
+" pasting from default buffer in insert/cmdline mode
+inoremap <A-p>   <C-r>"
+cnoremap <A-p>   <C-r>"
 inoremap <A-S-p> <C-r>0
+cnoremap <A-S-p> <C-r>0
 
 
 " custom digraphs
