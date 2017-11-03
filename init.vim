@@ -770,6 +770,16 @@ noremap g& g$
 noremap * @
 noremap g* g@
 
+" swapping j/k with gj/gk
+nnoremap j gj
+xnoremap j gj
+nnoremap k gk
+xnoremap k gk
+nnoremap gj j
+xnoremap gj j
+nnoremap gk k
+xnoremap gk k
+
 
 " because default maps disabled for plugin
 nmap / <Plug>(indexed-search-/)
