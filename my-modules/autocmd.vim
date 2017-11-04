@@ -40,13 +40,32 @@ autocmd FileType nerdtree setlocal nolist
 " disable tabs highlight on empty lines
 autocmd BufRead * syntax match whitespaceEOL /\s\+$/
 
-autocmd InsertEnter * set norelativenumber
-autocmd InsertLeave * set relativenumber
+function! s:InsertEnterHook()
+	if &relativenumber
+		let b:__had_relative_number_enabled = 1
+		set norelativenumber
+	endif
+endfunction
+
+function! s:InsertLeaveHook()
+	if exists('b:__had_relative_number_enabled')
+		if b:__had_relative_number_enabled | set relativenumber | endif
+		unlet b:__had_relative_number_enabled
+	endif
+endfunction
+
+autocmd InsertEnter * call s:InsertEnterHook()
+autocmd InsertLeave * call s:InsertLeaveHook()
+
+function! s:TermOpenHook()
+	set number
+	if &g:relativenumber | set relativenumber | endif
+endfunction
+
+autocmd TermOpen * call s:TermOpenHook()
 
 " fix easymotion bug https://github.com/easymotion/vim-easymotion/issues/294
 autocmd WinLeave * silent
-
-autocmd TermOpen * set number relativenumber
 
 function! s:PreviousTab_StoreState()
 	let s:tab_current = tabpagenr()
