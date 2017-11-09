@@ -780,6 +780,11 @@ xnoremap gj j
 nnoremap gk k
 xnoremap gk k
 
+" relative tabnext by default
+nnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
+xnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
+nnoremap ,gt gt
+xnoremap ,gt gt
 
 " because default maps disabled for plugin
 nmap / <Plug>(indexed-search-/)
