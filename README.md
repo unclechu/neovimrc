@@ -1,22 +1,22 @@
 NeoVimRC
 ========
 
+My own Neovim config.
+
 How to use
 ----------
 
-1. Clone this repo (with `Vundle` submodule by `--recursive` flag):
+1. Clone this repo:
 
   ```bash
   $ git clone --recursive https://github.com/unclechu/neovimrc ~/.config/nvim
   ```
 
-2. Install [Vundle](https://github.com/gmarik/Vundle.vim) dependencies:
+2. Install dependencies:
 
   ```bash
-  $ nvim +BundleInstall
+  $ nvim '+call dein#update()'
   ```
-
-3. Enjoy!
 
 Author
 ------
