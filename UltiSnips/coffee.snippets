@@ -1,0 +1,132 @@
+priority -50
+
+
+snippet f "Function" w
+-> ${1}
+endsnippet
+snippet fc "Function (keep context)" w
+=> ${1}
+endsnippet
+
+
+snippet fa "Function with named agruments" w
+(${1:foo}) -> ${2}
+endsnippet
+snippet fac "Function with named agruments (keep context)" w
+(${1:foo}) => ${2}
+endsnippet
+
+
+snippet ok "Get keys of object" i
+Object.keys ${1:foo}
+endsnippet
+
+snippet oc "Create simplest object" i
+Object.create ${1:null}
+endsnippet
+
+snippet ofz "Create frozen object" i
+Object.freeze ${1}
+endsnippet
+
+snippet oa "Object assign" i
+Object.assign {}, ${1:foo}, ${2:bar}
+endsnippet
+
+
+snippet isa "Check if it's array" i
+Array.isArray ${1:foo}
+endsnippet
+
+snippet io "Something is instance of something" i
+${1} instanceof ${2:Object}
+endsnippet
+
+snippet io- "Something instance of" i
+instanceof ${2}
+endsnippet
+
+snippet dn "Current unix-time seconds" i
+Date.now()
+endsnippet
+
+snippet nd "New instance of Date object" i
+new Date
+endsnippet
+
+snippet ne "New exception instance" i
+new Error '${1:foo}'${2}
+endsnippet
+
+snippet te "Throw new exception instance" i
+throw new Error '${1:foo}'${2}
+endsnippet
+
+snippet tt "Throw something" i
+throw ${1}
+endsnippet
+
+snippet dg "Call debugger" i
+debugger
+endsnippet
+
+snippet cl "console.log" i
+console.log ${1:foo}
+endsnippet
+
+snippet ci "console.info" i
+console.info ${1:foo}
+endsnippet
+
+snippet cw "console.warn" i
+console.warn ${1:foo}
+endsnippet
+
+snippet ce "console.error" i
+console.error ${1:foo}
+endsnippet
+
+snippet cd "console.debug" i
+console.debug ${1:foo}
+endsnippet
+
+snippet cg "console.group" i
+console.group '${1:foo}'${2}
+endsnippet
+
+snippet cge "console.groupEnd" i
+console.group-end '${1:foo}'${2}
+endsnippet
+
+snippet ct "console.time (benchmark)" i
+console.time '${1:foo}'${2}
+endsnippet
+
+snippet cte "console.timeEnd (benchmark)" i
+console.time-end '${1:foo}'${2}
+endsnippet
+
+snippet clp "console.profile" i
+console.profile '${1:foo}'${2}
+endsnippet
+
+snippet clpe "console.profileEnd" i
+console.profile-end '${1:foo}'${2}
+endsnippet
+
+snippet ca "console.assert" i
+console.assert ${1:foo}, '${2:bar}'${3}
+endsnippet
+
+snippet ! "Inverted boolean value" i
+not ${1}
+endsnippet
+
+snippet try "try/catch" i
+try
+	${1:foo}
+catch error
+	${2:console.error error}
+finally
+	${3:bar}
+endsnippet
