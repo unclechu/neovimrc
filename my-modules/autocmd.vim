@@ -5,6 +5,11 @@ if exists('s:loaded')
 	finish
 endif
 
+" Auto-close NERDTree window if it is only window on the screen
+autocmd BufEnter * if
+	\ (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+	\ | q | endif
+
 autocmd BufNewFile,BufRead
 	\ *.json.example,.jshintrc,.babelrc,.eslintrc,.modernizrrc
 	\ set ft=json
