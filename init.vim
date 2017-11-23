@@ -225,6 +225,11 @@ let g:unite_source_menu_menus.ls.command_candidates = [
 	\ ['Compile selected chunk to JS using LSC', "'<,'>!lsc -cbps | sed 1d"],
 	\ ['Get AST from selected chunk using LSC', "'<,'>!lsc -cbpsa"],
 	\]
+let g:unite_source_menu_menus.cs = { 'description': 'CoffeeScript/CS' }
+let g:unite_source_menu_menus.cs.command_candidates = [
+	\ ['Compile selected chunk to JS', "'<,'>!coffee -bsp"],
+	\ ['Get AST from selected chunk', "'<,'>!coffee -bst"],
+	\]
 let g:unite_source_menu_menus.haskell = { 'description': 'Haskell' }
 let g:unite_source_menu_menus.haskell.command_candidates = [
 	\ ['ghc-mod: Get type', 'GhcModType!'],
