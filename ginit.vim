@@ -4,8 +4,7 @@
 nnoremap <C-Space> :CtrlSpace<CR>
 
 
-GuiFont Hack:h9
-call rpcnotify(1, 'Gui', 'Font', 'Hack 9')
+call rpcnotify(1, 'Gui', 'Font', 'Fira Code 9')
 call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
 
 
