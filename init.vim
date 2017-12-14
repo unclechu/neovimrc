@@ -208,7 +208,7 @@ let g:EasyMotion_do_mapping = 0 " disable default mappings
 let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:gitgutter_map_keys = 0
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 1
+let g:deoplete#disable_auto_complete = 0
 let g:tsuquyomi_disable_quickfix = 1
 let g:necoghc_enable_detailed_browse = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
@@ -217,7 +217,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:webdevicons_enable_nerdtree = 0 " disabled because it is laggy and buggy
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:unite_source_hoogle_max_candidates = 1000
+let g:unite_source_hoogle_max_candidates = 1000 " for haskell
 
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
@@ -625,7 +625,7 @@ nnoremap gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
 xnoremap gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
 xnoremap gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
 
-" hjkl
+" walking between windows (hjkl)
 nnoremap <C-h>     :wincmd h<CR>
 xnoremap <C-h>     <Esc>:wincmd h<CR>
 nnoremap <C-j>     :wincmd j<CR>
@@ -634,7 +634,7 @@ nnoremap <C-k>     :wincmd k<CR>
 xnoremap <C-k>     <Esc>:wincmd k<CR>
 nnoremap <C-l>     :wincmd l<CR>
 xnoremap <C-l>     <Esc>:wincmd l<CR>
-" arrow keys
+" walking between windows (arrow keys)
 nnoremap <C-Left>  :wincmd h<CR>
 xnoremap <C-Left>  <Esc>:wincmd h<CR>
 nnoremap <C-Right> :wincmd l<CR>
@@ -643,6 +643,10 @@ nnoremap <C-Up>    :wincmd k<CR>
 xnoremap <C-Up>    <Esc>:wincmd k<CR>
 nnoremap <C-Down>  :wincmd j<CR>
 xnoremap <C-Down>  <Esc>:wincmd j<CR>
+" windows size minimization/maximization/normalization
+nnoremap <A-=>     :wincmd =<CR>
+nnoremap <A-->     :wincmd _<CR>
+nnoremap <A-\>     :wincmd \|<CR>
 
 " walk between windows by alt+arrow keys
 nnoremap <A-Left>  zh
