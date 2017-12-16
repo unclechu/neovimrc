@@ -742,6 +742,8 @@ nnoremap <A-O> mpO
 nmap <leader>o <A-o>ji
 nmap <leader>O <A-O>ki
 
+imap <A-Space> <Space><Left>
+
 
 " custom numbers line keys
 
