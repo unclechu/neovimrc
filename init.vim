@@ -610,6 +610,9 @@ nmap <leader>ppo <A-O>kP
 
 " another alias to system X clipboard
 noremap '<Space> "+
+" another alias to 'last yank' register
+noremap <A-y> "0
+
 
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>
@@ -813,10 +816,10 @@ xnoremap <A-S-i> ym0gvI<Esc>`0:call<space>IndentText()<CR>
 inoremap <expr> <A-n> deoplete#manual_complete()
 
 " pasting from default buffer in insert/cmdline mode
-inoremap <A-p>   <C-r>"
-cnoremap <A-p>   <C-r>"
-inoremap <A-S-p> <C-r>0
-cnoremap <A-S-p> <C-r>0
+inoremap <A-p> <C-r>"
+cnoremap <A-p> <C-r>"
+inoremap <A-y> <C-r>0
+cnoremap <A-y> <C-r>0
 
 
 " custom digraphs
