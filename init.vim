@@ -5,7 +5,7 @@
 
 " applying local additional config
 let g:local_rc_pre = $HOME . '/.neovimrc-local-pre'
-if filereadable(g:local_rc_pre) | exec 'source ' . g:local_rc_pre | endif
+if filereadable(g:local_rc_pre) | exec 'so ' . g:local_rc_pre | endif
 
 
 let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
@@ -74,7 +74,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	" haskell
 	call dein#add('eagletmt/neco-ghc')
 	call dein#add('eagletmt/ghcmod-vim')
-	call dein#add('bitc/lushtags')
+	call dein#add('unclechu/lushtags')
 	call dein#add('twinside/vim-hoogle')
 	call dein#add('itchyny/vim-haskell-indent')
 	call dein#add('eagletmt/unite-haddock') " hoogle and haddock for Unite
@@ -890,4 +890,4 @@ endtry
 
 " applying local additional config
 let g:local_rc_post = $HOME . '/.neovimrc-local-post'
-if filereadable(g:local_rc_post) | exec 'source ' . g:local_rc_post | endif
+if filereadable(g:local_rc_post) | exec 'so ' . g:local_rc_post | endif

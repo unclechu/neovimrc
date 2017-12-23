@@ -1,5 +1,11 @@
 " Author: Viacheslav Lotsmanov
 
+
+" applying local additional config
+let g:local_guirc_pre = $HOME . '/.neovimrc-gui-local-pre'
+if filereadable(g:local_guirc_pre) | exec 'so ' . g:local_guirc_pre | endif
+
+
 " because default map doesn't work in nvim-qt
 nnoremap <C-Space> :CtrlSpace<CR>
 
@@ -51,3 +57,8 @@ command! -nargs=1 GuiFontSizeIncN call <SID>font_size_inc(<args>)
 nnoremap <leader>- :<C-u>call <SID>font_size_dec(v:count)<CR>
 nnoremap <leader>+ :<C-u>call <SID>font_size_inc(v:count)<CR>
 nnoremap <leader>= :<C-u>call <SID>font_size_inc(v:count)<CR>
+
+
+" applying local additional config
+let g:local_guirc_post = $HOME . '/.neovimrc-gui-local-post'
+if filereadable(g:local_guirc_post) | exec 'so ' . g:local_guirc_post | endif
