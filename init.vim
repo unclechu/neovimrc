@@ -181,8 +181,11 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 0
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
-let g:UltiSnipsExpandTrigger = '<Nul>'
-let g:UltiSnipsListSnippets  = '<Nul>'
+let g:UltiSnipsExpandTrigger            = '<Nul>'
+let g:UltiSnipsListSnippets             = '<Nul>'
+" remapped from <C-j/k> to <A-j/k> to reduce conflicts with digraphs map ^K
+let g:UltiSnipsJumpForwardTrigger       = '<A-j>'
+let g:UltiSnipsJumpBackwardTrigger      = '<A-k>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
 " let g:syntastic_enable_signs = 1
 " let g:syntastic_always_populate_loc_list = 1
