@@ -714,6 +714,7 @@ cnoremap jk <C-c>
 xnoremap <Tab> <Esc>
 snoremap <Tab> <Esc>
 tnoremap <Leader><Tab> <C-\><C-n>
+tnoremap <Leader><Esc> <C-\><C-n>
 
 " thanks to Minoru for the advice
 noremap ; :
