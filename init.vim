@@ -826,19 +826,6 @@ inoremap <A-y> <C-r>0
 cnoremap <A-y> <C-r>0
 
 
-" custom digraphs
-digraphs '' 769    " accent mark (zero width)
-digraphs 3. 8230   " …
-digraphs ++ 10746  " ⧺
-digraphs 3+ 10747  " ⧻
-digraphs NN 8469   " ℕ
-digraphs ZZ 8484   " ℤ
-digraphs QQ 8474   " ℚ
-digraphs RR 8477   " ℝ
-digraphs BL 120121 " 𝔹
-digraphs Xb 8226   " • (filled 'Ob' -> ∘ version)
-
-
 " colorscheme
 
 let g:gruvbox_contrast_dark  = 'medium'
