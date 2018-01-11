@@ -288,6 +288,10 @@ let g:unite_source_menu_menus.dein = { 'description': 'Dein' }
 let g:unite_source_menu_menus.dein.command_candidates = [
 	\ ['Update plugins', 'call dein#update()'],
 	\]
+let g:unite_source_menu_menus.terminal = { 'description': 'Terminal' }
+let g:unite_source_menu_menus.terminal.command_candidates = [
+	\ ['Open terminal in new tab', 'tabnew | exec "terminal" | startinsert'],
+	\]
 
 " merge all menu items to single group
 let s:u_all = []
