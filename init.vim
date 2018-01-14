@@ -39,10 +39,11 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('haya14busa/incsearch.vim')
 	call dein#add('haya14busa/incsearch-easymotion.vim')
 	call dein#add('tpope/vim-commentary')
-	call dein#add('Shougo/unite.vim')   " unite
-	" dein#add('Shougo/denite.nvim') " future async replacement for unite
-	call dein#add('Shougo/neomru.vim')  " unite 'file_mru'
-	call dein#add('Shougo/neoyank.vim') " unite clipboard history 'history/yank'
+	" call dein#add('Shougo/unite.vim')   " was before denite.nvim
+	call dein#add('Shougo/denite.nvim') " new replacement for unite
+	call dein#add('Shougo/neomru.vim')  " unite/denite 'file_mru'
+	" TODO FIXME denite
+	" call dein#add('Shougo/neoyank.vim') " unite clipboard history 'history/yank'
 	call dein#add('Shougo/deoplete.nvim') " async autocompletion
 	call dein#add('sjl/gundo.vim')
 	call dein#add('mhinz/vim-startify')
@@ -77,7 +78,8 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('unclechu/lushtags')
 	call dein#add('twinside/vim-hoogle')
 	call dein#add('itchyny/vim-haskell-indent')
-	call dein#add('eagletmt/unite-haddock') " hoogle and haddock for Unite
+	" TODO FIXME denite
+	" call dein#add('eagletmt/unite-haddock') " hoogle and haddock for Unite
 
 	" faust
 	call dein#add('gmoe/vim-faust')
@@ -170,9 +172,6 @@ let g:airline#extensions#tabline#enabled                 = 1
 let g:airline#extensions#tabline#show_buffers            = 0
 let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 let g:airline#extensions#whitespace#enabled              = 0
-set laststatus=2 " airline always
-set hidden " ctrlspace
-set showtabline=2
 let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm = 1
 let g:indentLine_enabled = 0
@@ -220,122 +219,54 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:webdevicons_enable_nerdtree = 0 " disabled because it is laggy and buggy
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:unite_source_hoogle_max_candidates = 1000 " for haskell
-
-let g:unite_source_menu_menus = {}
-let g:unite_source_menu_menus.ls = { 'description': 'LiveScript/LS' }
-let g:unite_source_menu_menus.ls.command_candidates = [
-	\ ['Compile selected chunk to JS using LSC', "'<,'>!lsc -cbps | sed 1d"],
-	\ ['Get AST from selected chunk using LSC', "'<,'>!lsc -cbpsa"],
-	\]
-let g:unite_source_menu_menus.cs = { 'description': 'CoffeeScript/CS' }
-let g:unite_source_menu_menus.cs.command_candidates = [
-	\ ['Compile selected chunk to JS', "'<,'>!coffee -bsp"],
-	\ ['Get AST from selected chunk', "'<,'>!coffee -bst"],
-	\]
-let g:unite_source_menu_menus.haskell = { 'description': 'Haskell' }
-let g:unite_source_menu_menus.haskell.command_candidates = [
-	\ ['ghc-mod: Get type', 'GhcModType!'],
-	\ ['ghc-mod: Get type (redir to @t)',
-	\    "redir @t | exec 'GhcModType!' | redir END | echo ''"],
-	\ ['ghc-mod: Clear type highlight', 'GhcModTypeClear'],
-	\ ['ghc-mod: Insert type', 'GhcModTypeInsert!'],
-	\ ['ghc-mod: Check for errors/warnings', 'GhcModCheckAsync!'],
-	\ ['ghc-mod: Lint', 'GhcModLintAsync!'],
-	\ ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle'],
-	\ ['Hoogle (command)',
-	\    "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""],
-	\]
-let g:unite_source_menu_menus.unite = { 'description': 'Unite call presets' }
-let g:unite_source_menu_menus.unite.command_candidates = [
-	\ ['MRU', 'Unite -auto-resize file_mru'],
-	\ ['Buffers', 'Unite -auto-resize buffer'],
-	\ ['MRU + Buffers (insert)',
-	\    'Unite -auto-resize -start-insert file_mru buffer'],
-	\ ['Grep by Git files', 'Unite -auto-resize grep/git:.'],
-	\ ['Grep by Git files (case insensitive)',
-	\    'Unite -auto-resize grep/git:.:-i'],
-	\ ['Grep by Git files (bare string)', 'Unite -auto-resize grep/git:.:-F'],
-	\ ['Grep by Git files (bare string and case insensitive)',
-	\    'Unite -auto-resize grep/git:.:-iF'],
-	\]
-let g:unite_source_menu_menus.view = { 'description': 'View' }
-let g:unite_source_menu_menus.view.command_candidates = [
-	\ ['Top field',
-	\    "exec \"let x = input('Field height: ') | winc n | winc K | se ro"
-	\      . "| se noma | se wfh | 9999winc - | let &wh = x | winc p\""],
-	\ ['Left field',
-	\    "exec \"let x = input('Field width: ') | winc n | winc H | se ro"
-	\      . "| se noma | se wfw | 9999winc < | let &wiw = x | winc p\""],
-	\]
-let g:unite_source_menu_menus.ctrlspace = { 'description': 'CtrlSpace' }
-let g:unite_source_menu_menus.ctrlspace.command_candidates = [
-	\ ['Save workspace',
-	\    "let x = input('Workspace name: ') | echo ' '"
-	\      . "| exec 'CtrlSpaceSaveWorkspace ' . x"],
-	\]
-let g:unite_source_menu_menus.quickhl = { 'description': 'Quickhl' }
-let g:unite_source_menu_menus.quickhl.command_candidates = [
-	\ ['Manual add pattern',
-	\    "let x = input('Pattern: ') | echo ' '"
-	\      . "| exec 'QuickhlManualAdd ' . x"],
-	\ ['Manual remove pattern', 'QuickhlManualDelete'],
-	\ ['Manual list', 'QuickhlManualList'],
-	\ ['Manual lock (temporarily hide highlights)', 'QuickhlManualLock'],
-	\ ['Manual unlock (restore hidden highlights)', 'QuickhlManualUnlock'],
-	\]
-let g:unite_source_menu_menus.dein = { 'description': 'Dein' }
-let g:unite_source_menu_menus.dein.command_candidates = [
-	\ ['Update plugins', 'call dein#update()'],
-	\]
-let g:unite_source_menu_menus.terminal = { 'description': 'Terminal' }
-let g:unite_source_menu_menus.terminal.command_candidates = [
-	\ ['Open terminal in new tab', 'tabnew | exec "terminal" | startinsert'],
-	\]
-
-" merge all menu items to single group
-let s:u_all = []
-let s:u_max_prefix_length = 0
-for [k, v] in items(g:unite_source_menu_menus)
-	if s:u_max_prefix_length < len(v.description)
-		let s:u_max_prefix_length = len(v.description)
-	endif
-	for item in v.command_candidates
-		call add(s:u_all, [v.description, item[0], item[1]])
-	endfor
-endfor
-let s:u_all_pfx = []
-for item in s:u_all
-	let s:u_desc = item[0]
-	while len(s:u_desc) < s:u_max_prefix_length
-		let s:u_desc = s:u_desc . ' '
-	endwhile
-	call add(s:u_all_pfx, [s:u_desc . ' | ' . item[1], item[2]])
-endfor
-let g:unite_source_menu_menus.all = { 'description': 'All actions' }
-let g:unite_source_menu_menus.all.command_candidates = s:u_all_pfx
-unlet s:u_all
-unlet s:u_all_pfx
-unlet s:u_max_prefix_length
-unlet s:u_desc
 
 try
-	call unite#custom#source(
-		\ 'file_rec,file_rec/async,file_rec/neovim',
-		\ 'ignore_pattern',
-		\ '\v\.git/|\.hg/|\.svn/|__pycache__/|node_modules/|bower_components/'
-		\   . '\.exe$|\.so$|\.dll$|\.swp$|\.swo$'
+	call denite#custom#filter(
+		\ 'matcher_ignore_globs',
+		\ 'ignore_globs',
+		\ [ '.git/', '.hg/', '.bzr/', '.svn/',
+		\   '.cabal-sandbox/', '.stack-work/',
+		\   '.ropeproject/', '__pycache__/', 'venv/', '.venv/', '*.pyc',
+		\   'node_modules/', 'bower_components/',
+		\   '*.exe', '*.so', '*.dll',
+		\   '*.sw[po]', '*.bak', '*~', '*.o'
+		\ ])
+
+	call denite#custom#source('file_rec', 'matchers', ['matcher_ignore_globs'])
+
+	call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+	call denite#custom#var(
+		\ 'file_rec/git',
+		\ 'command',
+		\ ['git', 'ls-files', '-co', '--exclude-standard']
 		\)
+
+	call denite#custom#alias('source', 'grep/git', 'grep')
+	call denite#custom#var(
+		\ 'grep/git',
+		\ 'command',
+		\ ['git', 'grep', '-n', '--no-color'])
+	call denite#custom#var('grep/git', 'default_opts', [])
+	call denite#custom#var('grep/git', 'recursive_opts', [])
+	call denite#custom#var('grep/git', 'pattern_opt', [])
+	call denite#custom#var('grep/git', 'separator', ['--'])
+	call denite#custom#var('grep/git', 'final_opts', ['.'])
+
+	" TODO FIXME denite
+	" call denite#custom#source('file_rec', 'max_candidates', 10)
+	" let g:unite_source_hoogle_max_candidates = 1000 " for haskell
+
+	call denite#custom#option('default', 'prompt', 'λ')
 catch
 	if stridx(v:exception, ':E117:') == -1
 		echoe v:exception
 	endif
 endtry
 
+exec 'source ' . $MYVIMRC_DIR . '/menu.vim'
+
 
 " load my modules
-
-syntax on
 
 for module in split(expand($MYVIMRC_DIR . '/my-modules/**/*.vim'), '\n')
 	exec 'source ' . module
@@ -345,6 +276,10 @@ endfor
 " some vim configs
 
 let $NVIM_ENABLE_TRUE_COLOR = 1
+
+set hidden " ctrlspace requires it
+set laststatus=2 " airline always
+set showtabline=2
 
 set backspace=indent,eol,start
 set tabstop=4
@@ -438,26 +373,27 @@ if has('python3') || has('python')
 		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 endif
 
-function! g:UniteMapsForGit()
-	nnoremap <A-p>  :tabnew<CR>:Unite -auto-resize -start-insert file_rec/git buffer<CR>
-	nnoremap <C-p>  :Unite -auto-resize -start-insert file_rec/git buffer<CR>
+function! g:FuzzyGitFileMaps()
+	nnoremap <A-p>  :tabnew<CR>:Denite file_rec/git buffer<CR>
+	nnoremap <C-p>  :Denite file_rec/git buffer<CR>
 endfunction
 
-" Unite
-nnoremap <A-p>      :tabnew<CR>:Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
-nnoremap <C-p>      :Unite -auto-resize -start-insert file_rec/neovim buffer<CR>
-nnoremap <leader>y  :Unite -auto-resize history/yank -default-action=append<CR>
-nnoremap ''         :Unite -auto-resize register<CR>
+" Denite
+nnoremap <A-p>      :tabnew<CR>:Denite file_rec buffer<CR>
+nnoremap <C-p>      :Denite file_rec buffer<CR>
+" TODO FIXME denite
+" nnoremap <leader>y  :Denite history/yank -default-action=append<CR>
+nnoremap ''         :Denite register<CR>
 " sl - show lines
-nnoremap <leader>sl :Unite -auto-resize -start-insert line<CR>
+nnoremap <leader>sl :Denite line<CR>
 " sa - show all
-nnoremap <leader>sa :Unite -auto-resize -start-insert line:buffers<CR>
-nnoremap <leader>;  :Unite -auto-resize -start-insert menu:all<CR>
-xnoremap <leader>;  :Unite -auto-resize -start-insert menu:all<CR>
-nnoremap <leader>:  :Unite -auto-resize<Space>
+nnoremap <leader>sa :Denite line:buffers<CR>
+nnoremap <leader>;  :Denite menu:all<CR>
+xnoremap <leader>;  :Denite menu:all<CR>
+nnoremap <leader>:  :Denite<Space>
 " feels kinda like ctrlspace
-nnoremap <leader><Space> :Unite -auto-resize buffer<CR>
-nnoremap <Space><leader> :Unite -auto-resize file_mru<CR>
+nnoremap <leader><Space> :Denite buffer<CR>
+nnoremap <Space><leader> :Denite file_mru<CR>
 
 " GitGutter keys
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
