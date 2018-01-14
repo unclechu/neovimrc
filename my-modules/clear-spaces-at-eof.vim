@@ -1,8 +1,10 @@
 " clear spaces at EOF and tabs at end of not empty lines
 " Author: Viacheslav Lotsmanov
 
-let g:auto_clear_spaces_at_eof = 1 " for non empty lines
-let g:auto_trim_spaces_at_eof  = 0 " for every line
+if !exists('s:loaded')
+	let g:auto_clear_spaces_at_eof = 1 " for non empty lines
+	let g:auto_trim_spaces_at_eof  = 0 " for every line
+endif
 
 
 " clear spaces and tabs at EOF of not empty lines
@@ -143,13 +145,14 @@ endfunction
 command! AutoTrimSpacesAtEOFToggle  call s:AutoTrimSpacesAtEOF(-1)
 command! AutoTrimSpacesAtEOFEnable  call s:AutoTrimSpacesAtEOF(1)
 command! AutoTrimSpacesAtEOFDisable call s:AutoTrimSpacesAtEOF(0)
-command! TrimSpacesAtEOF call s:TrimSpacesAtEOF(1)
+command! TrimSpacesAtEOF            call s:TrimSpacesAtEOF(1)
 
 
 if !exists('s:loaded')
 	autocmd BufWritePre * call s:ClearSpacesAtEOF(0)
 	autocmd BufWritePre * call s:TrimSpacesAtEOF(0)
-	let s:loaded = 1
 endif
+
+let s:loaded = 1
 
 " vim: set noet :
