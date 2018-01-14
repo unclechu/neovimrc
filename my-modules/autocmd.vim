@@ -1,6 +1,36 @@
 " autocmd commands
 " Author: Viacheslav Lotsmanov
 
+function! s:InsertEnterHook()
+	if &relativenumber
+		let b:__had_relative_number_enabled = 1
+		set norelativenumber
+	endif
+endfunction
+
+function! s:InsertLeaveHook()
+	if exists('b:__had_relative_number_enabled')
+		if b:__had_relative_number_enabled | set relativenumber | endif
+		unlet b:__had_relative_number_enabled
+	endif
+endfunction
+
+function! s:TermOpenHook()
+	set number
+	if &g:relativenumber | set relativenumber | endif
+endfunction
+
+function! s:PreviousTab_StoreState()
+	let s:tab_current = tabpagenr()
+	let s:tab_last = tabpagenr('$')
+endfunction
+
+function! s:PreviousTab_TabClosed()
+	if s:tab_current > 1 && s:tab_current < s:tab_last
+		exec 'tabp'
+	endif
+endfunction
+
 if exists('s:loaded')
 	finish
 endif
@@ -45,47 +75,18 @@ autocmd FileType nerdtree setlocal nolist
 " disable tabs highlight on empty lines
 autocmd BufRead * syntax match whitespaceEOL /\s\+$/
 
-function! s:InsertEnterHook()
-	if &relativenumber
-		let b:__had_relative_number_enabled = 1
-		set norelativenumber
-	endif
-endfunction
-
-function! s:InsertLeaveHook()
-	if exists('b:__had_relative_number_enabled')
-		if b:__had_relative_number_enabled | set relativenumber | endif
-		unlet b:__had_relative_number_enabled
-	endif
-endfunction
-
 autocmd InsertEnter * call s:InsertEnterHook()
 autocmd InsertLeave * call s:InsertLeaveHook()
-
-function! s:TermOpenHook()
-	set number
-	if &g:relativenumber | set relativenumber | endif
-endfunction
 
 autocmd TermOpen * call s:TermOpenHook()
 
 " fix easymotion bug https://github.com/easymotion/vim-easymotion/issues/294
 autocmd WinLeave * silent
 
-function! s:PreviousTab_StoreState()
-	let s:tab_current = tabpagenr()
-	let s:tab_last = tabpagenr('$')
-endfunction
-
-function! s:PreviousTab_TabClosed()
-	if s:tab_current > 1 && s:tab_current < s:tab_last
-		exec 'tabp'
-	endif
-endfunction
-
 autocmd TabEnter,TabLeave * call s:PreviousTab_StoreState()
 autocmd TabClosed * call s:PreviousTab_TabClosed()
 autocmd BufWritePost * Neomake
+
 let s:loaded = 1
 
 " vim: set noet :
