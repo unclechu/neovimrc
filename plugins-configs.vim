@@ -102,6 +102,9 @@ try
 	call denite#custom#var('grep/git', 'separator', ['--'])
 	call denite#custom#var('grep/git', 'final_opts', ['.'])
 
+	call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
+	call denite#custom#source('grep/git', 'converters', ['converter_abbr_word'])
+
 	" TODO FIXME denite
 	" call denite#custom#source('file_rec', 'max_candidates', 10)
 	" let g:unite_source_hoogle_max_candidates = 1000 " for haskell
