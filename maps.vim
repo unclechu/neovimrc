@@ -130,6 +130,16 @@ nmap     <leader>sP <Plug>CtrlSFPwordExec
 nnoremap <leader>so :CtrlSFOpen<CR>
 nnoremap <leader>st :CtrlSFToggle<CR>
 
+" Denite grep/git shotcuts
+" (kinda like CtrlSF maps but with 'g' instead of 's')
+nnoremap <leader>gf :Denite grep/git:.:-F:''<Left>
+xnoremap <leader>gf y:Denite grep/git:.:-F:'<C-R>"'<Left>
+xnoremap <leader>gF y:Denite grep/git:.:-F:'<C-R>"'<CR>
+nnoremap <leader>gn :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
+nnoremap <leader>gN :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<CR>
+nnoremap <leader>gp :Denite grep/git:.:-F:'<C-R>/'<Left>
+nnoremap <leader>gP :Denite grep/git:.:-F:'<C-R>/'<CR>
+
 " CtrlSpace panel open
 nnoremap <C-Space> :CtrlSpace<CR>
 
