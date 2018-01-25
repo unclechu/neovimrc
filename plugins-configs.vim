@@ -1,6 +1,7 @@
 " custom configs of plugins
 " Author: Viacheslav Lotsmanov
 
+let g:dein#install_process_timeout = 3600 " some reaches timeout
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_disable_at_vimenter = 1

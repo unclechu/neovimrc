@@ -15,6 +15,7 @@ nnoremap <leader>cr :source $MYVIMRC<CR>
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 nnoremap <leader>n  :NERDTreeToggle<CR>
+nnoremap <leader>N  :NERDTreeToggle<CR><C-w>p
 nnoremap <leader>fn :NERDTreeFind<CR>
 nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
 nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>

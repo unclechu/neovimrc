@@ -72,6 +72,9 @@ if dein#load_state($DEIN_BASE_PATH)
 	" TODO FIXME denite
 	" call dein#add('eagletmt/unite-haddock') " hoogle and haddock for Unite
 
+	" purescript
+	call dein#add('raichoo/purescript-vim')
+
 	" faust
 	call dein#add('gmoe/vim-faust')
 
