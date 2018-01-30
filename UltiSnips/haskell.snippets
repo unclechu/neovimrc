@@ -5,6 +5,10 @@ snippet pr "Pragma LANGUAGE" w
 {-# LANGUAGE ${1:Foo} #-}
 endsnippet
 
+snippet po "Pragma OPTIONS_GHC" w
+{-# OPTIONS_GHC -${1:foo} #-}
+endsnippet
+
 
 # see for `Data.Function` from `base` package since 4.9.0.0
 snippet (&) "Declare pipe version of ($) operator" w
