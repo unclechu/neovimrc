@@ -4,12 +4,16 @@ use v5.10; use strict; use warnings; use autodie qw(:all);
 use Env qw(HOME);
 use List::Util qw(first);
 use File::Glob qw(:bsd_glob);
+
 use constant TARGET     => $ARGV[0];
 use constant ARGC       => scalar(@ARGV);
+
 use constant SWAP_DIR   => "$HOME/.vim_swap/";
 use constant BACKUP_DIR => "$HOME/.vim_backup/";
+use constant UNDO_DIR   => "$HOME/.vim_undo/";
 
-sub get_help {'usage: clean-vim (swap|backup|all)'}
+my @available = qw(all swap backup undo);
+sub get_help {qq/usage: clean-vim (@{[join '|', @available]})/}
 
 if (ARGC != 1) {
 	say STDERR 'incorrect arguments count: ', ARGC;
@@ -20,7 +24,7 @@ if (ARGC != 1) {
 } elsif (TARGET eq 'help') {
 	say get_help();
 	exit 0;
-} elsif (! defined(first {TARGET eq $_} qw(all swap backup))) {
+} elsif (! defined(first {TARGET eq $_} @available)) {
 	say STDERR qq/unknown target argument: '@{[TARGET]}'/;
 	say STDERR get_help();
 	exit 1;
@@ -34,4 +38,9 @@ if ((TARGET eq 'all' || TARGET eq 'swap') && -d SWAP_DIR) {
 if ((TARGET eq 'all' || TARGET eq 'backup') && -d BACKUP_DIR) {
 	chdir BACKUP_DIR;
 	unlink <{,.}*~>;
+}
+
+if ((TARGET eq 'all' || TARGET eq 'undo') && -d UNDO_DIR) {
+	chdir UNDO_DIR;
+	unlink <*>;
 }

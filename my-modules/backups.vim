@@ -2,20 +2,18 @@
 " Author: Viacheslav Lotsmanov
 
 set backup
-let s:backups_and_swap_home_dir = $HOME
-let s:tmp_dir = s:backups_and_swap_home_dir . '/.vim_backup'
+set undofile
 
-if !isdirectory(s:tmp_dir)
-	call mkdir(s:tmp_dir)
-endif
+let s:my_backup_dir = $HOME . '/.vim_backup'
+if !isdirectory(s:my_backup_dir) | call mkdir(s:my_backup_dir) | endif
+let &backupdir = s:my_backup_dir . ',.,/tmp'
 
-let &backupdir = s:tmp_dir . ',.,/tmp'
-let s:tmp_dir = s:backups_and_swap_home_dir . '/.vim_swap'
+let s:my_swap_dir = $HOME . '/.vim_swap'
+if !isdirectory(s:my_swap_dir) | call mkdir(s:my_swap_dir) | endif
+let &directory = s:my_swap_dir . ',.,/tmp'
 
-if !isdirectory(s:tmp_dir)
-	call mkdir(s:tmp_dir)
-endif
-
-let &directory = s:tmp_dir . ',.,/tmp'
+let s:my_undo_dir = $HOME . '/.vim_undo'
+if !isdirectory(s:my_undo_dir) | call mkdir(s:my_undo_dir) | endif
+let &undodir = s:my_undo_dir . ',.,/tmp'
 
 " vim: set noet :
