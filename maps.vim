@@ -228,6 +228,7 @@ nmap <leader>ppo <A-O>kP
 
 " another alias to system X clipboard
 noremap '<Space> "+
+noremap <Space>' "*
 " another alias to 'last yank' register
 noremap <A-y> "0
 
