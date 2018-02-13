@@ -62,7 +62,7 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " because some custom `indentexpr`s has annoying issues
 autocmd FileType
 	\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx,typescript.jsx,
-	\haskell
+	\haskell,purescript
 	\ set indentexpr=
 
 " haskell default indentation config
