@@ -110,6 +110,12 @@ module ${1:Foo}
 	) where
 endsnippet
 
+snippet mm' "module with multiline explicit export (aligned)" w
+module ${1:Foo}
+     ( ${2:Bar}
+     ) where
+endsnippet
+
 
 # wrapping name of the function to ${} doesn't make sense
 # becase we need to edit function name two times, let's
