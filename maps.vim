@@ -350,9 +350,14 @@ xnoremap R r<Space>R
 
 " break line but keep same column position for rest of the line
 imap <A-CR> <C-o>mp<Esc>`py0`pD`p<A-o>jP`pji
+" cannot map <S-CR> to make <A-S-CR> alternative
+" imap <A-S-CR> <C-o>mp<Esc>`py0`pD`p<A-o>jhP`pjhi
 imap <A-'>  <C-o>mp<Esc>`py0`pD`p<A-o>jP`pi
+imap <A-">  <C-o>mp<Esc>`py0`pD`p<A-o>jhP`pi
 imap <A-\>  <C-o>mp<Esc>`py0`pD`p<A-O>kP`pki
+imap <A-\|> <C-o>mp<Esc>`py0`pD`p<A-O>khP`pkhi
 imap <A-]>  <C-o>mp<Esc>`py0`pD`p<A-O>kP`pi
+imap <A-}>  <C-o>mp<Esc>`py0`pD`p<A-O>khP`pi
 
 nnoremap <A-o> mpo
 	\<Esc>:let __tmp_A_o=@"<CR>S
