@@ -327,6 +327,7 @@ noremap <leader>q q
 
 inoremap jk <Esc>
 cnoremap jk <C-c>
+tnoremap jk <C-\><C-n>
 xnoremap <Tab> <Esc>
 snoremap <Tab> <Esc>
 tnoremap <Leader><Tab> <C-\><C-n>
