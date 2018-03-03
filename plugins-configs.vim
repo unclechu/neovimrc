@@ -111,6 +111,7 @@ try
 	" let g:unite_source_hoogle_max_candidates = 1000 " for haskell
 
 	call denite#custom#option('default', 'prompt', 'λ')
+	call denite#custom#option('default', 'smartcase', 1)
 catch
 	if stridx(v:exception, ':E117:') == -1
 		echoe v:exception
