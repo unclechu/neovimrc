@@ -446,3 +446,47 @@ inoremap <A-p> <C-r>"
 cnoremap <A-p> <C-r>"
 inoremap <A-y> <C-r>0
 cnoremap <A-y> <C-r>0
+
+" to create short aliases for tTfF jumps to unicode symbols
+function! s:UnicodeJumpsShortcuts(ascii, uni)
+	exec 'nnoremap t<A-'.a:ascii.'> t'.a:uni
+	exec 'nnoremap T<A-'.a:ascii.'> T'.a:uni
+	exec 'nnoremap f<A-'.a:ascii.'> f'.a:uni
+	exec 'nnoremap F<A-'.a:ascii.'> F'.a:uni
+endfunction
+
+" based on snippets for Haskell
+call s:UnicodeJumpsShortcuts(';', '∷')
+call s:UnicodeJumpsShortcuts(':', '∷')
+call s:UnicodeJumpsShortcuts('<', '←')
+call s:UnicodeJumpsShortcuts('>', '→')
+call s:UnicodeJumpsShortcuts('[', '⇐')
+call s:UnicodeJumpsShortcuts(']', '⇒')
+call s:UnicodeJumpsShortcuts('.', '∘')
+call s:UnicodeJumpsShortcuts(',', '•')
+call s:UnicodeJumpsShortcuts('A', '∀')
+call s:UnicodeJumpsShortcuts('a', '∧') " 'a' for 'and'
+call s:UnicodeJumpsShortcuts('o', '∨') " 'o' for 'or'
+call s:UnicodeJumpsShortcuts('=', '≡')
+call s:UnicodeJumpsShortcuts('-', '≠')
+call s:UnicodeJumpsShortcuts('_', '≢')
+call s:UnicodeJumpsShortcuts('l', '≤') " 'l' for 'less'
+call s:UnicodeJumpsShortcuts('g', '≥') " 'g' for 'greater'
+call s:UnicodeJumpsShortcuts('+', '⧺')
+call s:UnicodeJumpsShortcuts('*', '⋅')
+call s:UnicodeJumpsShortcuts('x', '×')
+call s:UnicodeJumpsShortcuts('/', '÷')
+call s:UnicodeJumpsShortcuts('e', '∈')
+call s:UnicodeJumpsShortcuts('E', '∉')
+call s:UnicodeJumpsShortcuts('3', '∋')
+call s:UnicodeJumpsShortcuts('#', '∌')
+call s:UnicodeJumpsShortcuts('Z', 'ℤ')
+call s:UnicodeJumpsShortcuts('N', 'ℕ')
+call s:UnicodeJumpsShortcuts('Q', 'ℚ')
+call s:UnicodeJumpsShortcuts('R', 'ℝ')
+call s:UnicodeJumpsShortcuts('B', '𝔹')
+call s:UnicodeJumpsShortcuts('P', 'π')
+call s:UnicodeJumpsShortcuts('8', '∞')
+call s:UnicodeJumpsShortcuts('d', '…') " 'd' for 'dots'
+call s:UnicodeJumpsShortcuts('{', '«')
+call s:UnicodeJumpsShortcuts('}', '»')
