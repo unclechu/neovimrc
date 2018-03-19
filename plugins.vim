@@ -30,6 +30,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('haya14busa/incsearch.vim')
 	call dein#add('haya14busa/incsearch-easymotion.vim')
 	call dein#add('tpope/vim-commentary')
+	call dein#add('tpope/vim-speeddating')
 	" call dein#add('Shougo/unite.vim')   " was before denite.nvim
 	call dein#add('Shougo/denite.nvim') " new replacement for unite
 	call dein#add('Shougo/neomru.vim')  " unite/denite 'file_mru'
