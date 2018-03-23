@@ -450,7 +450,7 @@ cnoremap <A-y> <C-r>0
 " to create short aliases for tTfF jumps to unicode symbols
 function! s:UnicodeJumpsShortcuts(ascii, uni)
 	for mpfx in ['n', 'x']
-		for apfx in ['', 'd']
+		for apfx in ['', 'd', 'c']
 			exec l:mpfx.'noremap '.l:apfx.'t<A-'.a:ascii.'> '.l:apfx.'t'.a:uni
 			exec l:mpfx.'noremap '.l:apfx.'T<A-'.a:ascii.'> '.l:apfx.'T'.a:uni
 			exec l:mpfx.'noremap '.l:apfx.'f<A-'.a:ascii.'> '.l:apfx.'f'.a:uni
