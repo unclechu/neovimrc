@@ -78,6 +78,9 @@ if dein#load_state($DEIN_BASE_PATH)
 	" purescript
 	call dein#add('raichoo/purescript-vim')
 
+	" perl
+	call dein#add('vim-perl/vim-perl6')
+
 	" faust
 	call dein#add('gmoe/vim-faust')
 
