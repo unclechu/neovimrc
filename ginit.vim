@@ -9,44 +9,39 @@ if filereadable(g:local_guirc_pre) | exec 'so ' . g:local_guirc_pre | endif
 " because default map doesn't work in nvim-qt
 nnoremap <C-Space> :CtrlSpace<CR>
 
-
-call rpcnotify(1, 'Gui', 'Font', 'Fira Code 9')
 call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
 
 
-" fast font inc/dec
+let s:font_family = 'Fira Code'
+let s:font_size = 9
 
-function! s:get_font_data()
-	return {
-		\ 'face': substitute(g:GuiFont, '^\(.\+:h\)[0-9]\+$', '\1', 'g'),
-		\ 'size': 0 + substitute(g:GuiFont, '^.\+:h\([0-9]\+\)$', '\1', 'g')
-	\ }
+function! s:update_font()
+	call rpcnotify(1, 'Gui', 'Font', s:font_family . ' ' . s:font_size)
 endfunction
 
+function! s:set_font_family(family)
+	let s:font_family = a:family
+	call s:update_font()
+endfunction
+
+command! -nargs=1 GuiFontFamily call <SID>set_font_family(<args>)
+
+" fast font inc/dec
+
+call s:update_font()
+
 function! s:font_size_dec(count)
-	let l:font = s:get_font_data()
-	let l:count = a:count
-	if l:count < 1
-		let l:count = 1
-	endif
-	let l:newsize = l:font.size - l:count
-	if l:newsize < 1
-		let l:newsize = 1
-	endif
-	exec 'GuiFont ' . l:font.face . l:newsize
+	let l:count = a:count | if l:count < 1 | let l:count = 1 | endif
+	let s:font_size = s:font_size - l:count
+	if s:font_size < 1 | let s:font_size = 1 | endif
+	call s:update_font()
 endfunction
 
 function! s:font_size_inc(count)
-	let l:font = s:get_font_data()
-	let l:count = a:count
-	if l:count < 1
-		let l:count = 1
-	endif
-	let l:newsize = l:font.size + l:count
-	if l:newsize < 1
-		let l:newsize = 1
-	endif
-	exec 'GuiFont ' . l:font.face . l:newsize
+	let l:count = a:count | if l:count < 1 | let l:count = 1 | endif
+	let s:font_size = s:font_size + l:count
+	if s:font_size < 1 | let s:font_size = 1 | endif
+	call s:update_font()
 endfunction
 
 command! GuiFontSizeDec call <SID>font_size_dec(1)
