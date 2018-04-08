@@ -70,6 +70,9 @@ endsnippet
 snippet i "import" w
 import ${1}
 endsnippet
+snippet i' "import (aligned by `qualified` keyword)" w
+import           ${1}
+endsnippet
 snippet pi "import (from explicit package)" w
 import "${1:base}" ${2}
 endsnippet
@@ -90,6 +93,9 @@ endsnippet
 
 snippet ix "explicit import" w
 import ${1:Control.Monad} (${2:(>=>)})
+endsnippet
+snippet ix' "explicit import (aligned by `qualified` keyword)" w
+import           ${1:Control.Monad} (${2:(>=>)})
 endsnippet
 snippet pix "explicit import (from explicit package)" w
 import "${1:base}" ${2:Control.Monad} (${3:(>=>)})
