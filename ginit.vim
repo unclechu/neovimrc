@@ -53,6 +53,9 @@ nnoremap <leader>- :<C-u>call <SID>font_size_dec(v:count)<CR>
 nnoremap <leader>+ :<C-u>call <SID>font_size_inc(v:count)<CR>
 nnoremap <leader>= :<C-u>call <SID>font_size_inc(v:count)<CR>
 
+nnoremap <C-ScrollWheelUp>   :call <SID>font_size_inc(1)<CR>
+nnoremap <C-ScrollWheelDown> :call <SID>font_size_dec(1)<CR>
+
 
 " applying local additional config
 let g:local_guirc_post = $HOME . '/.neovimrc-gui-local-post'
