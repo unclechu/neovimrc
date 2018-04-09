@@ -14,3 +14,4 @@ digraphs Xb 8226   " • | 0x2022 (filled 'Ob' -> ∘ version)
 digraphs \|> 8883  " ⊳ | 0x22b3
 digraphs <\| 8882  " ⊲ | 0x22b2
 digraphs >< 8904   " ⋈ | 0x22c8
+digraphs /v 8900   " ⋄ | 0x22c4

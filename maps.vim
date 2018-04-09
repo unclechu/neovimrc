@@ -494,3 +494,4 @@ call s:UnicodeJumpsShortcuts('8', '∞')
 call s:UnicodeJumpsShortcuts('d', '…') " 'd' for 'dots'
 call s:UnicodeJumpsShortcuts('{', '«')
 call s:UnicodeJumpsShortcuts('}', '»')
+call s:UnicodeJumpsShortcuts('v', '⋄')
