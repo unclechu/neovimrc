@@ -136,7 +136,7 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 nnoremap <leader>gf :Denite grep/git:.:-F:''<Left>
 xnoremap <leader>gf y:Denite grep/git:.:-F:'<C-R>"'<Left>
 xnoremap <leader>gF y:Denite grep/git:.:-F:'<C-R>"'<CR>
-nnoremap <leader>gn :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
+noremap <leader>gn :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
 nnoremap <leader>gN :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<CR>
 nnoremap <leader>gp :Denite grep/git:.:-F:'<C-R>/'<Left>
 nnoremap <leader>gP :Denite grep/git:.:-F:'<C-R>/'<CR>
@@ -376,11 +376,11 @@ imap <A-Space> <Space><Left>
 
 " custom numbers line keys
 
-nmap ! <Plug>(indexed-search-#)
+nnoremap ! #:ShowSearchIndex<CR>
 nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
 xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
 xnoremap g! :<C-u>call VisualStarSearchSet('?')<CR>
-nmap @ <Plug>(indexed-search-*)
+nnoremap @ *:ShowSearchIndex<CR>
 nnoremap g@ yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
 xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap g@ :<C-u>call VisualStarSearchSet('/')<CR>
@@ -426,11 +426,10 @@ xnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
 nnoremap ,gt gt
 xnoremap ,gt gt
 
-" because default maps disabled for plugin
-nmap / <Plug>(indexed-search-/)
-nmap ? <Plug>(indexed-search-?)
-nmap n <Plug>(indexed-search-n)zv
-nmap N <Plug>(indexed-search-N)zv
+" default maps disabled for plugin
+cnoremap <expr> <CR> '<CR>' . (getcmdtype() =~ '[/?]' ? ':ShowSearchIndex<CR>' : '')
+nnoremap n n:ShowSearchIndex<CR>
+nnoremap N N:ShowSearchIndex<CR>
 
 nnoremap <A-t> :tabnew<CR>
 nnoremap <A-w> :tabclose<CR>
