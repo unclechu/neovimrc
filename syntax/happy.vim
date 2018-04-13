@@ -1,1 +1,0 @@
-../haskell-vim-proto/vim/syntax/happy.vim
