@@ -28,13 +28,15 @@ nmap ga <Plug>(EasyAlign)
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
 if has('python3') || has('python')
-
-	function! s:MyUltiExpand()
-		call UltiSnips#isExpandable()
-		return g:ulti_is_expandable
+	function! s:IsSnippetExpandable()
+		return !(
+			\ col('.') <= 1
+			\ || !empty(matchstr(getline('.'), '\%' . (col('.') - 1) . 'c\s'))
+			\ || empty(UltiSnips#SnippetsInCurrentScope())
+			\ )
 	endfunction
 
-	inoremap <expr> <Tab> <SID>MyUltiExpand()
+	inoremap <expr> <Tab> <SID>IsSnippetExpandable()
 		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 endif
 
