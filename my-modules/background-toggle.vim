@@ -1,12 +1,26 @@
 " background and gruvbox contrast toggle
 " Author: Viacheslav Lotsmanov
 
+function! g:GruvboxCustomizations()
+	try
+		if g:colors_name == 'gruvbox' |
+			hi! link haskellSeparator GruvboxGray
+		endif
+	catch
+		if stridx(v:exception, ':E121:') == -1 " default colorscheme
+			echoe v:exception
+		endif
+	endtry
+endfunction
+
 function! s:BackgroundToggle()
 	if &background == 'dark'
 		set background=light
 	elseif &background == 'light'
 		set background=dark
 	endif
+
+	call g:GruvboxCustomizations()
 endfunction
 
 function! s:GruvboxContrastRotate()

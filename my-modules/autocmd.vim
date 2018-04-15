@@ -75,6 +75,8 @@ autocmd FileType nerdtree setlocal nolist
 " disable tabs highlight on empty lines
 autocmd BufRead * syntax match whitespaceEOL /\s\+$/
 
+autocmd FileType haskell call g:GruvboxCustomizations()
+
 autocmd InsertEnter * call s:InsertEnterHook()
 autocmd InsertLeave * call s:InsertLeaveHook()
 
