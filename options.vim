@@ -55,4 +55,4 @@ set wildmenu
 set clipboard-=unnamedplus
 set termguicolors
 
-set path+=** " recursively deal with files
+set path+=**,**/.* " recursively deal with files
