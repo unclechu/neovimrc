@@ -66,7 +66,9 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('airblade/vim-gitgutter')
 
 	" haskell
-	call dein#add('unclechu/vim-my-haskell')
+	" call dein#add('unclechu/vim-my-haskell')
+	" call dein#add('neovimhaskell/haskell-vim')
+	call dein#add('unclechu/haskell-vim') " my fork with unicode support
 	call dein#add('eagletmt/neco-ghc')
 	call dein#add('eagletmt/ghcmod-vim')
 	call dein#add('unclechu/lushtags')
