@@ -135,7 +135,5 @@ try
 	call denite#custom#option('default', 'prompt', 'λ')
 	call denite#custom#option('default', 'smartcase', 1)
 catch
-	if stridx(v:exception, ':E117:') == -1
-		echoe v:exception
-	endif
+	if stridx(v:exception, ':E117:') == -1 | echoe v:exception | endif
 endtry

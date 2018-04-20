@@ -101,7 +101,5 @@ unlet s:u_desc
 try
 	call denite#custom#var('menu', 'menus', s:menus)
 catch
-	if stridx(v:exception, ':E117:') == -1
-		echoe v:exception
-	endif
+	if stridx(v:exception, ':E117:') == -1 | echoe v:exception | endif
 endtry

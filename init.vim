@@ -71,9 +71,7 @@ let g:terminal_color_15 = '#fdf6e3'
 try
 	call webdevicons#refresh()
 catch
-	if stridx(v:exception, ':E117:') == -1
-		echoe v:exception
-	endif
+	if stridx(v:exception, ':E117:') == -1 | echoe v:exception | endif
 endtry
 
 

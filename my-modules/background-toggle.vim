@@ -7,9 +7,8 @@ function! g:GruvboxCustomizations()
 			hi! link haskellSeparator GruvboxGray
 		endif
 	catch
-		if stridx(v:exception, ':E121:') == -1 " default colorscheme
-			echoe v:exception
-		endif
+		" handling default colorscheme
+		if stridx(v:exception, ':E121:') == -1 | echoe v:exception | endif
 	endtry
 endfunction
 

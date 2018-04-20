@@ -118,7 +118,12 @@ autocmd FileType nerdtree call s:NerdtreeFTHook()
 autocmd InsertEnter * call s:InsertEnterHook()
 autocmd InsertLeave * call s:InsertLeaveHook()
 
-autocmd CmdlineLeave * call s:CmdlineLeaveHook()
+try
+	autocmd CmdlineLeave * call s:CmdlineLeaveHook()
+catch
+	" Older version of Neovim could not have `CmdlineLeave` group
+	if stridx(v:exception, 'E216:') == -1 | echoe v:exception | endif
+endtry
 
 autocmd TermOpen * call s:TermOpenHook()
 
