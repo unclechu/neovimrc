@@ -41,6 +41,15 @@ set foldlevelstart=999
 set cpoptions+=I " disable indent removing in insert mode (moving by arrow keys)
 set timeoutlen=1000
 
+" internal keyboard layouts
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=-1
+let &langmap = 'йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj'
+	\.',лk,дl,э'',яz,чx,сc,мv,иb,тn,ьm,б\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU'
+	\.',ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Э\",ЯZ,ЧX,СC,МV,ИB,ТN'
+	\.',ЬM,Б\<,Ю\>,Ё\~'
+
 " sessions
 set ssop-=options " do not store global and local values in a session
 set ssop-=folds   " do not store folds

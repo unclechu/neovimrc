@@ -9,10 +9,15 @@ function! s:InsertEnterHook()
 endfunction
 
 function! s:InsertLeaveHook()
+	set iminsert=0 " reset layout to default (en)
 	if exists('b:__had_relative_number_enabled')
 		if b:__had_relative_number_enabled | set relativenumber | endif
 		unlet b:__had_relative_number_enabled
 	endif
+endfunction
+
+function! s:CmdlineLeaveHook()
+	set iminsert=0 " reset layout to default (en)
 endfunction
 
 function! s:TermOpenHook()
@@ -31,9 +36,7 @@ function! s:PreviousTab_TabClosed()
 	endif
 endfunction
 
-if exists('s:loaded')
-	finish
-endif
+if exists('s:loaded') | finish | endif
 
 " Auto-close NERDTree window if it is only window on the screen
 autocmd BufEnter * if
@@ -79,6 +82,8 @@ autocmd FileType haskell call g:GruvboxCustomizations()
 
 autocmd InsertEnter * call s:InsertEnterHook()
 autocmd InsertLeave * call s:InsertLeaveHook()
+
+autocmd CmdlineLeave * call s:CmdlineLeaveHook()
 
 autocmd TermOpen * call s:TermOpenHook()
 
