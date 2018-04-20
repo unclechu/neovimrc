@@ -1,6 +1,10 @@
 " autocmd commands
 " Author: Viacheslav Lotsmanov
 
+" The purpuse of separating hooks to own functions is that they could be purely
+" reloaded but `autocmd` couldn't, because it appends, reloading `autocmd`
+" causes additional bindings.
+
 function! s:InsertEnterHook()
 	if &relativenumber
 		let b:__had_relative_number_enabled = 1
@@ -36,12 +40,55 @@ function! s:PreviousTab_TabClosed()
 	endif
 endfunction
 
+function! s:AnyBufEnterHook()
+	if winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()
+		q
+	endif
+endfunction
+
+function! s:AnyBufReadPostHook()
+	" disable tabs highlight on empty lines
+	syntax match whitespaceEOL /\s\+$/
+endfunction
+
+function! s:AnyBufWritePostHook()
+	Neomake
+endfunction
+
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+
+function! s:HaskellFTHook()
+	setlocal omnifunc=necoghc#omnifunc
+	setlocal et ts=2 sts=2 sw=2
+	call g:GruvboxCustomizations()
+endfunction
+
+function! s:CabalFTHook()
+	setlocal et ts=2 sts=2 sw=2
+endfunction
+
+function! s:PythonFTHook()
+	setlocal ts=4 sts=4 sw=4
+endfunction
+
+function! s:NimFTHook()
+	" nnoremap <buffer> <c-]> :NimDefinition<cr>
+	" nnoremap <buffer> gf    :call util#goto_file()<cr>
+endfunction
+
+function! s:GitcommitFTHook()
+	setlocal cc=73 tw=72
+endfunction
+
+function! s:NerdtreeFTHook()
+	setlocal nolist
+endfunction
+
 if exists('s:loaded') | finish | endif
 
 " Auto-close NERDTree window if it is only window on the screen
-autocmd BufEnter * if
-	\ (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-	\ | q | endif
+autocmd BufEnter * call s:AnyBufEnterHook()
 
 autocmd BufNewFile,BufRead
 	\ *.json.example,.jshintrc,.babelrc,.eslintrc,.modernizrrc
@@ -55,30 +102,18 @@ autocmd BufNewFile,BufRead Makefile set noexpandtab
 autocmd BufNewFile,BufRead nginx.conf set ft=nginx
 autocmd BufNewFile,BufRead *.hsc set ft=haskell
 
-" autocmd FileType nim nnoremap <buffer> <c-]> :NimDefinition<cr>
-" autocmd FileType nim nnoremap <buffer> gf    :call util#goto_file()<cr>
-
-" Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 " because some custom `indentexpr`s has annoying issues
 autocmd FileType
 	\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx,typescript.jsx,
 	\haskell,purescript
 	\ set indentexpr=
 
-" haskell default indentation config
-autocmd FileType haskell,cabal setlocal et ts=2 sts=2 sw=2
-
-autocmd FileType python setlocal ts=4 sts=4 sw=4
-autocmd FileType gitcommit setlocal cc=73 tw=72
-autocmd FileType nerdtree setlocal nolist
-
-" disable tabs highlight on empty lines
-autocmd BufRead * syntax match whitespaceEOL /\s\+$/
-
-autocmd FileType haskell call g:GruvboxCustomizations()
+autocmd FileType haskell call s:HaskellFTHook()
+autocmd FileType cabal call s:CabalFTHook()
+autocmd FileType python call s:PythonFTHook()
+autocmd FileType nim call s:NimFTHook()
+autocmd FileType gitcommit call s:GitcommitFTHook()
+autocmd FileType nerdtree call s:NerdtreeFTHook()
 
 autocmd InsertEnter * call s:InsertEnterHook()
 autocmd InsertLeave * call s:InsertLeaveHook()
@@ -87,12 +122,10 @@ autocmd CmdlineLeave * call s:CmdlineLeaveHook()
 
 autocmd TermOpen * call s:TermOpenHook()
 
-" fix easymotion bug https://github.com/easymotion/vim-easymotion/issues/294
-autocmd WinLeave * silent
-
 autocmd TabEnter,TabLeave * call s:PreviousTab_StoreState()
 autocmd TabClosed * call s:PreviousTab_TabClosed()
-autocmd BufWritePost * Neomake
+autocmd BufRead * call s:AnyBufReadPostHook()
+autocmd BufWritePost * call s:AnyBufWritePostHook()
 
 let s:loaded = 1
 
