@@ -382,12 +382,12 @@ imap <A-Space> <Space><Left>
 
 nnoremap ! #:ShowSearchIndex<CR>
 nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
-xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>
-xnoremap g! :<C-u>call VisualStarSearchSet('?')<CR>
+xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
+xnoremap g! :<C-u>call VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
 nnoremap @ *:ShowSearchIndex<CR>
 nnoremap g@ yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
-xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap g@ :<C-u>call VisualStarSearchSet('/')<CR>
+xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
+xnoremap g@ :<C-u>call VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
 " noremap ! #
 " noremap @ *
 
