@@ -327,11 +327,6 @@ nmap gQ <Nop>
 " default 'q' remapped to easymotion call
 noremap <leader>q q
 
-" inoremap jk <Esc>
-" cnoremap jk <C-c>
-imap <expr> jk (&imi == 0 ? '<Esc>' : 'ол')
-cmap <expr> jk (&imi == 0 ? '<C-c>' : 'ол')
-tnoremap jk <C-\><C-n>
 xnoremap <Tab> <Esc>
 snoremap <Tab> <Esc>
 tnoremap <Leader><Tab> <C-\><C-n>
