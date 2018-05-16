@@ -71,6 +71,27 @@ pure ${1}
 endsnippet
 
 
+snippet t "type" w
+type ${1:Foo} = ${2:Bar}${3}
+endsnippet
+
+snippet d "data" w
+data ${1:Foo} = ${2:Foo}${3}
+endsnippet
+
+snippet dr "data (with deriving)" w
+data ${1:Foo} = ${2:Foo} deriving (${3:Show})${4}
+endsnippet
+
+snippet nt "newtype" w
+newtype ${1:Foo} = ${2:Foo}${3}
+endsnippet
+
+snippet ntr "newtype" w
+newtype ${1:Foo} = ${2:Foo} deriving (${3:Show})${4}
+endsnippet
+
+
 snippet i "import" w
 import ${1}
 endsnippet
