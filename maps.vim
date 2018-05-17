@@ -136,19 +136,27 @@ nnoremap <leader>st :CtrlSFToggle<CR>
 " Denite grep/git shotcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
 nnoremap <leader>gf :Denite grep/git:.:-F:''<Left>
-xnoremap <leader>gf y:Denite grep/git:.:-F:'<C-R>"'<Left>
-xnoremap <leader>gF y:Denite grep/git:.:-F:'<C-R>"'<CR>
+xnoremap <leader>gf <Esc>
+	\:let __tmp_x_leader_gf = @0<CR>gv
+	\y:Denite grep/git:.:-F:'<C-R>0'
+	\<C-R>=execute('let @0 = __tmp_x_leader_gf \| unl __tmp_x_leader_gf')<CR>
+	\<Left>
+xmap <leader>gF <leader>gf<CR>
 noremap <leader>gn :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
-nnoremap <leader>gN :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<CR>
+nmap <leader>gN <leader>gn<CR>
 nnoremap <leader>gp :Denite grep/git:.:-F:'<C-R>/'<Left>
-nnoremap <leader>gP :Denite grep/git:.:-F:'<C-R>/'<CR>
+nmap <leader>gP <leader>gp<CR>
 
 " CtrlSpace panel open
 nnoremap <C-Space> :CtrlSpace<CR>
 
 " Make Hoogle search easier (because I use it very often)
 nnoremap <A-f> :Hoogle<space>
-xnoremap <A-f> y:Hoogle <C-R>0<CR>gv
+xnoremap <A-f> <Esc>
+	\:let __tmp_x_leader_A_f = @0<CR>gv
+	\y:Hoogle <C-R>0
+	\<C-R>=execute('let @0 = __tmp_x_leader_A_f \| unl __tmp_x_leader_A_f')<CR>
+	\<CR>gv
 
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
@@ -349,24 +357,48 @@ noremap "" ''
 xnoremap R r<Space>R
 
 " break line but keep same column position for rest of the line
-imap <A-CR> <C-o>mp<Esc>`py0`pD`p<A-o>jP`pji
+imap <A-CR> <C-o>mp<Esc>
+	\:let __tmp_i_A_CR = @0<CR>
+	\`py0`pD`p<A-o>jP`pji
+	\<C-o>:let @0 = __tmp_i_A_CR \| unl __tmp_i_A_CR<CR>
 " cannot map <S-CR> to make <A-S-CR> alternative
-" imap <A-S-CR> <C-o>mp<Esc>`py0`pD`p<A-o>jhP`pjhi
-imap <A-'>  <C-o>mp<Esc>`py0`pD`p<A-o>jP`pi
-imap <A-">  <C-o>mp<Esc>`py0`pD`p<A-o>jhP`pi
-imap <A-\>  <C-o>mp<Esc>`py0`pD`p<A-O>kP`pki
-imap <A-\|> <C-o>mp<Esc>`py0`pD`p<A-O>khP`pkhi
-imap <A-]>  <C-o>mp<Esc>`py0`pD`p<A-O>kP`pi
-imap <A-}>  <C-o>mp<Esc>`py0`pD`p<A-O>khP`pi
+" imap <A-S-CR> <C-o>mp<Esc>
+"	\:let __tmp_i_A_S_CR = @0<CR>
+"	\`py0`pD`p<A-o>jhP`pjhi
+"	\<C-o>:let @0 = __tmp_i_A_S_CR| unl __tmp_i_A_S_CR<CR>
+imap <A-'>  <C-o>mp<Esc>
+	\:let __tmp_i_A_apo = @0<CR>
+	\`py0`pD`p<A-o>jP`pi
+	\<C-o>:let @0 = __tmp_i_A_apo \| unl __tmp_i_A_apo<CR>
+imap <A-">  <C-o>mp<Esc>
+	\:let __tmp_i_A_dquote = @0<CR>
+	\`py0`pD`p<A-o>jhP`pi
+	\<C-o>:let @0 = __tmp_i_A_dquote \| unl __tmp_i_A_dquote<CR>
+imap <A-\>  <C-o>mp<Esc>
+	\:let __tmp_i_A_bslash = @0<CR>
+	\`py0`pD`p<A-O>kP`pki
+	\<C-o>:let @0 = __tmp_i_A_bslash \| unl __tmp_i_A_bslash<CR>
+imap <A-\|> <C-o>mp<Esc>
+	\:let __tmp_i_A_vline = @0<CR>
+	\`py0`pD`p<A-O>khP`pkhi
+	\<C-o>:let @0 = __tmp_i_A_vline \| unl __tmp_i_A_vline<CR>
+imap <A-]>  <C-o>mp<Esc>
+	\:let __tmp_i_A_rsbracket = @0<CR>
+	\`py0`pD`p<A-O>kP`pi
+	\<C-o>:let @0 = __tmp_i_A_rsbracket \| unl __tmp_i_A_rsbracket<CR>
+imap <A-}>  <C-o>mp<Esc>
+	\:let __tmp_i_A_rfbracket = @0<CR>
+	\`py0`pD`p<A-O>khP`pi
+	\<C-o>:let @0 = __tmp_i_A_rfbracket \| unl __tmp_i_A_rfbracket<CR>
 
 nnoremap <A-o> mpo
-	\<Esc>:let __tmp_A_o=@"<CR>S
-	\<Esc>:let @"=__tmp_A_o
-	\<Esc>:unlet __tmp_A_o<CR>`p
+	\<Esc>:let __tmp_A_o = @"<CR>S
+	\<Esc>:let @" = __tmp_A_o<CR>
+	\<Esc>:unl __tmp_A_o<CR>`p
 nnoremap <A-O> mpO
-	\<Esc>:let __tmp_A_O=@"<CR>S
-	\<Esc>:let @"=__tmp_A_O
-	\<Esc>:unlet __tmp_A_O<CR>`p
+	\<Esc>:let __tmp_A_O = @"<CR>S
+	\<Esc>:let @" = __tmp_A_O<CR>
+	\<Esc>:unl __tmp_A_O<CR>`p
 nmap <leader>o <A-o>ji
 nmap <leader>O <A-O>ki
 
@@ -376,11 +408,17 @@ imap <A-Space> <Space><Left>
 " custom numbers line keys
 
 nnoremap ! #:ShowSearchIndex<CR>
-nnoremap g! yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
+nnoremap g! :let __tmp_n_gbang = @0<CR>
+	\yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex
+	\<C-R>=execute('let @0 = __tmp_n_gbang \| unl __tmp_n_gbang')<CR>
+	\<CR>
 xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
 xnoremap g! :<C-u>call VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
 nnoremap @ *:ShowSearchIndex<CR>
-nnoremap g@ yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex<CR>
+nnoremap g@ :let __tmp_n_gat = @0<CR>
+	\yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex
+	\<C-R>=execute('let @0 = __tmp_n_gat \| unl __tmp_n_gat')<CR>
+	\<CR>
 xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
 xnoremap g@ :<C-u>call VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
 " noremap ! #
