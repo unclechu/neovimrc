@@ -51,6 +51,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	" dein#add('blueyed/vim-diminactive') " works bad with NERDTree for example
 	call dein#add('ryanoasis/vim-devicons')
 	call dein#add('tpope/vim-dadbod')
+	call dein#add('yuttie/comfortable-motion.vim')
 
 	" surround
 	call dein#add('tpope/vim-surround')
