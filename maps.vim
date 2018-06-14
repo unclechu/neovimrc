@@ -51,6 +51,16 @@ nnoremap <C-p>      :Denite file_rec buffer<CR>
 " TODO FIXME denite
 " nnoremap <leader>y  :Denite history/yank -default-action=append<CR>
 nnoremap ''         :Denite register<CR>
+" prevent triggering `s` when `<leader>s` is pressed
+" but next symbol not in time.
+" can't use `<Nop>` because it affects pressing this second time,
+" maybe it's some bug of neovim or something, when i press `<leader>s` wait some
+" time and again `<leader>s` then `s` is triggered, strange. that's why it
+" solved by these hacks.
+nnoremap <leader>s  <Esc>
+nnoremap <leader>sw <Esc>
+xnoremap <leader>s  <C-g><C-g>
+xnoremap <leader>sw <C-g><C-g>
 " sl - show lines
 nnoremap <leader>sl :Denite line<CR>
 " sa - show all
