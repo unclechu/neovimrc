@@ -33,7 +33,7 @@ let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm   = 1
 let g:CtrlSpaceUseTabline        = 0
 fu! CtrlSpaceTablineOwnWrap()
-	let l:sep = '✨'
+	let l:sep = '🏷️'
 	let l:x = ctrlspace#api#Tabline()
 	let l:x = substitute(l:x, '%[0-9]\+T%[^ ]\+', '&'.l:sep, 'g')
 	return l:x
