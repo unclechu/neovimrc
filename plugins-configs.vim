@@ -24,13 +24,21 @@ let g:nerdtree_tabs_open_on_new_tab         = 0
 let g:tagbar_show_linenumbers               = 2
 
 let g:airline_powerline_fonts                            = 1
-let g:airline#extensions#tabline#enabled                 = 1
+let g:airline#extensions#tabline#enabled                 = 0
 let g:airline#extensions#tabline#show_buffers            = 0
 let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 let g:airline#extensions#whitespace#enabled              = 0
 
 let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
-let g:CtrlSpaceUseArrowsInTerm = 1
+let g:CtrlSpaceUseArrowsInTerm   = 1
+let g:CtrlSpaceUseTabline        = 0
+fu! CtrlSpaceTablineOwnWrap()
+	let l:sep = '✨'
+	let l:x = ctrlspace#api#Tabline()
+	let l:x = substitute(l:x, '%[0-9]\+T%[^ ]\+', '&'.l:sep, 'g')
+	return l:x
+endf
+se tal=%!CtrlSpaceTablineOwnWrap()
 
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1

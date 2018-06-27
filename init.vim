@@ -32,6 +32,7 @@ set background=dark
 
 if $TMUX == ''
 	colorscheme gruvbox
+	call g:GruvboxCustomizations()
 else
 	colorscheme twilight
 endif
