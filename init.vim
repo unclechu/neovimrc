@@ -30,12 +30,8 @@ let g:gruvbox_contrast_dark  = 'medium'
 let g:gruvbox_contrast_light = 'soft'
 set background=dark
 
-if $TMUX == ''
-	colorscheme gruvbox
-	call g:GruvboxCustomizations()
-else
-	colorscheme twilight
-endif
+if $TMUX == '' | colorscheme gruvbox | else | colorscheme twilight | endif
+call g:ColorschemeCustomizations()
 
 
 if filereadable('/bin/bash') " gnu/linux

@@ -1,14 +1,15 @@
 " background and gruvbox contrast toggle
 " Author: Viacheslav Lotsmanov
 
-function! g:GruvboxCustomizations()
+function! g:ColorschemeCustomizations()
 	try
 		if g:colors_name == 'gruvbox'
 			hi! link haskellSeparator GruvboxGray
-			hi! TabLineFill guibg=#282828
-			hi! TabLineSel gui=bold guibg=#666666 guifg=#eeeeee
-			hi! TabLine gui=none guifg=#a69485 guibg=#3c3836
 		endif
+
+		hi! link TabLineFill Normal
+		hi! link TabLineSel  airline_a_bold
+		hi! link TabLine     Folded
 	catch
 		" handling default colorscheme
 		if stridx(v:exception, ':E121:') == -1 | echoe v:exception | endif
@@ -22,7 +23,7 @@ function! s:BackgroundToggle()
 		set background=dark
 	endif
 
-	call g:GruvboxCustomizations()
+	call g:ColorschemeCustomizations()
 endfunction
 
 function! s:GruvboxContrastRotate()
