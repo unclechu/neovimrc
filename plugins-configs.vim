@@ -28,6 +28,9 @@ let g:airline#extensions#tabline#enabled                 = 0
 let g:airline#extensions#tabline#show_buffers            = 0
 let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 let g:airline#extensions#whitespace#enabled              = 0
+let g:airline#extensions#keymap#enabled                  = 0
+let g:airline#extensions#branch#enabled                  = 0
+
 
 let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm   = 1
