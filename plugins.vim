@@ -132,10 +132,11 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('exu/pgsql.vim')
 
 	" colorschemes
-	call dein#add('morhetz/gruvbox')
-	call dein#add('tomasr/molokai')
-	call dein#add('Lokaltog/vim-distinguished')
-	call dein#add('nanotech/jellybeans.vim')
+	call dein#add('morhetz/gruvbox') " gruvbox
+	call dein#add('tomasr/molokai') " molokai
+	call dein#add('Lokaltog/vim-distinguished') " distinguished
+	call dein#add('nanotech/jellybeans.vim') " jellybeans
+	call dein#add('rakr/vim-one') " one (supports 'bg' option)
 	" also (as files, not packages):
 	"   - codeschool
 	"   - railscasts
