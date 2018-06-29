@@ -7,9 +7,9 @@ function! g:ColorschemeCustomizations()
 			hi! link haskellSeparator GruvboxGray
 		endif
 
-		hi! link TabLineFill Normal
-		hi! link TabLineSel  airline_a_bold
 		hi! link TabLine     Folded
+		hi! link TabLineFill Pmenu
+		hi! link TabLineSel  airline_a_bold
 	catch
 		" handling default colorscheme
 		if stridx(v:exception, ':E121:') == -1 | echoe v:exception | endif

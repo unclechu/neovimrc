@@ -37,8 +37,9 @@ let g:CtrlSpaceUseArrowsInTerm   = 1
 let g:CtrlSpaceUseTabline        = 0
 fu! CtrlSpaceTablineOwnWrap()
 	let l:sep = '≡'
-	let l:x = ctrlspace#api#Tabline()
-	let l:x = substitute(l:x, '\( \)\@<=%[0-9]\+T%[^ ]\+', '%#TabLine#'.l:sep.'&', 'g')
+	let l:x = substitute(
+		\ ctrlspace#api#Tabline(),
+		\ '\( \)\@<=%[0-9]\+T%[^ ]\+', '%#TabLine#'.l:sep.'&', 'g')
 	return l:x
 endf
 se tal=%!CtrlSpaceTablineOwnWrap()
