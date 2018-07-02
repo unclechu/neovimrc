@@ -30,7 +30,17 @@ let g:gruvbox_contrast_dark  = 'medium'
 let g:gruvbox_contrast_light = 'soft'
 set background=dark
 
-if $TMUX == '' | colorscheme gruvbox | else | colorscheme twilight | endif
+if $TMUX == ''
+	colo gruvbox
+el
+	colo one
+	if substitute(system('tmuxsh co s'), '\n\+$', '', '') == 'light'
+		se bg=light
+	el
+		se bg=dark
+	en
+en
+
 call g:ColorschemeCustomizations()
 
 
