@@ -473,6 +473,10 @@ xnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
 nnoremap ,gt gt
 xnoremap ,gt gt
 
+" navigating by tabs
+nmap <A-h> gT
+nmap <A-l> gt
+
 " default maps disabled for plugin
 cnoremap <expr> <CR> '<CR>' . (getcmdtype() =~ '[/?]' ? ':ShowSearchIndex<CR>' : '')
 nnoremap n n:ShowSearchIndex<CR>
