@@ -100,7 +100,7 @@ let g:webdevicons_enable_nerdtree = 0 " disabled because it is laggy and buggy
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 
-let g:perl6_unicode_abbrevs = 1
+let g:perl6_unicode_abbrevs = 0
 
 let g:indexed_search_mappings = 0
 let g:indexed_search_numbered_only = 1
