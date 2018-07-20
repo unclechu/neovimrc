@@ -9,14 +9,30 @@ if filereadable(g:local_guirc_pre) | exec 'so ' . g:local_guirc_pre | endif
 " because default map doesn't work in nvim-qt
 nnoremap <C-Space> :CtrlSpace<CR>
 
-call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+if !exists('g:is_neovim_gtk_gui') | let g:is_neovim_gtk_gui = 1 | en
 
+" for neovim-gtk, on neovim-qt it will fail (channel 1 does not exist).
+" there's also no way to disable tabline like that for neovim-qt,
+" you able to do so only by --no-ext-tabline argument.
+if g:is_neovim_gtk_gui
+	try | call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0) | cat | endt
+en
 
 let s:font_family = 'Fira Code'
 let s:font_size = 9
 
 function! s:update_font()
-	call rpcnotify(1, 'Gui', 'Font', s:font_family . ' ' . s:font_size)
+	try
+		" neovim-qt
+		call rpcnotify(0, 'Gui', 'Font', s:font_family.':h'.string(s:font_size))
+
+		" neovim-gtk
+		" it gets errors on neovim-qt but i don't know a way to supress it
+		if g:is_neovim_gtk_gui
+			call rpcnotify(
+				\ 1, 'Gui', 'Font', s:font_family.' '.string(s:font_size))
+		en
+	cat | endt
 endfunction
 
 function! s:set_font_family(family)
