@@ -137,6 +137,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('Lokaltog/vim-distinguished') " distinguished
 	call dein#add('nanotech/jellybeans.vim') " jellybeans
 	call dein#add('rakr/vim-one') " one (supports 'bg' option)
+	call dein#add('trevordmiller/nova-vim')
 	" also (as files, not packages):
 	"   - codeschool
 	"   - railscasts
