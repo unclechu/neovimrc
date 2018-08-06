@@ -9,32 +9,25 @@ if filereadable(g:local_guirc_pre) | exec 'so ' . g:local_guirc_pre | endif
 " because default map doesn't work in nvim-qt
 nnoremap <C-Space> :CtrlSpace<CR>
 
-" i have no idea how to detect if it's neovim-gtk or neovim-qt,
-" just taking it as it's neovim-gtk by default.
-if !exists('g:is_neovim_gtk_gui') | let g:is_neovim_gtk_gui = 1 | en
+if !exists('s:is_neovim_gtk_gui')
+	let s:is_neovim_gtk_gui = exists('g:GtkGuiLoaded') ? 1 : 0
+en
 
 " works for neovim-gtk and for neovim-qt since a250faf from 25-07-2018.
 " earlier neovim-qt have been supposed to be run with --no-ext-tabline option.
-" channel 0 for neovim-qt
-try | call rpcnotify(0, 'Gui', 'Option', 'Tabline', 0) | cat | endt
-" channel 1 for neovim-gtk
-try | call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0) | cat | endt
+call rpcnotify((s:is_neovim_gtk_gui ? 1 : 0), 'Gui', 'Option', 'Tabline', 0)
 
 let s:font_family = 'Fira Code'
 let s:font_size = 9
 
 function! s:update_font()
-	try
-		" neovim-qt
-		call rpcnotify(0, 'Gui', 'Font', s:font_family.':h'.string(s:font_size))
-
-		" neovim-gtk
-		" it gets errors on neovim-qt but i don't know a way to supress it
-		if g:is_neovim_gtk_gui
-			call rpcnotify(
-				\ 1, 'Gui', 'Font', s:font_family.' '.string(s:font_size))
-		en
-	cat | endt
+	if s:is_neovim_gtk_gui " neovim-gtk
+		call rpcnotify(
+			\ 1, 'Gui', 'Font', s:font_family.' '.string(s:font_size))
+	el " neovim-qt
+		call rpcnotify(
+			\ 0, 'Gui', 'Font', s:font_family.':h'.string(s:font_size))
+	en
 endfunction
 
 function! s:set_font_family(family)
