@@ -30,18 +30,23 @@ let g:gruvbox_contrast_dark  = 'medium'
 let g:gruvbox_contrast_light = 'soft'
 set background=dark
 
-if $TMUX == ''
-	colo gruvbox
-el
-	colo one
-	if substitute(system('tmuxsh co s'), '\n\+$', '', '') == 'light'
-		se bg=light
+try
+	if $TMUX == ''
+		colo gruvbox
 	el
-		se bg=dark
+		colo one
+		if substitute(system('tmuxsh co s'), '\n\+$', '', '') == 'light'
+			se bg=light
+		el
+			se bg=dark
+		en
 	en
-en
 
-call g:ColorschemeCustomizations()
+	call g:ColorschemeCustomizations()
+cat
+	" colorscheme not found (plugins are not installed yet)
+	if stridx(v:exception, ':E185:') == -1 | echoe v:exception | endif
+endt
 
 
 if filereadable('/bin/bash') " gnu/linux

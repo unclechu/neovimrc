@@ -31,18 +31,22 @@ let g:airline#extensions#whitespace#enabled              = 0
 let g:airline#extensions#keymap#enabled                  = 0
 let g:airline#extensions#branch#enabled                  = 0
 
-
 let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm   = 1
 let g:CtrlSpaceUseTabline        = 0
-fu! CtrlSpaceTablineOwnWrap()
-	let l:sep = '≡'
-	let l:x = substitute(
-		\ ctrlspace#api#Tabline(),
-		\ '\( \)\@<=%[0-9]\+T%[^ ]\+', '%#TabLine#'.l:sep.'&', 'g')
-	return l:x
-endf
-se tal=%!CtrlSpaceTablineOwnWrap()
+try
+	call ctrlspace#api#Tabline() " will fail if function does not exists
+	fu! CtrlSpaceTablineOwnWrap()
+		let l:sep = '≡'
+		let l:x = substitute(
+			\ ctrlspace#api#Tabline(),
+			\ '\( \)\@<=%[0-9]\+T%[^ ]\+', '%#TabLine#'.l:sep.'&', 'g')
+		return l:x
+	endf
+	se tal=%!CtrlSpaceTablineOwnWrap()
+cat
+	if stridx(v:exception, ':E117:') == -1 | echoe v:exception | endif
+endt
 
 let g:indentLine_enabled = 0
 let g:indent_guides_start_level = 1
