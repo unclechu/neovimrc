@@ -181,6 +181,10 @@ xmap q         <Plug>(easymotion-bd-w)
 nmap <Space>q  <Plug>(easymotion-overwin-w)
 " doesn't make sense with 'overwin' mode
 xmap <Space>q  <Nop>
+" some plugins uses 'q' map to close window.
+" by using 'g' prefix we still able to call easymotion.
+nmap gq        <Plug>(easymotion-bd-w)
+xmap gq        <Plug>(easymotion-bd-w)
 
 " move to place with specific symbols
 nmap <leader>w <Plug>(easymotion-bd-f2)
