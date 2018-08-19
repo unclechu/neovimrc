@@ -15,3 +15,10 @@ digraphs \|> 8883  " ⊳ | 0x22b3
 digraphs <\| 8882  " ⊲ | 0x22b2
 digraphs >< 8904   " ⋈ | 0x22c8
 digraphs /v 8900   " ⋄ | 0x22c4
+digraphs rS 9714   " ◲ | 0x25f2 (
+                   "     like 'OS' for '□' and 'fS' for '■',
+                   "     'r' is for f*R*actional,
+                   "     small square inside means *R*emainder
+                   "     using it in Haskell as an alias to the (^^) operator,
+                   "     where '□' is an alias for the (^) and '■' for the (**)
+                   "   )
