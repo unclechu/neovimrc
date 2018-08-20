@@ -161,8 +161,8 @@ nmap <leader>gP <leader>gp<CR>
 nnoremap <C-Space> :CtrlSpace<CR>
 
 " Make Hoogle search easier (because I use it very often)
-nnoremap <A-f> :Hoogle<space>
-xnoremap <A-f> <Esc>
+nnoremap <A-g> :Hoogle<space>
+xnoremap <A-g> <Esc>
 	\:let __tmp_x_leader_A_f = @0<CR>gv
 	\y:Hoogle <C-R>0
 	\<C-R>=execute('let @0 = __tmp_x_leader_A_f \| unl __tmp_x_leader_A_f')<CR>
@@ -478,8 +478,8 @@ nnoremap ,gt gt
 xnoremap ,gt gt
 
 " navigating by tabs
-nmap <A-h> gT
-nmap <A-l> gt
+nmap <A-f> gt
+nmap <A-b> gT
 
 " default maps disabled for plugin
 cnoremap <expr> <CR> '<CR>' . (getcmdtype() =~ '[/?]' ? ':ShowSearchIndex<CR>' : '')
