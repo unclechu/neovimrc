@@ -83,8 +83,6 @@ endfunction
 
 function! s:NerdtreeFTHook()
 	setlocal nolist
-	" dirty fix for https://github.com/scrooloose/nerdtree/issues/762
-	nmap <buffer> go <CR><C-W>p
 endfunction
 
 " so anything below won't be executed during config reload
