@@ -12,6 +12,7 @@ set rtp+=$DEIN_DIR
 if dein#load_state($DEIN_BASE_PATH)
 	call dein#begin($DEIN_BASE_PATH)
 	call dein#add($DEIN_DIR, {'frozen': 1})
+	call dein#add('wsdjeg/dein-ui.vim')
 
 	" utils/functionality
 	call dein#add('scrooloose/nerdtree')
@@ -60,6 +61,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	" linting
 	" dein#add('scrooloose/syntastic')
 	call dein#add('neomake/neomake')
+	call dein#add('sbdchd/neoformat')
 
 	" git
 	call dein#add('xuyuanp/nerdtree-git-plugin')
