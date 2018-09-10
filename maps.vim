@@ -480,6 +480,16 @@ xnoremap ,gt gt
 " navigating by tabs
 nmap <A-f> gt
 nmap <A-b> gT
+nmap <A-1> 1,gt
+nmap <A-2> 2,gt
+nmap <A-3> 3,gt
+nmap <A-4> 4,gt
+nmap <A-5> 5,gt
+nmap <A-6> 6,gt
+nmap <A-7> 7,gt
+nmap <A-8> 8,gt
+nmap <A-9> 9,gt
+nmap <A-0> 10,gt
 
 " default maps disabled for plugin
 cnoremap <expr> <CR> '<CR>' . (getcmdtype() =~ '[/?]' ? ':ShowSearchIndex<CR>' : '')
