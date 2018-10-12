@@ -57,6 +57,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	" surround
 	call dein#add('tpope/vim-surround')
 	call dein#add('tpope/vim-repeat')
+	call dein#add('wellle/targets.vim')
 
 	" linting
 	" dein#add('scrooloose/syntastic')
