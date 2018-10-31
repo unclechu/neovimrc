@@ -94,10 +94,13 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('zah/nim.vim')
 	" call dein#add('unclechu/nvim-nim')
 
-	" clojure
+	" lisp
+	"   clojure
 	call dein#add('clojure-emacs/cider-nrepl')
 	call dein#add('tpope/vim-fireplace')
 	call dein#add('kien/rainbow_parentheses.vim')
+	"   racket
+	call dein#add('wlangstroth/vim-racket')
 
 	" asscript
 	call dein#add('pangloss/vim-javascript')
