@@ -36,6 +36,7 @@ let s:menus.denite.command_candidates = [
 	\ ['Grep by Git files (case insensitive)', 'Denite grep/git:.:-i'],
 	\ ['Grep by Git files (bare string)', 'Denite grep/git:.:-F'],
 	\ ['Grep by Git files (bare string and case insensitive)', 'Denite grep/git:.:-iF'],
+	\ ['Git log', 'Denite gitlog'],
 	\]
 let s:menus.view = {'description': 'View'}
 let s:menus.view.command_candidates = [

@@ -37,6 +37,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('Shougo/neomru.vim')  " unite/denite 'file_mru'
 	" TODO FIXME denite
 	" call dein#add('Shougo/neoyank.vim') " unite clipboard history 'history/yank'
+	call dein#add('chemzqm/denite-git')
 	call dein#add('Shougo/deoplete.nvim') " async autocompletion
 	call dein#add('sjl/gundo.vim')
 	call dein#add('mhinz/vim-startify')
