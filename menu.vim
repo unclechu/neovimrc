@@ -66,6 +66,8 @@ let s:menus.quickhl.command_candidates = [
 let s:menus.dein = {'description': 'Dein'}
 let s:menus.dein.command_candidates = [
 	\ ['Update plugins', 'call dein#update()'],
+	\ ['Clear state', 'call dein#clear_state()'],
+	\ ['Install new plugins', 'call dein#install()'],
 	\]
 let s:menus.terminal = {'description': 'Terminal'}
 let s:menus.terminal.command_candidates = [
