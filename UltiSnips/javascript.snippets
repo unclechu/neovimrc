@@ -33,10 +33,18 @@ endsnippet
 snippet fn "Named arrow function" w
 const ${1:foo} = (${2}) => {
 	${3}
+}${4}
+endsnippet
+snippet fn; "Named arrow function" w
+const ${1:foo} = (${2}) => {
+	${3}
 };${4}
 endsnippet
 
 snippet fn- "Named arrow function (just value)" w
+const ${1:foo} = (${2}) => ${3:foo}
+endsnippet
+snippet fn-; "Named arrow function (just value)" w
 const ${1:foo} = (${2}) => ${3:foo};
 endsnippet
 
@@ -89,6 +97,9 @@ async function ${1:foo}(${2}) {
 endsnippet
 
 snippet aw "Await" i
+await ${1:foo}
+endsnippet
+snippet aw; "Await" i
 await ${1:foo};
 endsnippet
 
@@ -109,9 +120,15 @@ function* ${1:foo}(${3}) {
 endsnippet
 
 snippet y "Yield" i
+yield ${1:foo}
+endsnippet
+snippet y; "Yield" i
 yield ${1:foo};
 endsnippet
 snippet yd "Yield (delegate)" i
+yield* ${1:foo}
+endsnippet
+snippet yd; "Yield (delegate)" i
 yield* ${1:foo};
 endsnippet
 
@@ -228,10 +245,20 @@ endsnippet
 
 snippet .mm "List map method" i
 .map(function (${1:item}) {
+	return ${2:item}
+})${3}
+endsnippet
+snippet .mm; "List map method" i
+.map(function (${1:item}) {
 	return ${2:item};
 })${3}
 endsnippet
 snippet .m "List map method (arrow function)" i
+.map(${1:item} => {
+	return ${2:item}
+})${3}
+endsnippet
+snippet .m; "List map method (arrow function)" i
 .map(${1:item} => {
 	return ${2:item};
 })${3}
@@ -242,10 +269,20 @@ endsnippet
 
 snippet .rr "List reduce method" i
 .reduce(function (${1:prev}, ${2:next}) {
+	return ${3:prev} + ${4:next}
+})${5}
+endsnippet
+snippet .rr; "List reduce method" i
+.reduce(function (${1:prev}, ${2:next}) {
 	return ${3:prev} + ${4:next};
 })${5}
 endsnippet
 snippet .r "List reduce method (arrow function)" i
+.reduce((${1:prev}, ${2:next}) => {
+	return ${3:prev} + ${4:next}
+})${5}
+endsnippet
+snippet .r; "List reduce method (arrow function)" i
 .reduce((${1:prev}, ${2:next}) => {
 	return ${3:prev} + ${4:next};
 })${5}
@@ -256,10 +293,20 @@ endsnippet
 
 snippet .RR "List reduce right method" i
 .reduceRight(function (${1:prev}, ${2:next}) {
+	return ${3:prev} + ${4:next}
+})${5}
+endsnippet
+snippet .RR; "List reduce right method" i
+.reduceRight(function (${1:prev}, ${2:next}) {
 	return ${3:prev} + ${4:next};
 })${5}
 endsnippet
 snippet .R "List reduce right method (arrow function)" i
+.reduceRight((${1:prev}, ${2:next}) => {
+	return ${3:prev} + ${4:next}
+})${5}
+endsnippet
+snippet .R; "List reduce right method (arrow function)" i
 .reduceRight((${1:prev}, ${2:next}) => {
 	return ${3:prev} + ${4:next};
 })${5}
@@ -271,10 +318,22 @@ endsnippet
 snippet .roo "Reduce to object method" i
 .reduce(function (${1:obj}, ${2:item}) {
 	${3}
+	return ${4:obj}
+}, {})${5}
+endsnippet
+snippet .roo; "Reduce to object method" i
+.reduce(function (${1:obj}, ${2:item}) {
+	${3}
 	return ${4:obj};
 }, {})${5}
 endsnippet
 snippet .ro "Reduce to object method (arrow function)" i
+.reduce((${1:obj}, ${2:item}) => {
+	${3}
+	return ${4:obj}
+}, {})${5}
+endsnippet
+snippet .ro; "Reduce to object method (arrow function)" i
 .reduce((${1:obj}, ${2:item}) => {
 	${3}
 	return ${4:obj};
@@ -286,10 +345,20 @@ endsnippet
 
 snippet .raa "Reduce to new list method" i
 .reduce(function (${1:result}, ${2:item}) {
+	return ${3:result}.concat([${4:item}])
+}, ${5:[]})${6}
+endsnippet
+snippet .raa; "Reduce to new list method" i
+.reduce(function (${1:result}, ${2:item}) {
 	return ${3:result}.concat([${4:item}]);
 }, ${5:[]})${6}
 endsnippet
 snippet .ra "Reduce to new list method (arrow function)" i
+.reduce((${1:result}, ${2:item}) => {
+	return ${3:result}.concat([${4:item}])
+}, ${5:[]})${6}
+endsnippet
+snippet .ra; "Reduce to new list method (arrow function)" i
 .reduce((${1:result}, ${2:item}) => {
 	return ${3:result}.concat([${4:item}]);
 }, ${5:[]})${6}
@@ -304,10 +373,20 @@ endsnippet
 
 snippet .smm ".some() list method" i
 .some(function (${1:item}) {
+	return ${2:item}
+})${3}
+endsnippet
+snippet .smm; ".some() list method" i
+.some(function (${1:item}) {
 	return ${2:item};
 })${3}
 endsnippet
 snippet .sm ".some() list method (arrow function)" i
+.some(${1:item} => {
+	return ${2:item}
+})${3}
+endsnippet
+snippet .sm; ".some() list method (arrow function)" i
 .some(${1:item} => {
 	return ${2:item};
 })${3}
@@ -318,10 +397,20 @@ endsnippet
 
 snippet .evv ".every() list method" i
 .every(function (${1:item}) {
+	return ${2:item}
+})${4}
+endsnippet
+snippet .evv; ".every() list method" i
+.every(function (${1:item}) {
 	return ${2:item};
 })${4}
 endsnippet
 snippet .ev ".every() list method (arrow function)" i
+.every(${1:item} => {
+	return ${2:item}
+})${4}
+endsnippet
+snippet .ev; ".every() list method (arrow function)" i
 .every(${1:item} => {
 	return ${2:item};
 })${4}
@@ -332,10 +421,20 @@ endsnippet
 
 snippet .fll "List filter method" i
 .filter(function (${1:item}) {
+	return ${2:item}
+})${3}
+endsnippet
+snippet .fll; "List filter method" i
+.filter(function (${1:item}) {
 	return ${2:item};
 })${3}
 endsnippet
 snippet .fl "List filter method (arrow function)" i
+.filter(${1:item} => {
+	return ${2:item}
+})${3}
+endsnippet
+snippet .fl; "List filter method (arrow function)" i
 .filter(${1:item} => {
 	return ${2:item};
 })${3}
@@ -451,22 +550,43 @@ endsnippet
 snippet too "setTimeout (async hack)" i
 setTimeout(function () {
 	${1}
+}, ${2:0})${3}
+endsnippet
+snippet too; "setTimeout (async hack)" i
+setTimeout(function () {
+	${1}
 }, ${2:0});${3}
 endsnippet
 snippet to "setTimeout (async hack) (arrow function)" i
 setTimeout(() => {
 	${1}
+}, ${2:0})${3}
+endsnippet
+snippet to; "setTimeout (async hack) (arrow function)" i
+setTimeout(() => {
+	${1}
 }, ${2:0});${3}
 endsnippet
 snippet to- "setTimeout (async hack) (arrow function, just value)" i
+setTimeout(() => ${1:foo}, ${2:0})${3}
+endsnippet
+snippet to-; "setTimeout (async hack) (arrow function, just value)" i
 setTimeout(() => ${1:foo}, ${2:0});${3}
 endsnippet
 
 snippet nt "Async call (node.js)" i
+process.nextTick(${1:foo})${2}
+endsnippet
+snippet nt; "Async call (node.js)" i
 process.nextTick(${1:foo});${2}
 endsnippet
 
 snippet ntff "Async wrap (node.js)" i
+process.nextTick(function () {
+	${1}
+})${2}
+endsnippet
+snippet ntff; "Async wrap (node.js)" i
 process.nextTick(function () {
 	${1}
 });${2}
@@ -474,10 +594,31 @@ endsnippet
 snippet ntf "Async wrap (node.js) (arrow function)" i
 process.nextTick(() => {
 	${1}
+})${2}
+endsnippet
+snippet ntf; "Async wrap (node.js) (arrow function)" i
+process.nextTick(() => {
+	${1}
 });${2}
 endsnippet
 snippet ntf- "Async wrap (node.js) (arrow function, just value)" i
+process.nextTick(() => ${1:foo})${2}
+endsnippet
+snippet ntf-; "Async wrap (node.js) (arrow function, just value)" i
 process.nextTick(() => ${1:foo});${2}
+endsnippet
+
+snippet req "require(...)" w
+require('${1:foo}')${2}
+endsnippet
+snippet req; "require(...)" w
+require('${1:foo}');${2}
+endsnippet
+snippet req' "require(...) (alternative quotes)" w
+require("${1:foo}")${2}
+endsnippet
+snippet req'; "require(...) (alternative quotes)" w
+require("${1:foo}");${2}
 endsnippet
 
 snippet dn "Current unix-time seconds" i
@@ -554,20 +695,25 @@ new Error('${1}')${2}
 endsnippet
 
 snippet te "Throw new exception instance" i
+throw new Error('${1}')${2}
+endsnippet
+snippet te; "Throw new exception instance" i
 throw new Error('${1}');${2}
 endsnippet
 
 snippet tt "Throw something" i
-throw ${1};${2}
-endsnippet
-
-snippet tt- "Throw something (without semicolon)" i
 throw ${1}
+endsnippet
+snippet tt; "Throw something" i
+throw ${1};${2}
 endsnippet
 
 
 
 snippet -v "Variable definition with value" i
+var ${1:foo} = ${2}
+endsnippet
+snippet -v; "Variable definition with value" i
 var ${1:foo} = ${2};${3}
 endsnippet
 
@@ -581,6 +727,9 @@ endsnippet
 
 
 snippet -l "Block scope variable definition with value" i
+let ${1:foo} = ${2}
+endsnippet
+snippet -l; "Block scope variable definition with value" i
 let ${1:foo} = ${2};${3}
 endsnippet
 
@@ -592,8 +741,20 @@ snippet -ll "let prefix" i
 let ${1}
 endsnippet
 
+snippet -lm "Block scope variable multiple/multiline definition" i
+let
+	${1:foo} = ${2:bar}
+endsnippet
+snippet -lm; "Block scope variable multiple/multiline definition" i
+let
+	${1:foo} = ${2:bar};${3}
+endsnippet
+
 
 snippet -c "Constant definition" i
+const ${1:foo} = ${2}
+endsnippet
+snippet -c; "Constant definition" i
 const ${1:foo} = ${2};${3}
 endsnippet
 
@@ -605,18 +766,22 @@ snippet -cc "const prefix" i
 const ${1}
 endsnippet
 
+snippet -cm "Constant multiple/multiline definition" i
+const
+	${1:foo} = ${2:bar}
+endsnippet
+snippet -cm; "Constant multiple/multiline definition" i
+const
+	${1:foo} = ${2:bar};${3}
+endsnippet
+
 
 
 snippet -r "Return value" i
-return ${1};
-endsnippet
-
-snippet -rr "Return value without semicolon" i
 return ${1}
 endsnippet
-
-snippet -r; "Function break" i
-return;
+snippet -r; "Return value" i
+return ${1};
 endsnippet
 
 
@@ -625,6 +790,25 @@ typeof ${1}
 endsnippet
 
 snippet mapp "Function hash-map with otherwise" i
+var map = {
+	${3:foo}: function () {
+		${4}
+	},
+	${5:bar}: function () {
+		${6}
+	},
+	otherwise: function () {
+		${7}
+	}
+}
+
+if (map.hasOwnProperty(${1:x})) {
+	map[${2:x}]()
+} else {
+	map.otherwise()
+}
+endsnippet
+snippet mapp; "Function hash-map with otherwise" i
 var map = {
 	${3:foo}: function () {
 		${4}
@@ -654,6 +838,25 @@ const map = {
 	otherwise: () => {
 		${7}
 	}
+}
+
+if (map.hasOwnProperty(${1:x})) {
+	map[${2:x}]()
+} else {
+	map.otherwise()
+}
+endsnippet
+snippet map; "Function hash-map with otherwise (arrow function)" i
+const map = {
+	${3:foo}: () => {
+		${4}
+	},
+	${5:bar}: () => {
+		${6}
+	},
+	otherwise: () => {
+		${7}
+	}
 };
 
 if (map.hasOwnProperty(${1:x})) {
@@ -663,6 +866,16 @@ if (map.hasOwnProperty(${1:x})) {
 }
 endsnippet
 snippet map- "Function hash-map with otherwise (arrow function, just value)" i
+const map = {
+	${4:foo}: () => ${5:a},
+	${6:bar}: () => ${7:b},
+	otherwise: () => ${8:c}
+}
+const ${3:baz} = (
+	map.hasOwnProperty(${1:x}) ? map[${2:x}]() : map.otherwise()
+)
+endsnippet
+snippet map-; "Function hash-map with otherwise (arrow function, just value)" i
 const map = {
 	${4:foo}: () => ${5:a},
 	${6:bar}: () => ${7:b},
@@ -683,6 +896,25 @@ const map = {
 	otherwise() {
 		${7}
 	}
+}
+
+if (map.hasOwnProperty(${1:x})) {
+	map[${2:x}]()
+} else {
+	map.otherwise()
+}
+endsnippet
+snippet mape; "Function hash-map with otherwise (ES6 methods)" i
+const map = {
+	${3:foo}() {
+		${4}
+	},
+	${5:bar}() {
+		${6}
+	},
+	otherwise() {
+		${7}
+	}
 };
 
 if (map.hasOwnProperty(${1:x})) {
@@ -693,54 +925,93 @@ if (map.hasOwnProperty(${1:x})) {
 endsnippet
 
 snippet dg "Call debugger" i
+debugger
+endsnippet
+snippet dg; "Call debugger" i
 debugger;
 endsnippet
 
 snippet cl "console.log" i
+console.log(${1})
+endsnippet
+snippet cl; "console.log" i
 console.log(${1});
 endsnippet
 
 snippet ci "console.info" i
+console.info(${1})
+endsnippet
+snippet ci; "console.info" i
 console.info(${1});
 endsnippet
 
 snippet cw "console.warn" i
+console.warn(${1})
+endsnippet
+snippet cw; "console.warn" i
 console.warn(${1});
 endsnippet
 
 snippet ce "console.error" i
+console.error(${1})
+endsnippet
+snippet ce; "console.error" i
 console.error(${1});
 endsnippet
 
 snippet cd "console.debug" i
+console.debug(${1})
+endsnippet
+snippet cd; "console.debug" i
 console.debug(${1});
 endsnippet
 
 snippet cg "console.group" i
+console.group('${1}')
+endsnippet
+snippet cg; "console.group" i
 console.group('${1}');
 endsnippet
 
 snippet cge "console.groupEnd" i
+console.groupEnd('${1}')
+endsnippet
+snippet cge; "console.groupEnd" i
 console.groupEnd('${1}');
 endsnippet
 
 snippet ct "console.time (benchmark)" i
+console.time('${1}')
+endsnippet
+snippet ct; "console.time (benchmark)" i
 console.time('${1}');
 endsnippet
 
 snippet cte "console.timeEnd (benchmark)" i
+console.timeEnd('${1}')
+endsnippet
+snippet cte; "console.timeEnd (benchmark)" i
 console.timeEnd('${1}');
 endsnippet
 
 snippet cp "console.profile" i
+console.profile('${1}')
+endsnippet
+snippet cp; "console.profile" i
 console.profile('${1}');
 endsnippet
 
 snippet cpe "console.profileEnd" i
+console.profileEnd('${1}')
+endsnippet
+snippet cpe; "console.profileEnd" i
 console.profileEnd('${1}');
 endsnippet
 
 snippet ca "console.assert" i
+console.assert(${1}, '${2}')
+endsnippet
+snippet ca; "console.assert" i
 console.assert(${1}, '${2}');
 endsnippet
 
@@ -830,58 +1101,105 @@ endsnippet
 
 snippet -clc "class constructor" i
 constructor() {
+	super()${1}
+}${2}
+endsnippet
+snippet -clc; "class constructor" i
+constructor() {
 	super();${1}
 }${2}
 endsnippet
 
 
 snippet -im "import module" i
-import "${1:module}";${2}
+import '${1:module}'${2}
 endsnippet
-snippet -im' "import module (single quotes)" i
+snippet -im; "import module" i
 import '${1:module}';${2}
+endsnippet
+snippet -im' "import module (alternative quotes)" i
+import "${1:module}"${2}
+endsnippet
+snippet -im'; "import module (alternative quotes)" i
+import "${1:module}";${2}
 endsnippet
 
 snippet -id "import default" i
-import ${1:foo} from "${2:module}";${3}
+import ${1:foo} from '${2:module}'${3}
 endsnippet
-snippet -id' "import default (single quotes)" i
+snippet -id; "import default" i
 import ${1:foo} from '${2:module}';${3}
+endsnippet
+snippet -id' "import default (alternative quotes)" i
+import ${1:foo} from "${2:module}"${3}
+endsnippet
+snippet -id'; "import default (alternative quotes)" i
+import ${1:foo} from "${2:module}";${3}
 endsnippet
 
 snippet -ia "import all as" i
-import * as ${1:foo} from "${2:module}";${3}
+import * as ${1:foo} from '${2:module}'${3}
 endsnippet
-snippet -ia' "import all as (single quotes)" i
+snippet -ia; "import all as" i
 import * as ${1:foo} from '${2:module}';${3}
+endsnippet
+snippet -ia' "import all as (alternative quotes)" i
+import * as ${1:foo} from "${2:module}"${3}
+endsnippet
+snippet -ia'; "import all as (alternative quotes)" i
+import * as ${1:foo} from "${2:module}";${3}
 endsnippet
 
 snippet -is "import something from" i
-import { ${1:foo} } from "${2:module}";${3}
+import { ${1:foo} } from '${2:module}'${3}
 endsnippet
-snippet -is' "import something from (single quotes)" i
+snippet -is; "import something from" i
 import { ${1:foo} } from '${2:module}';${3}
+endsnippet
+snippet -is' "import something from (alternative quotes)" i
+import { ${1:foo} } from "${2:module}"${3}
+endsnippet
+snippet -is'; "import something from (alternative quotes)" i
+import { ${1:foo} } from "${2:module}";${3}
 endsnippet
 
 snippet -ix "import something from (without extra-spacing)" i
-import {${1:foo}} from "${2:module}";${3}
+import {${1:foo}} from '${2:module}'${3}
 endsnippet
-snippet -ix' "import something from (without extra-spacing, single quotes)" i
+snippet -ix; "import something from (without extra-spacing)" i
 import {${1:foo}} from '${2:module}';${3}
+endsnippet
+snippet -ix' "import something from (without extra-spacing, alternative quotes)" i
+import {${1:foo}} from "${2:module}"${3}
+endsnippet
+snippet -ix'; "import something from (without extra-spacing, alternative quotes)" i
+import {${1:foo}} from "${2:module}";${3}
 endsnippet
 
 snippet -it "import type from" i
-import type { ${1:Type} } from "${2:module}";${3}
+import type { ${1:Type} } from '${2:module}'${3}
 endsnippet
-snippet -it' "import type from (single quotes)" i
+snippet -it; "import type from" i
 import type { ${1:Type} } from '${2:module}';${3}
+endsnippet
+snippet -it' "import type from (alternative quotes)" i
+import type { ${1:Type} } from "${2:module}"${3}
+endsnippet
+snippet -it'; "import type from (alternative quotes)" i
+import type { ${1:Type} } from "${2:module}";${3}
 endsnippet
 
 snippet -ixt "import type from (without extra-spacing)" i
-import type {${1:Type}} from "${2:module}";${3}
+import type {${1:Type}} from '${2:module}'${3}
 endsnippet
-snippet -ixt' "import type from (without extra-spacing, single quotes)" i
+snippet -ixt; "import type from (without extra-spacing)" i
 import type {${1:Type}} from '${2:module}';${3}
+endsnippet
+snippet -ixt' "import type from (without extra-spacing, alternative quotes)" i
+import type {${1:Type}} from "${2:module}"${3}
+endsnippet
+snippet -ixt'; "import type from (without extra-spacing, alternative quotes)" i
+import type {${1:Type}} from "${2:module}";${3}
 endsnippet
 
 
