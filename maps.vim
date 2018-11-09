@@ -40,14 +40,10 @@ if has('python3') || has('python')
 		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 endif
 
-function! g:FuzzyGitFileMaps()
-	nnoremap <A-p>  :tabnew<CR>:Denite file_rec/git buffer<CR>
-	nnoremap <C-p>  :Denite file_rec/git buffer<CR>
-endfunction
-
+" fuzzy search for a file
+nnoremap <A-p> :tabnew<CR>:FZF<CR>
+nnoremap <C-p> :FZF<CR>
 " Denite
-nnoremap <A-p>      :tabnew<CR>:Denite file_rec buffer<CR>
-nnoremap <C-p>      :Denite file_rec buffer<CR>
 " TODO FIXME denite
 " nnoremap <leader>y  :Denite history/yank -default-action=append<CR>
 nnoremap ''         :Denite register<CR>
