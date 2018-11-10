@@ -97,6 +97,10 @@ let g:tsuquyomi_disable_quickfix = 1
 
 let g:necoghc_enable_detailed_browse = 1
 
+let g:LanguageClient_serverCommands = {
+	\   'haskell': ['hie-wrapper'],
+	\ }
+
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1

@@ -21,6 +21,7 @@ nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
 nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
 nnoremap <leader>t  :TagbarToggle<CR>
 nnoremap <leader>u  :GundoToggle<CR>
+nnoremap <leader>'  :call LanguageClient_contextMenu()<CR>
 
 xmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
