@@ -41,6 +41,13 @@ if has('python3') || has('python')
 		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 endif
 
+com! FZFGit call fzf#run({'source': 'git ls-files', 'sink': 'e', 'down': '40%'})
+
+function! g:FuzzyGitFileMaps()
+	nnoremap <A-p> :tabnew<CR>:FZFGit<CR>
+	nnoremap <C-p> :FZFGit<CR>
+endfunction
+
 " fuzzy search for a file
 nnoremap <A-p> :tabnew<CR>:FZF<CR>
 nnoremap <C-p> :FZF<CR>
