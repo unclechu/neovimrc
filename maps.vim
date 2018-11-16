@@ -29,6 +29,9 @@ nmap ga <Plug>(EasyAlign)
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
 if has('python3') || has('python')
+	" FIXME for js/ts snippets UltiSnips#SnippetsInCurrentScope() returns empty
+	"       dictionary if a snippet doesn't have space character before while
+	"       UltiSnips#ExpandSnippet() correctly expands such a snippet
 	function! s:IsSnippetExpandable()
 		return !(
 			\ col('.') <= 1
@@ -39,6 +42,10 @@ if has('python3') || has('python')
 
 	inoremap <expr> <Tab> <SID>IsSnippetExpandable()
 		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
+
+	" FIXME fix the issue with UltiSnips#SnippetsInCurrentScope() and you wont
+	"       need this hack to force expanding anymore
+	inoremap <C-x><Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
 endif
 
 com! FZFGit call fzf#run({'source': 'git ls-files', 'sink': 'e', 'down': '40%'})
