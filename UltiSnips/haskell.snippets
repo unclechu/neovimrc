@@ -13,8 +13,68 @@ snippet in "Pragma INLINE" w
 {-# INLINE ${1:foo} #-}
 endsnippet
 
+snippet ib "Pragma INLINEABLE" w
+{-# INLINEABLE ${1:foo} #-}
+endsnippet
+
+snippet ni "Pragma NOINLINE" w
+{-# NOINLINE ${1:foo} #-}
+endsnippet
+
 snippet so "Pragma SOURCE" w
 {-# SOURCE #-}
+endsnippet
+
+snippet up "Pragma UNPACK" w
+{-# UNPACK #-}
+endsnippet
+
+snippet an "Pragma ANN" w
+{-# ANN ${1:foo} ${2:(Just "Foo")} #-}
+endsnippet
+
+snippet at "Pragma ANN type" w
+{-# ANN type ${1:Foo} ${2:(Just "Foo")} #-}
+endsnippet
+
+snippet am "Pragma ANN module" w
+{-# ANN module ${1:(Just "Foo")} #-}
+endsnippet
+
+snippet sp "Pragma SPECIALISE" w
+{-# SPECIALISE ${1:f} :: ${2:Int -> b -> b} #-}
+endsnippet
+
+snippet spu "Pragma SPECIALISE (unicode)" w
+{-# SPECIALISE ${1:f} ∷ ${2:Int → b → b} #-}
+endsnippet
+
+snippet spin "Pragma SPECIALISE INLINE" w
+{-# SPECIALISE INLINE ${1:f} :: ${2:Int -> b -> b} #-}
+endsnippet
+
+snippet spinu "Pragma SPECIALISE INLINE (unicode)" w
+{-# SPECIALISE INLINE ${1:f} ∷ ${2:Int → b → b} #-}
+endsnippet
+
+snippet spni "Pragma SPECIALISE NOINLINE" w
+{-# SPECIALISE NOINLINE ${1:f} :: ${2:Int -> b -> b} #-}
+endsnippet
+
+snippet spniu "Pragma SPECIALISE NOINLINE (unicode)" w
+{-# SPECIALISE NOINLINE ${1:f} ∷ ${2:Int → b → b} #-}
+endsnippet
+
+snippet ln "Pragma LINE" w
+{-# LINE ${1:42} "${2:Foo.vhs}" #-}
+endsnippet
+
+snippet dp "Pragma DEPRECATED" w
+{-# DEPRECATED "${1:Don't use these}" #-}
+endsnippet
+
+snippet wr "Pragma WARNING" w
+{-# WARNING ${1:unsafePerformIO} "${2:This is unsafe}" #-}
 endsnippet
 
 
