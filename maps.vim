@@ -270,6 +270,8 @@ noremap <A-y> "0
 
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>
+" forward version of <C-h> in command mode
+cnoremap <C-l> <Del>
 
 
 " colorscheme stuff
