@@ -39,7 +39,10 @@ if dein#load_state($DEIN_BASE_PATH)
 	" call dein#add('Shougo/neoyank.vim') " unite clipboard history 'history/yank'
 	call dein#add('chemzqm/denite-git')
 	call dein#add('Shougo/deoplete.nvim') " async autocompletion
-	call dein#add('autozimu/LanguageClient-neovim', {'build': 'bash install.sh'})
+	call dein#add('autozimu/LanguageClient-neovim', {
+		\ 'rev': 'next',
+		\ 'build': 'bash install.sh',
+		\ })
 	call dein#add('junegunn/fzf')
 	call dein#add('sjl/gundo.vim')
 	call dein#add('mhinz/vim-startify')
