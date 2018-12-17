@@ -58,6 +58,8 @@ endfunction
 " fuzzy search for a file
 nnoremap <A-p> :tabnew<CR>:FZF<CR>
 nnoremap <C-p> :FZF<CR>
+nnoremap <leader>fg :FlyGrep<CR>
+nnoremap <leader>fG :tabnew<CR>:FlyGrep<CR>
 " Denite
 " TODO FIXME denite
 " nnoremap <leader>y  :Denite history/yank -default-action=append<CR>

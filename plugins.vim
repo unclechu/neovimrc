@@ -59,6 +59,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('ryanoasis/vim-devicons')
 	call dein#add('tpope/vim-dadbod')
 	call dein#add('yuttie/comfortable-motion.vim')
+	call dein#add('wsdjeg/FlyGrep.vim')
 
 	" surround
 	call dein#add('tpope/vim-surround')
