@@ -39,6 +39,10 @@ try
 			se bg=light
 		el
 			se bg=dark
+			" fixed `guibg` for colors inside tmux
+			" (otherwise it collides with default background and isn't visible)
+			hi ColorColumn guibg=#3d3d3d ctermbg=236 gui=NONE cterm=NONE
+			hi CursorLine guibg=#3d3d3d ctermbg=236 gui=NONE cterm=NONE
 		en
 	en
 
