@@ -95,11 +95,16 @@ let g:deoplete#disable_auto_complete = 1
 
 let g:tsuquyomi_disable_quickfix = 1
 
+let g:haskellmode_completion_ghc = 0 " disable haskell-vim omnifunc
+
 let g:necoghc_enable_detailed_browse = 1
 
 let g:LanguageClient_serverCommands = {
 	\   'haskell': ['hie-wrapper'],
 	\ }
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_completion_enabled = 1
 
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1

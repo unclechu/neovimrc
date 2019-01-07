@@ -55,11 +55,8 @@ function! s:AnyBufWritePostHook()
 	Neomake
 endfunction
 
-" Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
-
 function! s:HaskellFTHook()
-	setlocal omnifunc=necoghc#omnifunc
+	" setlocal omnifunc=necoghc#omnifunc
 	setlocal et ts=2 sts=2 sw=2
 	call g:ColorschemeCustomizations()
 endfunction

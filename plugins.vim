@@ -39,10 +39,11 @@ if dein#load_state($DEIN_BASE_PATH)
 	" call dein#add('Shougo/neoyank.vim') " unite clipboard history 'history/yank'
 	call dein#add('chemzqm/denite-git')
 	call dein#add('Shougo/deoplete.nvim') " async autocompletion
-	call dein#add('autozimu/LanguageClient-neovim', {
-		\ 'rev': 'next',
-		\ 'build': 'bash install.sh',
-		\ })
+	" call dein#add('autozimu/LanguageClient-neovim', {
+	" 	\ 'rev': 'next',
+	" 	\ 'build': 'bash install.sh',
+	" 	\ })
+	call dein#add('w0rp/ale') " replacement for 'autozimu/LanguageClient-neovim'
 	call dein#add('junegunn/fzf')
 	call dein#add('sjl/gundo.vim')
 	call dein#add('mhinz/vim-startify')
@@ -80,8 +81,9 @@ if dein#load_state($DEIN_BASE_PATH)
 	" call dein#add('unclechu/vim-my-haskell')
 	" call dein#add('neovimhaskell/haskell-vim')
 	call dein#add('unclechu/haskell-vim') " my fork with unicode support
-	call dein#add('eagletmt/neco-ghc')
-	call dein#add('eagletmt/ghcmod-vim')
+	" legacy stuff based on ghc-mod (now I'm using HIE via LSP plugins)
+	" call dein#add('eagletmt/neco-ghc')
+	" call dein#add('eagletmt/ghcmod-vim')
 	call dein#add('unclechu/lushtags')
 	call dein#add('twinside/vim-hoogle')
 	call dein#add('itchyny/vim-haskell-indent')
