@@ -56,7 +56,6 @@ function! s:AnyBufWritePostHook()
 endfunction
 
 function! s:HaskellFTHook()
-	" setlocal omnifunc=necoghc#omnifunc
 	setlocal et ts=2 sts=2 sw=2
 	call g:ColorschemeCustomizations()
 endfunction

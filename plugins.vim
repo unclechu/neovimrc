@@ -78,17 +78,12 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('airblade/vim-gitgutter')
 
 	" haskell
-	" call dein#add('unclechu/vim-my-haskell')
+	" call dein#add('unclechu/vim-my-haskell') " my old fork for syntax
 	" call dein#add('neovimhaskell/haskell-vim')
 	call dein#add('unclechu/haskell-vim') " my fork with unicode support
-	" legacy stuff based on ghc-mod (now I'm using HIE via LSP plugins)
-	" call dein#add('eagletmt/neco-ghc')
-	" call dein#add('eagletmt/ghcmod-vim')
 	call dein#add('unclechu/lushtags')
 	call dein#add('twinside/vim-hoogle')
 	call dein#add('itchyny/vim-haskell-indent')
-	" TODO FIXME denite
-	" call dein#add('eagletmt/unite-haddock') " hoogle and haddock for Unite
 
 	" purescript
 	call dein#add('raichoo/purescript-vim')

@@ -97,8 +97,6 @@ let g:tsuquyomi_disable_quickfix = 1
 
 let g:haskellmode_completion_ghc = 0 " disable haskell-vim omnifunc
 
-let g:necoghc_enable_detailed_browse = 1
-
 let g:LanguageClient_serverCommands = {
 	\   'haskell': ['hie-wrapper'],
 	\ }

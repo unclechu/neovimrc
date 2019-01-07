@@ -15,18 +15,9 @@ let s:menus.cs.command_candidates = [
 	\]
 let s:menus.haskell = {'description': 'Haskell'}
 let s:menus.haskell.command_candidates = [
-	\ ['ghc-mod: Get type', 'GhcModType!'],
-	\ ['ghc-mod: Get type (redir to @t)',
-	\    "redir @t | exec 'GhcModType!' | redir END | echo ''"],
-	\ ['ghc-mod: Clear type highlight', 'GhcModTypeClear'],
-	\ ['ghc-mod: Insert type', 'GhcModTypeInsert!'],
-	\ ['ghc-mod: Check for errors/warnings', 'GhcModCheckAsync!'],
-	\ ['ghc-mod: Lint', 'GhcModLintAsync!'],
 	\ ['Hoogle (command)',
 	\    "exec \"let x = input('Hoogle ') | exec 'Hoogle ' . x\""],
 	\]
-	" TODO add before 'Hoogle (command)' after fix
-    " ['Hoogle (Unite)', 'Unite -auto-resize -start-insert hoogle'], TODO FIXME denite
 let s:menus.denite = {'description': 'Denite call presets'}
 let s:menus.denite.command_candidates = [
 	\ ['MRU', 'Denite file_mru'],
