@@ -149,10 +149,10 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('rakr/vim-one') " one (supports 'bg' option)
 	call dein#add('trevordmiller/nova-vim')
 	call dein#add('liuchengxu/space-vim-theme')
-	" also (as files, not packages):
-	"   - codeschool
-	"   - railscasts
-	"   - twilight
+	call dein#add('antlypls/vim-colors-codeschool')
+	call dein#add('vim-scripts/TuttiColori-Colorscheme')
+	call dein#add('vim-scripts/railscasts')
+	call dein#add('vim-scripts/twilight')
 
 	" utils
 	call dein#add('sl4m/left-pad.vim')
