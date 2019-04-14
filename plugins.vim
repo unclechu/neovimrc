@@ -153,6 +153,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('vim-scripts/TuttiColori-Colorscheme')
 	call dein#add('vim-scripts/railscasts')
 	call dein#add('vim-scripts/twilight')
+	call dein#add('lifepillar/vim-solarized8')
 
 	" utils
 	call dein#add('sl4m/left-pad.vim')
