@@ -142,7 +142,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('exu/pgsql.vim')
 
 	" colorschemes
-	call dein#add('morhetz/gruvbox') " gruvbox
+	call dein#add('morhetz/gruvbox') " gruvbox (good for haskell/purescript)
 	call dein#add('tomasr/molokai') " molokai
 	call dein#add('Lokaltog/vim-distinguished') " distinguished
 	call dein#add('nanotech/jellybeans.vim') " jellybeans
@@ -154,6 +154,19 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('vim-scripts/railscasts')
 	call dein#add('vim-scripts/twilight')
 	call dein#add('lifepillar/vim-solarized8')
+	" not good for haskell
+	call dein#add('fenetikm/falcon')
+	" not good for haskell
+	call dein#add('challenger-deep-theme/vim') " challenger_deep
+	" not good for haskell
+	call dein#add('mhinz/vim-janah') " janah
+	" not good for haskell
+	call dein#add('mhartington/oceanic-next') " OceanicNext
+	" not good for haskell
+	" let g:airline_theme = 'onedark'
+	call dein#add('joshdick/onedark.vim') " onedark
+	" not good for haskell
+	call dein#add('sickill/vim-monokai') " monokai
 
 	" utils
 	call dein#add('sl4m/left-pad.vim')
