@@ -260,9 +260,8 @@ map  <leader>P   <Nop>
 " paste searched word and clean it
 map  <leader>p/  '/phds\ds>
 map  <leader>P/  '/Phds\ds>
-nmap <leader>po  <A-o>jP
-nmap <leader>pO  <A-O>kP
-nmap <leader>ppo <A-O>kP
+nmap <leader>po  <A-/>jP
+nmap <leader>pO  <A-?>kP
 
 " another alias to system X clipboard
 noremap '<Space> "+
@@ -387,50 +386,58 @@ noremap "" ''
 xnoremap R r<Space>R
 
 " break line but keep same column position for rest of the line
-imap <A-CR> <C-o>mp<Esc>
-	\:let __tmp_i_A_CR = @0<CR>
-	\`py0`pD`p<A-o>jP`pji
-	\<C-o>:let @0 = __tmp_i_A_CR \| unl __tmp_i_A_CR<CR>
+fu! s:split_next_line(new_col_offset, stay)
+	let l:pos=getcurpos() | let l:line=getline('.') | let l:vc=virtcol('$')
+	if l:pos[4] >= l:vc
+		pu=repeat(' ', l:pos[4] - 1 + a:new_col_offset)
+		cal setline(l:pos[1], l:line[:l:pos[2]])
+	el
+		pu=repeat(' ', l:pos[4] - 1 + a:new_col_offset) . l:line[l:pos[2] - 1:]
+		cal setline(l:pos[1], l:line[:l:pos[2] - 2])
+	en
+	if a:stay
+		cal setpos('.', l:pos)
+	elsei l:pos[4] >= l:vc
+		let l:pos[1] += 1 | let l:pos[2] = l:pos[4] + a:new_col_offset
+		let l:pos[3] = 0 | unlet l:pos[4] | cal setpos('.', l:pos)
+	en
+endf
+inoremap <A-CR> <C-o>:call <SID>split_next_line( 0, 0)<CR>
 " cannot map <S-CR> to make <A-S-CR> alternative
-" imap <A-S-CR> <C-o>mp<Esc>
-"	\:let __tmp_i_A_S_CR = @0<CR>
-"	\`py0`pD`p<A-o>jhP`pjhi
-"	\<C-o>:let @0 = __tmp_i_A_S_CR| unl __tmp_i_A_S_CR<CR>
-imap <A-'>  <C-o>mp<Esc>
-	\:let __tmp_i_A_apo = @0<CR>
-	\`py0`pD`p<A-o>jP`pi
-	\<C-o>:let @0 = __tmp_i_A_apo \| unl __tmp_i_A_apo<CR>
-imap <A-">  <C-o>mp<Esc>
-	\:let __tmp_i_A_dquote = @0<CR>
-	\`py0`pD`p<A-o>jhP`pi
-	\<C-o>:let @0 = __tmp_i_A_dquote \| unl __tmp_i_A_dquote<CR>
-imap <A-\>  <C-o>mp<Esc>
-	\:let __tmp_i_A_bslash = @0<CR>
-	\`py0`pD`p<A-O>kP`pki
-	\<C-o>:let @0 = __tmp_i_A_bslash \| unl __tmp_i_A_bslash<CR>
-imap <A-\|> <C-o>mp<Esc>
-	\:let __tmp_i_A_vline = @0<CR>
-	\`py0`pD`p<A-O>khP`pkhi
-	\<C-o>:let @0 = __tmp_i_A_vline \| unl __tmp_i_A_vline<CR>
-imap <A-]>  <C-o>mp<Esc>
-	\:let __tmp_i_A_rsbracket = @0<CR>
-	\`py0`pD`p<A-O>kP`pi
-	\<C-o>:let @0 = __tmp_i_A_rsbracket \| unl __tmp_i_A_rsbracket<CR>
-imap <A-}>  <C-o>mp<Esc>
-	\:let __tmp_i_A_rfbracket = @0<CR>
-	\`py0`pD`p<A-O>khP`pi
-	\<C-o>:let @0 = __tmp_i_A_rfbracket \| unl __tmp_i_A_rfbracket<CR>
+" imap <A-S-CR> <C-o>:call <SID>split_next_line(-1, 0)<CR>
+inoremap <A-'>  <C-o>:call <SID>split_next_line( 0, 1)<CR>
+inoremap <A-">  <C-o>:call <SID>split_next_line(-1, 1)<CR>
+fu! s:split_prev_line(new_col_offset, stay)
+	let l:pos=getcurpos() | let l:line=getline('.') | let l:vc=virtcol('$')
+	if l:pos[4] >= l:vc
+		pu!=repeat(' ', l:pos[4] - 1 + a:new_col_offset)
+		cal setline(l:pos[1] + 1, l:line[:l:pos[2]])
+	el
+		pu!=repeat(' ', l:pos[4] - 1 + a:new_col_offset) . l:line[l:pos[2] - 1:]
+		cal setline(l:pos[1] + 1, l:line[:l:pos[2] - 2])
+	en
+	if a:stay
+		let l:pos[1] += 1 | cal setpos('.', l:pos)
+	elsei l:pos[4] >= l:vc
+		let l:pos[2] = l:pos[4] + a:new_col_offset | let l:pos[3] = 0
+		unlet l:pos[4] | cal setpos('.', l:pos)
+	en
+endf
+inoremap <A-\>  <C-o>:call <SID>split_prev_line( 0, 0)<CR>
+inoremap <A-\|> <C-o>:call <SID>split_prev_line(-1, 0)<CR>
+inoremap <A-]>  <C-o>:call <SID>split_prev_line( 0, 1)<CR>
+inoremap <A-}>  <C-o>:call <SID>split_prev_line(-1, 1)<CR>
 
-nnoremap <A-o> mpo
-	\<Esc>:let __tmp_A_o = @"<CR>S
-	\<Esc>:let @" = __tmp_A_o<CR>
-	\<Esc>:unl __tmp_A_o<CR>`p
-nnoremap <A-O> mpO
-	\<Esc>:let __tmp_A_O = @"<CR>S
-	\<Esc>:let @" = __tmp_A_O<CR>
-	\<Esc>:unl __tmp_A_O<CR>`p
-nmap <leader>o <A-o>ji
-nmap <leader>O <A-O>ki
+fu! s:new_line_after()
+	let l:x = getpos('.') | pu ='' | cal setpos('.', l:x)
+endf
+nnoremap <A-/> :cal <SID>new_line_after()<CR>
+fu! s:new_line_before()
+	let l:x = getpos('.') | pu! ='' | let l:x[1] += 1 | cal setpos('.', l:x)
+endf
+nnoremap <A-?> :cal <SID>new_line_before()<CR>
+nmap <leader>o <A-/>ji
+nmap <leader>O <A-?>ki
 
 imap <A-Space> <Space><Left>
 
@@ -492,6 +499,11 @@ nnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
 xnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
 nnoremap ,gt gt
 xnoremap ,gt gt
+
+" additional move over cursor history (as alternative to ^O/^I).
+" moving over changelist (see :changes).
+nnoremap <A-o> g;
+nnoremap <A-i> g,
 
 " navigating by tabs
 nmap <A-f> gt
