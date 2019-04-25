@@ -9,7 +9,7 @@ nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>bd :ls<CR>:bd<space>
 nnoremap <leader>bp :b#<CR>
 
-nnoremap <leader>r :let @/ = ''<CR>:echo 'Reset search'<CR>
+nnoremap <leader>r :let @/ = ''<CR>:ec 'Reset search'<CR>
 
 " 'cr' means 'config reload'
 nnoremap <leader>cr :source $MYVIMRC<CR>
@@ -157,14 +157,23 @@ nmap     <leader>sP <Plug>CtrlSFPwordExec
 nnoremap <leader>so :CtrlSFOpen<CR>
 nnoremap <leader>st :CtrlSFToggle<CR>
 
+" doesn't work with visual-block selection
+fu! s:get_selected_text()
+	let [l:line_a, l:col_a] = getpos("'<")[1:2]
+	let [l:line_b, l:col_b] = getpos("'>")[1:2]
+	let l:lines = getline(l:line_a, l:line_b)
+	if len(l:lines) == 0 | retu '' | el
+		let l:lines[-1] = l:lines[-1][: l:col_b - 1  ]
+		let l:lines[ 0] = l:lines[ 0][  l:col_a - 1 :]
+		retu join(l:lines, "\n")
+	en
+endf
+
 " Denite grep/git shotcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
 nnoremap <leader>gf :Denite grep/git:.:-F:''<Left>
 xnoremap <leader>gf <Esc>
-	\:let __tmp_x_leader_gf = @0<CR>gv
-	\y:Denite grep/git:.:-F:'<C-R>0'
-	\<C-R>=execute('let @0 = __tmp_x_leader_gf \| unl __tmp_x_leader_gf')<CR>
-	\<Left>
+	\:Denite grep/git:.:-F:'<C-r>=<SID>get_selected_text()<CR>'<Left>
 xmap <leader>gF <leader>gf<CR>
 noremap <leader>gn :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
 nmap <leader>gN <leader>gn<CR>
@@ -176,11 +185,7 @@ nnoremap <C-Space> :CtrlSpace<CR>
 
 " Make Hoogle search easier (because I use it very often)
 nnoremap <A-g> :Hoogle<space>
-xnoremap <A-g> <Esc>
-	\:let __tmp_x_leader_A_f = @0<CR>gv
-	\y:Hoogle <C-R>0
-	\<C-R>=execute('let @0 = __tmp_x_leader_A_f \| unl __tmp_x_leader_A_f')<CR>
-	\<CR>gv
+xnoremap <A-g> <Esc>:Hoogle <C-r>=<SID>get_selected_text()<CR><CR>
 
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
@@ -281,10 +286,10 @@ noremap <leader>ss <Esc>:set background=
 noremap <leader>sb :BackgroundToggle<CR>
 noremap <leader>sB :GruvboxContrastRotate<CR>
 
-nnoremap gy Y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
-nnoremap gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
-xnoremap gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:echo<CR>
-xnoremap gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:echo<CR>
+nnoremap gy Y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:ec<CR>
+nnoremap gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:ec<CR>
+xnoremap gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:ec<CR>
+xnoremap gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:ec<CR>
 
 " walking between windows (hjkl)
 nnoremap <C-h>     :wincmd h<CR>
@@ -445,17 +450,11 @@ imap <A-Space> <Space><Left>
 " custom numbers line keys
 
 nnoremap ! #:ShowSearchIndex<CR>
-nnoremap g! :let __tmp_n_gbang = @0<CR>
-	\yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex
-	\<C-R>=execute('let @0 = __tmp_n_gbang \| unl __tmp_n_gbang')<CR>
-	\<CR>
+nnoremap g! :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
 xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
 xnoremap g! :<C-u>call VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
 nnoremap @ *:ShowSearchIndex<CR>
-nnoremap g@ :let __tmp_n_gat = @0<CR>
-	\yiw:let @/ = '\V\<<C-R>0\>'<CR>:ShowSearchIndex
-	\<C-R>=execute('let @0 = __tmp_n_gat \| unl __tmp_n_gat')<CR>
-	\<CR>
+nnoremap g@ :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
 xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
 xnoremap g@ :<C-u>call VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
 " noremap ! #
