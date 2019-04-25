@@ -143,16 +143,38 @@ snippet d "data" w
 data ${1:Foo} = ${2:Foo}${3}
 endsnippet
 
+snippet dm "data (multiline)" w
+data ${1:Foo}
+   = ${2:Foo}${3}
+endsnippet
+
 snippet dr "data (with deriving)" w
 data ${1:Foo} = ${2:Foo} deriving (${3:Show})${4}
 endsnippet
 
-snippet nt "newtype" w
-newtype ${1:Foo} = ${2:Foo}${3}
+snippet drm "data (multiline, with deriving)" w
+data ${1:Foo}
+   = ${2:Foo}
+     deriving (${3:Show})${4}
 endsnippet
 
-snippet ntr "newtype" w
-newtype ${1:Foo} = ${2:Foo} deriving (${3:Show})${4}
+snippet n "newtype" w
+newtype ${1:Foo} = ${2:Foo} ${3:Bar}${4}
+endsnippet
+
+snippet nm "newtype (multiline)" w
+newtype ${1:Foo}
+      = ${2:Foo} ${3:Bar}${4}
+endsnippet
+
+snippet nr "newtype (with deriving)" w
+newtype ${1:Foo} = ${2:Foo} ${3:Bar} deriving (${4:Show})${5}
+endsnippet
+
+snippet nrm "newtype (multiline, with deriving)" w
+newtype ${1:Foo}
+      = ${2:Foo} ${3:Bar}
+        deriving (${4:Show})${5}
 endsnippet
 
 
