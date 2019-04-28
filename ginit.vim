@@ -55,10 +55,16 @@ function! s:font_size_inc(count)
 	call s:update_font()
 endfunction
 
+fu! s:font_size_set(size)
+	let s:font_size = str2nr(a:size)
+	cal s:update_font()
+endf
+
 command! GuiFontSizeDec call <SID>font_size_dec(1)
 command! GuiFontSizeInc call <SID>font_size_inc(1)
 command! -nargs=1 GuiFontSizeDecN call <SID>font_size_dec(<args>)
 command! -nargs=1 GuiFontSizeIncN call <SID>font_size_inc(<args>)
+com! -nargs=1 GuiFontSizeSet cal <SID>font_size_set(<args>)
 
 nnoremap <leader>- :<C-u>call <SID>font_size_dec(v:count)<CR>
 nnoremap <leader>+ :<C-u>call <SID>font_size_inc(v:count)<CR>
