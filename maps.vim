@@ -265,8 +265,8 @@ map  <leader>P   <Nop>
 " paste searched word and clean it
 map  <leader>p/  '/phds\ds>
 map  <leader>P/  '/Phds\ds>
-nmap <leader>po  <A-/>jP
-nmap <leader>pO  <A-.>kP
+nmap <leader>po  <A-.>jP
+nmap <leader>pO  <A-,>kP
 
 " another alias to system X clipboard
 noremap '<Space> "+
@@ -436,13 +436,13 @@ inoremap <A-}>  <C-o>:call <SID>split_prev_line(-1, 1)<CR>
 fu! s:new_line_after()
 	let l:x = getpos('.') | pu ='' | cal setpos('.', l:x)
 endf
-nnoremap <A-/> :cal <SID>new_line_after()<CR>
+nnoremap <A-.> :cal <SID>new_line_after()<CR>
 fu! s:new_line_before()
 	let l:x = getpos('.') | pu! ='' | let l:x[1] += 1 | cal setpos('.', l:x)
 endf
-nnoremap <A-.> :cal <SID>new_line_before()<CR>
-nmap <leader>o <A-/>ji
-nmap <leader>O <A-.>ki
+nnoremap <A-,> :cal <SID>new_line_before()<CR>
+nmap <leader>o <A-.>ji
+nmap <leader>O <A-,>ki
 
 imap <A-Space> <Space><Left>
 
