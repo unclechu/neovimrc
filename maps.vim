@@ -274,6 +274,17 @@ noremap <Space>' "*
 " another alias to 'last yank' register
 noremap <A-y> "0
 
+fu! s:copy_many_lines_as_one(sys_clipboard)
+	let l:view = winsaveview() | let l:buf = a:sys_clipboard ? '"+' : ''
+	exec 'norm! gvJgv'.l:buf.'yu'
+	cal winrestview(l:view)
+endf
+
+" copy multiple selected lines as one single line
+xn <leader>y <Esc>:cal <SID>copy_many_lines_as_one(0)<CR>
+" copy multiple selected lines as one single line to system clipboard
+xn <leader>Y <Esc>:cal <SID>copy_many_lines_as_one(1)<CR>
+
 
 " forward version of <C-h> in insert mode
 inoremap <C-l> <Del>
