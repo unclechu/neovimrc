@@ -286,10 +286,8 @@ xn <leader>y <Esc>:cal <SID>copy_many_lines_as_one(0)<CR>
 xn <leader>Y <Esc>:cal <SID>copy_many_lines_as_one(1)<CR>
 
 
-" forward version of <C-h> in insert mode
-inoremap <C-l> <Del>
-" forward version of <C-h> in command mode
-cnoremap <C-l> <Del>
+" forward version of <C-h>
+no! <C-l> <Del>
 
 
 " colorscheme stuff
@@ -350,8 +348,8 @@ nnoremap <leader>fz :999wincmd ><CR>:999wincmd +<CR>
 xnoremap <leader>fz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
 
 " moving between history in command mode
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
+cno <C-p> <Up>
+cno <C-n> <Down>
 
 " moving tabs
 nnoremap <C-S-PageUp>   :tabm-1<CR>
@@ -530,7 +528,7 @@ nmap <A-9> 9,gt
 nmap <A-0> 10,gt
 
 " default maps disabled for plugin
-cnoremap <expr> <CR> '<CR>' . (getcmdtype() =~ '[/?]' ? ':ShowSearchIndex<CR>' : '')
+cno <expr> <CR> '<CR>' . (getcmdtype() =~ '[/?]' ? ':ShowSearchIndex<CR>' : '')
 nnoremap n n:ShowSearchIndex<CR>
 nnoremap N N:ShowSearchIndex<CR>
 
@@ -544,19 +542,17 @@ xnoremap <A-S-i> ym0gvI<Esc>`0:call<space>IndentText()<CR>
 inoremap <expr> <A-n> deoplete#manual_complete()
 
 " pasting from default buffer in insert/cmdline mode
-inoremap <A-p> <C-r>"
-cnoremap <A-p> <C-r>"
-inoremap <A-y> <C-r>0
-cnoremap <A-y> <C-r>0
+no! <A-p> <C-r>"
+no! <A-y> <C-r>0
 
 " to create short aliases for tTfF jumps to unicode symbols
 function! s:UnicodeJumpsShortcuts(ascii, uni)
 	for mpfx in ['n', 'x']
 		for apfx in ['', 'd', 'c']
-			exec l:mpfx.'noremap '.l:apfx.'t<A-'.a:ascii.'> '.l:apfx.'t'.a:uni
-			exec l:mpfx.'noremap '.l:apfx.'T<A-'.a:ascii.'> '.l:apfx.'T'.a:uni
-			exec l:mpfx.'noremap '.l:apfx.'f<A-'.a:ascii.'> '.l:apfx.'f'.a:uni
-			exec l:mpfx.'noremap '.l:apfx.'F<A-'.a:ascii.'> '.l:apfx.'F'.a:uni
+			exec l:mpfx.'no '.l:apfx.'t<A-'.a:ascii.'> '.l:apfx.'t'.a:uni
+			exec l:mpfx.'no '.l:apfx.'T<A-'.a:ascii.'> '.l:apfx.'T'.a:uni
+			exec l:mpfx.'no '.l:apfx.'f<A-'.a:ascii.'> '.l:apfx.'f'.a:uni
+			exec l:mpfx.'no '.l:apfx.'F<A-'.a:ascii.'> '.l:apfx.'F'.a:uni
 		endfor
 	endfor
 endfunction
