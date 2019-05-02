@@ -16,6 +16,7 @@ let NERDTreeMapOpenSplit = 'ss'
 let NERDTreeMapPreviewSplit = 'gss'
 let NERDTreeMapOpenVSplit = 'sv'
 let NERDTreeMapPreviewVSplit = 'gsv'
+let NERDTreeNodeDelimiter = "\u00a0" " to fix ^G appearing after copy-patse
 
 let g:nerdtree_tabs_open_on_gui_startup     = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
