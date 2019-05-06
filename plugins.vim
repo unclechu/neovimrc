@@ -99,6 +99,9 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('zah/nim.vim')
 	" call dein#add('unclechu/nvim-nim')
 
+	" kotlin
+	call dein#add('udalov/kotlin-vim')
+
 	" lisp
 	"   clojure
 	call dein#add('clojure-emacs/cider-nrepl')
