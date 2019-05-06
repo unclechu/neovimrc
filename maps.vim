@@ -7,6 +7,7 @@ let mapleader = ','
 " (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
 nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>bd :ls<CR>:bd<space>
+nnoremap <leader>bD :ls<CR>:bd!<space>
 nnoremap <leader>bp :b#<CR>
 
 nnoremap <leader>r :let @/ = ''<CR>:ec 'Reset search'<CR>
