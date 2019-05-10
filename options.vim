@@ -60,6 +60,7 @@ set breakindentopt=shift:4,sbr
 set breakindent
 
 set wildmenu
+set wildignorecase
 
 set clipboard-=unnamedplus
 set termguicolors
