@@ -594,3 +594,4 @@ call s:UnicodeJumpsShortcuts('d', '…') " 'd' for 'dots'
 call s:UnicodeJumpsShortcuts('{', '«')
 call s:UnicodeJumpsShortcuts('}', '»')
 call s:UnicodeJumpsShortcuts('v', '⋄')
+call s:UnicodeJumpsShortcuts('r', '◇') " 'r' for 'rhombus'
