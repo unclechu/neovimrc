@@ -62,6 +62,8 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('tpope/vim-dadbod')
 	call dein#add('yuttie/comfortable-motion.vim')
 	call dein#add('wsdjeg/FlyGrep.vim')
+	call dein#add('junegunn/goyo.vim')
+	call dein#add('junegunn/limelight.vim')
 
 	" surround
 	call dein#add('tpope/vim-surround')
@@ -171,6 +173,8 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('joshdick/onedark.vim') " onedark
 	" not good for haskell
 	call dein#add('sickill/vim-monokai') " monokai
+	" not good for haskell
+	call dein#add('junegunn/seoul256.vim')
 
 	" utils
 	call dein#add('sl4m/left-pad.vim')
