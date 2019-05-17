@@ -63,9 +63,9 @@ nnoremap <C-p> :FZF<CR>
 nnoremap <leader>fg :FlyGrep<CR>
 nnoremap <leader>fG :tabnew<CR>:FlyGrep<CR>
 " Denite
-" TODO FIXME denite
-" nnoremap <leader>y  :Denite history/yank -default-action=append<CR>
-nnoremap ''         :Denite register<CR>
+" TODO FIXME denite (it's implemented for unite only)
+" nnoremap <leader>y  :Denite -split=floating history/yank -default-action=append<CR>
+nnoremap ''         :Denite -split=floating register<CR>
 " prevent triggering `s` when `<leader>s` is pressed
 " but next symbol not in time.
 " can't use `<Nop>` because it affects pressing this second time,
@@ -77,15 +77,15 @@ nnoremap <leader>sw <Esc>
 xnoremap <leader>s  <C-g><C-g>
 xnoremap <leader>sw <C-g><C-g>
 " sl - show lines
-nnoremap <leader>sl :Denite line<CR>
+nnoremap <leader>sl :Denite -split=floating line<CR>
 " sa - show all
-nnoremap <leader>sa :Denite line:buffers<CR>
-nnoremap <leader>;  :Denite menu:all<CR>
-xnoremap <leader>;  :Denite menu:all<CR>
-nnoremap <leader>:  :Denite<Space>
+nnoremap <leader>sa :Denite -split=floating line:buffers<CR>
+nnoremap <leader>;  :Denite -split=floating menu:all<CR>
+xnoremap <leader>;  :Denite -split=floating menu:all<CR>
+nnoremap <leader>:  :Denite -split=floating<Space>
 " feels kinda like ctrlspace
-nnoremap <leader><Space> :Denite buffer<CR>
-nnoremap <Space><leader> :Denite file_mru<CR>
+nnoremap <leader><Space> :Denite -split=floating buffer<CR>
+nnoremap <Space><leader> :Denite -split=floating file_mru<CR>
 
 " GitGutter keys
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
@@ -172,13 +172,14 @@ endf
 
 " Denite grep/git shotcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
-nnoremap <leader>gf :Denite grep/git:.:-F:''<Left>
-xnoremap <leader>gf <Esc>
-	\:Denite grep/git:.:-F:'<C-r>=<SID>get_selected_text()<CR>'<Left>
+nnoremap <leader>gf :Denite -split=floating grep/git:.:-F:''<Left>
+xnoremap <leader>gf <Esc>:Denite -split=floating
+	\ grep/git:.:-F:'<C-r>=<SID>get_selected_text()<CR>'<Left>
 xmap <leader>gF <leader>gf<CR>
-noremap <leader>gn :Denite grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
+noremap <leader>gn :Denite -split=floating
+	\ grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
 nmap <leader>gN <leader>gn<CR>
-nnoremap <leader>gp :Denite grep/git:.:-F:'<C-R>/'<Left>
+nnoremap <leader>gp :Denite -split=floating grep/git:.:-F:'<C-R>/'<Left>
 nmap <leader>gP <leader>gp<CR>
 
 " CtrlSpace panel open
