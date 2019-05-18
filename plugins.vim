@@ -175,6 +175,9 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('sickill/vim-monokai') " monokai
 	" not good for haskell
 	call dein#add('junegunn/seoul256.vim')
+	" not very good for haskell (but i've seen worse)
+	" light theme, just for fun, last update in 2006
+	call dein#add('vim-scripts/habiLight')
 
 	" utils
 	call dein#add('sl4m/left-pad.vim')
