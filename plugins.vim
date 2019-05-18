@@ -148,34 +148,26 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('exu/pgsql.vim')
 
 	" colorschemes
-	call dein#add('morhetz/gruvbox') " gruvbox (good for haskell/purescript)
+	call dein#add('morhetz/gruvbox') " gruvbox
 	call dein#add('tomasr/molokai') " molokai
 	call dein#add('Lokaltog/vim-distinguished') " distinguished
 	call dein#add('nanotech/jellybeans.vim') " jellybeans
 	call dein#add('rakr/vim-one') " one (supports 'bg' option)
-	call dein#add('trevordmiller/nova-vim')
-	call dein#add('liuchengxu/space-vim-theme')
-	call dein#add('antlypls/vim-colors-codeschool')
-	call dein#add('vim-scripts/TuttiColori-Colorscheme')
+	call dein#add('trevordmiller/nova-vim') " nova
+	call dein#add('liuchengxu/space-vim-theme') " space_vim_theme
+	call dein#add('antlypls/vim-colors-codeschool') " codeschool
+	call dein#add('vim-scripts/TuttiColori-Colorscheme') " tutticolori
 	call dein#add('vim-scripts/railscasts')
 	call dein#add('vim-scripts/twilight')
 	call dein#add('lifepillar/vim-solarized8')
-	" not good for haskell
 	call dein#add('fenetikm/falcon')
-	" not good for haskell
 	call dein#add('challenger-deep-theme/vim') " challenger_deep
-	" not good for haskell
 	call dein#add('mhinz/vim-janah') " janah
-	" not good for haskell
 	call dein#add('mhartington/oceanic-next') " OceanicNext
-	" not good for haskell
 	" let g:airline_theme = 'onedark'
 	call dein#add('joshdick/onedark.vim') " onedark
-	" not good for haskell
-	call dein#add('sickill/vim-monokai') " monokai
-	" not good for haskell
+	call dein#add('sickill/vim-monokai') " monokai (not very good for haskell)
 	call dein#add('junegunn/seoul256.vim')
-	" not very good for haskell (but i've seen worse)
 	" light theme, just for fun, last update in 2006
 	call dein#add('vim-scripts/habiLight')
 
