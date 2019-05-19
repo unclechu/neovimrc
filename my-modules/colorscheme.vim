@@ -26,7 +26,10 @@ fu! s:fix_haskell_syntax()
 		hi! link haskellDelimiter Delimiter
 	en
 	hi! link haskellInfix Keyword
-	if g:colors_name == 'OceanicNext'
+	if g:colors_name == 'gruvbox'
+		hi! link haskellOperators Delimiter
+		hi! link haskellQuote Delimiter
+	elsei g:colors_name == 'OceanicNext'
 		hi! link haskellOperators Keyword
 		hi! link haskellQuote Keyword
 	el
@@ -40,7 +43,7 @@ fu! s:fix_haskell_syntax()
 	hi! link haskellLiquid SpecialComment
 	hi! link haskellString String
 	hi! link haskellChar String
-	if g:colors_name == 'OceanicNext'
+	if g:colors_name == 'OceanicNext' || g:colors_name == 'gruvbox'
 		hi! link haskellBacktick Keyword
 	el
 		hi! link haskellBacktick Operator

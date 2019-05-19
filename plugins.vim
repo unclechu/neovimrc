@@ -1,13 +1,16 @@
 " plugins loading
 " Author: Viacheslav Lotsmanov
 
-if $DEIN_DIR == '' | let $DEIN_DIR = $HOME . '/.config/nvim/dein' | endif
+if $DEIN_DIR == '' | let $DEIN_DIR = $HOME . '/.config/nvim/dein' | en
 
 if $DEIN_BASE_PATH == ''
 	let $DEIN_BASE_PATH = $HOME . '/.cache/nvim-dein-plugins'
-endif
+en
 
-set rtp+=$DEIN_DIR
+se rtp+=$DEIN_DIR
+
+exe 'se rtp+=' .
+	\ $DEIN_BASE_PATH . '/repos/github.com/chriskempson/tomorrow-theme/vim'
 
 if dein#load_state($DEIN_BASE_PATH)
 	call dein#begin($DEIN_BASE_PATH)
@@ -171,14 +174,18 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('junegunn/seoul256.vim') " seoul256 seoul256-light
 	" light theme, just for fun, last update in 2006
 	call dein#add('vim-scripts/habiLight')
+	" it's not actually just a vim plugin (see patching &rtp above).
+	" Tomorrow-Night-Blue Tomorrow-Night-Bright Tomorrow-Night-Eighties
+	" Tomorrow-Night Tomorrow
+	call dein#add('chriskempson/tomorrow-theme')
 
 	" utils
 	call dein#add('sl4m/left-pad.vim')
 
 	call dein#end()
 	call dein#save_state()
-endif
+en
 
 " from dein's readme
-filetype plugin indent on
-syntax enable
+filet plugin indent on
+sy enable
