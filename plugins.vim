@@ -159,7 +159,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('vim-scripts/TuttiColori-Colorscheme') " tutticolori
 	call dein#add('vim-scripts/railscasts')
 	call dein#add('vim-scripts/twilight')
-	call dein#add('lifepillar/vim-solarized8')
+	call dein#add('lifepillar/vim-solarized8') " solarized8
 	call dein#add('fenetikm/falcon')
 	call dein#add('challenger-deep-theme/vim') " challenger_deep
 	call dein#add('mhinz/vim-janah') " janah
@@ -167,7 +167,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	" let g:airline_theme = 'onedark'
 	call dein#add('joshdick/onedark.vim') " onedark
 	call dein#add('sickill/vim-monokai') " monokai (not very good for haskell)
-	call dein#add('junegunn/seoul256.vim')
+	call dein#add('junegunn/seoul256.vim') " seoul256
 	" light theme, just for fun, last update in 2006
 	call dein#add('vim-scripts/habiLight')
 
