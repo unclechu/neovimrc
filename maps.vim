@@ -88,6 +88,7 @@ nnoremap <leader><Space> :Denite -split=floating buffer<CR>
 nnoremap <Space><leader> :Denite -split=floating file_mru<CR>
 
 " GitGutter keys
+no <leader>gg :GitGutterAll<CR>
 nnoremap <leader>gv :GitGutterPreviewHunk<CR>
 nnoremap <Leader>ga :GitGutterStageHunk<CR>
 nnoremap <Leader>gr :GitGutterUndoHunk<CR>
