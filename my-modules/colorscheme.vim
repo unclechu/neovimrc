@@ -117,3 +117,30 @@ fu! g:ColorschemeCustomizations()
 		if stridx(v:exception, ':E121:') == -1 | echoe v:exception | en
 	endt
 endf
+
+let s:colorschemes = []
+
+fu! g:RefreshColorschemes()
+	let s:colorschemes = map(
+		\ globpath(&rtp, 'colors/*.vim', 0, 1), 'fnamemodify(v:val, ":t:r")')
+endf
+
+cal RefreshColorschemes()
+
+fu! g:SetColorscheme(colorscheme)
+	if index(s:colorschemes, a:colorscheme) >= 0
+		exec 'colo '.a:colorscheme
+		cal ColorschemeCustomizations()
+	el
+		th 'Colorscheme "'.a:colorscheme.'" not found'
+	en
+endf
+
+fu! s:complete(A, L, P)
+	let l:x = copy(s:colorschemes)
+	retu empty(a:A) ? l:x : filter(l:x, 'v:val[:strlen(a:A)-1] == a:A')
+endf
+
+com! RefreshColorschemes cal RefreshColorschemes()
+com! -nargs=1 -complete=customlist,s:complete Colorscheme
+	\ cal SetColorscheme(<q-args>)
