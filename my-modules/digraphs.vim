@@ -1,7 +1,7 @@
 " my own missed digraphs
 " Author: Viacheslav Lotsmanov
 
-digraphs '' 769    " accent mark (zero width) | 0x301
+digraphs `` 769    " accent mark (zero width) | 0x301
 digraphs 3. 8230   " … | 0x2026
 digraphs ++ 10746  " ⧺ | 0x29fa
 digraphs 3+ 10747  " ⧻ | 0x29fb
