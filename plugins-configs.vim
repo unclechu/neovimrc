@@ -130,11 +130,11 @@ try
 		\   '*.sw[po]', '*.bak', '*~', '*.o'
 		\ ])
 
-	call denite#custom#source('file_rec', 'matchers', ['matcher_ignore_globs'])
+	call denite#custom#source('file/rec', 'matchers', ['matcher_ignore_globs'])
 
-	call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+	call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 	call denite#custom#var(
-		\ 'file_rec/git',
+		\ 'file/rec/git',
 		\ 'command',
 		\ ['git', 'ls-files', '-co', '--exclude-standard']
 		\)
@@ -152,10 +152,6 @@ try
 
 	call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
 	call denite#custom#source('grep/git', 'converters', ['converter_abbr_word'])
-
-	" TODO FIXME denite
-	" call denite#custom#source('file_rec', 'max_candidates', 10)
-	" let g:unite_source_hoogle_max_candidates = 1000 " for haskell
 
 	call denite#custom#option('default', 'prompt', 'λ')
 	call denite#custom#option('default', 'smartcase', 1)
