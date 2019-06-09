@@ -20,16 +20,22 @@ fu! g:OpenPaddedFloating(buffer, ...)
 			let l:pad_y = l:pad_y / 2
 		el | th l:err | en
 	elsei len(a:000) == 2
-		if a:000[0] =~ s:intreg && a:000[1] =~ s:intreg
-			let l:pad_x = +a:000[0]
-			let l:pad_y = +a:000[1]
-		elsei a:000[0] =~ s:percentreg && a:000[1] =~ s:percentreg
-			let l:percent_x = 100 - matchstr(a:000[0], s:percentreg)
-			let l:percent_y = 100 - matchstr(a:000[1], s:percentreg)
-			let l:pad_x = &co    - (&co    * l:percent_x / 100)
-			let l:pad_y = &lines - (&lines * l:percent_y / 100)
-			let l:pad_x = l:pad_x / 2
-			let l:pad_y = l:pad_y / 2
+		if (a:000[0] =~ s:intreg || a:000[0] =~ s:percentreg)
+		\ && (a:000[1] =~ s:intreg || a:000[1] =~ s:percentreg)
+			if a:000[0] =~ s:intreg
+				let l:pad_x = +a:000[0]
+			elsei a:000[0] =~ s:percentreg
+				let l:percent_x = 100 - matchstr(a:000[0], s:percentreg)
+				let l:pad_x = &co - (&co * l:percent_x / 100)
+				let l:pad_x = l:pad_x / 2
+			en
+			if a:000[1] =~ s:intreg
+				let l:pad_y = +a:000[1]
+			elsei a:000[1] =~ s:percentreg
+				let l:percent_y = 100 - matchstr(a:000[1], s:percentreg)
+				let l:pad_y = &lines - (&lines * l:percent_y / 100)
+				let l:pad_y = l:pad_y / 2
+			en
 		el | th l:err | en
 	elsei len(a:000) != 0 | th l:err | en
 	
