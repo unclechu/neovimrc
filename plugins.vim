@@ -67,6 +67,8 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('wsdjeg/FlyGrep.vim')
 	call dein#add('junegunn/goyo.vim')
 	call dein#add('junegunn/limelight.vim')
+	call dein#add('jceb/vim-orgmode')
+	call dein#add('mattn/calendar-vim')
 
 	" surround
 	call dein#add('tpope/vim-surround')
