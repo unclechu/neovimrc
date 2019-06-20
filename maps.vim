@@ -50,7 +50,18 @@ if has('python3') || has('python')
 	inoremap <C-x><Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
 endif
 
-com! FZFGit call fzf#run({'source': 'git ls-files', 'sink': 'e', 'down': '40%'})
+com! FZFGit call fzf#run({
+	\ 'source': 'git ls-files',
+	\ 'sink': 'e',
+	\ 'down': '40%',
+	\ 'options': '--color=' . (&bg == 'light' ? 'light' : 'dark'),
+	\})
+
+com! FZFMy call fzf#run({
+	\ 'sink': 'e',
+	\ 'down': '40%',
+	\ 'options': '--color=' . (&bg == 'light' ? 'light' : 'dark'),
+	\})
 
 function! g:FuzzyGitFileMaps()
 	nnoremap <A-p> :tabnew<CR>:FZFGit<CR>
@@ -58,8 +69,8 @@ function! g:FuzzyGitFileMaps()
 endfunction
 
 " fuzzy search for a file
-nnoremap <A-p> :tabnew<CR>:FZF<CR>
-nnoremap <C-p> :FZF<CR>
+nnoremap <A-p> :tabnew<CR>:FZFMy<CR>
+nnoremap <C-p> :FZFMy<CR>
 nnoremap <leader>fg :FlyGrep<CR>
 nnoremap <leader>fG :tabnew<CR>:FlyGrep<CR>
 " Denite
