@@ -7,6 +7,8 @@ let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_disable_at_vimenter = 1
 
+let loaded_delimitMate = 0
+
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 " always show hidden files in NERDTree
 let NERDTreeShowLineNumbers = 1

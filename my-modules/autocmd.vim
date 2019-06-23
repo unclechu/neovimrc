@@ -102,7 +102,7 @@ autocmd BufNewFile,BufRead *.hsc set ft=haskell
 " because some custom `indentexpr`s has annoying issues
 autocmd FileType
 	\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx,typescript.jsx,
-	\haskell,purescript
+	\haskell,purescript,tcl
 	\ set indentexpr=
 
 autocmd FileType haskell call s:HaskellFTHook()
