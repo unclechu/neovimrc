@@ -74,8 +74,6 @@ endfunction
 " fuzzy search for a file
 nnoremap <A-p> :tabnew<CR>:FZFMy<CR>
 nnoremap <C-p> :FZFMy<CR>
-nnoremap <leader>fg :FlyGrep<CR>
-nnoremap <leader>fG :tabnew<CR>:FlyGrep<CR>
 
 " prevent triggering `s` when `<leader>s` is pressed
 " but next symbol not in time.

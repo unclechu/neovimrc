@@ -15,7 +15,6 @@ exe 'se rtp+=' .
 if dein#load_state($DEIN_BASE_PATH)
 	call dein#begin($DEIN_BASE_PATH)
 	call dein#add($DEIN_DIR, {'frozen': 1})
-	call dein#add('wsdjeg/dein-ui.vim')
 
 	" utils/functionality
 	call dein#add('scrooloose/nerdtree')
@@ -58,7 +57,6 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('ryanoasis/vim-devicons')
 	call dein#add('tpope/vim-dadbod')
 	call dein#add('yuttie/comfortable-motion.vim')
-	call dein#add('wsdjeg/FlyGrep.vim')
 	call dein#add('junegunn/goyo.vim')
 	call dein#add('junegunn/limelight.vim')
 	call dein#add('jceb/vim-orgmode')
