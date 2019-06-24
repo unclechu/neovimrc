@@ -9,6 +9,9 @@ nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>bd :ls<CR>:bd<space>
 nnoremap <leader>bD :ls<CR>:bd!<space>
 nnoremap <leader>bp :b#<CR>
+nnoremap <leader>bo :bro o<cr>
+nnoremap <leader><space> :ls<cr>
+nnoremap <space><leader> :o<cr>
 
 nnoremap <leader>r :let @/ = ''<CR>:ec 'Reset search'<CR>
 
@@ -73,10 +76,7 @@ nnoremap <A-p> :tabnew<CR>:FZFMy<CR>
 nnoremap <C-p> :FZFMy<CR>
 nnoremap <leader>fg :FlyGrep<CR>
 nnoremap <leader>fG :tabnew<CR>:FlyGrep<CR>
-" Denite
-" TODO FIXME denite (it's implemented for unite only)
-" nnoremap <leader>y  :Denite -split=floating history/yank -default-action=append<CR>
-nnoremap ''         :Denite -split=floating register<CR>
+
 " prevent triggering `s` when `<leader>s` is pressed
 " but next symbol not in time.
 " can't use `<Nop>` because it affects pressing this second time,
@@ -87,16 +87,6 @@ nnoremap <leader>s  <Esc>
 nnoremap <leader>sw <Esc>
 xnoremap <leader>s  <C-g><C-g>
 xnoremap <leader>sw <C-g><C-g>
-" sl - show lines
-nnoremap <leader>sl :Denite -split=floating line<CR>
-" sa - show all
-nnoremap <leader>sa :Denite -split=floating line:buffers<CR>
-nnoremap <leader>;  :Denite -split=floating menu:all<CR>
-xnoremap <leader>;  :Denite -split=floating menu:all<CR>
-nnoremap <leader>:  :Denite -split=floating<Space>
-" feels kinda like ctrlspace
-nnoremap <leader><Space> :Denite -split=floating buffer<CR>
-nnoremap <Space><leader> :Denite -split=floating file_mru<CR>
 
 " GitGutter keys
 no <leader>gg :GitGutterAll<CR>
@@ -182,16 +172,26 @@ fu! s:get_selected_text()
 	en
 endf
 
-" Denite grep/git shotcuts
+" escape quotes to put them inside double single quotes '...'
+fu! s:escq(x)
+	return substitute(substitute(a:x, '''', '&&', 'g'), '\"', '\\&', 'g')
+endf
+
+" git-grep shortcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
-nnoremap <leader>gf :Denite -split=floating grep/git:.:-F:''<Left>
-xnoremap <leader>gf <Esc>:Denite -split=floating
-	\ grep/git:.:-F:'<C-r>=<SID>get_selected_text()<CR>'<Left>
+nnoremap <leader>gf :exe'TE'\|put='git grep -- '.shellescape('').'<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left>
+xnoremap <leader>gf <Esc>:exe'TE'\|put='git grep -- '.
+	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').'<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left>
 xmap <leader>gF <leader>gf<CR>
-noremap <leader>gn :Denite -split=floating
-	\ grep/git:.:-F:'<C-R>=expand('<cword>')<CR>'<Left>
+noremap <leader>gn :exe'TE'\|put='git grep -- '.
+	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').'<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left>
 nmap <leader>gN <leader>gn<CR>
-nnoremap <leader>gp :Denite -split=floating grep/git:.:-F:'<C-R>/'<Left>
+nnoremap <leader>gp :exe'TE'\|put='git grep -- '.
+	\shellescape('<C-r>=<SID>escq(@/)').'<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left>
 nmap <leader>gP <leader>gp<CR>
 
 " CtrlSpace panel open
@@ -199,7 +199,7 @@ nnoremap <C-Space> :CtrlSpace<CR>
 
 " Make Hoogle search easier (because I use it very often)
 nnoremap <A-g> :Hoogle<space>
-xnoremap <A-g> <Esc>:Hoogle <C-r>=<SID>get_selected_text()<CR><CR>
+xnoremap <A-g> <Esc>:Hoogle <C-r>=<SID>escq(<SID>get_selected_text())<CR><CR>
 
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
@@ -409,6 +409,7 @@ noremap \| ,
 noremap ' "
 noremap " '
 noremap "" ''
+nnoremap '' :reg<CR>
 
 " custom behavior of big R in visual mode
 xnoremap R r<Space>R

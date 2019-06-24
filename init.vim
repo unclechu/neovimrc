@@ -12,7 +12,6 @@ let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
 
 exec 'source ' . $MYVIMRC_DIR . '/plugins.vim'
 exec 'source ' . $MYVIMRC_DIR . '/plugins-configs.vim'
-exec 'source ' . $MYVIMRC_DIR . '/menu.vim'
 
 " load my modules
 for module in split(expand($MYVIMRC_DIR . '/my-modules/**/*.vim'), '\n')

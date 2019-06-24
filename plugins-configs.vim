@@ -121,47 +121,6 @@ let g:perl6_unicode_abbrevs = 0
 let g:indexed_search_mappings = 0
 let g:indexed_search_numbered_only = 1
 
-try
-	call denite#custom#filter(
-		\ 'matcher_ignore_globs',
-		\ 'ignore_globs',
-		\ [ '.git/', '.hg/', '.bzr/', '.svn/',
-		\   '.cabal-sandbox/', '.stack-work/',
-		\   '.ropeproject/', '__pycache__/', 'venv/', '.venv/', '*.pyc',
-		\   'node_modules/', 'bower_components/',
-		\   '*.exe', '*.so', '*.dll',
-		\   '*.sw[po]', '*.bak', '*~', '*.o'
-		\ ])
-
-	call denite#custom#source('file/rec', 'matchers', ['matcher_ignore_globs'])
-
-	call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-	call denite#custom#var(
-		\ 'file/rec/git',
-		\ 'command',
-		\ ['git', 'ls-files', '-co', '--exclude-standard']
-		\)
-
-	call denite#custom#alias('source', 'grep/git', 'grep')
-	call denite#custom#var(
-		\ 'grep/git',
-		\ 'command',
-		\ ['git', 'grep', '-n', '--no-color'])
-	call denite#custom#var('grep/git', 'default_opts', [])
-	call denite#custom#var('grep/git', 'recursive_opts', [])
-	call denite#custom#var('grep/git', 'pattern_opt', [])
-	call denite#custom#var('grep/git', 'separator', ['--'])
-	call denite#custom#var('grep/git', 'final_opts', ['.'])
-
-	call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
-	call denite#custom#source('grep/git', 'converters', ['converter_abbr_word'])
-
-	call denite#custom#option('default', 'prompt', 'λ')
-	call denite#custom#option('default', 'smartcase', 1)
-catch
-	if stridx(v:exception, ':E117:') == -1 | echoe v:exception | endif
-endtry
-
 let g:limelight_default_coefficient = 0.75
 com! -nargs=? -bar -bang -range LL
 	\ <line1>,<line2>cal limelight#execute(<bang>0, <count> > 0, <f-args>)

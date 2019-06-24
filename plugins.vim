@@ -36,12 +36,6 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('haya14busa/incsearch-easymotion.vim')
 	call dein#add('tpope/vim-commentary')
 	call dein#add('tpope/vim-speeddating')
-	" call dein#add('Shougo/unite.vim')   " was before denite.nvim
-	call dein#add('Shougo/denite.nvim') " new replacement for unite
-	call dein#add('Shougo/neomru.vim')  " unite/denite 'file_mru'
-	" TODO FIXME denite
-	" call dein#add('Shougo/neoyank.vim') " unite clipboard history 'history/yank'
-	call dein#add('chemzqm/denite-git')
 	call dein#add('Shougo/deoplete.nvim') " async autocompletion
 	" call dein#add('autozimu/LanguageClient-neovim', {
 	" 	\ 'rev': 'next',
