@@ -98,6 +98,7 @@ autocmd BufNewFile,BufRead *.tsx set ft=typescript.jsx
 autocmd BufNewFile,BufRead Makefile set noexpandtab
 autocmd BufNewFile,BufRead nginx.conf set ft=nginx
 autocmd BufNewFile,BufRead *.hsc set ft=haskell
+autocmd BufNewFile,BufRead *.nj set ft=jinja
 
 " because some custom `indentexpr`s has annoying issues
 autocmd FileType

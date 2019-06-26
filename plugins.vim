@@ -137,6 +137,7 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('elzr/vim-json')
 	call dein#add('niklasl/vim-rdf')
 	call dein#add('mattn/emmet-vim')
+	call dein#add('glench/vim-jinja2-syntax')
 
 	" configs
 	call dein#add('vim-scripts/nginx.vim')
