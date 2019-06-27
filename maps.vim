@@ -177,17 +177,17 @@ endf
 
 " git-grep shortcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
-nnoremap <leader>gf :exe'TE'\|put='git grep -- '.shellescape('').'<C-v><CR>'
+nnoremap <leader>gf :exe'TE'\|put='git grep -F -- '.shellescape('').'<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left>
-xnoremap <leader>gf <Esc>:exe'TE'\|put='git grep -- '.
+xnoremap <leader>gf <Esc>:exe'TE'\|put='git grep -F -- '.
 	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').'<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left>
 xmap <leader>gF <leader>gf<CR>
-noremap <leader>gn :exe'TE'\|put='git grep -- '.
+noremap <leader>gn :exe'TE'\|put='git grep -F -- '.
 	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').'<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left>
 nmap <leader>gN <leader>gn<CR>
-nnoremap <leader>gp :exe'TE'\|put='git grep -- '.
+nnoremap <leader>gp :exe'TE'\|put='git grep -F -- '.
 	\shellescape('<C-r>=<SID>escq(@/)').'<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left>
 nmap <leader>gP <leader>gp<CR>
