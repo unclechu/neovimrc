@@ -15,7 +15,7 @@ How to use
 2. Install dependencies:
 
   ```bash
-  $ nvim '+call dein#update()'
+  $ nvim +PlugInstall!
   ```
 
 Author

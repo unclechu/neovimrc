@@ -1,184 +1,159 @@
 " plugins loading
 " Author: Viacheslav Lotsmanov
 
-if $DEIN_DIR == '' | let $DEIN_DIR = $HOME . '/.config/nvim/dein' | en
+if $PLUGINS_DIR == '' | let $PLUGINS_DIR = $HOME.'/.cache/neovim-plugins' | en
+se rtp+=$PLUGINS_DIR/tomorrow-theme/vim
+cal plug#begin($PLUGINS_DIR)
 
-if $DEIN_BASE_PATH == ''
-	let $DEIN_BASE_PATH = $HOME . '/.cache/nvim-dein-plugins'
-en
+" utils/functionality
+Plug 'scrooloose/nerdtree'
+" Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
+Plug 'henrik/vim-indexed-search'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'SirVer/ultisnips'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-speeddating'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf'
+Plug 'sjl/gundo.vim'
+Plug 'mhinz/vim-startify'
+Plug 'mileszs/ack.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'raimondi/delimitmate'
+Plug 'dyng/ctrlsf.vim'
+Plug 't9md/vim-quickhl'
+Plug 'tweekmonster/braceless.vim'
+Plug 'equalsraf/neovim-gui-shim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-dadbod'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'jceb/vim-orgmode'
+Plug 'mattn/calendar-vim'
 
-se rtp+=$DEIN_DIR
+" surround
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'wellle/targets.vim'
 
-exe 'se rtp+=' .
-	\ $DEIN_BASE_PATH . '/repos/github.com/chriskempson/tomorrow-theme/vim'
+" linting
+Plug 'neomake/neomake'
+Plug 'sbdchd/neoformat'
 
-if dein#load_state($DEIN_BASE_PATH)
-	call dein#begin($DEIN_BASE_PATH)
-	call dein#add($DEIN_DIR, {'frozen': 1})
+" git
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-	" utils/functionality
-	call dein#add('scrooloose/nerdtree')
-	" dein#add('jistr/vim-nerdtree-tabs')
-	call dein#add('scrooloose/nerdcommenter')
-	call dein#add('editorconfig/editorconfig-vim')
-	call dein#add('junegunn/vim-easy-align')
-	call dein#add('godlygeek/tabular')
-	call dein#add('henrik/vim-indexed-search')
-	call dein#add('terryma/vim-multiple-cursors')
-	call dein#add('nathanaelkane/vim-indent-guides')
-	call dein#add('majutsushi/tagbar')
-	call dein#add('vim-airline/vim-airline')
-	call dein#add('vim-airline/vim-airline-themes')
-	call dein#add('vim-ctrlspace/vim-ctrlspace')
-	call dein#add('SirVer/ultisnips')
-	call dein#add('haya14busa/incsearch.vim')
-	call dein#add('haya14busa/incsearch-easymotion.vim')
-	call dein#add('tpope/vim-commentary')
-	call dein#add('tpope/vim-speeddating')
-	" call dein#add('autozimu/LanguageClient-neovim', {
-	" 	\ 'rev': 'next',
-	" 	\ 'build': 'bash install.sh',
-	" 	\ })
-	call dein#add('w0rp/ale') " replacement for 'autozimu/LanguageClient-neovim'
-	call dein#add('junegunn/fzf')
-	call dein#add('sjl/gundo.vim')
-	call dein#add('mhinz/vim-startify')
-	call dein#add('mileszs/ack.vim')
-	" dein#add('embear/vim-localvimrc')
-	call dein#add('easymotion/vim-easymotion')
-	" call dein#add('matze/vim-move')
-	call dein#add('raimondi/delimitmate')
-	call dein#add('dyng/ctrlsf.vim')
-	call dein#add('t9md/vim-quickhl')
-	call dein#add('tweekmonster/braceless.vim')
-	call dein#add('equalsraf/neovim-gui-shim')
-	" dein#add('blueyed/vim-diminactive') " works bad with NERDTree for example
-	call dein#add('ryanoasis/vim-devicons')
-	call dein#add('tpope/vim-dadbod')
-	call dein#add('yuttie/comfortable-motion.vim')
-	call dein#add('junegunn/goyo.vim')
-	call dein#add('junegunn/limelight.vim')
-	call dein#add('jceb/vim-orgmode')
-	call dein#add('mattn/calendar-vim')
+" haskell
+" Plug 'unclechu/vim-my-haskell' " my old fork for syntax
+" Plug 'neovimhaskell/haskell-vim'
+Plug 'unclechu/haskell-vim' " my fork with unicode support
+Plug 'unclechu/lushtags'
+Plug 'twinside/vim-hoogle'
+Plug 'itchyny/vim-haskell-indent'
 
-	" surround
-	call dein#add('tpope/vim-surround')
-	call dein#add('tpope/vim-repeat')
-	call dein#add('wellle/targets.vim')
+" purescript
+Plug 'raichoo/purescript-vim'
 
-	" linting
-	" dein#add('scrooloose/syntastic')
-	call dein#add('neomake/neomake')
-	call dein#add('sbdchd/neoformat')
+" perl
+Plug 'vim-perl/vim-perl6'
 
-	" git
-	call dein#add('xuyuanp/nerdtree-git-plugin')
-	call dein#add('tpope/vim-fugitive')
-	call dein#add('airblade/vim-gitgutter')
+" faust
+Plug 'gmoe/vim-faust'
 
-	" haskell
-	" call dein#add('unclechu/vim-my-haskell') " my old fork for syntax
-	" call dein#add('neovimhaskell/haskell-vim')
-	call dein#add('unclechu/haskell-vim') " my fork with unicode support
-	call dein#add('unclechu/lushtags')
-	call dein#add('twinside/vim-hoogle')
-	call dein#add('itchyny/vim-haskell-indent')
+" nim
+Plug 'zah/nim.vim'
+" Plug 'unclechu/nvim-nim'
 
-	" purescript
-	call dein#add('raichoo/purescript-vim')
+" kotlin
+Plug 'udalov/kotlin-vim'
 
-	" perl
-	call dein#add('vim-perl/vim-perl6')
+" lisp
+"   clojure
+Plug 'clojure-emacs/cider-nrepl'
+Plug 'tpope/vim-fireplace'
+Plug 'kien/rainbow_parentheses.vim'
+"   racket
+Plug 'wlangstroth/vim-racket'
 
-	" faust
-	call dein#add('gmoe/vim-faust')
+" asscript
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'flowtype/vim-flow'
 
-	" nim
-	call dein#add('zah/nim.vim')
-	" call dein#add('unclechu/nvim-nim')
+" coffee/live-script
+Plug 'kchmck/vim-coffee-script'
+Plug 'gkz/vim-ls'
 
-	" kotlin
-	call dein#add('udalov/kotlin-vim')
+" typescript
+" also: http://vimawesome.com/plugin/typescript-tools
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
-	" lisp
-	"   clojure
-	call dein#add('clojure-emacs/cider-nrepl')
-	call dein#add('tpope/vim-fireplace')
-	call dein#add('kien/rainbow_parentheses.vim')
-	"   racket
-	call dein#add('wlangstroth/vim-racket')
+" styles
+Plug 'groenewege/vim-less'
+Plug 'wavded/vim-stylus'
+Plug 'ap/vim-css-color'
 
-	" asscript
-	call dein#add('pangloss/vim-javascript')
-	call dein#add('mxw/vim-jsx')
-	call dein#add('flowtype/vim-flow')
+" markup/data
+Plug 'plasticboy/vim-markdown'
+Plug 'digitaltoad/vim-pug'
+Plug 'briancollins/vim-jst'
+Plug 'chase/vim-ansible-yaml'
+Plug 'elzr/vim-json'
+Plug 'niklasl/vim-rdf'
+Plug 'mattn/emmet-vim'
+Plug 'glench/vim-jinja2-syntax'
 
-	" coffee/live-script
-	call dein#add('kchmck/vim-coffee-script')
-	call dein#add('gkz/vim-ls')
+" configs
+Plug 'vim-scripts/nginx.vim'
 
-	" typescript
-	" also: http://vimawesome.com/plugin/typescript-tools
-	call dein#add('leafgarland/typescript-vim')
-	call dein#add('Quramy/tsuquyomi')
+" sql
+Plug 'exu/pgsql.vim'
 
-	" styles
-	call dein#add('groenewege/vim-less')
-	call dein#add('wavded/vim-stylus')
-	call dein#add('ap/vim-css-color')
+" colorschemes
+Plug 'morhetz/gruvbox' " gruvbox
+Plug 'tomasr/molokai' " molokai
+Plug 'Lokaltog/vim-distinguished' " distinguished
+Plug 'nanotech/jellybeans.vim' " jellybeans
+Plug 'rakr/vim-one' " one (supports 'bg' option)
+Plug 'trevordmiller/nova-vim' " nova
+Plug 'liuchengxu/space-vim-theme' " space_vim_theme
+Plug 'antlypls/vim-colors-codeschool' " codeschool
+Plug 'vim-scripts/TuttiColori-Colorscheme' " tutticolori
+Plug 'vim-scripts/railscasts'
+Plug 'vim-scripts/twilight'
+" solarized8 solarized8_flat solarized8_high solarized8_low
+Plug 'lifepillar/vim-solarized8'
+Plug 'fenetikm/falcon'
+Plug 'challenger-deep-theme/vim' " challenger_deep
+Plug 'mhinz/vim-janah' " janah
+Plug 'mhartington/oceanic-next' " OceanicNext OceanicNextLight
+" let g:airline_theme = 'onedark'
+Plug 'joshdick/onedark.vim' " onedark
+Plug 'sickill/vim-monokai' " monokai (not very good for haskell)
+Plug 'junegunn/seoul256.vim' " seoul256 seoul256-light
+" light theme, just for fun, last update in 2006
+Plug 'vim-scripts/habiLight'
+" it's not actually just a vim plugin (see patching &rtp above).
+" Tomorrow-Night-Blue Tomorrow-Night-Bright Tomorrow-Night-Eighties
+" Tomorrow-Night Tomorrow
+Plug 'chriskempson/tomorrow-theme'
 
-	" markup/data
-	call dein#add('plasticboy/vim-markdown')
-	call dein#add('digitaltoad/vim-pug')
-	call dein#add('briancollins/vim-jst')
-	call dein#add('chase/vim-ansible-yaml')
-	call dein#add('elzr/vim-json')
-	call dein#add('niklasl/vim-rdf')
-	call dein#add('mattn/emmet-vim')
-	call dein#add('glench/vim-jinja2-syntax')
+" utils
+Plug 'sl4m/left-pad.vim'
 
-	" configs
-	call dein#add('vim-scripts/nginx.vim')
-
-	" sql
-	call dein#add('exu/pgsql.vim')
-
-	" colorschemes
-	call dein#add('morhetz/gruvbox') " gruvbox
-	call dein#add('tomasr/molokai') " molokai
-	call dein#add('Lokaltog/vim-distinguished') " distinguished
-	call dein#add('nanotech/jellybeans.vim') " jellybeans
-	call dein#add('rakr/vim-one') " one (supports 'bg' option)
-	call dein#add('trevordmiller/nova-vim') " nova
-	call dein#add('liuchengxu/space-vim-theme') " space_vim_theme
-	call dein#add('antlypls/vim-colors-codeschool') " codeschool
-	call dein#add('vim-scripts/TuttiColori-Colorscheme') " tutticolori
-	call dein#add('vim-scripts/railscasts')
-	call dein#add('vim-scripts/twilight')
-	" solarized8 solarized8_flat solarized8_high solarized8_low
-	call dein#add('lifepillar/vim-solarized8')
-	call dein#add('fenetikm/falcon')
-	call dein#add('challenger-deep-theme/vim') " challenger_deep
-	call dein#add('mhinz/vim-janah') " janah
-	call dein#add('mhartington/oceanic-next') " OceanicNext OceanicNextLight
-	" let g:airline_theme = 'onedark'
-	call dein#add('joshdick/onedark.vim') " onedark
-	call dein#add('sickill/vim-monokai') " monokai (not very good for haskell)
-	call dein#add('junegunn/seoul256.vim') " seoul256 seoul256-light
-	" light theme, just for fun, last update in 2006
-	call dein#add('vim-scripts/habiLight')
-	" it's not actually just a vim plugin (see patching &rtp above).
-	" Tomorrow-Night-Blue Tomorrow-Night-Bright Tomorrow-Night-Eighties
-	" Tomorrow-Night Tomorrow
-	call dein#add('chriskempson/tomorrow-theme')
-
-	" utils
-	call dein#add('sl4m/left-pad.vim')
-
-	call dein#end()
-	call dein#save_state()
-en
-
-" from dein's readme
-filet plugin indent on
-sy enable
+cal plug#end()

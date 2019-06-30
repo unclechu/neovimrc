@@ -1,3 +1,3 @@
-[submodule "dein"]
-	path = dein
-	url = https://github.com/Shougo/dein.vim
+[submodule "vim-plug"]
+	path = vim-plug
+	url = https://github.com/junegunn/vim-plug
