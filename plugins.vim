@@ -40,7 +40,8 @@ Plug 'tpope/vim-dadbod'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'jceb/vim-orgmode'
+" Plug 'jceb/vim-orgmode'
+Plug 'jonathanbranam/vim-orgmode' " less dead fork
 Plug 'mattn/calendar-vim'
 
 " surround
