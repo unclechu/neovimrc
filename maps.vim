@@ -383,8 +383,9 @@ nmap g?        <Plug>(incsearch-easymotion-?)
 nmap <leader>/ <Plug>(incsearch-easymotion-stay)
 
 " get rid off randomly turning ex-mode on
-nmap Q  <Nop>
-nmap gQ <Nop>
+nm Q     <Nop>
+nm gQ    <Nop>
+nm <A-Q> <Nop>
 
 " remap macros key under leader
 " default 'q' remapped to easymotion call
