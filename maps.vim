@@ -553,8 +553,6 @@ nnoremap <A-w> :tabclose<CR>
 xnoremap <A-i> ym0gvc<Esc>`0:call<space>IndentText()<CR>
 xnoremap <A-S-i> ym0gvI<Esc>`0:call<space>IndentText()<CR>
 
-inoremap <expr> <A-n> deoplete#manual_complete()
-
 " pasting from default buffer in insert/cmdline mode
 no! <A-p> <C-r>"
 no! <A-y> <C-r>0

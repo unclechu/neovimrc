@@ -95,9 +95,6 @@ let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 
 let g:gitgutter_map_keys = 0
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 1
-
 let g:tsuquyomi_disable_quickfix = 1
 
 let g:haskellmode_completion_ghc = 0 " disable haskell-vim omnifunc

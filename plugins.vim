@@ -35,7 +35,6 @@ if dein#load_state($DEIN_BASE_PATH)
 	call dein#add('haya14busa/incsearch-easymotion.vim')
 	call dein#add('tpope/vim-commentary')
 	call dein#add('tpope/vim-speeddating')
-	call dein#add('Shougo/deoplete.nvim') " async autocompletion
 	" call dein#add('autozimu/LanguageClient-neovim', {
 	" 	\ 'rev': 'next',
 	" 	\ 'build': 'bash install.sh',
@@ -121,7 +120,6 @@ if dein#load_state($DEIN_BASE_PATH)
 	" typescript
 	" also: http://vimawesome.com/plugin/typescript-tools
 	call dein#add('leafgarland/typescript-vim')
-	call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 	call dein#add('Quramy/tsuquyomi')
 
 	" styles
