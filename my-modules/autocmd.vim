@@ -20,9 +20,9 @@ aug my#filetype_hooks | au!
 	au FileType
 		\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx,typescript.jsx,
 		\haskell,purescript,tcl,vim
-		\ se inde=
+		\ setl inde=
 
-	au FileType Makefile se noet
+	au FileType Makefile setl noet
 
 	au FileType haskell
 		\ setl et ts=2 sts=2 sw=2
@@ -31,14 +31,14 @@ aug my#filetype_hooks | au!
 	au FileType cabal setl et ts=2 sts=2 sw=2
 	au FileType python setl ts=4 sts=4 sw=4
 
-	fu! s:NimFTHook()
-		" nn <buffer> <c-]> :NimDefinition<cr>
-		" nn <buffer> gf    :cal util#goto_file()<cr>
-	endf
-	au FileType nim cal s:NimFTHook()
+	" au FileType nim
+	" 	\ nn <buffer> <c-]> :NimDefinition<cr>
+	" 	\ | nn <buffer> gf :cal util#goto_file()<cr>
 
 	au FileType gitcommit setl cc=73 tw=72
 	au FileType nerdtree setl nolist
+	au FileType markdown setl et ts=2 sts=2 sw=2
+	au FileType org setl tw=0
 aug END
 
 aug my#insert_mode_hooks | au!
