@@ -5,7 +5,7 @@
 # (it will replace current `:terminal` buffer with selected file).
 #
 # "whiptail" app is required for this script.
-# Make sure its in your `$PATH`.
+# Make sure "whiptail" and this script are both in your `$PATH`.
 #
 # Use it like this:
 #   git grep -nF -- foo | git-grep-nvr.sh
