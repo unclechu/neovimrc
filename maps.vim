@@ -182,32 +182,107 @@ endf
 
 " git-grep shortcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
-nn <leader>gf :exe'TE'\|put='git grep -nIF -- '.shellescape('').
+" normal mode: this window
+nn <leader>gf :exe'te'\|put='git grep -nIF -- '.shellescape('').
+	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" normal mode: new window (horizontal split)
+nn <space>gf :exe'TE'\|put='git grep -nIF -- '.shellescape('').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left>
-xn <leader>gf <Esc>:exe'TE'\|put='git grep -nIF -- '.
+" normal mode: new window (vertical split)
+nn <space>Gf :exe'VTE'\|put='git grep -nIF -- '.shellescape('').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+" normal mode: improve UX when press wrong keys
+nn <leader>g <Nop>
+nn <space>g <Nop>
+nn <space>G <Nop>
+" visual mode: this window
+xn <leader>gf <Esc>:exe'te'\|put='git grep -nIF -- '.
+	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" visual mode: new window (horizontal split)
+xn <space>gf <Esc>:exe'TE'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left>
+" visual mode: new window (vertical split)
+xn <space>Gf <Esc>:exe'VTE'\|put='git grep -nIF -- '.
+	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+" visual mode: improve UX when press wrong keys
+xn <leader>g <Nop>
+xn <space>g <Nop>
+xn <space>G <Nop>
+" visual mode: trigger immediately, without pressing enter
 xm <leader>gF <leader>gf<CR>
-no <leader>gn :exe'TE'\|put='git grep -nIF -- '.
+xm <space>gF <space>gf<CR>
+xm <space>GF <space>Gf<CR>
+" word under cursor: this window
+no <leader>gn :exe'te'\|put='git grep -nIF -- '.
+	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" word under cursor: new window (horizontal split)
+no <space>gn :exe'TE'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left>
+" word under cursor: new window (vertical split)
+no <space>Gn :exe'VTE'\|put='git grep -nIF -- '.
+	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+" word under cursor: trigger immediately, without pressing enter
 nm <leader>gN <leader>gn<CR>
-nn <leader>gp :exe'TE'\|put='git grep -nIF -- '.
+nm <space>gN <space>gn<CR>
+nm <space>GN <space>Gn<CR>
+" from highlighted search: this window
+nn <leader>gp :exe'te'\|put='git grep -nIF -- '.
+	\shellescape('<C-r>=<SID>escq(@/)<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" from highlighted search: new window (horizontal split)
+nn <space>gp :exe'TE'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(@/)<CR>').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left>
+" from highlighted search: new window (vertical split)
+nn <space>Gp :exe'VTE'\|put='git grep -nIF -- '.
+	\shellescape('<C-r>=<SID>escq(@/)<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+" from highlighted search: trigger immediately, without pressing enter
 nm <leader>gP <leader>gp<CR>
+nm <space>gP <space>gp<CR>
+nm <space>GP <space>Gp<CR>
 
 " CtrlSpace panel open
 nnoremap <C-Space> :CtrlSpace<CR>
