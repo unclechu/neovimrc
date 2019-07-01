@@ -182,26 +182,26 @@ endf
 
 " git-grep shortcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
-nn <leader>gf :exe'TE'\|put='git grep -nF -- '.shellescape('').
+nn <leader>gf :exe'TE'\|put='git grep -nIF -- '.shellescape('').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left>
-xn <leader>gf <Esc>:exe'TE'\|put='git grep -nF -- '.
+xn <leader>gf <Esc>:exe'TE'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left>
 xm <leader>gF <leader>gf<CR>
-no <leader>gn :exe'TE'\|put='git grep -nF -- '.
+no <leader>gn :exe'TE'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 	\<Left><Left><Left><Left><Left>
 nm <leader>gN <leader>gn<CR>
-nn <leader>gp :exe'TE'\|put='git grep -nF -- '.
+nn <leader>gp :exe'TE'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(@/)<CR>').
 	\' \\| git-grep-nvr.sh<C-v><CR>'
 	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>

@@ -8,9 +8,9 @@
 # Make sure "whiptail" and this script are both in your `$PATH`.
 #
 # Use it like this:
-#   git grep -nF -- foo | git-grep-nvr.sh
+#   git grep -nIF -- foo | git-grep-nvr.sh
 #
-# `-n` is required for `git grep` command.
+# `-n` and `-I` are required for `git grep` command.
 #
 # Author: Viacheslav Lotsmanov
 #
@@ -25,7 +25,10 @@ while read -r match; do
 	line=${contents%%:*}
 	contents=${contents#*:} # slicing line number
 	if ! [[ $line =~ ^[0-9]+$ ]]; then
-		echo 'Line number is incorrect, you probably forgot to add -n' >&2
+		echo \
+			'Line number is incorrect, you probably forgot to add ' \
+			'`-n` and/or `-I` to `git grep` command.' >&2
+		printf $"Line that failed to parse: \"%s\"\n" "$match" >&2
 		exit 1
 	fi
 	options+=("$line:$file" "$contents")
