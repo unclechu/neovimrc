@@ -172,25 +172,37 @@ endf
 
 " escape quotes to put them inside double single quotes '...'
 fu! s:escq(x)
-	return substitute(substitute(a:x, '''', '&&', 'g'), '\"', '\\&', 'g')
+	retu substitute(substitute(a:x, '''', '&&', 'g'), '\"', '\\&', 'g')
 endf
 
 " git-grep shortcuts
 " (kinda like CtrlSF maps but with 'g' instead of 's')
-nnoremap <leader>gf :exe'TE'\|put='git grep -F -- '.shellescape('').'<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left>
-xnoremap <leader>gf <Esc>:exe'TE'\|put='git grep -F -- '.
-	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').'<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left>
-xmap <leader>gF <leader>gf<CR>
-noremap <leader>gn :exe'TE'\|put='git grep -F -- '.
-	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').'<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left>
-nmap <leader>gN <leader>gn<CR>
-nnoremap <leader>gp :exe'TE'\|put='git grep -F -- '.
-	\shellescape('<C-r>=<SID>escq(@/)').'<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left>
-nmap <leader>gP <leader>gp<CR>
+nn <leader>gf :exe'TE'\|put='git grep -nF -- '.shellescape('').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+xn <leader>gf <Esc>:exe'TE'\|put='git grep -nF -- '.
+	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+xm <leader>gF <leader>gf<CR>
+no <leader>gn :exe'TE'\|put='git grep -nF -- '.
+	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+nm <leader>gN <leader>gn<CR>
+nn <leader>gp :exe'TE'\|put='git grep -nF -- '.
+	\shellescape('<C-r>=<SID>escq(@/)<CR>').
+	\' \\| git-grep-nvr.sh<C-v><CR>'
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+	\<Left><Left><Left><Left><Left>
+nm <leader>gP <leader>gp<CR>
 
 " CtrlSpace panel open
 nnoremap <C-Space> :CtrlSpace<CR>
