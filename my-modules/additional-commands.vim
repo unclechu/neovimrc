@@ -4,4 +4,6 @@
 com! TE  new | exe 'te' | star
 com! VTE vne | exe 'te' | star
 
+com! MakeTags !ctags -R .
+
 " vim: set noet :

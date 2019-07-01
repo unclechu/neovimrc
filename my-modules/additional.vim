@@ -2,7 +2,11 @@
 " Author: Viacheslav Lotsmanov
 
 
-command! MakeTags !ctags -R .
+let g:rfc822 = '%a, %d %b %Y %H:%M:%S %z'
+let g:orgdf = '<%Y-%m-%d %a>'
+let g:orgdfi = '<%Y-%m-%d %a>--<%Y-%m-%d %a>'
+let g:orgtf = '<%Y-%m-%d %a %H:%M>'
+let g:orgtfi = '<%Y-%m-%d %a %H:%M-%H:%M>'
 
 
 function! g:IndentText()
