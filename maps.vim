@@ -172,7 +172,12 @@ endf
 
 " escape quotes to put them inside double single quotes '...'
 fu! s:escq(x)
-	retu substitute(substitute(a:x, '''', '&&', 'g'), '\"', '\\&', 'g')
+	retu substitute(
+		\substitute(
+		\substitute(
+		\ a:x, '''', '&&', 'g'),
+		\ '\"', '\\&', 'g'),
+		\ '|', ("'.'".'\\|'."'.'"), 'g')
 endf
 
 " git-grep shortcuts

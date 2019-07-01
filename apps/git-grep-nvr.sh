@@ -19,7 +19,7 @@ set -e
 options=()
 
 # reading git-grep output from stdin
-while read match; do
+while read -r match; do
 	file=${match%%:*}
 	contents=${match#*:}
 	line=${contents%%:*}
