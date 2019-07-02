@@ -59,6 +59,46 @@ nn <leader>Gs :GFiles?<CR>
 nn <leader>GS :GFiles!?<CR>
 nn <leader>G  <Nop>
 
+" escapes pipe symbol for `:GitGrep`
+fu! s:escgg(x)
+	retu substitute(a:x, ' |', ' \\|', 'g')
+endf
+
+" git-grep shortcuts (kinda like CtrlSF maps but with 'g' instead of 's').
+" <leader> for regular window, <space> for fullscreen mode.
+" 'i' in key map is for case-insensitive flag.
+" regular grep
+nn <leader>gf  :GitGrep -F |  nn <space>gf  :GitGrep! -F<space>
+nn <leader>gif :GitGrep -iF | nn <space>gif :GitGrep! -iF<space>
+" grep by visually selected text
+xn <leader>gf  <Esc>:GitGrep -F <C-r>=  <SID>escgg(<SID>get_selected_text())<CR>
+xn  <space>gf  <Esc>:GitGrep! -F <C-r>= <SID>escgg(<SID>get_selected_text())<CR>
+xn <leader>gif <Esc>:GitGrep -iF <C-r>= <SID>escgg(<SID>get_selected_text())<CR>
+xn  <space>gif <Esc>:GitGrep! -iF <C-r>=<SID>escgg(<SID>get_selected_text())<CR>
+" grep by word under cusror
+no <leader>gn  :GitGrep -F <C-r>=  <SID>escgg(expand('<cword>'))<CR>
+no  <space>gn  :GitGrep! -F <C-r>= <SID>escgg(expand('<cword>'))<CR>
+no <leader>gin :GitGrep -iF <C-r>= <SID>escgg(expand('<cword>'))<CR>
+no  <space>gin :GitGrep! -iF <C-r>=<SID>escgg(expand('<cword>'))<CR>
+" grep by currently highlighted search string.
+" '-E' by default, because usually it's a highlighted word, like '\<word\>'.
+nn <leader>gp  :GitGrep -E <C-r>=  <SID>escgg(@/)<CR>
+nn  <space>gp  :GitGrep! -E <C-r>= <SID>escgg(@/)<CR>
+nn <leader>gip :GitGrep -iE <C-r>= <SID>escgg(@/)<CR>
+nn  <space>gip :GitGrep! -iE <C-r>=<SID>escgg(@/)<CR>
+" shortcuts to grep immediately, without previewing command
+xm <leader>gF  <leader>gf<CR>|  xm <space>gF  <space>gf<CR>
+xm <leader>giF <leader>gif<CR>| xm <space>giF <space>gif<CR>
+nm <leader>gN  <leader>gn<CR>|  nm <space>gN  <space>gn<CR>
+nm <leader>giN <leader>gin<CR>| nm <space>giN <space>gin<CR>
+nm <leader>gP  <leader>gp<CR>|  nm <space>gP  <space>gp<CR>
+nm <leader>giP <leader>gip<CR>| nm <space>giP <space>gip<CR>
+" no mess caused by pressing wrong keys
+nn <leader>g  <Nop>| xn <leader>g  <Nop>
+nn <leader>gi <Nop>| xn <leader>gi <Nop>
+nn  <space>g  <Nop>| xn  <space>g  <Nop>
+nn  <space>gi <Nop>| xn  <space>gi <Nop>
+
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 nn <leader>n  :NERDTreeToggle<CR>
@@ -174,110 +214,6 @@ fu! s:escq(x)
 	\ '\"', '\\&', 'g'),
 	\ '|', ("'.'".'\\|'."'.'"), 'g')
 endf
-
-" git-grep shortcuts
-" (kinda like CtrlSF maps but with 'g' instead of 's')
-" normal mode: this window
-nn <leader>gf :exe'te'\|put='git grep -nIF -- '.shellescape('').
-	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" normal mode: new window (horizontal split)
-nn <space>gf :exe'TE'\|put='git grep -nIF -- '.shellescape('').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" normal mode: new window (vertical split)
-nn <space>Gf :exe'VTE'\|put='git grep -nIF -- '.shellescape('').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" normal mode: improve UX when press wrong keys
-nn <leader>g <Nop>
-nn  <space>g <Nop>
-nn  <space>G <Nop>
-" visual mode: this window
-xn <leader>gf <Esc>:exe'te'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" visual mode: new window (horizontal split)
-xn <space>gf <Esc>:exe'TE'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" visual mode: new window (vertical split)
-xn <space>Gf <Esc>:exe'VTE'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" visual mode: improve UX when press wrong keys
-xn <leader>g <Nop>
-xn  <space>g <Nop>
-xn  <space>G <Nop>
-" visual mode: trigger immediately, without pressing enter
-xm <leader>gF <leader>gf<CR>
-xm  <space>gF  <space>gf<CR>
-xm  <space>GF  <space>Gf<CR>
-" word under cursor: this window
-no <leader>gn :exe'te'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" word under cursor: new window (horizontal split)
-no <space>gn :exe'TE'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" word under cursor: new window (vertical split)
-no <space>Gn :exe'VTE'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" word under cursor: trigger immediately, without pressing enter
-nm <leader>gN <leader>gn<CR>
-nm  <space>gN  <space>gn<CR>
-nm  <space>GN  <space>Gn<CR>
-" from highlighted search: this window
-nn <leader>gp :exe'te'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(@/)<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'\|star
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" from highlighted search: new window (horizontal split)
-nn <space>gp :exe'TE'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(@/)<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" from highlighted search: new window (vertical split)
-nn <space>Gp :exe'VTE'\|put='git grep -nIF -- '.
-	\shellescape('<C-r>=<SID>escq(@/)<CR>').
-	\' \\| git-grep-nvr.sh<C-v><CR>'
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-	\<Left><Left><Left><Left><Left>
-" from highlighted search: trigger immediately, without pressing enter
-nm <leader>gP <leader>gp<CR>
-nm  <space>gP  <space>gp<CR>
-nm  <space>GP  <space>Gp<CR>
 
 
 " Make Hoogle search easier (because I use it very often)
@@ -472,6 +408,7 @@ xm <S-PageDown> <C-f>
 nm Q     <Nop>
 nm gQ    <Nop>
 nm <A-Q> <Nop>
+im <A-Q> <Nop>
 
 " remap macros key under leader
 " default 'q' remapped to easymotion call
@@ -558,13 +495,13 @@ im <A-Space> <Space><Left>
 
 " custom numbers line keys
 
-nn  ! #:ShowSearchIndex<CR>
+nn ! #:ShowSearchIndex<CR>
 nn g! :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
-xn  ! :<C-u>cal VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
+xn ! :<C-u>cal VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
 xn g! :<C-u>cal VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
-nn  @ *:ShowSearchIndex<CR>
+nn @ *:ShowSearchIndex<CR>
 nn g@ :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
-xn  @ :<C-u>cal VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
+xn @ :<C-u>cal VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
 xn g@ :<C-u>cal VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
 " no ! #
 " no @ *
