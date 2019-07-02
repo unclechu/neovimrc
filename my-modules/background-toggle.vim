@@ -8,7 +8,7 @@ fu! s:BackgroundToggle()
 		se bg=dark
 	en
 
-	call g:ColorschemeCustomizations()
+	cal g:ColorschemeCustomizations()
 endf
 
 fu! s:GruvboxContrastRotate()

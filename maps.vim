@@ -10,16 +10,55 @@ nn <leader>bd :ls<CR>:bd<space>
 nn <leader>bD :ls<CR>:bd!<space>
 nn <leader>bp :b#<CR>
 nn <leader>bo :bro o<cr>
-nn <leader><space> :ls<cr>
-nn <space><leader> :o<cr>
 
 nn <leader>r :let @/ = ''<CR>:ec 'Reset search'<CR>
 
 " 'cr' means 'config reload'
 nn <leader>cr :so $MYVIMRC<CR>
 
+
 " CtrlSpace panel open
 nn <C-Space> :CtrlSpace<CR>
+
+
+" FZF
+
+fu! g:FuzzyGitFileMaps()
+	nn         <A-p> :tabnew<CR>:GitFiles!<CR>
+	nn         <C-p> :GitFiles<CR>
+	nn <leader><C-p> :GitFiles!<CR>
+endf
+
+" fuzzy search for a file
+nn         <A-p> :tabnew<CR>:Files!<CR>
+nn         <C-p> :Files<CR>
+nn <leader><C-p> :Files!<CR>
+
+" fuzzy commands and commands history
+nn :         :Commands<CR>
+nn <leader>; :History:<CR>
+
+" fuzzy buffers, windows and mru
+nn <leader><space> :Buffers<CR>
+nn <leader><C-w>   :Windows<CR>
+nn <space><leader> :History<CR>
+nn <space><        :History!<CR>
+
+" fuzzy search over lines
+nn <leader>sa :Lines<CR>
+nn <leader>sl :BLines<CR>
+
+" fuzzy marks
+nn <leader>sm :Marks<CR>
+
+" fuzzy search history
+nn <leader>? :History/<CR>
+
+" fuzzy git status files
+nn <leader>Gs :GFiles?<CR>
+nn <leader>GS :GFiles!?<CR>
+nn <leader>G  <Nop>
+
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 nn <leader>n  :NERDTreeToggle<CR>
@@ -29,51 +68,7 @@ nn <leader>fo :NERDTreeFind<CR><C-w>p
 nn <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
 nn <leader>t  :TagbarToggle<CR>
 nn <leader>u  :GundoToggle<CR>
-nn <leader>'  :cal LanguageClient_contextMenu()<CR>
 
-" UltiSnips map without conflicts
-" with own <Tab> maps for visual and select modes.
-if has('python3') || has('python')
-	" FIXME for js/ts snippets UltiSnips#SnippetsInCurrentScope() returns empty
-	"       dictionary if a snippet doesn't have space character before while
-	"       UltiSnips#ExpandSnippet() correctly expands such a snippet
-	fu! s:IsSnippetExpandable()
-		retu !(
-			\ col('.') <= 1
-			\ || !empty(matchstr(getline('.'), '\%' . (col('.') - 1) . 'c\s'))
-			\ || empty(UltiSnips#SnippetsInCurrentScope())
-			\ )
-	endf
-
-	ino <expr> <Tab> <SID>IsSnippetExpandable()
-		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
-
-	" FIXME fix the issue with UltiSnips#SnippetsInCurrentScope() and you wont
-	"       need this hack to force expanding anymore
-	ino <C-x><Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
-en
-
-com! FZFGit cal fzf#run({
-	\ 'source': 'git ls-files',
-	\ 'sink': 'e',
-	\ 'down': '40%',
-	\ 'options': '--color=' . (&bg == 'light' ? 'light' : 'dark'),
-	\})
-
-com! FZFMy cal fzf#run({
-	\ 'sink': 'e',
-	\ 'down': '40%',
-	\ 'options': '--color=' . (&bg == 'light' ? 'light' : 'dark'),
-	\})
-
-fu! g:FuzzyGitFileMaps()
-	nn <A-p> :tabnew<CR>:FZFGit<CR>
-	nn <C-p> :FZFGit<CR>
-endf
-
-" fuzzy search for a file
-nn <A-p> :tabnew<CR>:FZFMy<CR>
-nn <C-p> :FZFMy<CR>
 
 " prevent triggering `s` when `<leader>s` is pressed
 " but next symbol not in time.
@@ -398,7 +393,7 @@ no! <C-l> <Del>
 
 
 " colorscheme stuff
-no <leader>ss <Esc>:set background=
+no <leader>ss <Esc>:se bg=
 no <leader>sb :BackgroundToggle<CR>
 no <leader>sB :GruvboxContrastRotate<CR>
 
@@ -489,7 +484,6 @@ tno  <Leader><Esc> <C-\><C-n>
 
 " thanks to Minoru for the advice to swap ; and :
 no ; :
-nn : :Commands<CR>
 
 " thanks to r3lgar for the advice (swap default <leader> and comma)
 no \ ;
@@ -699,3 +693,26 @@ cal s:UnicodeJumpsShortcuts('{', '«')
 cal s:UnicodeJumpsShortcuts('}', '»')
 cal s:UnicodeJumpsShortcuts('v', '⋄')
 cal s:UnicodeJumpsShortcuts('r', '◇') " 'r' for 'rhombus'
+
+
+" UltiSnips map without conflicts
+" with own <Tab> maps for visual and select modes.
+if has('python3') || has('python')
+	" FIXME for js/ts snippets UltiSnips#SnippetsInCurrentScope() returns empty
+	"       dictionary if a snippet doesn't have space character before while
+	"       UltiSnips#ExpandSnippet() correctly expands such a snippet
+	fu! s:IsSnippetExpandable()
+		retu !(
+			\ col('.') <= 1
+			\ || !empty(matchstr(getline('.'), '\%' . (col('.') - 1) . 'c\s'))
+			\ || empty(UltiSnips#SnippetsInCurrentScope())
+			\ )
+	endf
+
+	ino <expr> <Tab> <SID>IsSnippetExpandable()
+		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
+
+	" FIXME fix the issue with UltiSnips#SnippetsInCurrentScope() and you wont
+	"       need this hack to force expanding anymore
+	ino <C-x><Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
+en

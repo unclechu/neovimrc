@@ -1,6 +1,22 @@
 " custom configs of plugins
 " Author: Viacheslav Lotsmanov
 
+let g:fzf_colors = {
+    \ 'fg':      ['fg', 'Normal'],
+	\ 'bg':      ['bg', 'Normal'],
+	\ 'hl':      ['fg', 'Comment'],
+	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+	\ 'hl+':     ['fg', 'Statement'],
+	\ 'info':    ['fg', 'PreProc'],
+	\ 'border':  ['fg', 'Ignore'],
+	\ 'prompt':  ['fg', 'Conditional'],
+	\ 'pointer': ['fg', 'Exception'],
+	\ 'marker':  ['fg', 'Keyword'],
+	\ 'spinner': ['fg', 'Label'],
+	\ 'header':  ['fg', 'Comment']
+	\ }
+
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_disable_at_vimenter = 1
