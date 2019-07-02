@@ -488,9 +488,9 @@ snoremap <Tab> <Esc>
 tnoremap <Leader><Tab> <C-\><C-n>
 tnoremap <Leader><Esc> <C-\><C-n>
 
-" thanks to Minoru for the advice
-noremap ; :
-" noremap : ;
+" thanks to Minoru for the advice to swap ; and :
+no ; :
+nn : :Commands<CR>
 
 " thanks to r3lgar for the advice (swap default <leader> and comma)
 noremap \ ;
