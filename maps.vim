@@ -5,31 +5,31 @@ let mapleader = ','
 
 " flying between buffers
 " (c) https://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
-nnoremap <leader>bl :ls<CR>:b<space>
-nnoremap <leader>bd :ls<CR>:bd<space>
-nnoremap <leader>bD :ls<CR>:bd!<space>
-nnoremap <leader>bp :b#<CR>
-nnoremap <leader>bo :bro o<cr>
-nnoremap <leader><space> :ls<cr>
-nnoremap <space><leader> :o<cr>
+nn <leader>bl :ls<CR>:b<space>
+nn <leader>bd :ls<CR>:bd<space>
+nn <leader>bD :ls<CR>:bd!<space>
+nn <leader>bp :b#<CR>
+nn <leader>bo :bro o<cr>
+nn <leader><space> :ls<cr>
+nn <space><leader> :o<cr>
 
-nnoremap <leader>r :let @/ = ''<CR>:ec 'Reset search'<CR>
+nn <leader>r :let @/ = ''<CR>:ec 'Reset search'<CR>
 
 " 'cr' means 'config reload'
-nnoremap <leader>cr :source $MYVIMRC<CR>
+nn <leader>cr :so $MYVIMRC<CR>
+
+" CtrlSpace panel open
+nn <C-Space> :CtrlSpace<CR>
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
-nnoremap <leader>n  :NERDTreeToggle<CR>
-nnoremap <leader>N  :NERDTreeToggle<CR><C-w>p
-nnoremap <leader>fn :NERDTreeFind<CR>
-nnoremap <leader>fo :NERDTreeFind<CR><C-w>p
-nnoremap <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
-nnoremap <leader>t  :TagbarToggle<CR>
-nnoremap <leader>u  :GundoToggle<CR>
-nnoremap <leader>'  :call LanguageClient_contextMenu()<CR>
-
-xmap <Enter> <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+nn <leader>n  :NERDTreeToggle<CR>
+nn <leader>N  :NERDTreeToggle<CR><C-w>p
+nn <leader>fn :NERDTreeFind<CR>
+nn <leader>fo :NERDTreeFind<CR><C-w>p
+nn <leader>fb :NERDTreeFind<CR><C-w>p:TagbarOpen<CR>
+nn <leader>t  :TagbarToggle<CR>
+nn <leader>u  :GundoToggle<CR>
+nn <leader>'  :cal LanguageClient_contextMenu()<CR>
 
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
@@ -37,43 +37,43 @@ if has('python3') || has('python')
 	" FIXME for js/ts snippets UltiSnips#SnippetsInCurrentScope() returns empty
 	"       dictionary if a snippet doesn't have space character before while
 	"       UltiSnips#ExpandSnippet() correctly expands such a snippet
-	function! s:IsSnippetExpandable()
-		return !(
+	fu! s:IsSnippetExpandable()
+		retu !(
 			\ col('.') <= 1
 			\ || !empty(matchstr(getline('.'), '\%' . (col('.') - 1) . 'c\s'))
 			\ || empty(UltiSnips#SnippetsInCurrentScope())
 			\ )
-	endfunction
+	endf
 
-	inoremap <expr> <Tab> <SID>IsSnippetExpandable()
+	ino <expr> <Tab> <SID>IsSnippetExpandable()
 		\ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '<Tab>'
 
 	" FIXME fix the issue with UltiSnips#SnippetsInCurrentScope() and you wont
 	"       need this hack to force expanding anymore
-	inoremap <C-x><Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
-endif
+	ino <C-x><Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
+en
 
-com! FZFGit call fzf#run({
+com! FZFGit cal fzf#run({
 	\ 'source': 'git ls-files',
 	\ 'sink': 'e',
 	\ 'down': '40%',
 	\ 'options': '--color=' . (&bg == 'light' ? 'light' : 'dark'),
 	\})
 
-com! FZFMy call fzf#run({
+com! FZFMy cal fzf#run({
 	\ 'sink': 'e',
 	\ 'down': '40%',
 	\ 'options': '--color=' . (&bg == 'light' ? 'light' : 'dark'),
 	\})
 
-function! g:FuzzyGitFileMaps()
-	nnoremap <A-p> :tabnew<CR>:FZFGit<CR>
-	nnoremap <C-p> :FZFGit<CR>
-endfunction
+fu! g:FuzzyGitFileMaps()
+	nn <A-p> :tabnew<CR>:FZFGit<CR>
+	nn <C-p> :FZFGit<CR>
+endf
 
 " fuzzy search for a file
-nnoremap <A-p> :tabnew<CR>:FZFMy<CR>
-nnoremap <C-p> :FZFMy<CR>
+nn <A-p> :tabnew<CR>:FZFMy<CR>
+nn <C-p> :FZFMy<CR>
 
 " prevent triggering `s` when `<leader>s` is pressed
 " but next symbol not in time.
@@ -81,82 +81,81 @@ nnoremap <C-p> :FZFMy<CR>
 " maybe it's some bug of neovim or something, when i press `<leader>s` wait some
 " time and again `<leader>s` then `s` is triggered, strange. that's why it
 " solved by these hacks.
-nnoremap <leader>s  <Esc>
-nnoremap <leader>sw <Esc>
-xnoremap <leader>s  <C-g><C-g>
-xnoremap <leader>sw <C-g><C-g>
+nn <leader>s  <Esc>
+nn <leader>sw <Esc>
+xn <leader>s  <C-g><C-g>
+xn <leader>sw <C-g><C-g>
 
 " GitGutter keys
 no <leader>gg :GitGutterAll<CR>
-nnoremap <leader>gv :GitGutterPreviewHunk<CR>
-nnoremap <Leader>ga :GitGutterStageHunk<CR>
-nnoremap <Leader>gr :GitGutterUndoHunk<CR>
-nmap ]c <Plug>GitGutterNextHunk
-nmap [c <Plug>GitGutterPrevHunk
+nn <leader>gv :GitGutterPreviewHunk<CR>
+nn <Leader>ga :GitGutterStageHunk<CR>
+nn <Leader>gr :GitGutterUndoHunk<CR>
+nm ]c         <Plug>GitGutterNextHunk
+nm [c         <Plug>GitGutterPrevHunk
 
 " git status in new tab
-nnoremap <leader>gs :tabnew %<CR>:Gstatus<CR><C-w>o
-nnoremap <leader>gS :Gstatus<CR><C-w>o
+nn <leader>gs :tabnew %<CR>:Gstatus<CR><C-w>o
+nn <leader>gS :Gstatus<CR><C-w>o
 
 " modes togglers
-nnoremap <leader>mw :WrapToggle<CR>
-nnoremap <leader>mp :PasteToggle<CR>
-nnoremap <leader>ml :ListToggle<CR>
-nnoremap <leader>mn :RelativeNumberToggle<CR>
-nnoremap <leader>m] :DelimitMateSwitch<CR>
-nnoremap <leader>mg :GitGutterToggle<CR>
-nnoremap <leader>mc :AutoClearSpacesAtEOFToggle<CR>
-nnoremap <leader>mt :AutoTrimSpacesAtEOFToggle<CR>
+nn <leader>mw :WrapToggle<CR>
+nn <leader>mp :PasteToggle<CR>
+nn <leader>ml :ListToggle<CR>
+nn <leader>mn :RelativeNumberToggle<CR>
+nn <leader>m] :DelimitMateSwitch<CR>
+nn <leader>mg :GitGutterToggle<CR>
+nn <leader>mc :AutoClearSpacesAtEOFToggle<CR>
+nn <leader>mt :AutoTrimSpacesAtEOFToggle<CR>
 
 " some buffer configs
-nnoremap <leader>ft :set filetype=
-nnoremap <leader>fl :set foldlevel=
-nnoremap <leader>fm :set foldmethod=
+nn <leader>ft :se ft=
+nn <leader>fl :se fdl=
+nn <leader>fm :se fdm=
 
 " some windows things
-nnoremap <leader>sww :9999wincmd < \| set winwidth=
-nnoremap <leader>swh :9999wincmd - \| set winheight=
-nnoremap <leader>swW :set wfw \| 9999wincmd < \| set winwidth=
-nnoremap <leader>swH :set wfh \| 9999wincmd - \| set winheight=
+nn <leader>sww :9999winc < \| se wiw=
+nn <leader>swh :9999winc - \| se wh=
+nn <leader>swW :se wfw \| 9999winc < \| se wiw=
+nn <leader>swH :se wfh \| 9999winc - \| se wh=
 
-
-" Syntastic
-" nnoremap <leader>si :SyntasticInfo<CR>
-" nnoremap <leader>sc :SyntasticCheck<CR>
-" nnoremap <leader>sr :SyntasticReset<CR>
 
 " Neomake
-nnoremap <leader>si :NeomakeInfo<CR>
-nnoremap <leader>sc :Neomake<CR>
-" nnoremap <leader>sr :<CR>
+nn <leader>si :NeomakeInfo<CR>
+nn <leader>sc :Neomake<CR>
 
 
 " show hint
-nnoremap <leader>sh :ShowHint<CR>
+nn <leader>sh :ShowHint<CR>
 
+
+" EasyAlign
+xm <Enter> <Plug>(EasyAlign)
+nm ga <Plug>(EasyAlign)
 " short EasyAlign aliases
-xnoremap <leader>:  :EasyAlign/:/<CR>
-xnoremap <leader>g: :EasyAlign : { 'lm': 0, 'stl': 0 }<CR>
+xn <leader>:  :EasyAlign/:/<CR>
+xn <leader>g: :EasyAlign : {'lm':0,'stl':0}<CR>
 " haskell record syntax (align by '=' inside braces)
-xnoremap <leader>=  :EasyAlign/\({.*\\|,.*\)\@<==/<CR>
+xn <leader>=  :EasyAlign/\({.*\\|,.*\)\@<==/<CR>
 " haskell alone '='
-xnoremap <space>=   :EasyAlign/ = /{'lm':0,'rm':0}<CR>
-nnoremap <leader>a  :EasyAlign
-xnoremap <leader>a  :EasyAlign
-xnoremap <leader>A  :EasyAlign/  /{'lm':0,'rm':0}
+xn <space>=   :EasyAlign/ = /{'lm':0,'rm':0}<CR>
+nn <leader>a  :EasyAlign
+xn <leader>a  :EasyAlign
+xn <leader>A  :EasyAlign/  /{'lm':0,'rm':0}
 	\<left><left><left><left><left><left><left><left><left>
 	\<left><left><left><left><left><left><left><left>
 
+
 " CtrlSF bindings
-nmap     <leader>sf <Plug>CtrlSFPrompt
-xmap     <leader>sf <Plug>CtrlSFVwordPath
-xmap     <leader>sF <Plug>CtrlSFVwordExec
-nmap     <leader>sn <Plug>CtrlSFCwordPath
-nmap     <leader>sN <Plug>CtrlSFCwordExec
-nmap     <leader>sp <Plug>CtrlSFPwordPath
-nmap     <leader>sP <Plug>CtrlSFPwordExec
-nnoremap <leader>so :CtrlSFOpen<CR>
-nnoremap <leader>st :CtrlSFToggle<CR>
+nm <leader>sf <Plug>CtrlSFPrompt
+xm <leader>sf <Plug>CtrlSFVwordPath
+xm <leader>sF <Plug>CtrlSFVwordExec
+nm <leader>sn <Plug>CtrlSFCwordPath
+nm <leader>sN <Plug>CtrlSFCwordExec
+nm <leader>sp <Plug>CtrlSFPwordPath
+nm <leader>sP <Plug>CtrlSFPwordExec
+nn <leader>so :CtrlSFOpen<CR>
+nn <leader>st :CtrlSFToggle<CR>
 
 " doesn't work with visual-block selection
 fu! s:get_selected_text()
@@ -172,12 +171,13 @@ endf
 
 " escape quotes to put them inside double single quotes '...'
 fu! s:escq(x)
-	retu substitute(
-		\substitute(
-		\substitute(
-		\ a:x, '''', '&&', 'g'),
-		\ '\"', '\\&', 'g'),
-		\ '|', ("'.'".'\\|'."'.'"), 'g')
+	retu
+	\ substitute(
+	\ substitute(
+	\ substitute(
+	\ a:x, '''', '&&', 'g'),
+	\ '\"', '\\&', 'g'),
+	\ '|', ("'.'".'\\|'."'.'"), 'g')
 endf
 
 " git-grep shortcuts
@@ -202,8 +202,8 @@ nn <space>Gf :exe'VTE'\|put='git grep -nIF -- '.shellescape('').
 	\<Left><Left><Left><Left><Left>
 " normal mode: improve UX when press wrong keys
 nn <leader>g <Nop>
-nn <space>g <Nop>
-nn <space>G <Nop>
+nn  <space>g <Nop>
+nn  <space>G <Nop>
 " visual mode: this window
 xn <leader>gf <Esc>:exe'te'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(<SID>get_selected_text())<CR>').
@@ -227,12 +227,12 @@ xn <space>Gf <Esc>:exe'VTE'\|put='git grep -nIF -- '.
 	\<Left><Left><Left><Left><Left>
 " visual mode: improve UX when press wrong keys
 xn <leader>g <Nop>
-xn <space>g <Nop>
-xn <space>G <Nop>
+xn  <space>g <Nop>
+xn  <space>G <Nop>
 " visual mode: trigger immediately, without pressing enter
 xm <leader>gF <leader>gf<CR>
-xm <space>gF <space>gf<CR>
-xm <space>GF <space>Gf<CR>
+xm  <space>gF  <space>gf<CR>
+xm  <space>GF  <space>Gf<CR>
 " word under cursor: this window
 no <leader>gn :exe'te'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(expand('<cword>'))<CR>').
@@ -256,8 +256,8 @@ no <space>Gn :exe'VTE'\|put='git grep -nIF -- '.
 	\<Left><Left><Left><Left><Left>
 " word under cursor: trigger immediately, without pressing enter
 nm <leader>gN <leader>gn<CR>
-nm <space>gN <space>gn<CR>
-nm <space>GN <space>Gn<CR>
+nm  <space>gN  <space>gn<CR>
+nm  <space>GN  <space>Gn<CR>
 " from highlighted search: this window
 nn <leader>gp :exe'te'\|put='git grep -nIF -- '.
 	\shellescape('<C-r>=<SID>escq(@/)<CR>').
@@ -281,15 +281,13 @@ nn <space>Gp :exe'VTE'\|put='git grep -nIF -- '.
 	\<Left><Left><Left><Left><Left>
 " from highlighted search: trigger immediately, without pressing enter
 nm <leader>gP <leader>gp<CR>
-nm <space>gP <space>gp<CR>
-nm <space>GP <space>Gp<CR>
+nm  <space>gP  <space>gp<CR>
+nm  <space>GP  <space>Gp<CR>
 
-" CtrlSpace panel open
-nnoremap <C-Space> :CtrlSpace<CR>
 
 " Make Hoogle search easier (because I use it very often)
-nnoremap <A-g> :Hoogle<space>
-xnoremap <A-g> <Esc>:Hoogle <C-r>=<SID>escq(<SID>get_selected_text())<CR><CR>
+nn <A-g> :Hoogle<space>
+xn <A-g> <Esc>:Hoogle <C-r>=<SID>escq(<SID>get_selected_text())<CR><CR>
 
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)
@@ -299,88 +297,93 @@ xnoremap <A-g> <Esc>:Hoogle <C-r>=<SID>escq(<SID>get_selected_text())<CR><CR>
 " SS----  ('S' - overwin with <space>)
 
 " move anywhere ('q' means 'quick (move)')
-nmap q         <Plug>(easymotion-bd-w)
-xmap q         <Plug>(easymotion-bd-w)
-nmap <Space>q  <Plug>(easymotion-overwin-w)
+nm q         <Plug>(easymotion-bd-w)
+xm q         <Plug>(easymotion-bd-w)
+nm <Space>q  <Plug>(easymotion-overwin-w)
 " doesn't make sense with 'overwin' mode
-xmap <Space>q  <Nop>
+xm <Space>q  <Nop>
 " some plugins uses 'q' map to close window.
 " by using 'g' prefix we still able to call easymotion.
-nmap gq        <Plug>(easymotion-bd-w)
-xmap gq        <Plug>(easymotion-bd-w)
+nm gq        <Plug>(easymotion-bd-w)
+xm gq        <Plug>(easymotion-bd-w)
 
 " move to place with specific symbols
-nmap <leader>w <Plug>(easymotion-bd-f2)
-xmap <leader>w <Plug>(easymotion-bd-f2)
-nmap <Space>w  <Plug>(easymotion-overwin-f2)
+nm <leader>w <Plug>(easymotion-bd-f2)
+xm <leader>w <Plug>(easymotion-bd-f2)
+nm <Space>w  <Plug>(easymotion-overwin-f2)
 " doesn't make sense with 'overwin' mode
-xmap <Space>w  <Nop>
+xm <Space>w  <Nop>
 
 " just another hook as `<leader>e` but for single symbol
-nmap <leader>e <Plug>(easymotion-bd-f)
-xmap <leader>e <Plug>(easymotion-bd-f)
-nmap <Space>e  <Plug>(easymotion-overwin-f)
+nm <leader>e <Plug>(easymotion-bd-f)
+xm <leader>e <Plug>(easymotion-bd-f)
+nm <Space>e  <Plug>(easymotion-overwin-f)
 " doesn't make sense with 'overwin' mode
-xmap <Space>e  <Nop>
+xm <Space>e  <Nop>
 
 " LL-L  ('L' - with <leader> or ' ' - without it)
 " ZXcV  (uppercase means it have map)
 " -S--  ('S' - overwin with <space>)
 
 " move over the line
-nmap <leader>z <Plug>(easymotion-lineanywhere)
-xmap <leader>z <Plug>(easymotion-lineanywhere)
+nm <leader>z <Plug>(easymotion-lineanywhere)
+xm <leader>z <Plug>(easymotion-lineanywhere)
 
 " move between lines
 " (also between empty lines with indentation)
-nmap <leader>x <Plug>(easymotion-bd-jk)
-xmap <leader>x <Plug>(easymotion-bd-jk)
-nmap <Space>x  <Plug>(easymotion-overwin-line)
-xmap <Space>x  <Nop>
+nm <leader>x <Plug>(easymotion-bd-jk)
+xm <leader>x <Plug>(easymotion-bd-jk)
+nm <Space>x  <Plug>(easymotion-overwin-line)
+xm <Space>x  <Nop>
 
 " turn on visual mode and select to specific place
-nmap <leader>v v<Plug>(easymotion-bd-w)
-nmap <leader>V V<Plug>(easymotion-bd-jk)
+nm <leader>v v<Plug>(easymotion-bd-w)
+nm <leader>V V<Plug>(easymotion-bd-jk)
 
 " move by direction
-nmap <leader>l <Plug>(easymotion-lineforward)
-xmap <leader>l <Plug>(easymotion-lineforward)
-nmap <leader>h <Plug>(easymotion-linebackward)
-xmap <leader>h <Plug>(easymotion-linebackward)
-nmap <leader>j <Plug>(easymotion-j)
-xmap <leader>j <Plug>(easymotion-j)
-nmap <leader>k <Plug>(easymotion-k)
-xmap <leader>k <Plug>(easymotion-k)
+nm <leader>l <Plug>(easymotion-lineforward)
+xm <leader>l <Plug>(easymotion-lineforward)
+nm <leader>h <Plug>(easymotion-linebackward)
+xm <leader>h <Plug>(easymotion-linebackward)
+nm <leader>j <Plug>(easymotion-j)
+xm <leader>j <Plug>(easymotion-j)
+nm <leader>k <Plug>(easymotion-k)
+xm <leader>k <Plug>(easymotion-k)
+
+" search (with 'incsearch' plugin)
+nm g/        <Plug>(incsearch-easymotion-/)
+nm g?        <Plug>(incsearch-easymotion-?)
+nm <leader>/ <Plug>(incsearch-easymotion-stay)
 
 
 " quickhl
-nmap <Space>m <Plug>(quickhl-manual-this)
-xmap <Space>m <Plug>(quickhl-manual-this)
-nmap <Space>M <Plug>(quickhl-manual-reset)
-xmap <Space>M <Plug>(quickhl-manual-reset)
-nmap <Space>n <Plug>(quickhl-cword-toggle)
+nm <Space>m <Plug>(quickhl-manual-this)
+xm <Space>m <Plug>(quickhl-manual-this)
+nm <Space>M <Plug>(quickhl-manual-reset)
+xm <Space>M <Plug>(quickhl-manual-reset)
+nm <Space>n <Plug>(quickhl-cword-toggle)
 
 
 " remove word selection symbols after paste from search
-nmap <leader>c/  ds\ds>
+nm  <leader>c/  ds\ds>
 " plugs to prevent mess about triggering default 'p' or 'P'
-map  <leader>p   <Nop>
-map  <leader>P   <Nop>
+map <leader>p   <Nop>
+map <leader>P   <Nop>
 " paste searched word and clean it
-map  <leader>p/  '/phds\ds>
-map  <leader>P/  '/Phds\ds>
-nmap <leader>po  <A-.>jP
-nmap <leader>pO  <A-,>kP
+map <leader>p/  '/phds\ds>
+map <leader>P/  '/Phds\ds>
+nm  <leader>po  <A-.>jP
+nm  <leader>pO  <A-,>kP
 
 " another alias to system X clipboard
-noremap '<Space> "+
-noremap <Space>' "*
+no '<Space> "+
+no <Space>' "*
 " another alias to 'last yank' register
-noremap <A-y> "0
+no <A-y> "0
 
 fu! s:copy_many_lines_as_one(sys_clipboard)
 	let l:view = winsaveview() | let l:buf = a:sys_clipboard ? '"+' : ''
-	exec 'norm! gvJgv'.l:buf.'yu'
+	exe 'norm! gvJgv'.l:buf.'yu'
 	cal winrestview(l:view)
 endf
 
@@ -395,84 +398,80 @@ no! <C-l> <Del>
 
 
 " colorscheme stuff
-noremap <leader>ss <Esc>:set background=
-noremap <leader>sb :BackgroundToggle<CR>
-noremap <leader>sB :GruvboxContrastRotate<CR>
+no <leader>ss <Esc>:set background=
+no <leader>sb :BackgroundToggle<CR>
+no <leader>sB :GruvboxContrastRotate<CR>
 
-nnoremap gy Y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:ec<CR>
-nnoremap gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:ec<CR>
-xnoremap gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:ec<CR>
-xnoremap gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:ec<CR>
+nn gy Y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:ec<CR>
+nn gY Y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:ec<CR>
+xn gy y:let @0 = substitute(@0, '.', ' ', 'g')<CR>:ec<CR>
+xn gY y:let @0 = substitute(@0, '[^\r\n\t]', ' ', 'g')<CR>:ec<CR>
 
 " walking between windows (hjkl)
-nnoremap <C-h>     :wincmd h<CR>
-xnoremap <C-h>     <Esc>:wincmd h<CR>
-nnoremap <C-j>     :wincmd j<CR>
-xnoremap <C-j>     <Esc>:wincmd j<CR>
-nnoremap <C-k>     :wincmd k<CR>
-xnoremap <C-k>     <Esc>:wincmd k<CR>
-nnoremap <C-l>     :wincmd l<CR>
-xnoremap <C-l>     <Esc>:wincmd l<CR>
+nn <C-h>     :winc h<CR>
+xn <C-h>     <Esc>:winc h<CR>
+nn <C-j>     :winc j<CR>
+xn <C-j>     <Esc>:winc j<CR>
+nn <C-k>     :winc k<CR>
+xn <C-k>     <Esc>:winc k<CR>
+nn <C-l>     :winc l<CR>
+xn <C-l>     <Esc>:winc l<CR>
 " walking between windows (arrow keys)
-nnoremap <C-Left>  :wincmd h<CR>
-xnoremap <C-Left>  <Esc>:wincmd h<CR>
-nnoremap <C-Right> :wincmd l<CR>
-xnoremap <C-Right> <Esc>:wincmd l<CR>
-nnoremap <C-Up>    :wincmd k<CR>
-xnoremap <C-Up>    <Esc>:wincmd k<CR>
-nnoremap <C-Down>  :wincmd j<CR>
-xnoremap <C-Down>  <Esc>:wincmd j<CR>
+nn <C-Left>  :winc h<CR>
+xn <C-Left>  <Esc>:winc h<CR>
+nn <C-Right> :winc l<CR>
+xn <C-Right> <Esc>:winc l<CR>
+nn <C-Up>    :winc k<CR>
+xn <C-Up>    <Esc>:winc k<CR>
+nn <C-Down>  :winc j<CR>
+xn <C-Down>  <Esc>:winc j<CR>
 " windows size minimization/maximization/normalization
-nnoremap <A-=>     :wincmd =<CR>
-nnoremap <A-->     :wincmd _<CR>
-nnoremap <A-\>     :wincmd \|<CR>
+nn <A-=>     :winc =<CR>
+nn <A-->     :winc _<CR>
+nn <A-\>     :winc \|<CR>
 
-" walk between windows by alt+arrow keys
-nnoremap <A-Left>  zh
-xnoremap <A-Left>  zh
-nnoremap <A-Right> zl
-xnoremap <A-Right> zl
-nnoremap <A-Up>    <C-y>
-xnoremap <A-Up>    <C-y>
-nnoremap <A-Down>  <C-e>
-xnoremap <A-Down>  <C-e>
+" scrolling windows by alt+arrow keys in any direction
+nn <A-Left>  zh
+xn <A-Left>  zh
+nn <A-Right> zl
+xn <A-Right> zl
+nn <A-Up>    <C-y>
+xn <A-Up>    <C-y>
+nn <A-Down>  <C-e>
+xn <A-Down>  <C-e>
 
 " resizing windows by alt+shift+arrow keys
-nnoremap <A-S-Left>  :wincmd <<CR>
-xnoremap <A-S-Left>  <Esc>:wincmd <<CR>
-nnoremap <A-S-Right> :wincmd ><CR>
-xnoremap <A-S-Right> <Esc>:wincmd ><CR>
-nnoremap <A-S-Up>    :wincmd +<CR>
-xnoremap <A-S-Up>    <Esc>:wincmd +<CR>
-nnoremap <A-S-Down>  :wincmd -<CR>
-xnoremap <A-S-Down>  <Esc>:wincmd -<CR>
+nn <A-S-Left>  :winc <<CR>
+xn <A-S-Left>  <Esc>:winc <<CR>
+nn <A-S-Right> :winc ><CR>
+xn <A-S-Right> <Esc>:winc ><CR>
+nn <A-S-Up>    :winc +<CR>
+xn <A-S-Up>    <Esc>:winc +<CR>
+nn <A-S-Down>  :winc -<CR>
+xn <A-S-Down>  <Esc>:winc -<CR>
 
 " zoom buffer hack ('fz' means 'full size')
-nnoremap <leader>fz :999wincmd ><CR>:999wincmd +<CR>
-xnoremap <leader>fz <Esc>:999wincmd ><CR>:999wincmd +<CR>gv
+nn <leader>fz :999winc ><CR>:999winc +<CR>
+xn <leader>fz <Esc>:999winc ><CR>:999winc +<CR>gv
 
 " moving between history in command mode
 cno <C-p> <Up>
 cno <C-n> <Down>
 
 " moving tabs
-nnoremap <C-S-PageUp>   :tabm-1<CR>
-nnoremap <C-S-PageDown> :tabm+1<CR>
+nn <C-S-PageUp>   :tabm-1<CR>
+nn <C-S-PageDown> :tabm+1<CR>
 
 " jump by half of screen by pageup/pagedown
-nmap <PageUp>     <C-u>
-nmap <PageDown>   <C-d>
-xmap <PageUp>     <C-u>
-xmap <PageDown>   <C-d>
+nm <PageUp>     <C-u>
+nm <PageDown>   <C-d>
+xm <PageUp>     <C-u>
+xm <PageDown>   <C-d>
 " default jump by pageup/pagedown with shift prefix
-nmap <S-PageUp>   <C-b>
-nmap <S-PageDown> <C-f>
-xmap <S-PageUp>   <C-b>
-xmap <S-PageDown> <C-f>
-
-nmap g/        <Plug>(incsearch-easymotion-/)
-nmap g?        <Plug>(incsearch-easymotion-?)
-nmap <leader>/ <Plug>(incsearch-easymotion-stay)
+nm <S-PageUp>   <C-b>
+nm <S-PageDown> <C-f>
+xm <S-PageUp>   <C-b>
+xm <S-PageDown> <C-f>
 
 " get rid off randomly turning ex-mode on
 nm Q     <Nop>
@@ -481,29 +480,29 @@ nm <A-Q> <Nop>
 
 " remap macros key under leader
 " default 'q' remapped to easymotion call
-noremap <leader>q q
+no <leader>q q
 
-xnoremap <Tab> <Esc>
-snoremap <Tab> <Esc>
-tnoremap <Leader><Tab> <C-\><C-n>
-tnoremap <Leader><Esc> <C-\><C-n>
+xn   <Tab> <Esc>
+snor <Tab> <Esc>
+tno  <Leader><Tab> <C-\><C-n>
+tno  <Leader><Esc> <C-\><C-n>
 
 " thanks to Minoru for the advice to swap ; and :
 no ; :
 nn : :Commands<CR>
 
 " thanks to r3lgar for the advice (swap default <leader> and comma)
-noremap \ ;
-noremap \| ,
+no \ ;
+no \| ,
 
 " because working with clipboard registers is more important
-noremap ' "
-noremap " '
-noremap "" ''
-nnoremap '' :reg<CR>
+no ' "
+no " '
+no "" ''
+nn '' :reg<CR>
 
 " custom behavior of big R in visual mode
-xnoremap R r<Space>R
+xn R r<Space>R
 
 " break line but keep same column position for rest of the line
 fu! s:split_next_line(new_col_offset, stay)
@@ -522,11 +521,11 @@ fu! s:split_next_line(new_col_offset, stay)
 		let l:pos[3] = 0 | unlet l:pos[4] | cal setpos('.', l:pos)
 	en
 endf
-inoremap <A-CR> <C-o>:call <SID>split_next_line( 0, 0)<CR>
+ino <A-CR> <C-o>:cal <SID>split_next_line( 0, 0)<CR>
 " cannot map <S-CR> to make <A-S-CR> alternative
-" imap <A-S-CR> <C-o>:call <SID>split_next_line(-1, 0)<CR>
-inoremap <A-'>  <C-o>:call <SID>split_next_line( 0, 1)<CR>
-inoremap <A-">  <C-o>:call <SID>split_next_line(-1, 1)<CR>
+" imap <A-S-CR> <C-o>:cal <SID>split_next_line(-1, 0)<CR>
+ino <A-'>  <C-o>:cal <SID>split_next_line( 0, 1)<CR>
+ino <A-">  <C-o>:cal <SID>split_next_line(-1, 1)<CR>
 fu! s:split_prev_line(new_col_offset, stay)
 	let l:pos=getcurpos() | let l:line=getline('.') | let l:vc=virtcol('$')
 	if l:pos[4] >= l:vc
@@ -543,43 +542,44 @@ fu! s:split_prev_line(new_col_offset, stay)
 		unlet l:pos[4] | cal setpos('.', l:pos)
 	en
 endf
-inoremap <A-\>  <C-o>:call <SID>split_prev_line( 0, 0)<CR>
-inoremap <A-\|> <C-o>:call <SID>split_prev_line(-1, 0)<CR>
-inoremap <A-]>  <C-o>:call <SID>split_prev_line( 0, 1)<CR>
-inoremap <A-}>  <C-o>:call <SID>split_prev_line(-1, 1)<CR>
+ino <A-\>  <C-o>:cal <SID>split_prev_line( 0, 0)<CR>
+ino <A-\|> <C-o>:cal <SID>split_prev_line(-1, 0)<CR>
+ino <A-]>  <C-o>:cal <SID>split_prev_line( 0, 1)<CR>
+ino <A-}>  <C-o>:cal <SID>split_prev_line(-1, 1)<CR>
 
 fu! s:new_line_after()
-	let l:x = getpos('.') | pu ='' | cal setpos('.', l:x)
+	let l:x = getpos('.') | pu='' | cal setpos('.', l:x)
 endf
-nnoremap <A-.> :cal <SID>new_line_after()<CR>
+nn <A-.> :cal <SID>new_line_after()<CR>
 fu! s:new_line_before()
-	let l:x = getpos('.') | pu! ='' | let l:x[1] += 1 | cal setpos('.', l:x)
+	let l:x = getpos('.') | pu!='' | let l:x[1] += 1 | cal setpos('.', l:x)
 endf
-nnoremap <A-,> :cal <SID>new_line_before()<CR>
-nmap <leader>o <A-.>ji
-nmap <leader>O <A-,>ki
+nn <A-,> :cal <SID>new_line_before()<CR>
+nm <leader>o <A-.>ji
+nm <leader>O <A-,>ki
 
-imap <A-Space> <Space><Left>
+" add space without moving cursor
+im <A-Space> <Space><Left>
 
 
 " custom numbers line keys
 
-nnoremap ! #:ShowSearchIndex<CR>
-nnoremap g! :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
-xnoremap ! :<C-u>call VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
-xnoremap g! :<C-u>call VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
-nnoremap @ *:ShowSearchIndex<CR>
-nnoremap g@ :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
-xnoremap @ :<C-u>call VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
-xnoremap g@ :<C-u>call VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
-" noremap ! #
-" noremap @ *
+nn  ! #:ShowSearchIndex<CR>
+nn g! :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
+xn  ! :<C-u>cal VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
+xn g! :<C-u>cal VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
+nn  @ *:ShowSearchIndex<CR>
+nn g@ :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
+xn  @ :<C-u>cal VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
+xn g@ :<C-u>cal VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
+" no ! #
+" no @ *
 
 " begin/end of line ignoring indentation and trailing whitespaces
-noremap # ^
-noremap g# g^
-noremap $ g_
-noremap g$ g$
+no  #  ^
+no g# g^
+no  $ g_
+no g$ g$
 
 " default behavior of %
 " noremap %
@@ -587,114 +587,115 @@ noremap g$ g$
 " noremap ^ 0
 " we already have 0, I never use this key (^) this way
 " let's remap it to '|' that in case was remapped too
-noremap ^ \|
-noremap g^ g0
+no  ^ \|
+no g^ g0
 
 " opposite to 0
-noremap & $
-noremap g& g$
+no  &  $
+no g& g$
 
 " macros call
-noremap * @
-noremap g* g@
+no  *  @
+no g* g@
 
 " swapping j/k with gj/gk
-nnoremap j gj
-xnoremap j gj
-nnoremap k gk
-xnoremap k gk
-nnoremap gj j
-xnoremap gj j
-nnoremap gk k
-xnoremap gk k
+nn  j gj
+xn  j gj
+nn  k gk
+xn  k gk
+nn gj  j
+xn gj  j
+nn gk  k
+xn gk  k
 
 " relative tabnext by default
-nnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
-xnoremap gt :<C-u>exec join(repeat(['tabnext'], v:count1), '\|')<CR>
-nnoremap ,gt gt
-xnoremap ,gt gt
+nn gt :<C-u>exe join(repeat(['tabnext'], v:count1), '\|')<CR>
+xn gt :<C-u>exe join(repeat(['tabnext'], v:count1), '\|')<CR>
+" original behavior via <leader> key
+nn <leader>gt gt
+xn <leader>gt gt
 
 " additional move over cursor history (as alternative to ^O/^I).
 " moving over changelist (see :changes).
-nnoremap <A-o> g;
-nnoremap <A-i> g,
+nn <A-o> g;
+nn <A-i> g,
 
 " navigating by tabs
-nmap <A-f> gt
-nmap <A-b> gT
-nmap <A-1> 1,gt
-nmap <A-2> 2,gt
-nmap <A-3> 3,gt
-nmap <A-4> 4,gt
-nmap <A-5> 5,gt
-nmap <A-6> 6,gt
-nmap <A-7> 7,gt
-nmap <A-8> 8,gt
-nmap <A-9> 9,gt
-nmap <A-0> 10,gt
+nm <A-f> gt
+nm <A-b> gT
+nm <A-1> 1,gt
+nm <A-2> 2,gt
+nm <A-3> 3,gt
+nm <A-4> 4,gt
+nm <A-5> 5,gt
+nm <A-6> 6,gt
+nm <A-7> 7,gt
+nm <A-8> 8,gt
+nm <A-9> 9,gt
+nm <A-0> 10,gt
 
 " default maps disabled for plugin
 cno <expr> <CR> '<CR>' . (getcmdtype() =~ '[/?]' ? ':ShowSearchIndex<CR>' : '')
-nnoremap n n:ShowSearchIndex<CR>
-nnoremap N N:ShowSearchIndex<CR>
+nn n n:ShowSearchIndex<CR>
+nn N N:ShowSearchIndex<CR>
 
-nnoremap <A-t> :tabnew<CR>
-nnoremap <A-w> :tabclose<CR>
+nn <A-t> :tabe<CR>
+nn <A-w> :tabc<CR>
 
 " quick hook for 'IndentText'
-xnoremap <A-i> ym0gvc<Esc>`0:call<space>IndentText()<CR>
-xnoremap <A-S-i> ym0gvI<Esc>`0:call<space>IndentText()<CR>
+xn <A-i>   ym0gvc<Esc>`0:cal<space>IndentText()<CR>
+xn <A-S-i> ym0gvI<Esc>`0:cal<space>IndentText()<CR>
 
 " pasting from default buffer in insert/cmdline mode
 no! <A-p> <C-r>"
 no! <A-y> <C-r>0
 
 " to create short aliases for tTfF jumps to unicode symbols
-function! s:UnicodeJumpsShortcuts(ascii, uni)
+fu! s:UnicodeJumpsShortcuts(ascii, uni)
 	for mpfx in ['n', 'x']
 		for apfx in ['', 'd', 'c']
-			exec l:mpfx.'no '.l:apfx.'t<A-'.a:ascii.'> '.l:apfx.'t'.a:uni
-			exec l:mpfx.'no '.l:apfx.'T<A-'.a:ascii.'> '.l:apfx.'T'.a:uni
-			exec l:mpfx.'no '.l:apfx.'f<A-'.a:ascii.'> '.l:apfx.'f'.a:uni
-			exec l:mpfx.'no '.l:apfx.'F<A-'.a:ascii.'> '.l:apfx.'F'.a:uni
-		endfor
-	endfor
-endfunction
+			exe l:mpfx.'no '.l:apfx.'t<A-'.a:ascii.'> '.l:apfx.'t'.a:uni
+			exe l:mpfx.'no '.l:apfx.'T<A-'.a:ascii.'> '.l:apfx.'T'.a:uni
+			exe l:mpfx.'no '.l:apfx.'f<A-'.a:ascii.'> '.l:apfx.'f'.a:uni
+			exe l:mpfx.'no '.l:apfx.'F<A-'.a:ascii.'> '.l:apfx.'F'.a:uni
+		endfo
+	endfo
+endf
 
 " based on snippets for Haskell
-call s:UnicodeJumpsShortcuts(';', '∷')
-call s:UnicodeJumpsShortcuts(':', '∷')
-call s:UnicodeJumpsShortcuts('<', '←')
-call s:UnicodeJumpsShortcuts('>', '→')
-call s:UnicodeJumpsShortcuts('[', '⇐')
-call s:UnicodeJumpsShortcuts(']', '⇒')
-call s:UnicodeJumpsShortcuts('.', '∘')
-call s:UnicodeJumpsShortcuts(',', '•')
-call s:UnicodeJumpsShortcuts('A', '∀')
-call s:UnicodeJumpsShortcuts('a', '∧') " 'a' for 'and'
-call s:UnicodeJumpsShortcuts('o', '∨') " 'o' for 'or'
-call s:UnicodeJumpsShortcuts('=', '≡')
-call s:UnicodeJumpsShortcuts('-', '≠')
-call s:UnicodeJumpsShortcuts('_', '≢')
-call s:UnicodeJumpsShortcuts('l', '≤') " 'l' for 'less'
-call s:UnicodeJumpsShortcuts('g', '≥') " 'g' for 'greater'
-call s:UnicodeJumpsShortcuts('+', '⧺')
-call s:UnicodeJumpsShortcuts('*', '⋅')
-call s:UnicodeJumpsShortcuts('x', '×')
-call s:UnicodeJumpsShortcuts('/', '÷')
-call s:UnicodeJumpsShortcuts('e', '∈')
-call s:UnicodeJumpsShortcuts('E', '∉')
-call s:UnicodeJumpsShortcuts('3', '∋')
-call s:UnicodeJumpsShortcuts('#', '∌')
-call s:UnicodeJumpsShortcuts('Z', 'ℤ')
-call s:UnicodeJumpsShortcuts('N', 'ℕ')
-call s:UnicodeJumpsShortcuts('Q', 'ℚ')
-call s:UnicodeJumpsShortcuts('R', 'ℝ')
-call s:UnicodeJumpsShortcuts('B', '𝔹')
-call s:UnicodeJumpsShortcuts('P', 'π')
-call s:UnicodeJumpsShortcuts('8', '∞')
-call s:UnicodeJumpsShortcuts('d', '…') " 'd' for 'dots'
-call s:UnicodeJumpsShortcuts('{', '«')
-call s:UnicodeJumpsShortcuts('}', '»')
-call s:UnicodeJumpsShortcuts('v', '⋄')
-call s:UnicodeJumpsShortcuts('r', '◇') " 'r' for 'rhombus'
+cal s:UnicodeJumpsShortcuts(';', '∷')
+cal s:UnicodeJumpsShortcuts(':', '∷')
+cal s:UnicodeJumpsShortcuts('<', '←')
+cal s:UnicodeJumpsShortcuts('>', '→')
+cal s:UnicodeJumpsShortcuts('[', '⇐')
+cal s:UnicodeJumpsShortcuts(']', '⇒')
+cal s:UnicodeJumpsShortcuts('.', '∘')
+cal s:UnicodeJumpsShortcuts(',', '•')
+cal s:UnicodeJumpsShortcuts('A', '∀')
+cal s:UnicodeJumpsShortcuts('a', '∧') " 'a' for 'and'
+cal s:UnicodeJumpsShortcuts('o', '∨') " 'o' for 'or'
+cal s:UnicodeJumpsShortcuts('=', '≡')
+cal s:UnicodeJumpsShortcuts('-', '≠')
+cal s:UnicodeJumpsShortcuts('_', '≢')
+cal s:UnicodeJumpsShortcuts('l', '≤') " 'l' for 'less'
+cal s:UnicodeJumpsShortcuts('g', '≥') " 'g' for 'greater'
+cal s:UnicodeJumpsShortcuts('+', '⧺')
+cal s:UnicodeJumpsShortcuts('*', '⋅')
+cal s:UnicodeJumpsShortcuts('x', '×')
+cal s:UnicodeJumpsShortcuts('/', '÷')
+cal s:UnicodeJumpsShortcuts('e', '∈')
+cal s:UnicodeJumpsShortcuts('E', '∉')
+cal s:UnicodeJumpsShortcuts('3', '∋')
+cal s:UnicodeJumpsShortcuts('#', '∌')
+cal s:UnicodeJumpsShortcuts('Z', 'ℤ')
+cal s:UnicodeJumpsShortcuts('N', 'ℕ')
+cal s:UnicodeJumpsShortcuts('Q', 'ℚ')
+cal s:UnicodeJumpsShortcuts('R', 'ℝ')
+cal s:UnicodeJumpsShortcuts('B', '𝔹')
+cal s:UnicodeJumpsShortcuts('P', 'π')
+cal s:UnicodeJumpsShortcuts('8', '∞')
+cal s:UnicodeJumpsShortcuts('d', '…') " 'd' for 'dots'
+cal s:UnicodeJumpsShortcuts('{', '«')
+cal s:UnicodeJumpsShortcuts('}', '»')
+cal s:UnicodeJumpsShortcuts('v', '⋄')
+cal s:UnicodeJumpsShortcuts('r', '◇') " 'r' for 'rhombus'
