@@ -24,40 +24,50 @@ nn <C-Space> :CtrlSpace<CR>
 " FZF
 
 fu! g:FuzzyGitFileMaps()
-	nn         <A-p> :tabnew<CR>:GitFiles!<CR>
-	nn         <C-p> :GitFiles<CR>
-	nn <leader><C-p> :GitFiles!<CR>
+	nn        <A-p> :tabnew<CR>:GitFiles!<CR>
+	nn        <C-p> :GitFiles<CR>
+	nn <space><C-p> :GitFiles!<CR>
 endf
 
 " fuzzy search for a file
-nn         <A-p> :tabnew<CR>:Files!<CR>
-nn         <C-p> :Files<CR>
-nn <leader><C-p> :Files!<CR>
+nn        <A-p> :tabnew<CR>:Files!<CR>
+nn        <C-p> :Files<CR>
+nn <space><C-p> :Files!<CR>
 
 " fuzzy commands and commands history
-nn :         :Commands<CR>
+nn         : :Commands<CR>
+nn  <space>: :Commands!<CR>
 nn <leader>; :History:<CR>
+nn  <space>; :History!:<CR>
 
 " fuzzy buffers, windows and mru
-nn <leader><space> :Buffers<CR>
-nn <leader><C-w>   :Windows<CR>
-nn <space><leader> :History<CR>
-nn <space><        :History!<CR>
+nn <leader><space>   :Buffers<CR>
+nn <leader>f<space>  :Buffers!<CR>
+nn <leader><leader>  :Windows<CR>
+nn <leader>f<leader> :Windows!<CR>
+nn <space><leader>   :History<CR>
+nn <space>f<leader>  :History!<CR>
 
 " fuzzy search over lines
 nn <leader>sa :Lines<CR>
+nn  <space>sa :Lines!<CR>
 nn <leader>sl :BLines<CR>
+nn  <space>sl :BLines!<CR>
 
 " fuzzy marks
 nn <leader>sm :Marks<CR>
+nn  <space>sm :Marks!<CR>
 
 " fuzzy search history
-nn <leader>? :History/<CR>
+nn <leader>/ :History/<CR>
+nn  <space>/ :History!/<CR>
 
 " fuzzy git status files
-nn <leader>Gs :GFiles?<CR>
-nn <leader>GS :GFiles!?<CR>
-nn <leader>G  <Nop>
+nn <leader>fg :GFiles?<CR>
+nn  <space>fg :GFiles!?<CR>
+
+nn <leader>f <Nop>
+nn  <space>f <Nop>
 
 " escapes pipe symbol for `:GitGrep`
 fu! s:escgg(x)
@@ -110,17 +120,6 @@ nn <leader>t  :TagbarToggle<CR>
 nn <leader>u  :GundoToggle<CR>
 
 
-" prevent triggering `s` when `<leader>s` is pressed
-" but next symbol not in time.
-" can't use `<Nop>` because it affects pressing this second time,
-" maybe it's some bug of neovim or something, when i press `<leader>s` wait some
-" time and again `<leader>s` then `s` is triggered, strange. that's why it
-" solved by these hacks.
-nn <leader>s  <Esc>
-nn <leader>sw <Esc>
-xn <leader>s  <C-g><C-g>
-xn <leader>sw <C-g><C-g>
-
 " GitGutter keys
 no <leader>gg :GitGutterAll<CR>
 nn <leader>gv :GitGutterPreviewHunk<CR>
@@ -148,11 +147,23 @@ nn <leader>ft :se ft=
 nn <leader>fl :se fdl=
 nn <leader>fm :se fdm=
 
+
+" prevent triggering `s` when `<leader>s` is pressed
+" but next symbol not in time.
+" can't use `<Nop>` because it affects pressing this second time,
+" maybe it's some bug of neovim or something, when i press `<leader>s` wait some
+" time and again `<leader>s` then `s` is triggered, strange. that's why it
+" solved by these hacks.
+nn <leader>s  <Esc>|      nn <space>s  <Esc>
+nn <leader>sw <Esc>|      nn <space>sw <Esc>
+xn <leader>s  <C-g><C-g>| xn <space>s  <C-g><C-g>
+xn <leader>sw <C-g><C-g>| xn <space>sw <C-g><C-g>
+
 " some windows things
 nn <leader>sww :9999winc < \| se wiw=
 nn <leader>swh :9999winc - \| se wh=
-nn <leader>swW :se wfw \| 9999winc < \| se wiw=
-nn <leader>swH :se wfh \| 9999winc - \| se wh=
+nn  <space>sww :se wfw \| 9999winc < \| se wiw=
+nn  <space>swh :se wfh \| 9999winc - \| se wh=
 
 
 " Neomake
@@ -284,7 +295,7 @@ xm <leader>k <Plug>(easymotion-k)
 " search (with 'incsearch' plugin)
 nm g/        <Plug>(incsearch-easymotion-/)
 nm g?        <Plug>(incsearch-easymotion-?)
-nm <leader>/ <Plug>(incsearch-easymotion-stay)
+nm <leader>? <Plug>(incsearch-easymotion-stay)
 
 
 " quickhl
