@@ -23,16 +23,27 @@ nn <C-Space> :CtrlSpace<CR>
 
 " FZF
 
+" fuzzy search for a file
+fu! g:FuzzyFileMaps()
+	nn        <A-p> :tabnew<CR>:Files!<CR>
+	nn        <C-p> :Files<CR>
+	nn <space><C-p> :Files!<CR>
+endf
+
+" fuzzy search by files from index of current git repo by default
 fu! g:FuzzyGitFileMaps()
 	nn        <A-p> :tabnew<CR>:GitFiles!<CR>
 	nn        <C-p> :GitFiles<CR>
 	nn <space><C-p> :GitFiles!<CR>
 endf
 
-" fuzzy search for a file
-nn        <A-p> :tabnew<CR>:Files!<CR>
-nn        <C-p> :Files<CR>
-nn <space><C-p> :Files!<CR>
+" regular files search by default
+cal FuzzyFileMaps()
+
+" to always have refular files search shortcut,
+" even when 'FuzzyGitFileMaps' is called.
+nn <leader>ff :Files<CR>
+nn  <space>ff :Files!<CR>
 
 " fuzzy commands and commands history
 nn         : :Commands<CR>
