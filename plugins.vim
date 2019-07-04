@@ -26,8 +26,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf'
-Plug 'unclechu/fzf.vim',
-	\ {'branch': 'bugfix/command-history-when-colon-is-remapped'}
+Plug 'junegunn/fzf.vim'
 Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
