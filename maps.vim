@@ -77,6 +77,10 @@ nn  <space>/ :History!/<CR>
 nn <leader>fg :GFiles?<CR>
 nn  <space>fg :GFiles!?<CR>
 
+" fuzzy search by help tags
+nn <leader>H :Helptags<CR>
+nn  <space>H :Helptags!<CR>
+
 nn <leader>f <Nop>
 nn  <space>f <Nop>
 
