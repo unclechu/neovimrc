@@ -84,6 +84,14 @@ nn  <space>H :Helptags!<CR>
 nn <leader>f <Nop>
 nn  <space>f <Nop>
 
+" Make Hoogle search easier (because I use it very often)
+nn <leader>go :FuzzyHoogle<space>
+nn  <space>go :FuzzyHoogle!<space>
+xn <leader>go <Esc>:FuzzyHoogle <C-r>= GetSelectedText()<CR><CR>
+xn  <space>go <Esc>:FuzzyHoogle! <C-r>=GetSelectedText()<CR><CR>
+nn <leader>gw <Esc>:FuzzyHoogle <C-r>= expand('<cword>')<CR><CR>
+nn  <space>gw <Esc>:FuzzyHoogle! <C-r>=expand('<cword>')<CR><CR>
+
 " escapes pipe symbol for `:GitGrep`
 fu! s:escgg(x)
 	retu substitute(a:x, ' |', ' \\|', 'g')
@@ -96,10 +104,10 @@ endf
 nn <leader>gf  :GitGrep -F |  nn <space>gf  :GitGrep! -F<space>
 nn <leader>gif :GitGrep -iF | nn <space>gif :GitGrep! -iF<space>
 " grep by visually selected text
-xn <leader>gf  <Esc>:GitGrep -F <C-r>=  <SID>escgg(<SID>get_selected_text())<CR>
-xn  <space>gf  <Esc>:GitGrep! -F <C-r>= <SID>escgg(<SID>get_selected_text())<CR>
-xn <leader>gif <Esc>:GitGrep -iF <C-r>= <SID>escgg(<SID>get_selected_text())<CR>
-xn  <space>gif <Esc>:GitGrep! -iF <C-r>=<SID>escgg(<SID>get_selected_text())<CR>
+xn <leader>gf  <Esc>:GitGrep -F <C-r>=  <SID>escgg(GetSelectedText())<CR>
+xn  <space>gf  <Esc>:GitGrep! -F <C-r>= <SID>escgg(GetSelectedText())<CR>
+xn <leader>gif <Esc>:GitGrep -iF <C-r>= <SID>escgg(GetSelectedText())<CR>
+xn  <space>gif <Esc>:GitGrep! -iF <C-r>=<SID>escgg(GetSelectedText())<CR>
 " grep by word under cusror
 no <leader>gn  :GitGrep -F <C-r>=  <SID>escgg(expand('<cword>'))<CR>
 no  <space>gn  :GitGrep! -F <C-r>= <SID>escgg(expand('<cword>'))<CR>
@@ -217,34 +225,6 @@ nm <leader>sp <Plug>CtrlSFPwordPath
 nm <leader>sP <Plug>CtrlSFPwordExec
 nn <leader>so :CtrlSFOpen<CR>
 nn <leader>st :CtrlSFToggle<CR>
-
-" doesn't work with visual-block selection
-fu! s:get_selected_text()
-	let [l:line_a, l:col_a] = getpos("'<")[1:2]
-	let [l:line_b, l:col_b] = getpos("'>")[1:2]
-	let l:lines = getline(l:line_a, l:line_b)
-	if len(l:lines) == 0 | retu '' | el
-		let l:lines[-1] = l:lines[-1][: l:col_b - 1  ]
-		let l:lines[ 0] = l:lines[ 0][  l:col_a - 1 :]
-		retu join(l:lines, "\n")
-	en
-endf
-
-" escape quotes to put them inside double single quotes '...'
-fu! s:escq(x)
-	retu
-	\ substitute(
-	\ substitute(
-	\ substitute(
-	\ a:x, '''', '&&', 'g'),
-	\ '\"', '\\&', 'g'),
-	\ '|', ("'.'".'\\|'."'.'"), 'g')
-endf
-
-
-" Make Hoogle search easier (because I use it very often)
-nn <A-g> :Hoogle<space>
-xn <A-g> <Esc>:Hoogle <C-r>=<SID>escq(<SID>get_selected_text())<CR><CR>
 
 
 " EasyMotion bindings (<Space> for overwin-mode, <Leader> for current window)

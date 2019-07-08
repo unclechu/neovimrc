@@ -55,3 +55,17 @@ fu! g:GetNSpaces(n)
 	for i in range(a:n) | let l:result .= ' ' | endfo
 	retu l:result
 endf
+
+
+" Returns a string with selected text in visual mode.
+" WARNING! It doesn't work with visual-block selection.
+fu! g:GetSelectedText()
+	let [l:line_a, l:col_a] = getpos("'<")[1:2]
+	let [l:line_b, l:col_b] = getpos("'>")[1:2]
+	let l:lines = getline(l:line_a, l:line_b)
+	if len(l:lines) == 0 | retu '' | el
+		let l:lines[-1] = l:lines[-1][: l:col_b - 1  ]
+		let l:lines[ 0] = l:lines[ 0][  l:col_a - 1 :]
+		retu join(l:lines, "\n")
+	en
+endf
