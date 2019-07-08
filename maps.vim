@@ -59,11 +59,23 @@ nn <leader>f<leader> :Windows!<CR>
 nn <space><leader>   :History<CR>
 nn <space>f<leader>  :History!<CR>
 
-" fuzzy search over lines
-nn <leader>sa :Lines<CR>
-nn  <space>sa :Lines!<CR>
-nn <leader>sl :BLines<CR>
-nn  <space>sl :BLines!<CR>
+" fuzzy search over lines.
+" lines of all buffers
+nn <leader>sa  :Lines<CR>
+xn <leader>sa  <Esc>:Lines <C-r>=GetSelectedText()<CR>
+nn <leader>swa :Lines <C-r>=expand('<cword>')<CR><CR>
+" fullscreen lines of all buffers
+nn  <space>sa  :Lines!<CR>
+xn  <space>sa  <Esc>:Lines! <C-r>=GetSelectedText()<CR>
+nn  <space>swa :Lines! <C-r>=expand('<cword>')<CR><CR>
+" current buffer lines
+nn <leader>sl  :BLines<CR>
+xn <leader>sl  <Esc>:BLines <C-r>=GetSelectedText()<CR>
+nn <leader>swl <Esc>:BLines <C-r>=expand('<cword>')<CR><CR>
+" fullscreen current buffer lines
+nn  <space>sl  :BLines!<CR>
+xn  <space>sl  :BLines! <C-r>=GetSelectedText()<CR>
+nn  <space>swl :BLines! <C-r>=expand('<cword>')<CR><CR>
 
 " fuzzy marks
 nn <leader>sm :Marks<CR>
@@ -87,10 +99,10 @@ nn  <space>f <Nop>
 " Make Hoogle search easier (because I use it very often)
 nn <leader>go :FuzzyHoogle<space>
 nn  <space>go :FuzzyHoogle!<space>
-xn <leader>go <Esc>:FuzzyHoogle <C-r>= GetSelectedText()<CR><CR>
-xn  <space>go <Esc>:FuzzyHoogle! <C-r>=GetSelectedText()<CR><CR>
-nn <leader>gw <Esc>:FuzzyHoogle <C-r>= expand('<cword>')<CR><CR>
-nn  <space>gw <Esc>:FuzzyHoogle! <C-r>=expand('<cword>')<CR><CR>
+xn <leader>go <Esc>:FuzzyHoogle <C-r>= GetSelectedText()<CR>
+xn  <space>go <Esc>:FuzzyHoogle! <C-r>=GetSelectedText()<CR>
+nn <leader>gw :FuzzyHoogle <C-r>= expand('<cword>')<CR><CR>
+nn  <space>gw :FuzzyHoogle! <C-r>=expand('<cword>')<CR><CR>
 
 " escapes pipe symbol for `:GitGrep`
 fu! s:escgg(x)
