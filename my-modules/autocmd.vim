@@ -29,7 +29,7 @@ aug my#filetype_hooks | au!
 
 		sy region haskellQMBlock matchgroup=haskellDelimiter
 			\ start="\(^\|\(^\|[^\\]\)\(\\\\\)*\)\@<={" end="}"
-			\ contains=TOP,@Spell containedin=haskellQM
+			\ contains=TOP,@Spell containedin=haskellQM contained
 
 		sy region haskellQM matchgroup=haskellTH
 			\ start="\[qm\(b\|s\)\?|" end="|\]"
