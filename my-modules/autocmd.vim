@@ -24,9 +24,23 @@ aug my#filetype_hooks | au!
 
 	au FileType Makefile setl noet
 
+	fu! s:highlight_haskell_qm_interpolation_blocks()
+		sy match haskellQMStr "." containedin=haskellQM contained
+
+		sy region haskellQMBlock matchgroup=haskellDelimiter
+			\ start="\(^\|\(^\|[^\\]\)\(\\\\\)*\)\@<={" end="}"
+			\ contains=TOP,@Spell containedin=haskellQM
+
+		sy region haskellQM matchgroup=haskellTH
+			\ start="\[qm\(b\|s\)\?|" end="|\]"
+
+		hi def link haskellQMStr String
+	endf
+
 	au FileType haskell
 		\ setl et ts=2 sts=2 sw=2
 		\ | cal g:ColorschemeCustomizations()
+		\ | cal s:highlight_haskell_qm_interpolation_blocks()
 
 	au FileType cabal setl et ts=2 sts=2 sw=2
 	au FileType python setl ts=4 sts=4 sw=4
