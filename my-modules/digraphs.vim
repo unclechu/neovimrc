@@ -5,6 +5,7 @@ digraphs `` 769    " accent mark (zero width) | 0x301
 digraphs 3. 8230   " … | 0x2026
 digraphs ++ 10746  " ⧺ | 0x29fa
 digraphs 3+ 10747  " ⧻ | 0x29fb
+digraphs /3 8802   " ≢ | 0x2262 (see also '3=' for '≡')
 digraphs ZZ 8484   " ℤ | 0x2124
 digraphs NN 8469   " ℕ | 0x2115
 digraphs QQ 8474   " ℚ | 0x211a
