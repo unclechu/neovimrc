@@ -46,7 +46,7 @@ Plug 'jonathanbranam/vim-orgmode' " less dead fork
 Plug 'mattn/calendar-vim'
 
 " surround
-Plug 'tpope/vim-surround'
+Plug 'unclechu/vim-surround', {'branch': 'bugfix/virtualedit-in-insert-mode'}
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 
