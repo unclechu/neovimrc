@@ -53,6 +53,9 @@ aug my#filetype_hooks | au!
 	au FileType nerdtree setl nolist
 	au FileType markdown setl et ts=2 sts=2 sw=2
 	au FileType org setl tw=0
+
+	au BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt
+		\ sil %!pandoc -tplain -o /dev/stdout -- '%'
 aug END
 
 aug my#insert_mode_hooks | au!
