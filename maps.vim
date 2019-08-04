@@ -500,10 +500,12 @@ fu! s:new_line_after()
 	let l:x = getpos('.') | pu='' | cal setpos('.', l:x)
 endf
 nn <A-.> :cal <SID>new_line_after()<CR>
+nn <A->> :pu=''<CR>
 fu! s:new_line_before()
 	let l:x = getpos('.') | pu!='' | let l:x[1] += 1 | cal setpos('.', l:x)
 endf
 nn <A-,> :cal <SID>new_line_before()<CR>
+nn <A-<> :pu!=''<CR>
 nm <leader>o <A-.>ji
 nm <leader>O <A-,>ki
 
