@@ -4,10 +4,23 @@
 let s:shortcut_map = {
 	\ 'ctrl-x': 'yank',
 	\ 'ctrl-i': 'import',
-	\ 'ctrl-p': 'padded import',
 	\ 'ctrl-y': 'yank import',
-	\ 'ctrl-t': 'yank padded import',
+	\ 'ctrl-p': 'padded import',
+	\ 'ctrl-k': 'yank padded import',
 	\ }
+
+let s:shortcuts_order = [
+	\ 'ctrl-x',
+	\ 'ctrl-i',
+	\ 'ctrl-y',
+	\ 'ctrl-p',
+	\ 'ctrl-k',
+	\ ]
+
+if sort(keys(s:shortcut_map)) != sort(copy(s:shortcuts_order))
+	th 'Shortcuts set from shortcut map is not equal to '.
+		\ 'shortcuts set from ordering list!'
+en
 
 fu! s:get_color_code(style, groups)
 	let l:gui = has('tgc') && &tgc
@@ -42,7 +55,7 @@ endf
 
 let s:header = ':: '.
 	\ join(map(
-	\   keys(s:shortcut_map),
+	\   copy(s:shortcuts_order),
 	\   's:colorize("hl+", toupper(v:val))." ".s:shortcut_map[v:val]'
 	\ ), ', ')
 
@@ -99,7 +112,7 @@ fu! s:handler(fullscreen, qargs)
 
 	let l:fzf_opts = [
 		\ '--multi', '--tiebreak=index', '--ansi',
-		\ '--prompt', 'Hoogle> ', '--expect', join(keys(s:shortcut_map), ','),
+		\ '--prompt', 'Hoogle> ', '--expect', join(s:shortcuts_order, ','),
 		\ '--header='.s:header,
 		\ ]
 
