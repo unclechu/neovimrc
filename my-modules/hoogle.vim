@@ -56,7 +56,8 @@ let s:padded_import_replace =
 	\ '''import           \1 (\2)'', '''')'
 
 let s:paste_cmd_pfx = 'pu='
-let s:yank_cmd_pfx = 'let @@.=((@@=="")?"":"\n").'
+let s:yank_cmd_pfx = 'let @@.='
+let s:yank_cmd_sfx = ".'\n'"
 
 fu! s:sink(lines)
 	if len(a:lines) < 2 | retu | en
@@ -65,17 +66,17 @@ fu! s:sink(lines)
 
 	if l:action_name == 'yank'
 		let @@ = ''
-		let l:action_cmd = s:yank_cmd_pfx.'l:line'
+		let l:action_cmd = s:yank_cmd_pfx.'l:line'.s:yank_cmd_sfx
 	elsei l:action_name == 'import'
 		let l:action_cmd = s:paste_cmd_pfx.s:import_replace
 	elsei l:action_name == 'padded import'
 		let l:action_cmd = s:paste_cmd_pfx.s:padded_import_replace
 	elsei l:action_name == 'yank import'
 		let @@ = ''
-		let l:action_cmd = s:yank_cmd_pfx.s:import_replace
+		let l:action_cmd = s:yank_cmd_pfx.s:import_replace.s:yank_cmd_sfx
 	elsei l:action_name == 'yank padded import'
 		let @@ = ''
-		let l:action_cmd = s:yank_cmd_pfx.s:padded_import_replace
+		let l:action_cmd = s:yank_cmd_pfx.s:padded_import_replace.s:yank_cmd_sfx
 	el
 		if l:action_name != ''
 			th 'Unexpected action name: '.l:action_name
