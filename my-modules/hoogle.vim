@@ -7,6 +7,8 @@ let s:shortcut_map = {
 	\ 'ctrl-y': 'yank import',
 	\ 'ctrl-p': 'padded import',
 	\ 'ctrl-k': 'yank padded import',
+	\ 'ctrl-f': 'qualified import',
+	\ 'ctrl-e': 'yank qualified import',
 	\ }
 
 let s:shortcuts_order = [
@@ -15,6 +17,8 @@ let s:shortcuts_order = [
 	\ 'ctrl-y',
 	\ 'ctrl-p',
 	\ 'ctrl-k',
+	\ 'ctrl-f',
+	\ 'ctrl-e',
 	\ ]
 
 if sort(keys(s:shortcut_map)) != sort(copy(s:shortcuts_order))
@@ -59,11 +63,11 @@ let s:header = ':: '.
 	\   's:colorize("hl+", toupper(v:val))." ".s:shortcut_map[v:val]'
 	\ ), ', ')
 
-let s:import_reg = '^\([A-Z][^ ]*\) \([^ ]\+\) :: .*$'
-let s:import_module_reg = '^module \([A-Z][^ ]*\)$'
+let s:import_reg = '^\(\([A-Z]\)[^ ]*\) \([^ ]\+\) :: .*$'
+let s:import_module_reg = '^module \(\([A-Z]\)[^ ]*\)$'
 
 let s:import_class_reg =
-	\ '^\([A-Z][^ ]*\) class \(.* => \)\?\([^ ]\+\).*$'
+	\ '^\(\([A-Z]\)[^ ]*\) class \(.* => \)\?\([^ ]\+\).*$'
 
 " same amount of spaces as amount of chars in 'qualified' word
 let s:pad = '         '
@@ -72,17 +76,44 @@ let s:import_replace =
 	\ 'substitute('.
 	\ 'substitute('.
 	\ 'substitute(l:line, '.
-	\ ''''.s:import_reg.''', ''import \1 (\2)'', ''''), '.
+	\ ''''.s:import_reg.''', ''import \1 (\3)'', ''''), '.
 	\ ''''.s:import_module_reg.''', ''import \1'', ''''), '.
-	\ ''''.s:import_class_reg.''', ''import \1 (\3 (..))'', '''')'
+	\ ''''.s:import_class_reg.''', ''import \1 (\4 (..))'', '''')'
 
 let s:padded_import_replace =
 	\ 'substitute('.
 	\ 'substitute('.
 	\ 'substitute(l:line, '.
-	\ ''''.s:import_reg.''', ''import '.s:pad.' \1 (\2)'', ''''), '.
+	\ ''''.s:import_reg.''', ''import '.s:pad.' \1 (\3)'', ''''), '.
 	\ ''''.s:import_module_reg.''', ''import '.s:pad.' \1'', ''''), '.
-	\ ''''.s:import_class_reg.''', ''import '.s:pad.' \1 (\3 (..))'', '''')'
+	\ ''''.s:import_class_reg.''', ''import '.s:pad.' \1 (\4 (..))'', '''')'
+
+fu! s:qualify(type)
+	let l:words = split(submatch(1), '\.')
+	let l:letter = submatch(2)
+
+	if len(l:words) > 1
+		let l:letter = (len(l:words[-1]) < 3) ? l:words[-1] : l:words[-1][0]
+	en
+
+	if a:type == 0 " regular import
+		retu 'import qualified '.submatch(1).' as '.l:letter.
+			\ ' ('.submatch(3).')'
+	elsei a:type == 1 " import of a module
+		retu 'import qualified '.submatch(1).' as '.l:letter
+	elsei a:type == 2 " import of a class
+		retu 'import qualified '.submatch(1).' as '.l:letter.
+			\ ' ('.submatch(4).' (..))'
+	en
+endf
+
+let s:qualified_import_replace =
+	\ 'substitute('.
+	\ 'substitute('.
+	\ 'substitute(l:line, '.
+	\ ''''.s:import_reg.''', ''\=s:qualify(0)'', ''''), '.
+	\ ''''.s:import_module_reg.''', ''\=s:qualify(1)'', ''''), '.
+	\ ''''.s:import_class_reg.''', ''\=s:qualify(2)'', '''')'
 
 let s:paste_cmd_pfx = 'pu='
 let s:yank_cmd_pfx = 'let @@.='
@@ -106,6 +137,12 @@ fu! s:sink(lines)
 	elsei l:action_name == 'yank padded import'
 		let @@ = ''
 		let l:action_cmd = s:yank_cmd_pfx.s:padded_import_replace.s:yank_cmd_sfx
+	elsei l:action_name == 'qualified import'
+		let l:action_cmd = s:paste_cmd_pfx.s:qualified_import_replace
+	elsei l:action_name == 'yank qualified import'
+		let @@ = ''
+		let l:action_cmd =
+			\ s:yank_cmd_pfx.s:qualified_import_replace.s:yank_cmd_sfx
 	el
 		if l:action_name != ''
 			th 'Unexpected action name: '.l:action_name
