@@ -69,24 +69,50 @@ let s:import_module_reg = '^module \(\([A-Z]\)[^ ]*\)$'
 let s:import_class_reg =
 	\ '^\(\([A-Z]\)[^ ]*\) class \(.* => \)\?\([^ ]\+\).*$'
 
+let s:import_data_reg =
+	\ '^\(\([A-Z]\)[^ ]*\) \(data\\|newtype\) \([^ ]\+\).*$'
+
+let s:import_type_reg =
+	\ '^\(\([A-Z]\)[^ ]*\) type\( family\)\? \([^ ]\+\).*$'
+
 " same amount of spaces as amount of chars in 'qualified' word
 let s:pad = '         '
 
 let s:import_replace =
 	\ 'substitute('.
 	\ 'substitute('.
+	\ 'substitute('.
+	\ 'substitute('.
 	\ 'substitute(l:line, '.
 	\ ''''.s:import_reg.''', ''import \1 (\3)'', ''''), '.
 	\ ''''.s:import_module_reg.''', ''import \1'', ''''), '.
-	\ ''''.s:import_class_reg.''', ''import \1 (\4 (..))'', '''')'
+	\ ''''.s:import_class_reg.''', ''import \1 (\4 (..))'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''import \1 (\4 (..))'', ''''), '.
+	\ ''''.s:import_type_reg.''', ''import \1 (\4)'', '''')'
 
 let s:padded_import_replace =
+	\ 'substitute('.
+	\ 'substitute('.
 	\ 'substitute('.
 	\ 'substitute('.
 	\ 'substitute(l:line, '.
 	\ ''''.s:import_reg.''', ''import '.s:pad.' \1 (\3)'', ''''), '.
 	\ ''''.s:import_module_reg.''', ''import '.s:pad.' \1'', ''''), '.
-	\ ''''.s:import_class_reg.''', ''import '.s:pad.' \1 (\4 (..))'', '''')'
+	\ ''''.s:import_class_reg.''', ''import '.s:pad.' \1 (\4 (..))'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''import '.s:pad.' \1 (\4 (..))'', ''''), '.
+	\ ''''.s:import_type_reg.''', ''import '.s:pad.' \1 (\4)'', '''')'
+
+let s:qualified_import_replace =
+	\ 'substitute('.
+	\ 'substitute('.
+	\ 'substitute('.
+	\ 'substitute('.
+	\ 'substitute(l:line, '.
+	\ ''''.s:import_reg.''', ''\=s:qualify(0)'', ''''), '.
+	\ ''''.s:import_module_reg.''', ''\=s:qualify(1)'', ''''), '.
+	\ ''''.s:import_class_reg.''', ''\=s:qualify(2)'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''\=s:qualify(2)'', ''''), '.
+	\ ''''.s:import_type_reg.''', ''\=s:qualify(3)'', '''')'
 
 fu! s:qualify(type)
 	let l:words = split(submatch(1), '\.')
@@ -101,19 +127,16 @@ fu! s:qualify(type)
 			\ ' ('.submatch(3).')'
 	elsei a:type == 1 " import of a module
 		retu 'import qualified '.submatch(1).' as '.l:letter
-	elsei a:type == 2 " import of a class
+	elsei a:type == 2 " import of a class or a data-type
 		retu 'import qualified '.submatch(1).' as '.l:letter.
 			\ ' ('.submatch(4).' (..))'
+	elsei a:type == 3 " import of a type (or type family)
+		retu 'import qualified '.submatch(1).' as '.l:letter.
+			\ ' ('.submatch(4).')'
+	el
+		th 'Unexpected type: '.a:type
 	en
 endf
-
-let s:qualified_import_replace =
-	\ 'substitute('.
-	\ 'substitute('.
-	\ 'substitute(l:line, '.
-	\ ''''.s:import_reg.''', ''\=s:qualify(0)'', ''''), '.
-	\ ''''.s:import_module_reg.''', ''\=s:qualify(1)'', ''''), '.
-	\ ''''.s:import_class_reg.''', ''\=s:qualify(2)'', '''')'
 
 let s:paste_cmd_pfx = 'pu='
 let s:yank_cmd_pfx = 'let @@.='
