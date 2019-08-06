@@ -9,6 +9,8 @@ let s:shortcut_map = {
 	\ 'ctrl-k': 'yank padded import',
 	\ 'ctrl-f': 'qualified import',
 	\ 'ctrl-e': 'yank qualified import',
+	\ 'alt-f': 'just qualified import',
+	\ 'alt-e': 'just yank qualified import',
 	\ }
 
 let s:shortcuts_order = [
@@ -19,6 +21,8 @@ let s:shortcuts_order = [
 	\ 'ctrl-k',
 	\ 'ctrl-f',
 	\ 'ctrl-e',
+	\ 'alt-f',
+	\ 'alt-e',
 	\ ]
 
 if sort(keys(s:shortcut_map)) != sort(copy(s:shortcuts_order))
@@ -102,34 +106,48 @@ let s:padded_import_replace =
 let s:qualified_import_replace =
 	\ 'substitute(substitute(substitute(substitute(substitute('.
 	\ 'substitute(l:line, '.
-	\ ''''.s:import_reg.''', ''\=s:qualify(0)'', ''''), '.
-	\ ''''.s:import_module_reg.''', ''\=s:qualify(1)'', ''''), '.
-	\ ''''.s:import_package_reg.''', ''\=s:qualify(4)'', ''''), '.
-	\ ''''.s:import_class_reg.''', ''\=s:qualify(2)'', ''''), '.
-	\ ''''.s:import_data_reg.''', ''\=s:qualify(2)'', ''''), '.
-	\ ''''.s:import_type_reg.''', ''\=s:qualify(3)'', '''')'
+	\ ''''.s:import_reg.''', ''\=s:qualify(0, 0)'', ''''), '.
+	\ ''''.s:import_module_reg.''', ''\=s:qualify(1, 0)'', ''''), '.
+	\ ''''.s:import_package_reg.''', ''\=s:qualify(4, 0)'', ''''), '.
+	\ ''''.s:import_class_reg.''', ''\=s:qualify(2, 0)'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''\=s:qualify(2, 0)'', ''''), '.
+	\ ''''.s:import_type_reg.''', ''\=s:qualify(3, 0)'', '''')'
 
-fu! s:qualify(type)
-	let l:words = split(submatch(1), '\.')
-	let l:letter = submatch(2)
+let s:just_qualified_import_replace =
+	\ substitute(s:qualified_import_replace,
+	\ '\(s:qualify([0-9]\), 0)', '\1, 1)', 'g')
 
-	if len(l:words) > 1
-		let l:letter = (len(l:words[-1]) < 3) ? l:words[-1] : l:words[-1][0]
+fu! s:qualify(type, isjust)
+	if a:isjust
+		let l:as = ''
+	el
+		if a:type == 4 " import from package (see PackageImports extension)
+			let l:as = ' as …'
+		el
+			let l:words = split(submatch(1), '\.')
+			let l:as = submatch(2)
+
+			if len(l:words) > 1
+				let l:as = (len(l:words[-1]) < 3) ? l:words[-1] : l:words[-1][0]
+			en
+			
+			let l:as = ' as '.l:as
+		en
 	en
 
 	if a:type == 0 " regular import
-		retu 'import qualified '.submatch(1).' as '.l:letter.
+		retu 'import qualified '.submatch(1).l:as.
 			\ ' ('.submatch(3).')'
 	elsei a:type == 1 " import of a module
-		retu 'import qualified '.submatch(1).' as '.l:letter
+		retu 'import qualified '.submatch(1).l:as
 	elsei a:type == 2 " import of a class or a data-type
-		retu 'import qualified '.submatch(1).' as '.l:letter.
+		retu 'import qualified '.submatch(1).l:as.
 			\ ' ('.submatch(4).' (..))'
 	elsei a:type == 3 " import of a type (or type family)
-		retu 'import qualified '.submatch(1).' as '.l:letter.
+		retu 'import qualified '.submatch(1).l:as.
 			\ ' ('.submatch(4).')'
 	elsei a:type == 4 " import from package (see PackageImports extension)
-		retu 'import qualified "'.submatch(1).'" … as …'
+		retu 'import qualified "'.submatch(1).'" …'.l:as
 	el | th 'Unexpected type: '.a:type | en
 endf
 
@@ -157,10 +175,16 @@ fu! s:sink(lines)
 		let l:action_cmd = s:yank_cmd_pfx.s:padded_import_replace.s:yank_cmd_sfx
 	elsei l:action_name == 'qualified import'
 		let l:action_cmd = s:paste_cmd_pfx.s:qualified_import_replace
+	elsei l:action_name == 'just qualified import'
+		let l:action_cmd = s:paste_cmd_pfx.s:just_qualified_import_replace
 	elsei l:action_name == 'yank qualified import'
 		let @@ = ''
 		let l:action_cmd =
 			\ s:yank_cmd_pfx.s:qualified_import_replace.s:yank_cmd_sfx
+	elsei l:action_name == 'just yank qualified import'
+		let @@ = ''
+		let l:action_cmd =
+			\ s:yank_cmd_pfx.s:just_qualified_import_replace.s:yank_cmd_sfx
 	el
 		if l:action_name != ''
 			th 'Unexpected action name: '.l:action_name
