@@ -4,13 +4,13 @@
 let s:shortcut_map = {
 	\ 'ctrl-x': 'yank',
 	\ 'ctrl-i': 'import',
-	\ 'ctrl-y': 'yank import',
-	\ 'ctrl-p': 'padded import',
-	\ 'ctrl-k': 'yank padded import',
-	\ 'ctrl-f': 'qualified import',
-	\ 'ctrl-e': 'yank qualified import',
-	\ 'alt-f': 'just qualified import',
-	\ 'alt-e': 'just yank qualified import',
+	\ 'ctrl-y': 'yank ^I',
+	\ 'ctrl-p': 'padded ^I',
+	\ 'ctrl-k': 'yank ^P',
+	\ 'ctrl-f': 'qualified ^I',
+	\ 'ctrl-e': 'yank ^F',
+	\ 'alt-f': '^F without "as"',
+	\ 'alt-e': '^E without "as"',
 	\ }
 
 let s:shortcuts_order = [
@@ -64,7 +64,8 @@ endf
 let s:header = ':: '.
 	\ join(map(
 	\   copy(s:shortcuts_order),
-	\   's:colorize("hl+", toupper(v:val))." ".s:shortcut_map[v:val]'
+	\   's:colorize("hl+",substitute(toupper(v:val),''^CTRL-'',''^'',''''))'.
+	\   '." ".s:shortcut_map[v:val]'
 	\ ), ', ')
 
 let s:import_reg = '^\(\([A-Z]\)[^ ]*\) \([^ ]\+\) :: .*$'
@@ -113,12 +114,12 @@ let s:qualified_import_replace =
 	\ ''''.s:import_data_reg.''', ''\=s:qualify(2, 0)'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''\=s:qualify(3, 0)'', '''')'
 
-let s:just_qualified_import_replace =
+let s:qualified_import_without_as_replace =
 	\ substitute(s:qualified_import_replace,
 	\ '\(s:qualify([0-9]\), 0)', '\1, 1)', 'g')
 
-fu! s:qualify(type, isjust)
-	if a:isjust
+fu! s:qualify(type, without_as)
+	if a:without_as
 		let l:as = ''
 	el
 		if a:type == 4 " import from package (see PackageImports extension)
@@ -165,26 +166,27 @@ fu! s:sink(lines)
 		let l:action_cmd = s:yank_cmd_pfx.'l:line'.s:yank_cmd_sfx
 	elsei l:action_name == 'import'
 		let l:action_cmd = s:paste_cmd_pfx.s:import_replace
-	elsei l:action_name == 'padded import'
+	elsei l:action_name == 'padded ^I'
 		let l:action_cmd = s:paste_cmd_pfx.s:padded_import_replace
-	elsei l:action_name == 'yank import'
+	elsei l:action_name == 'yank ^I'
 		let @@ = ''
 		let l:action_cmd = s:yank_cmd_pfx.s:import_replace.s:yank_cmd_sfx
-	elsei l:action_name == 'yank padded import'
+	elsei l:action_name == 'yank ^P'
 		let @@ = ''
 		let l:action_cmd = s:yank_cmd_pfx.s:padded_import_replace.s:yank_cmd_sfx
-	elsei l:action_name == 'qualified import'
+	elsei l:action_name == 'qualified ^I'
 		let l:action_cmd = s:paste_cmd_pfx.s:qualified_import_replace
-	elsei l:action_name == 'just qualified import'
-		let l:action_cmd = s:paste_cmd_pfx.s:just_qualified_import_replace
-	elsei l:action_name == 'yank qualified import'
+	elsei l:action_name == '^F without "as"'
+		let l:action_cmd = s:paste_cmd_pfx.s:qualified_import_without_as_replace
+	elsei l:action_name == 'yank ^F'
 		let @@ = ''
 		let l:action_cmd =
 			\ s:yank_cmd_pfx.s:qualified_import_replace.s:yank_cmd_sfx
-	elsei l:action_name == 'just yank qualified import'
+	elsei l:action_name == '^E without "as"'
 		let @@ = ''
 		let l:action_cmd =
-			\ s:yank_cmd_pfx.s:just_qualified_import_replace.s:yank_cmd_sfx
+			\ s:yank_cmd_pfx.s:qualified_import_without_as_replace.
+			\ s:yank_cmd_sfx
 	el
 		if l:action_name != ''
 			th 'Unexpected action name: '.l:action_name
