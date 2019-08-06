@@ -60,13 +60,29 @@ let s:header = ':: '.
 	\ ), ', ')
 
 let s:import_reg = '^\([A-Z][^ ]*\) \([^ ]\+\) :: .*$'
+let s:import_module_reg = '^module \([A-Z][^ ]*\)$'
+
+let s:import_class_reg =
+	\ '^\([A-Z][^ ]*\) class \(.* => \)\?\([^ ]\+\).*$'
+
+" same amount of spaces as amount of chars in 'qualified' word
+let s:pad = '         '
 
 let s:import_replace =
-	\ 'substitute(l:line, '''.s:import_reg.''', ''import \1 (\2)'', '''')'
+	\ 'substitute('.
+	\ 'substitute('.
+	\ 'substitute(l:line, '.
+	\ ''''.s:import_reg.''', ''import \1 (\2)'', ''''), '.
+	\ ''''.s:import_module_reg.''', ''import \1'', ''''), '.
+	\ ''''.s:import_class_reg.''', ''import \1 (\3 (..))'', '''')'
 
 let s:padded_import_replace =
-	\ 'substitute(l:line, '''.s:import_reg.''', '.
-	\ '''import           \1 (\2)'', '''')'
+	\ 'substitute('.
+	\ 'substitute('.
+	\ 'substitute(l:line, '.
+	\ ''''.s:import_reg.''', ''import '.s:pad.' \1 (\2)'', ''''), '.
+	\ ''''.s:import_module_reg.''', ''import '.s:pad.' \1'', ''''), '.
+	\ ''''.s:import_class_reg.''', ''import '.s:pad.' \1 (\3 (..))'', '''')'
 
 let s:paste_cmd_pfx = 'pu='
 let s:yank_cmd_pfx = 'let @@.='
