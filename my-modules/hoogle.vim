@@ -98,6 +98,8 @@ let s:word_replace =
 	\ ''''.s:import_data_reg.''', ''\4'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''\4'', '''')'
 
+let s:word_replace_y = substitute(s:word_replace, '\\|', '\|', 'g')
+
 let s:import_replace =
 	\ 'substitute(substitute(substitute(substitute(substitute('.
 	\ 'substitute(l:line, '.
@@ -107,6 +109,8 @@ let s:import_replace =
 	\ ''''.s:import_class_reg.''', ''import \1 (\4 (..))'', ''''), '.
 	\ ''''.s:import_data_reg.''', ''import \1 (\4 (..))'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''import \1 (\4)'', '''')'
+
+let s:import_replace_y = substitute(s:import_replace, '\\|', '\|', 'g')
 
 let s:padded_import_replace =
 	\ 'substitute(substitute(substitute(substitute(substitute('.
@@ -118,6 +122,9 @@ let s:padded_import_replace =
 	\ ''''.s:import_data_reg.''', ''import '.s:pad.' \1 (\4 (..))'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''import '.s:pad.' \1 (\4)'', '''')'
 
+let s:padded_import_replace_y =
+	\ substitute(s:padded_import_replace, '\\|', '\|', 'g')
+
 let s:qualified_import_replace =
 	\ 'substitute(substitute(substitute(substitute(substitute('.
 	\ 'substitute(l:line, '.
@@ -128,9 +135,15 @@ let s:qualified_import_replace =
 	\ ''''.s:import_data_reg.''', ''\=s:qualify(2, 0)'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''\=s:qualify(3, 0)'', '''')'
 
+let s:qualified_import_replace_y =
+	\ substitute(s:qualified_import_replace, '\\|', '\|', 'g')
+
 let s:qualified_import_without_as_replace =
 	\ substitute(s:qualified_import_replace,
 	\ '\(s:qualify([0-9]\), 0)', '\1, 1)', 'g')
+
+let s:qualified_import_without_as_replace_y =
+	\ substitute(s:qualified_import_without_as_replace, '\\|', '\|', 'g')
 
 fu! s:qualify(type, without_as)
 	if a:without_as
@@ -181,16 +194,16 @@ fu! s:sink(lines)
 	elsei l:action_name == 'word'
 		if len(l:lines) == 1
 			let l:old_reg = @@
-			let l:action_cmd = 'let @@='.s:word_replace.'|norm! P'
+			let l:action_cmd = 'let @@='.s:word_replace_y.'|norm! P'
 		el
 			let l:action_cmd = s:paste_cmd_pfx.s:word_replace
 		en
 	elsei l:action_name == 'yank ^S'
 		if len(l:lines) == 1
-			let l:action_cmd = 'let @@='.s:word_replace
+			let l:action_cmd = 'let @@='.s:word_replace_y
 		el
 			let @@ = ''
-			let l:action_cmd = s:yank_cmd_pfx.s:word_replace.s:yank_cmd_sfx
+			let l:action_cmd = s:yank_cmd_pfx.s:word_replace_y.s:yank_cmd_sfx
 		en
 	elsei l:action_name == 'import'
 		let l:action_cmd = s:paste_cmd_pfx.s:import_replace
@@ -198,10 +211,11 @@ fu! s:sink(lines)
 		let l:action_cmd = s:paste_cmd_pfx.s:padded_import_replace
 	elsei l:action_name == 'yank ^I'
 		let @@ = ''
-		let l:action_cmd = s:yank_cmd_pfx.s:import_replace.s:yank_cmd_sfx
+		let l:action_cmd = s:yank_cmd_pfx.s:import_replace_y.s:yank_cmd_sfx
 	elsei l:action_name == 'yank ^P'
 		let @@ = ''
-		let l:action_cmd = s:yank_cmd_pfx.s:padded_import_replace.s:yank_cmd_sfx
+		let l:action_cmd =
+			\ s:yank_cmd_pfx.s:padded_import_replace_y.s:yank_cmd_sfx
 	elsei l:action_name == 'qualified ^I'
 		let l:action_cmd = s:paste_cmd_pfx.s:qualified_import_replace
 	elsei l:action_name == '^F without "as"'
@@ -209,11 +223,11 @@ fu! s:sink(lines)
 	elsei l:action_name == 'yank ^F'
 		let @@ = ''
 		let l:action_cmd =
-			\ s:yank_cmd_pfx.s:qualified_import_replace.s:yank_cmd_sfx
+			\ s:yank_cmd_pfx.s:qualified_import_replace_y.s:yank_cmd_sfx
 	elsei l:action_name == '^E without "as"'
 		let @@ = ''
 		let l:action_cmd =
-			\ s:yank_cmd_pfx.s:qualified_import_without_as_replace.
+			\ s:yank_cmd_pfx.s:qualified_import_without_as_replace_y.
 			\ s:yank_cmd_sfx
 	el
 		if l:action_name != ''
