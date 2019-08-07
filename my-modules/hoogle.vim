@@ -179,10 +179,19 @@ fu! s:sink(lines)
 		let @@ = ''
 		let l:action_cmd = s:yank_cmd_pfx.'l:line'.s:yank_cmd_sfx
 	elsei l:action_name == 'word'
-		let l:action_cmd = s:paste_cmd_pfx.s:word_replace
+		if len(l:lines) == 1
+			let l:old_reg = @@
+			let l:action_cmd = 'let @@='.s:word_replace.'|norm! P'
+		el
+			let l:action_cmd = s:paste_cmd_pfx.s:word_replace
+		en
 	elsei l:action_name == 'yank ^S'
-		let @@ = ''
-		let l:action_cmd = s:yank_cmd_pfx.s:word_replace.s:yank_cmd_sfx
+		if len(l:lines) == 1
+			let l:action_cmd = 'let @@='.s:word_replace
+		el
+			let @@ = ''
+			let l:action_cmd = s:yank_cmd_pfx.s:word_replace.s:yank_cmd_sfx
+		en
 	elsei l:action_name == 'import'
 		let l:action_cmd = s:paste_cmd_pfx.s:import_replace
 	elsei l:action_name == 'padded ^I'
@@ -214,6 +223,7 @@ fu! s:sink(lines)
 	en
 
 	for l:line in l:lines | exe l:action_cmd | endfo
+	if exists('l:old_reg') | let @@ = l:old_reg | en
 endf
 
 let s:limit = 1000000
