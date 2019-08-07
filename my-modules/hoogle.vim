@@ -3,6 +3,8 @@
 
 let s:shortcut_map = {
 	\ 'ctrl-x': 'yank',
+	\ 'ctrl-s': 'word',
+	\ 'ctrl-a': 'yank ^S',
 	\ 'ctrl-i': 'import',
 	\ 'ctrl-y': 'yank ^I',
 	\ 'ctrl-p': 'padded ^I',
@@ -15,6 +17,8 @@ let s:shortcut_map = {
 
 let s:shortcuts_order = [
 	\ 'ctrl-x',
+	\ 'ctrl-s',
+	\ 'ctrl-a',
 	\ 'ctrl-i',
 	\ 'ctrl-y',
 	\ 'ctrl-p',
@@ -83,6 +87,16 @@ let s:import_type_reg =
 
 " same amount of spaces as amount of chars in 'qualified' word
 let s:pad = '         '
+
+let s:word_replace =
+	\ 'substitute(substitute(substitute(substitute(substitute('.
+	\ 'substitute(l:line, '.
+	\ ''''.s:import_reg.''', ''\3'', ''''), '.
+	\ ''''.s:import_module_reg.''', ''\1'', ''''), '.
+	\ ''''.s:import_package_reg.''', ''\"\1\"'', ''''), '.
+	\ ''''.s:import_class_reg.''', ''\4'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''\4'', ''''), '.
+	\ ''''.s:import_type_reg.''', ''\4'', '''')'
 
 let s:import_replace =
 	\ 'substitute(substitute(substitute(substitute(substitute('.
@@ -164,6 +178,11 @@ fu! s:sink(lines)
 	if l:action_name == 'yank'
 		let @@ = ''
 		let l:action_cmd = s:yank_cmd_pfx.'l:line'.s:yank_cmd_sfx
+	elsei l:action_name == 'word'
+		let l:action_cmd = s:paste_cmd_pfx.s:word_replace
+	elsei l:action_name == 'yank ^S'
+		let @@ = ''
+		let l:action_cmd = s:yank_cmd_pfx.s:word_replace.s:yank_cmd_sfx
 	elsei l:action_name == 'import'
 		let l:action_cmd = s:paste_cmd_pfx.s:import_replace
 	elsei l:action_name == 'padded ^I'
