@@ -80,7 +80,7 @@ let s:import_class_reg =
 	\ '^\(\([A-Z]\)[^ ]*\) class \(.* => \)\?\([^ ]\+\).*$'
 
 let s:import_data_reg =
-	\ '^\(\([A-Z]\)[^ ]*\) \(data\\|newtype\) \([^ ]\+\).*$'
+	\ '^\(\([A-Z]\)[^ ]*\) \(data\\|newtype\)\( family\)\? \([^ ]\+\).*$'
 
 let s:import_type_reg =
 	\ '^\(\([A-Z]\)[^ ]*\) type\( family\)\? \([^ ]\+\).*$'
@@ -95,7 +95,7 @@ let s:word_replace =
 	\ ''''.s:import_module_reg.''', ''\1'', ''''), '.
 	\ ''''.s:import_package_reg.''', ''\"\1\"'', ''''), '.
 	\ ''''.s:import_class_reg.''', ''\4'', ''''), '.
-	\ ''''.s:import_data_reg.''', ''\4'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''\5'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''\4'', '''')'
 
 let s:word_replace_y = substitute(s:word_replace, '\\|', '\|', 'g')
@@ -107,7 +107,7 @@ let s:import_replace =
 	\ ''''.s:import_module_reg.''', ''import \1'', ''''), '.
 	\ ''''.s:import_package_reg.''', ''import \"\1\" …'', ''''), '.
 	\ ''''.s:import_class_reg.''', ''import \1 (\4 (..))'', ''''), '.
-	\ ''''.s:import_data_reg.''', ''import \1 (\4 (..))'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''import \1 (\5 (..))'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''import \1 (\4)'', '''')'
 
 let s:import_replace_y = substitute(s:import_replace, '\\|', '\|', 'g')
@@ -119,7 +119,7 @@ let s:padded_import_replace =
 	\ ''''.s:import_module_reg.''', ''import '.s:pad.' \1'', ''''), '.
 	\ ''''.s:import_package_reg.''', ''import '.s:pad.' \"\1\" …'', ''''), '.
 	\ ''''.s:import_class_reg.''', ''import '.s:pad.' \1 (\4 (..))'', ''''), '.
-	\ ''''.s:import_data_reg.''', ''import '.s:pad.' \1 (\4 (..))'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''import '.s:pad.' \1 (\5 (..))'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''import '.s:pad.' \1 (\4)'', '''')'
 
 let s:padded_import_replace_y =
@@ -132,7 +132,7 @@ let s:qualified_import_replace =
 	\ ''''.s:import_module_reg.''', ''\=s:qualify(1, 0)'', ''''), '.
 	\ ''''.s:import_package_reg.''', ''\=s:qualify(4, 0)'', ''''), '.
 	\ ''''.s:import_class_reg.''', ''\=s:qualify(2, 0)'', ''''), '.
-	\ ''''.s:import_data_reg.''', ''\=s:qualify(2, 0)'', ''''), '.
+	\ ''''.s:import_data_reg.''', ''\=s:qualify(5, 0)'', ''''), '.
 	\ ''''.s:import_type_reg.''', ''\=s:qualify(3, 0)'', '''')'
 
 let s:qualified_import_replace_y =
@@ -168,7 +168,7 @@ fu! s:qualify(type, without_as)
 			\ ' ('.submatch(3).')'
 	elsei a:type == 1 " import of a module
 		retu 'import qualified '.submatch(1).l:as
-	elsei a:type == 2 " import of a class or a data-type
+	elsei a:type == 2 " import of a class
 		retu 'import qualified '.submatch(1).l:as.
 			\ ' ('.submatch(4).' (..))'
 	elsei a:type == 3 " import of a type (or type family)
@@ -176,6 +176,9 @@ fu! s:qualify(type, without_as)
 			\ ' ('.submatch(4).')'
 	elsei a:type == 4 " import from package (see PackageImports extension)
 		retu 'import qualified "'.submatch(1).'" …'.l:as
+	elsei a:type == 5 " import of a data-type
+		retu 'import qualified '.submatch(1).l:as.
+			\ ' ('.submatch(5).' (..))'
 	el | th 'Unexpected type: '.a:type | en
 endf
 
