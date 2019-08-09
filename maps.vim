@@ -144,6 +144,11 @@ nn <leader>gi <Nop>| xn <leader>gi <Nop>
 nn  <space>g  <Nop>| xn  <space>g  <Nop>
 nn  <space>gi <Nop>| xn  <space>gi <Nop>
 
+ino <expr> <c-x><c-f> fzf#vim#complete#path("find . \| sed '1d;s:^..::'")
+ino <expr> <c-x><c-j> fzf#vim#complete#path('ag --hidden -l -g ""')
+im <c-x><c-k> <plug>(fzf-complete-word)
+im <c-x><c-l> <plug>(fzf-complete-line)
+im <c-x><c-h> <plug>(fzf-complete-buffer-line)
 
 " nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 nn <leader>n  :NERDTreeToggle<CR>
