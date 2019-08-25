@@ -101,6 +101,10 @@ nn <leader>go :FuzzyHoogle<space>
 nn  <space>go :FuzzyHoogle!<space>
 xn <leader>go <Esc>:FuzzyHoogle <C-r>= GetSelectedText()<CR>
 xn  <space>go <Esc>:FuzzyHoogle! <C-r>=GetSelectedText()<CR>
+xm <leader>gO <leader>go<CR>
+xm  <space>gO <space>go<CR>
+nn <leader>gO <Nop>
+nn  <space>gO <Nop>
 nn <leader>gw :FuzzyHoogle <C-r>= expand('<cword>')<CR><CR>
 nn  <space>gw :FuzzyHoogle! <C-r>=expand('<cword>')<CR><CR>
 
