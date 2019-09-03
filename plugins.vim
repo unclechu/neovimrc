@@ -70,6 +70,9 @@ Plug 'itchyny/vim-haskell-indent'
 " purescript
 Plug 'raichoo/purescript-vim'
 
+" elm
+Plug 'elmcast/elm-vim'
+
 " nix
 Plug 'LnL7/vim-nix'
 
