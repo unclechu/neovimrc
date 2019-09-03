@@ -6,9 +6,12 @@ aug my#auto_filetype_detection | au!
 		\ *.json.example,.jshintrc,.babelrc,.eslintrc,.modernizrrc
 		\ se ft=json
 
+	au BufNewFile,BufRead
+		\ *.yaml.example,*.yaml.default,*.yaml.sample,stack.yaml.lock
+		\ se ft=yaml
+
 	au BufNewFile,BufRead nginx.conf se ft=nginx
 	au BufNewFile,BufRead *.gyp se ft=json
-	au BufNewFile,BufRead *.yaml.example se ft=yaml
 	au BufNewFile,BufRead *.ts se ft=typescript
 	au BufNewFile,BufRead *.tsx se ft=typescript.jsx
 	au BufNewFile,BufRead *.hsc se ft=haskell
