@@ -9,6 +9,7 @@ com! VTE vne | exe 'te' | star
 " triggering '<cr>' asynchronously to force screen redraw after a split.
 com! TS sil !tmux sp
 com! TV sil !tmux sp -h
+com! TW sil !tmux neww
 
 com! MakeTags !ctags -R .
 
