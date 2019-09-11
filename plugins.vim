@@ -132,6 +132,9 @@ Plug 'vim-scripts/nginx.vim'
 " sql
 Plug 'exu/pgsql.vim'
 
+" csv
+Plug 'chrisbra/csv.vim'
+
 " colorschemes
 Plug 'morhetz/gruvbox' " gruvbox
 Plug 'tomasr/molokai' " molokai
