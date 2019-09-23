@@ -129,6 +129,8 @@ let g:webdevicons_conceal_nerdtree_brackets = 1
 
 let g:perl6_unicode_abbrevs = 0
 
+let g:vim_json_syntax_conceal = 0
+
 let g:indexed_search_mappings = 0
 let g:indexed_search_numbered_only = 1
 
