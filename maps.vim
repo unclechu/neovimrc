@@ -334,8 +334,17 @@ nm  <leader>po  <A-.>jP
 nm  <leader>pO  <A-,>kP
 
 " another alias to system X clipboard
-no '<Space> "+
-no <Space>' "*
+no '<Space>  "+
+no <Space>'  "*
+" yank from tmux buffer
+no <leader>' :let @@=system('tmux showb')<CR>
+" yank from specific tmux buffer (TODO use fzf for it)
+no <leader>" :
+	\!tmux list-b<CR>:let @@=system('tmux showb -b buffer0000')<Left><Left>
+" paste to tmux
+no '<leader> :cal system('tmux setb -- '.shellescape(@"))<CR>
+" paste specific register to tmux
+no "<leader> :cal system('tmux setb -- '.shellescape(@))<Left><Left>
 " another alias to 'last yank' register
 no <A-y> "0
 
