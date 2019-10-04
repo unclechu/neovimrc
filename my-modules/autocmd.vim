@@ -22,7 +22,7 @@ aug my#filetype_hooks | au!
 	" because some custom `indentexpr`s has annoying issues
 	au FileType
 		\ ls,coffee,stylus,jade,html,jst,sh,faust,javascript.jsx,typescript.jsx,
-		\haskell,purescript,tcl,vim,markdown
+		\haskell,purescript,tcl,vim,markdown,yaml
 		\ setl inde=
 
 	au FileType Makefile setl noet
