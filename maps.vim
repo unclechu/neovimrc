@@ -341,10 +341,14 @@ no <leader>' :let @@=system('tmux showb')<CR>
 " yank from specific tmux buffer (TODO use fzf for it)
 no <leader>" :
 	\!tmux list-b<CR>:let @@=system('tmux showb -b buffer0000')<Left><Left>
-" paste to tmux
+" send to tmux clipboard buffer
 no '<leader> :cal system('tmux setb -- '.shellescape(@"))<CR>
-" paste specific register to tmux
+" yank visual selection and send it to tmux clipboard buffer
+xn '<leader> y:cal system('tmux setb -- '.shellescape(@"))<CR>
+" send to tmux clipboard buffer specific register
 no "<leader> :cal system('tmux setb -- '.shellescape(@))<Left><Left>
+" yank visual selection and send it to tmux clipboard buffer
+xn "<leader> <Esc>:echoe 'NOT YET IMPLEMENTED'<CR>gv
 " another alias to 'last yank' register
 no <A-y> "0
 
