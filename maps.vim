@@ -338,9 +338,13 @@ no '<Space>  "+
 no <Space>'  "*
 " yank from tmux buffer
 no <leader>' :let @@=system('tmux showb')<CR>
+" yank from tmux buffer and replace visual selection
+xn <leader>' <Esc>:let @@=system('tmux showb')<CR>gvp
 " yank from specific tmux buffer (TODO use fzf for it)
 no <leader>" :
 	\!tmux list-b<CR>:let @@=system('tmux showb -b buffer0000')<Left><Left>
+" yank from specific tmux buffer and replace visual selection
+xn <leader>" <Esc>:echoe 'NOT YET IMPLEMENTED'<CR>gv
 " send to tmux clipboard buffer
 no '<leader> :cal system('tmux setb -- '.shellescape(@"))<CR>
 " yank visual selection and send it to tmux clipboard buffer
