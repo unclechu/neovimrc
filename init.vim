@@ -30,6 +30,11 @@ let g:gruvbox_contrast_light = 'soft'
 set background=dark
 
 try
+	if $TMUX != '' &&
+	\ substitute(system('tmuxsh co s'), '\n\+$', '', '') == 'light'
+		se bg=light
+	en
+
 	Colorscheme gruvbox
 cat
 	" colorscheme not found (plugins are not installed yet)
