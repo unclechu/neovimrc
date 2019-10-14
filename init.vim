@@ -30,22 +30,7 @@ let g:gruvbox_contrast_light = 'soft'
 set background=dark
 
 try
-	if $TMUX == ''
-		colo gruvbox
-	el
-		colo one
-		if substitute(system('tmuxsh co s'), '\n\+$', '', '') == 'light'
-			se bg=light
-		el
-			se bg=dark
-			" fixed `guibg` for colors inside tmux
-			" (otherwise it collides with default background and isn't visible)
-			hi ColorColumn guibg=#3d3d3d ctermbg=236 gui=NONE cterm=NONE
-			hi CursorLine guibg=#3d3d3d ctermbg=236 gui=NONE cterm=NONE
-		en
-	en
-
-	call g:ColorschemeCustomizations()
+	Colorscheme gruvbox
 cat
 	" colorscheme not found (plugins are not installed yet)
 	if stridx(v:exception, ':E185:') == -1 | echoe v:exception | endif
