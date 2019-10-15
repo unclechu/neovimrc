@@ -13,6 +13,11 @@ if !exists('s:is_neovim_gtk_gui')
 	let s:is_neovim_gtk_gui = exists('g:GtkGuiLoaded') ? 1 : 0
 en
 
+if s:is_neovim_gtk_gui && $TMUX == '' && $GTK_THEME =~ ':light$'
+	se bg=light
+	cal g:ColorschemeCustomizations()
+en
+
 " works for neovim-gtk and for neovim-qt since a250faf from 25-07-2018.
 " earlier neovim-qt have been supposed to be run with --no-ext-tabline option.
 call rpcnotify((s:is_neovim_gtk_gui ? 1 : 0), 'Gui', 'Option', 'Tabline', 0)
