@@ -22,6 +22,10 @@ en
 " earlier neovim-qt have been supposed to be run with --no-ext-tabline option.
 call rpcnotify((s:is_neovim_gtk_gui ? 1 : 0), 'Gui', 'Option', 'Tabline', 0)
 
+if s:is_neovim_gtk_gui
+	cal rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
+en
+
 let s:font_family = 'Fira Code'
 let s:font_size = 9
 
