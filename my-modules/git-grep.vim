@@ -16,7 +16,7 @@ fu! s:git_grep_sink(lines)
 	en
 
 	let l:action = get(s:git_grep_shortcut_map, a:lines[0], 'e')
-	let l:reg = '^\(.\+\):\([0-9]\+\):.\+$'
+	let l:reg = '^\(.\{-1,}\):\([0-9]\+\):.\+$'
 
 	if a:lines[1] !~ l:reg
 		th 'GitGrep sink*: argument of a match is incorrect: '.a:lines[1]
