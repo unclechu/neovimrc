@@ -76,6 +76,9 @@ Plug 'elmcast/elm-vim'
 " nix
 Plug 'LnL7/vim-nix'
 
+" dhall
+Plug 'vmchale/dhall-vim'
+
 " perl
 Plug 'vim-perl/vim-perl6'
 
