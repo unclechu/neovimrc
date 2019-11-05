@@ -12,6 +12,7 @@ aug my#auto_filetype_detection | au!
 
 	au BufNewFile,BufRead nginx.conf se ft=nginx
 	au BufNewFile,BufRead *.gyp se ft=json
+	au BufNewFile,BufRead *.tfstate se ft=json
 	au BufNewFile,BufRead *.ts se ft=typescript
 	au BufNewFile,BufRead *.tsx se ft=typescript.jsx
 	au BufNewFile,BufRead *.hsc se ft=haskell
