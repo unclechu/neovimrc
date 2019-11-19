@@ -134,8 +134,9 @@ let g:vim_json_syntax_conceal = 0
 let g:indexed_search_mappings = 0
 let g:indexed_search_numbered_only = 1
 
+let g:smoothie_update_interval = 20
 let g:smoothie_base_speed = 4
-let g:smoothie_break_on_reverse = 1
+let g:smoothie_break_on_reverse = 0
 
 let g:limelight_default_coefficient = 0.75
 com! -nargs=? -bar -bang -range LL
