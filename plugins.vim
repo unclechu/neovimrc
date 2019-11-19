@@ -38,12 +38,15 @@ Plug 'tweekmonster/braceless.vim'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-dadbod'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 " Plug 'jceb/vim-orgmode'
 Plug 'jonathanbranam/vim-orgmode' " less dead fork
 Plug 'mattn/calendar-vim'
+
+" smooth scrolling
+" Plug 'yuttie/comfortable-motion.vim'
+Plug 'psliwka/vim-smoothie'
 
 " surround
 Plug 'tpope/vim-surround'
