@@ -169,8 +169,10 @@ no <leader>gg :GitGutterAll<CR>
 nn <leader>gv :GitGutterPreviewHunk<CR>
 nn <Leader>ga :GitGutterStageHunk<CR>
 nn <Leader>gr :GitGutterUndoHunk<CR>
-nm ]c         <Plug>(GitGutterNextHunk)
 nm [c         <Plug>(GitGutterPrevHunk)
+nm [C         <Plug>(GitGutterPrevHunk)
+nm ]c         <Plug>(GitGutterNextHunk)
+nm ]C         <Plug>(GitGutterNextHunk)
 
 " git status in new tab
 nn <leader>gs :tabnew %<CR>:Gstatus<CR><C-w>o
