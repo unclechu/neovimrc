@@ -50,6 +50,19 @@ let g:airline#extensions#keymap#enabled                  = 0
 let g:airline#extensions#branch#enabled                  = 0
 let g:airline#extensions#ale#enabled                     = 1
 
+let g:airline_section_z
+	\ = '%#__accent_bold#%{LineNoIndicator()}%#__restore__#░'
+	\ . '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#'
+	\ . '%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v'
+
+let g:line_no_indicator_chars = [
+	\ '   ', '▏  ', '▎  ', '▍  ', '▌  ',
+	\ '▋  ', '▊  ', '▉  ', '█  ', '█▏ ',
+	\ '█▎ ', '█▍ ', '█▌ ', '█▋ ', '█▊ ',
+	\ '█▉ ', '██ ', '██▏', '██▎', '██▍',
+	\ '██▌', '██▋', '██▊', '██▉', '███'
+	\ ]
+
 let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm   = 1
 let g:CtrlSpaceUseTabline        = 0
