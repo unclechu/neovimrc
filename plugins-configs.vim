@@ -2,7 +2,7 @@
 " Author: Viacheslav Lotsmanov
 
 let g:fzf_colors = {
-    \ 'fg':      ['fg', 'Normal'],
+	\ 'fg':      ['fg', 'Normal'],
 	\ 'bg':      ['bg', 'Normal'],
 	\ 'hl':      ['fg', 'Comment'],
 	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
@@ -50,8 +50,22 @@ let g:airline#extensions#keymap#enabled                  = 0
 let g:airline#extensions#branch#enabled                  = 0
 let g:airline#extensions#ale#enabled                     = 1
 
+fu! s:LineNoIndicatorFuncPlug()
+	if exists('*LineNoIndicator')
+		let g:LineNoIndicatorFuncRef = function('LineNoIndicator')
+		retu g:LineNoIndicatorFuncRef()
+	el
+		retu ''
+	en
+endf
+
+" Using a plug function in case the "LineNoIndicator" isn't defined yet
+" (when the plug-in is not installed yet), it (the plug function) will override
+" the reference with real plug-in function if it's defined.
+let g:LineNoIndicatorFuncRef = function('s:LineNoIndicatorFuncPlug')
+
 let g:airline_section_z
-	\ = '░%#__accent_bold#%{LineNoIndicator()}%#__restore__#░'
+	\ = '░%#__accent_bold#%{g:LineNoIndicatorFuncRef()}%#__restore__#░'
 	\ . '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#'
 	\ . '%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v'
 
