@@ -55,20 +55,23 @@ let g:airline_section_z
 	\ . '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#'
 	\ . '%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v'
 
-let s:one_char_progress_seq = [' ', '▏', '▎', '▍', '▌', '▋', '▊', '▉', '█']
-
-fu! s:gen_progress_bar(chars, n)
-	let l:one_char = len(s:one_char_progress_seq)
-	if a:n > l:one_char * a:chars | retu [] | en
+fu! s:repeat_bar(bar_char_seq, repeat_n_times, ...)
+	let l:n = get(a:, 1, 0)
+	let l:single_len = len(a:bar_char_seq)
+	if l:n > l:single_len * a:repeat_n_times | retu [] | en
 	let l:x = ''
-	for l:i in range(a:chars, 1, -1)
-		let l:idx = min([max([0, (l:one_char * l:i) - a:n]), l:one_char - 1])
-		let l:x .= s:one_char_progress_seq[l:idx]
+	for l:i in range(a:repeat_n_times, 1, -1)
+		let l:idx = max([0, (l:single_len * l:i) - l:n])
+		let l:idx = min([l:single_len - 1, l:idx])
+		let l:x .= a:bar_char_seq[l:idx]
 	endfo
-	retu add(s:gen_progress_bar(a:chars, a:n + 1), l:x)
+	retu add(s:repeat_bar(a:bar_char_seq, a:repeat_n_times, l:n + 1), l:x)
 endf
 
-let g:line_no_indicator_chars = s:gen_progress_bar(6, 0)
+let g:line_no_indicator_chars = s:repeat_bar(
+	\ [' ', '▏', '▎', '▍', '▌', '▋', '▊', '▉', '█'],
+	\ 6
+	\ )
 
 let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm   = 1
