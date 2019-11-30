@@ -43,7 +43,7 @@ Plug 'junegunn/limelight.vim'
 " Plug 'jceb/vim-orgmode'
 Plug 'jonathanbranam/vim-orgmode' " less dead fork
 Plug 'mattn/calendar-vim'
-Plug 'drzel/vim-line-no-indicator'
+Plug 'unclechu/vim-line-no-indicator', {'branch': 'patch-1'}
 
 " smooth scrolling
 " Plug 'yuttie/comfortable-motion.vim'
