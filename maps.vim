@@ -257,29 +257,29 @@ nn <leader>st :CtrlSFToggle<CR>
 " SS----  ('S' - overwin with <space>)
 
 " move anywhere ('q' means 'quick (move)')
-nm q         <Plug>(easymotion-bd-w)
-xm q         <Plug>(easymotion-bd-w)
-nm <Space>q  <Plug>(easymotion-overwin-w)
+nm q          <Plug>(easymotion-bd-w)
+xm q          <Plug>(easymotion-bd-w)
+nm <Space>q   <Plug>(easymotion-overwin-w)
 " doesn't make sense with 'overwin' mode
-xm <Space>q  <Nop>
+xm <Space>q   <Nop>
 " some plugins uses 'q' map to close window.
 " by using 'g' prefix we still able to call easymotion.
-nm gq        <Plug>(easymotion-bd-w)
-xm gq        <Plug>(easymotion-bd-w)
+nm <leader>gq <Plug>(easymotion-bd-w)
+xm <leader>gq <Plug>(easymotion-bd-w)
 
 " move to place with specific symbols
-nm <leader>w <Plug>(easymotion-bd-f2)
-xm <leader>w <Plug>(easymotion-bd-f2)
-nm <Space>w  <Plug>(easymotion-overwin-f2)
+nm <leader>w  <Plug>(easymotion-bd-f2)
+xm <leader>w  <Plug>(easymotion-bd-f2)
+nm <Space>w   <Plug>(easymotion-overwin-f2)
 " doesn't make sense with 'overwin' mode
-xm <Space>w  <Nop>
+xm <Space>w   <Nop>
 
 " just another hook as `<leader>e` but for single symbol
-nm <leader>e <Plug>(easymotion-bd-f)
-xm <leader>e <Plug>(easymotion-bd-f)
-nm <Space>e  <Plug>(easymotion-overwin-f)
+nm <leader>e  <Plug>(easymotion-bd-f)
+xm <leader>e  <Plug>(easymotion-bd-f)
+nm <Space>e   <Plug>(easymotion-overwin-f)
 " doesn't make sense with 'overwin' mode
-xm <Space>e  <Nop>
+xm <Space>e   <Nop>
 
 " LL-L  ('L' - with <leader> or ' ' - without it)
 " ZXcV  (uppercase means it have map)
