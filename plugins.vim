@@ -115,7 +115,8 @@ Plug 'gkz/vim-ls'
 
 " typescript
 " also: http://vimawesome.com/plugin/typescript-tools
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim' " instead of 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
 " styles
