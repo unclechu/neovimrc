@@ -3,7 +3,7 @@
 
 aug my#auto_filetype_detection | au!
 	au BufNewFile,BufRead
-		\ *.json.example,.jshintrc,.babelrc,.eslintrc,.modernizrrc
+		\ *.json.example,.jshintrc,.babelrc,.eslintrc,.prettierrc,.modernizrrc
 		\ se ft=json
 
 	au BufNewFile,BufRead
