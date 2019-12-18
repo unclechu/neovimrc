@@ -17,6 +17,8 @@ aug my#auto_filetype_detection | au!
 	au BufNewFile,BufRead *.tsx se ft=typescript.jsx
 	au BufNewFile,BufRead *.hsc se ft=haskell
 	au BufNewFile,BufRead *.nj se ft=jinja
+	au BufNewFile,BufRead Vagrantfile se ft=ruby
+	au BufNewFile,BufRead .ssh-vagrant se ft=sshconfig
 aug END
 
 aug my#filetype_hooks | au!
