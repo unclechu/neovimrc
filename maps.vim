@@ -11,7 +11,11 @@ nn <leader>bD :ls<CR>:bd!<space>
 nn <leader>bp :b#<CR>
 nn <leader>bo :bro o<cr>
 
-nn <leader>r :let @/ = ''<CR>:ec 'Reset search'<CR>
+nn <leader>r :noh<CR>
+
+" Heal vim inperfection
+" (fixes syntax highlighting glitches I see pretty often in Haskell files)
+nn <cr> :syn sync fromstart<cr>
 
 " 'cr' means 'config reload'
 nn <leader>cr :so $MYVIMRC<CR>
