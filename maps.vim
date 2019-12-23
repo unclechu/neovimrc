@@ -633,6 +633,10 @@ xn <A-S-i> ym0gvI<Esc>`0:cal<space>IndentText()<CR>
 no! <A-p> <C-r>"
 no! <A-y> <C-r>0
 
+" escaping last input in insert mode
+" (keep in mind that it's not just an input but all pressed keys sequence)
+ino <A-e> <Esc>ui<C-r>=substitute(@.,'.','\\&','g')<CR>
+
 " to create short aliases for tTfF jumps to unicode symbols
 fu! s:UnicodeJumpsShortcuts(ascii, uni)
 	for mpfx in ['n', 'x']
