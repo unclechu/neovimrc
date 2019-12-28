@@ -69,10 +69,18 @@ function! s:ClearSpacesAtEOF(do_it_anyway)
 			endif
 		endif
 
-		if l:isoc == 0 && l:line =~ '\([^ \t]\)[ \t]\+$'
+		" support markdown line-break as two spaces at the end of a line
+		if l:isoc == 0 && l:line =~ '\([^ \t]\)[ \t]\+$' &&
+		\ (&filetype != 'markdown' || l:line !~ '\([^ \t]\) \{2,}$')
 			call setline(
 				\ l:i,
 				\ substitute(l:lineorig, '\([^ \t]\)[ \t]\+$', '\1', '')
+			\ )
+		" replace two or more spaces at the end of a line to just two spaces
+		elsei &filetype == 'markdown' && l:line =~ '\([^ \t]\) \{2,}$'
+			call setline(
+				\ l:i,
+				\ substitute(l:lineorig, '\([^ \t]\) \{2,}$', '\1  ', '')
 			\ )
 		endif
 	endwhile
