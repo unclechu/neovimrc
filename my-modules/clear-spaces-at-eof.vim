@@ -70,19 +70,20 @@ function! s:ClearSpacesAtEOF(do_it_anyway)
 		endif
 
 		" support markdown line-break as two spaces at the end of a line
-		if l:isoc == 0 && l:line =~ '\([^ \t]\)[ \t]\+$' &&
-		\ (&filetype != 'markdown' || l:line !~ '\([^ \t]\) \{2,}$')
-			call setline(
-				\ l:i,
-				\ substitute(l:lineorig, '\([^ \t]\)[ \t]\+$', '\1', '')
-			\ )
-		" replace two or more spaces at the end of a line to just two spaces
-		elsei &filetype == 'markdown' && l:line =~ '\([^ \t]\) \{2,}$'
-			call setline(
+		if &ft == 'markdown' &&
+		\ l:i < l:c &&
+		\ l:line =~ '\([^ \t]\) \{2,}$' &&
+		\ getline(l:i + 1) !~ '^[ \t]*$'
+			cal setline(
 				\ l:i,
 				\ substitute(l:lineorig, '\([^ \t]\) \{2,}$', '\1  ', '')
 			\ )
-		endif
+		elsei l:isoc == 0 && l:line =~ '\([^ \t]\)[ \t]\+$'
+			cal setline(
+				\ l:i,
+				\ substitute(l:lineorig, '\([^ \t]\)[ \t]\+$', '\1', '')
+			\ )
+		en
 	endwhile
 
 	" clear all spaces at EOF if we using tabs for indentation
