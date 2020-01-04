@@ -84,7 +84,7 @@ Plug 'LnL7/vim-nix'
 Plug 'vmchale/dhall-vim'
 
 " perl
-Plug 'vim-perl/vim-perl6'
+Plug 'Raku/vim-raku'
 
 " faust
 Plug 'gmoe/vim-faust'

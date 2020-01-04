@@ -66,3 +66,5 @@ set clipboard-=unnamedplus
 set termguicolors
 
 set path+=** " recursively deal with files
+
+se mmp=9000
