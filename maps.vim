@@ -558,6 +558,13 @@ xn g@ :<C-u>cal VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
 " no ! #
 " no @ *
 
+" '(ba)ng'
+no <leader>ba !
+xn <leader>ba !
+" '(b)ang(b)ang'
+no <leader>bb !!
+xn <leader>bb !!
+
 " begin/end of line ignoring indentation and trailing whitespaces
 no  #  ^
 no g# g^
