@@ -13,6 +13,9 @@ nn <leader>bo :bro o<cr>
 
 nn <leader>r :noh<CR>
 
+" like 'vip' but 'viz' for a fold (see help for [z and ]z)
+xn iz <esc>[zV]z
+
 " Heal vim inperfection
 " (fixes syntax highlighting glitches I see pretty often in Haskell files)
 nn <cr> :syn sync fromstart<cr>
