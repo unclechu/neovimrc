@@ -18,7 +18,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'vim-ctrlspace/vim-ctrlspace', {'commit': '88da905'}
 Plug 'SirVer/ultisnips'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
