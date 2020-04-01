@@ -321,6 +321,7 @@ xm <leader>k <Plug>(easymotion-k)
 nm g/        <Plug>(incsearch-easymotion-/)
 nm g?        <Plug>(incsearch-easymotion-?)
 nm <leader>? <Plug>(incsearch-easymotion-stay)
+nm <space>g/ <Plug>(incsearch-easymotion-stay)
 
 
 " quickhl
