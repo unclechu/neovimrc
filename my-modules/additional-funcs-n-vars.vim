@@ -100,7 +100,7 @@ fu! g:IndentTextBlock()
 	" let [yf, yt] = sort([line('v'),      line('.')     ], 'n')
 	" let [xf, xt] = sort([virtcol('v')-1, virtcol('.')-1], 'n')
 	
-	let text = input('Replace text in line: ', '^ ')
+	let text = input('Replace text in line: ', '^ '.getline(yf)[xf:xt])
 	if text == '' | retu | en " Cancelled
 	let text_split = split(text, ' ')
 	if text_split[0] == '' | th 'Incorrect lines' | en
