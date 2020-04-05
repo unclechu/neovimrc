@@ -640,6 +640,9 @@ nn <A-w> :tabc<CR>
 " quick hook for 'IndentText'
 xn <A-i>   ym0gvc<Esc>`0:cal<space>IndentText()<CR>
 xn <A-S-i> ym0gvI<Esc>`0:cal<space>IndentText()<CR>
+" FIXME it executes the function but also triggers default `b` action
+" xn <expr> <A-b> IndentTextBlock()
+xn <A-b> :<C-w>cal IndentTextBlock()<CR>
 
 " pasting from default buffer in insert/cmdline mode
 no! <A-p> <C-r>"
