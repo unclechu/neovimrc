@@ -12,6 +12,7 @@ nn <leader>bp :b#<CR>
 nn <leader>bo :bro o<cr>
 
 nn <leader>r :noh<CR>
+nn <leader>R :let @/ = ''<CR>:ec 'Reset search'<CR>
 
 " like 'vip' but 'viz' for a fold (see help for [z and ]z)
 xn iz <esc>[zV]z
