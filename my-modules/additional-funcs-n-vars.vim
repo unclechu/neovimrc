@@ -140,7 +140,8 @@ fu! g:IndentTextBlock()
 				\.' to be used with code indented with tabs'
 		en
 		
-		let line_before = line[0:xf-1] " Preceding value of selected block
+		" Preceding value of selected block
+		let line_before = (xf > 0) ? line[0:xf-1] : ''
 		
 		" Handle empty line or shorter than selection block start position
 		if len(line_before) < xf
