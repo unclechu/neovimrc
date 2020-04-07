@@ -89,6 +89,8 @@ fu! g:IndentTextBlock()
 	
 	let view = winsaveview()
 	
+	" Coordinates of visual selection block
+	" (two dots, top-left and bottom-right corners).
 	" Names of the variables explanation: 'x' and 'y' + (f)rom and (t)o.
 	" 'xf' and 'xt' are starting from 0 because it's how we use it below.
 	let [from, to] = [getpos("'<"), getpos("'>")]
@@ -111,13 +113,17 @@ fu! g:IndentTextBlock()
 	
 	let text = input('Replace text in line: ', '^ '.getline(yf)[xf:xt])
 	if text == '' | retu | en " Cancelled
-	let text_split = split(text, ' ')
+	let text_split = split(text, ' ') " To extract line numbers
 	if text_split[0] == '' | th 'Incorrect lines' | en
+	
+	" Numbers of lines (relative ones, but replaced below with absolute values)
+	" to replace with new input (other lines are just properly reindented).
 	let line_numbers = split(text_split[0], ',')
-	let text = text[len(text_split[0])+1:]
+	
+	let text = text[len(text_split[0])+1:] " New input without line numbers
 	unl text_split
 	
-	" Expand specified relative lines into absolute line numbers.
+	" Expand specified relative line numbers into absolute line numbers.
 	for idx in range(0, len(line_numbers) - 1)
 		if line_numbers[idx] == '^' | let line_numbers[idx] = yf
 		elsei line_numbers[idx] == '$' | let line_numbers[idx] = yt
@@ -150,19 +156,26 @@ fu! g:IndentTextBlock()
 		en
 		
 		" Preceding value of selected block
-		let line_before = (xf > 0) ? line[0:xf-1] : ''
+		let line_prefix = (xf > 0) ? line[0:xf-1] : ''
 		
 		" Handle empty line or shorter than selection block start position
-		if len(line_before) < xf
+		if len(line_prefix) < xf
 			" Just fill the gap with spaces
-			let line_before .= GetNSpaces(xf - len(line_before))
+			let line_prefix .= GetNSpaces(xf - len(line_prefix))
 		en
 		
-		let line_selection = line[xf:xt] " Value of a selected block area
-		let selection_block_width = (xt - xf) + 1
+		" Value of a selected block area (of a single line of that block)
+		let line_selection = line[xf:xt]
+		
+		let selection_block_width = (xt - xf) + 1 " Columns count
+		
+		" Difference between selection block width (columns count)
+		" and width (columns count) of new text from the input.
 		let width_diff = len(text) - selection_block_width
 		
-		" This line is in the list of line numbers to replace with a new value
+		" If this line is in the list of line numbers to replace with a new
+		" value from the input then replace value of selected area with the
+		" input.
 		if index(line_numbers, line_nr) != -1
 			let line_selection = text
 		
@@ -178,8 +191,8 @@ fu! g:IndentTextBlock()
 				\ indent[-width_diff:] . line_selection[len(indent):]
 		en
 		
-		let line_after = line[xt+1:] " Succeeding value of a selected block
-		cal setline(line_nr, line_before.line_selection.line_after)
+		let line_suffix = line[xt+1:] " Succeeding value of a selected block
+		cal setline(line_nr, line_prefix.line_selection.line_suffix)
 	endfo
 	
 	cal winrestview(view)
