@@ -97,6 +97,15 @@ fu! g:IndentTextBlock()
 	
 	" This way of getting selection rectangle coordinates
 	" works correctly only with <expr> map.
+	"
+	" But <expr> map has two issues:
+	"   1. It always triggers default action after an expression is executed
+	"      ('xn <expr> <A-b> …' also triggers 'b')
+	"   2. Often it reads coordinates of previous selection, not current one
+	"
+	" I didn't manage to overcome these issues. Asking about this in
+	" #neovim:matrix.org and #freenode_#vim:matrix.org chats didn't help.
+	"
 	" let [yf, yt] = sort([line('v'),      line('.')     ], 'n')
 	" let [xf, xt] = sort([virtcol('v')-1, virtcol('.')-1], 'n')
 	
