@@ -19,7 +19,7 @@ xn iz <esc>[zV]z
 
 " Heal vim inperfection
 " (fixes syntax highlighting glitches I see pretty often in Haskell files)
-nn <cr> :syn sync fromstart<cr>
+nn <leader><cr> :syn sync fromstart<cr>
 
 " 'cr' means 'config reload'
 nn <leader>cr :so $MYVIMRC<CR>
