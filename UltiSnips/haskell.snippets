@@ -143,23 +143,75 @@ snippet d "data" w
 data ${1:Foo} = ${2:Foo}${3}
 endsnippet
 
+snippet df "data (with record syntax)" w
+data ${1:Foo} = ${2:Foo} { ${3:foo} :: ${4:Bar} }${5}
+endsnippet
+
+snippet dfu "data (with record syntax, with unicode syntax)" w
+data ${1:Foo} = ${2:Foo} { ${3:foo} ∷ ${4:Bar} }${5}
+endsnippet
+
 snippet dm "data (multiline)" w
 data ${1:Foo}
    = ${2:Foo}${3}
 endsnippet
 
+snippet dmf "data (multiline, with record syntax)" w
+data ${1:Foo}
+   = ${2:Foo}
+   { ${3:foo} :: ${4:Bar}
+   }${5}
+endsnippet
+
+snippet dmfu "data (multiline, with record syntax, with unicode syntax)" w
+data ${1:Foo}
+   = ${2:Foo}
+   { ${3:foo} ∷ ${4:Bar}
+   }${5}
+endsnippet
+
 snippet dr "data (with deriving)" w
-data ${1:Foo} = ${2:Foo} deriving (${3:Show})${4}
+data ${1:Foo} = ${2:Foo} deriving (${3:Eq, Show})${4}
+endsnippet
+
+snippet drf "data (with record syntax, with deriving)" w
+data ${1:Foo} = ${2:Foo} { ${3:foo} :: ${4:Bar} } deriving (${5:Eq, Show})${6}
+endsnippet
+
+snippet drfu "data (with record syntax, with unicode syntax, with deriving)" w
+data ${1:Foo} = ${2:Foo} { ${3:foo} ∷ ${4:Bar} } deriving (${5:Eq, Show})${6}
 endsnippet
 
 snippet drm "data (multiline, with deriving)" w
 data ${1:Foo}
    = ${2:Foo}
-     deriving (${3:Show})${4}
+     deriving (${3:Eq, Show})${4}
+endsnippet
+
+snippet drmf "data (multiline, with record syntax, with deriving)" w
+data ${1:Foo}
+   = ${2:Foo}
+   { ${3:foo} :: ${4:Bar}
+   } deriving (${5:Eq, Show})${6}
+endsnippet
+
+snippet drmfu "data (multiline, with record syntax, with unicode syntax, with deriving)" w
+data ${1:Foo}
+   = ${2:Foo}
+   { ${3:foo} ∷ ${4:Bar}
+   } deriving (${5:Eq, Show})${6}
 endsnippet
 
 snippet n "newtype" w
 newtype ${1:Foo} = ${2:Foo} ${3:Bar}${4}
+endsnippet
+
+snippet nf "newtype (with unwrapper record field)" w
+newtype ${1:Foo} = ${2:Foo} { from${3:Foo} :: ${4:Bar} }${5}
+endsnippet
+
+snippet nfu "newtype (with unwrapper record field, with unicode syntax)" w
+newtype ${1:Foo} = ${2:Foo} { from${3:Foo} ∷ ${4:Bar} }${5}
 endsnippet
 
 snippet nm "newtype (multiline)" w
@@ -167,14 +219,50 @@ newtype ${1:Foo}
       = ${2:Foo} ${3:Bar}${4}
 endsnippet
 
+snippet nmf "newtype (multiline, with unwrapper record field)" w
+newtype ${1:Foo}
+      = ${2:Foo}
+      { from${3:Foo} :: ${4:Bar}
+      }${5}
+endsnippet
+
+snippet nmfu "newtype (multiline, with unwrapper record field, with unicode syntax)" w
+newtype ${1:Foo}
+      = ${2:Foo}
+      { from${3:Foo} ∷ ${4:Bar}
+      }${5}
+endsnippet
+
 snippet nr "newtype (with deriving)" w
-newtype ${1:Foo} = ${2:Foo} ${3:Bar} deriving (${4:Show})${5}
+newtype ${1:Foo} = ${2:Foo} ${3:Bar} deriving (${4:Eq, Show})${5}
+endsnippet
+
+snippet nrf "newtype (with unwrapper record field, with deriving)" w
+newtype ${1:Foo} = ${2:Foo} { from${3:Foo} :: ${4:Bar} } deriving (${5:Eq, Show})${6}
+endsnippet
+
+snippet nrfu "newtype (with unwrapper record field, with unicode syntax, with deriving)" w
+newtype ${1:Foo} = ${2:Foo} { from${3:Foo} ∷ ${4:Bar} } deriving (${5:Eq, Show})${6}
 endsnippet
 
 snippet nrm "newtype (multiline, with deriving)" w
 newtype ${1:Foo}
       = ${2:Foo} ${3:Bar}
-        deriving (${4:Show})${5}
+        deriving (${4:Eq, Show})${5}
+endsnippet
+
+snippet nrmf "newtype (multiline, with unwrapper record field, with deriving)" w
+newtype ${1:Foo}
+      = ${2:Foo}
+      { from${3:Foo} :: ${4:Bar}
+      } deriving (${5:Eq, Show})${6}
+endsnippet
+
+snippet nrmfu "newtype (multiline, with unwrapper record field, with unicode syntax, with deriving)" w
+newtype ${1:Foo}
+      = ${2:Foo}
+      { from${3:Foo} ∷ ${4:Bar}
+      } deriving (${5:Eq, Show})${6}
 endsnippet
 
 
