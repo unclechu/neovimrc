@@ -705,7 +705,7 @@ cal s:UnicodeJumpsShortcuts('r', '◇') " 'r' for 'rhombus'
 
 " UltiSnips map without conflicts
 " with own <Tab> maps for visual and select modes.
-if has('python3') || has('python')
+if !exists('plug_home') || (has('python3') || has('python'))
 	" FIXME for js/ts snippets UltiSnips#SnippetsInCurrentScope() returns empty
 	"       dictionary if a snippet doesn't have space character before while
 	"       UltiSnips#ExpandSnippet() correctly expands such a snippet

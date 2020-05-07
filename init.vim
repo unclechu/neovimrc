@@ -5,22 +5,22 @@
 
 " applying local additional config
 let g:local_rc_pre = $HOME . '/.neovimrc-local-pre'
-if filereadable(g:local_rc_pre) | exec 'so ' . g:local_rc_pre | endif
+if filereadable(g:local_rc_pre) | exe 'so ' . g:local_rc_pre | en
 
 
 let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
 
-exec 'source ' . $MYVIMRC_DIR . '/plugins.vim'
-exec 'source ' . $MYVIMRC_DIR . '/plugins-configs.vim'
+exe 'so ' . $MYVIMRC_DIR . '/plugins.vim'
+exe 'so ' . $MYVIMRC_DIR . '/plugins-configs.vim'
 
 " load my modules
 for module in split(expand($MYVIMRC_DIR . '/my-modules/**/*.vim'), '\n')
-	exec 'source ' . module
-endfor
+	exe 'so ' . module
+endfo
 
-exec 'source ' . $MYVIMRC_DIR . '/options.vim'
-call PreventIndentTrimHackOn()
-exec 'source ' . $MYVIMRC_DIR . '/maps.vim'
+exe 'so ' . $MYVIMRC_DIR . '/options.vim'
+cal PreventIndentTrimHackOn()
+exe 'so ' . $MYVIMRC_DIR . '/maps.vim'
 
 
 " colorscheme
@@ -38,7 +38,7 @@ try
 	Colorscheme gruvbox
 cat
 	" colorscheme not found (plugins are not installed yet)
-	if stridx(v:exception, ':E185:') == -1 | echoe v:exception | endif
+	if stridx(v:exception, ':E185:') == -1 | echoe v:exception | en
 endt
 
 
@@ -74,12 +74,14 @@ let g:terminal_color_15 = '#fdf6e3'
 
 " healing conceals in NERDTree
 try
-	call webdevicons#refresh()
-catch
-	if stridx(v:exception, ':E117:') == -1 | echoe v:exception | endif
-endtry
+	cal webdevicons#refresh()
+cat
+	if !exists('plug_home') || stridx(v:exception, ':E117:') == -1
+		echoe v:exception
+	en
+endt
 
 
 " applying local additional config
 let g:local_rc_post = $HOME . '/.neovimrc-local-post'
-if filereadable(g:local_rc_post) | exec 'so ' . g:local_rc_post | endif
+if filereadable(g:local_rc_post) | exe 'so ' . g:local_rc_post | en

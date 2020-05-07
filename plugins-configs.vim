@@ -50,19 +50,21 @@ let g:airline#extensions#keymap#enabled                  = 0
 let g:airline#extensions#branch#enabled                  = 0
 let g:airline#extensions#ale#enabled                     = 1
 
-fu! s:LineNoIndicatorFuncPlug()
-	if exists('*LineNoIndicator')
-		let g:LineNoIndicatorFuncRef = function('LineNoIndicator')
-		retu g:LineNoIndicatorFuncRef()
-	el
-		retu ''
-	en
-endf
+if exists('plug_home')
+	fu! s:LineNoIndicatorFuncPlug()
+		if exists('*LineNoIndicator')
+			let g:LineNoIndicatorFuncRef = function('LineNoIndicator')
+			retu g:LineNoIndicatorFuncRef()
+		el
+			retu ''
+		en
+	endf
 
-" Using a plug function in case the "LineNoIndicator" isn't defined yet
-" (when the plug-in is not installed yet), it (the plug function) will override
-" the reference with real plug-in function if it's defined.
-let g:LineNoIndicatorFuncRef = function('s:LineNoIndicatorFuncPlug')
+	" Using a plug function in case the "LineNoIndicator" isn't defined yet
+	" (when the plug-in is not installed yet), it (the plug function) will
+	" override the reference with real plug-in function if it's defined.
+	let g:LineNoIndicatorFuncRef = function('s:LineNoIndicatorFuncPlug')
+en
 
 let g:airline_section_z
 	\ = '░%#__accent_bold#%{g:LineNoIndicatorFuncRef()}%#__restore__#░'
@@ -77,17 +79,19 @@ let g:CtrlSpaceDefaultMappingKey = '<C-Space>'
 let g:CtrlSpaceUseArrowsInTerm   = 1
 let g:CtrlSpaceUseTabline        = 0
 try
-	call ctrlspace#api#Tabline() " will fail if function does not exists
+	cal ctrlspace#api#Tabline() " will fail if function does not exists
 	fu! CtrlSpaceTablineOwnWrap()
 		let l:sep = '≡'
 		let l:x = substitute(
 			\ ctrlspace#api#Tabline(),
 			\ '\( \)\@<=%[0-9]\+T%[^ ]\+', '%#TabLine#'.l:sep.'&', 'g')
-		return l:x
+		retu l:x
 	endf
 	se tal=%!CtrlSpaceTablineOwnWrap()
 cat
-	if stridx(v:exception, ':E117:') == -1 | echoe v:exception | endif
+	if !exists('plug_home') || stridx(v:exception, ':E117:') == -1
+		echoe v:exception
+	en
 endt
 
 let g:indentLine_enabled = 0
