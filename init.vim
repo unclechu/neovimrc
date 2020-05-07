@@ -72,16 +72,6 @@ let g:terminal_color_14 = '#93a1a1'
 let g:terminal_color_15 = '#fdf6e3'
 
 
-" healing conceals in NERDTree
-try
-	cal webdevicons#refresh()
-cat
-	if !exists('plug_home') || stridx(v:exception, ':E117:') == -1
-		echoe v:exception
-	en
-endt
-
-
 " applying local additional config
 let g:local_rc_post = $HOME . '/.neovimrc-local-post'
 if filereadable(g:local_rc_post) | exe 'so ' . g:local_rc_post | en
