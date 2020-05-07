@@ -50,21 +50,21 @@ let g:airline#extensions#keymap#enabled                  = 0
 let g:airline#extensions#branch#enabled                  = 0
 let g:airline#extensions#ale#enabled                     = 1
 
-if exists('plug_home')
-	fu! s:LineNoIndicatorFuncPlug()
-		if exists('*LineNoIndicator')
-			let g:LineNoIndicatorFuncRef = function('LineNoIndicator')
-			retu g:LineNoIndicatorFuncRef()
-		el
-			retu ''
-		en
-	endf
+fu! s:LineNoIndicatorFuncPlug()
+	if exists('*LineNoIndicator')
+		let g:LineNoIndicatorFuncRef = function('LineNoIndicator')
+		retu g:LineNoIndicatorFuncRef()
+	el
+		retu ''
+	en
+endf
 
-	" Using a plug function in case the "LineNoIndicator" isn't defined yet
-	" (when the plug-in is not installed yet), it (the plug function) will
-	" override the reference with real plug-in function if it's defined.
-	let g:LineNoIndicatorFuncRef = function('s:LineNoIndicatorFuncPlug')
-en
+" Using a plug function in case the "LineNoIndicator" isn't defined yet
+" (when the plug-in is not installed yet), it (the plug function) will
+" override the reference with real plug-in function when it's defined.
+" For some reason even when the plugin is installed the plug function isn't
+" ready yet on initialization stage.
+let g:LineNoIndicatorFuncRef = function('s:LineNoIndicatorFuncPlug')
 
 let g:airline_section_z
 	\ = '░%#__accent_bold#%{g:LineNoIndicatorFuncRef()}%#__restore__#░'
