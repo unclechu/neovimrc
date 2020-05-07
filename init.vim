@@ -42,13 +42,13 @@ cat
 endt
 
 
-if filereadable('/bin/bash') " gnu/linux
-	set shell=/bin/bash
-elseif filereadable('/usr/local/bin/bash') " freebsd
-	set shell=/usr/local/bin/bash
-else
+let s:sh = systemlist('which bash')[0]
+
+if filereadable(s:sh)
+	let &sh = s:sh
+el
 	echoe 'bash interpreter not found'
-endif
+en
 
 let $BASH_ENV = $HOME . '/.bash_aliases'
 
