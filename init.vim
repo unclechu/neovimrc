@@ -42,12 +42,21 @@ cat
 endt
 
 
-let s:sh = systemlist('which bash')[0]
+let s:sh
+	\ = (fnamemodify($SHELL, ':t') =~ 'bash')
+	\ ? systemlist('which -- '.shellescape($SHELL))[0]
+	\ : ''
 
 if filereadable(s:sh)
 	let &sh = s:sh
 el
-	echoe 'bash interpreter not found'
+	let s:sh = systemlist('which bash')[0]
+
+	if filereadable(s:sh)
+		let &sh = s:sh
+	el
+		echoe 'bash interpreter not found'
+	en
 en
 
 let $BASH_ENV = $HOME . '/.bash_aliases'
