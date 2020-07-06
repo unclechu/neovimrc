@@ -553,13 +553,13 @@ im <A-Space> <Space><Left>
 " custom numbers line keys
 
 nn ! #:ShowSearchIndex<CR>
-nn g! :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
+nn g! :se hls<CR>:let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
 xn ! :<C-u>cal VisualStarSearchSet('?')<CR>?<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
-xn g! :<C-u>cal VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
+xn g! :<C-u>se hls<CR>gv:<C-u>cal VisualStarSearchSet('?')<CR>:ShowSearchIndex<CR>
 nn @ *:ShowSearchIndex<CR>
-nn g@ :let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
+nn g@ :se hls<CR>:let @/='\V\<'.expand('<cword>').'\>'<CR>:ShowSearchIndex<CR>
 xn @ :<C-u>cal VisualStarSearchSet('/')<CR>/<C-R>=@/<CR><CR>:ShowSearchIndex<CR>
-xn g@ :<C-u>cal VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
+xn g@ :<C-u>se hls<CR>gv:<C-u>cal VisualStarSearchSet('/')<CR>:ShowSearchIndex<CR>
 " no ! #
 " no @ *
 
