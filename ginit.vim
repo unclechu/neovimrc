@@ -6,7 +6,7 @@ let g:local_guirc_pre = $HOME . '/.neovimrc-gui-local-pre'
 if filereadable(g:local_guirc_pre) | exe 'so ' . g:local_guirc_pre | en
 
 
-" because default map doesn't work in nvim-qt
+" because default map doesn't work in neovim-qt
 nn <C-Space> :CtrlSpace<CR>
 
 if !exists('s:is_neovim_gtk_gui')
@@ -27,7 +27,8 @@ if s:is_neovim_gtk_gui
 	cal rpcnotify(1, 'Gui', 'FontFeatures', 'XHS0, XIDR, XELM, PURS')
 en
 
-let s:font_family = 'Iosevka'
+" neovim-qt throws: 'Iosevka is not a fixed pitch font'
+let s:font_family = s:is_neovim_gtk_gui ? 'Iosevka' : 'Hack'
 let s:font_size = 9
 
 fu! s:update_font()
