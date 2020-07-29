@@ -24,10 +24,13 @@ nix-shell -E '(import <nixpkgs> {}).mkShell {buildInputs=[(import nix/apps/neovi
 
 ```nix
 let
-  wenzels-neovim-src = fetchGit {
-    url = "https://github.com/unclechu/neovimrc.git";
+  pkgs = import <nixpkgs> {};
+
+  wenzels-neovim-src = pkgs.fetchFromGitHub {
+    owner = "unclechu";
+    repo = "neovimrc";
     rev = "ffffffffffffffffffffffffffffffffffffffff"; # Git commit hash
-    ref = "master";
+    sha256 = "0000000000000000000000000000000000000000000000000000";
   };
 
   # See the arguments of these *.nix files.
