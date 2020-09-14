@@ -1,4 +1,4 @@
-{ pkgs   ? import <nixpkgs> {}
+{ pkgs   ? import ../default-nixpkgs-pick.nix
 , origin ? ../../apps/git-grep-nvr.sh
 }:
 let

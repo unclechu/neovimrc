@@ -1,5 +1,5 @@
 args@
-{ pkgs ? import <nixpkgs> {}
+{ pkgs ? import ../default-nixpkgs-pick.nix
 , bashEnvFile ? null
 , neovimRC ? ../../.
 }:

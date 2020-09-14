@@ -1,4 +1,4 @@
-let defaultPkgs = import <nixpkgs> {}; in
+let defaultPkgs = import ../default-nixpkgs-pick.nix; in
 args@
 { pkgs   ? defaultPkgs
 , neovim ? import ../apps/neovim.nix { pkgs = args.pkgs or defaultPkgs; }
