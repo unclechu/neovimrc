@@ -35,7 +35,7 @@ let
     };
     "ctrlsf.vim" = {
       rev = "b44b3f33b0e736f8dc74cd5a4da81f3344162373"; # "master" branch, 2 July 2020
-      sha256 = "0bigzqvijdgf3d58z8psqmmdajb6zrygbwn7ggx1m0s9mlzppslk";
+      sha256 = "196l8abicq2lchpnvcm8133157rmanzvjwlzw2fgxw97vxvdfcfm";
     };
     "vim-quickhl" = {
       rev = "9df53aacbff2709049b787109102b45163190c82"; # "master" branch, 20 December 2019
@@ -52,11 +52,11 @@ let
     ## filetype-specific
     "vim-haskell-indent" = {
       rev = "f4da5bc71ae7de9525c8c23fe44664f3e8ad79cd"; # "master" branch, 15 August 2020
-      sha256 = "0nb8fdpm1qmjvppsbcdjfkmsx688r73g0i79hx2d080zqxp4917p";
+      sha256 = "0x5infc2r0py28iqijx874sblbh6k9a777x6i2hy4gb6a5ixx0rq";
     };
     "vim-raku" = {
       rev = "d2944a9b6644558a7b58c4886471918faf530d5b"; # "master" branch, 11 May 2020
-      sha256 = "0ckh0n509sw2i35a6s662pkqwpjlbf1bpbzmyvaw3y18xnnalph0";
+      sha256 = "06nkw1dzg9s4w5zva5as8y62hlpz5f5r7c47yp3vza7lzb4c8f62";
     };
     "vim-faust" = {
       rev = "6c329ddf32349e4f161e0c7a3570ad095fd8acc8"; # "master" branch, 4 July 2018
@@ -64,11 +64,11 @@ let
     };
     "cider-nrepl" = {
       rev = "3d80096127b6481a18abadb8e45091c3390dc40d"; # "master" branch, 31 July 2020
-      sha256 = "1kmzrn29235p1g2b5a4wbn818i991glxnph66nafvhlhi4cdfrvh";
+      sha256 = "0p0hngm3armhmcvkzb3q5nnw12dvz2adf6iw23hamyr6mhyl627b";
     };
     "vim-racket" = {
       rev = "bca2643c3d8bd0fcd46ab73bee69023a5da1964b"; # "master" branch, 24 July 2020
-      sha256 = "1ai5fh6m708grialss5kyy9cxi603zc880mswy9r6f6q58j78idq";
+      sha256 = "059a79d66yxhhwq127sjl84ky1153im7mm5ixjcsgg9glgvd39jy";
     };
     "vim-jsx" = {
       rev = "8879e0d9c5ba0e04ecbede1c89f63b7a0efa24af"; # "master" branch, 29 September 2019
@@ -104,7 +104,7 @@ let
     };
     "vim-jinja2-syntax" = {
       rev = "ceb0f8076ee9aa802668448cefdd782edff4f6b2"; # "master" branch, 23 May 2020
-      sha256 = "00p2h8rlhmlmm8776a4fcb1bldxz61wdg24m11cm7kgxr34xh6rr";
+      sha256 = "0vb07nhw2l165804lcfw831n20c7aa3hbsvidhz9magp0csfgphc";
     };
     "nginx.vim" = {
       rev = "152bbb2dc00c2df37049ccf75f68f294208c72cb"; # "master" branch, 27 November 2010
