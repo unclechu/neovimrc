@@ -52,17 +52,20 @@ com! -nargs=1 GuiFontFamily cal <SID>set_font_family(<args>)
 
 cal s:update_font()
 
+" too small value may cause freezes because amount of chars is getting extreme
+let s:min_size = 9
+
 fu! s:font_size_dec(count)
 	let l:count = a:count | if l:count < 1 | let l:count = 1 | en
 	let s:font_size = s:font_size - l:count
-	if s:font_size < 1 | let s:font_size = 1 | en
+	if s:font_size < s:min_size | let s:font_size = s:min_size | en
 	cal s:update_font()
 endf
 
 fu! s:font_size_inc(count)
 	let l:count = a:count | if l:count < 1 | let l:count = 1 | en
 	let s:font_size = s:font_size + l:count
-	if s:font_size < 1 | let s:font_size = 1 | en
+	if s:font_size < s:min_size | let s:font_size = s:min_size | en
 	cal s:update_font()
 endf
 
@@ -81,8 +84,13 @@ nn <leader>- :<C-u>cal <SID>font_size_dec(v:count)<CR>
 nn <leader>+ :<C-u>cal <SID>font_size_inc(v:count)<CR>
 nn <leader>= :<C-u>cal <SID>font_size_inc(v:count)<CR>
 
-nn <C-ScrollWheelUp>   :cal <SID>font_size_inc(1)<CR>
-nn <C-ScrollWheelDown> :cal <SID>font_size_dec(1)<CR>
+let s:scroll_wheel_pace = 5
+
+exe 'nn <expr> <C-ScrollWheelUp>   <SID>font_size_inc('.s:scroll_wheel_pace.')'
+exe 'nn <expr> <C-ScrollWheelDown> <SID>font_size_dec('.s:scroll_wheel_pace.')'
+
+exe 'nn <expr> <C-S-ScrollWheelUp>   <SID>font_size_inc('.s:scroll_wheel_pace*2.')'
+exe 'nn <expr> <C-S-ScrollWheelDown> <SID>font_size_dec('.s:scroll_wheel_pace*2.')'
 
 
 " applying local additional config
