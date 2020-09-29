@@ -25,11 +25,12 @@ cal rpcnotify((s:is_neovim_gtk_gui ? 1 : 0), 'Gui', 'Option', 'Tabline', 0)
 if s:is_neovim_gtk_gui
 	cal rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
 	cal rpcnotify(1, 'Gui', 'FontFeatures', 'XHS0, XIDR, XELM, PURS')
+el " neovim-qt
+	GuiRenderLigatures 1
 en
 
-" neovim-qt throws: 'Iosevka is not a fixed pitch font'
-let s:font_family = s:is_neovim_gtk_gui ? 'Iosevka' : 'Hack'
-let s:font_size = 9
+let s:font_family = s:is_neovim_gtk_gui ? 'Iosevka' : 'Iosevka Nerd Font Mono'
+let s:font_size = 13
 
 fu! s:update_font()
 	if s:is_neovim_gtk_gui " neovim-gtk
@@ -39,6 +40,7 @@ fu! s:update_font()
 		cal rpcnotify(
 			\ 0, 'Gui', 'Font', s:font_family.':h'.string(s:font_size))
 	en
+	redr!
 endf
 
 fu! s:set_font_family(family)
