@@ -172,3 +172,6 @@ com! -nargs=? -bar -bang -range LL
 com! -nargs=? -bar -bang GG
 	\ cal goyo#execute(<bang>0, <q-args>)
 	\ | cal ColorschemeCustomizations()
+
+let g:calendar_first_day = 'monday'
+let g:calendar_frame = 'unicode'
