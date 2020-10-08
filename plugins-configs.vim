@@ -175,3 +175,5 @@ com! -nargs=? -bar -bang GG
 
 let g:calendar_first_day = 'monday'
 let g:calendar_frame = 'unicode'
+
+let g:lf_map_keys = 0

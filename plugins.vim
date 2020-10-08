@@ -27,6 +27,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim' " neovim dependency for “lf.vim”
 Plug 'sjl/gundo.vim'
 Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'

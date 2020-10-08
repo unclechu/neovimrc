@@ -101,6 +101,8 @@ nn  <space>fg :GFiles!?<CR>
 nn <leader>H :Helptags<CR>
 nn  <space>H :Helptags!<CR>
 
+nn <leader>fv :Lf<CR>
+
 nn <leader>f <Nop>
 nn  <space>f <Nop>
 
