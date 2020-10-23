@@ -89,6 +89,9 @@ nn  <space>swl :BLines! <C-r>=expand('<cword>')<CR><CR>
 nn <leader>sm :Marks<CR>
 nn  <space>sm :Marks!<CR>
 
+" a bit more comfortable to type shorthand for “:update”
+nn <leader>sv :up<cr>
+
 " fuzzy search history
 nn <leader>/ :History/<CR>
 nn  <space>/ :History!/<CR>
