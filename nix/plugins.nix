@@ -21,8 +21,8 @@ let
       sha256 = "19cd3xa9zih3kkgzmzw1kj13aiwcdq40mkjw8hwijdz25m4cbjw5";
     };
     haskell-vim = {
-      rev = "28cdd5e0075e795485d9d03ed54e9d1890622808"; # "my-fork" branch, 3 July 2019
-      sha256 = "19kmzjq1vs6j95gqydlmysgvkhpimhc3lihg88vl03bs1by0y9i7";
+      rev = "f74fb1955b7a4f11349c2973a04bcdd4c8b36d73"; # "my-fork" branch, 29 October 2020
+      sha256 = "1naa7h08jrdciy9aib6kyla6scp3qjy90n081s6yas6hmn356fkz";
     };
     lushtags = {
       rev = "ee328f6c74bd5a128206cecb0849a194d6e03470"; # "master" branch, 23 December 2017
