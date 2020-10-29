@@ -4,7 +4,8 @@
 let
   inherit (import ./utils.nix { inherit pkgs; }) esc lines;
 
-  pluginsOverrides = {
+  # GitHub plugins overrides
+  ghPluginsOverrides = {
     # newer picks
     # TODO remove when https://github.com/NixOS/nixpkgs/pull/97985 gets to the stable release
     nerdtree-git-plugin = {
@@ -171,23 +172,33 @@ let
     "fzf" = "fzfWrapper";
   };
 
-  mkGhPlugin = plugin: pkgs.vimUtils.buildVimPlugin rec {
-    name = builtins.elemAt plugin 1;
+  # Highest priority, will override in any case.
+  # Allows to use a plugin from a local directory or from anywhere else.
+  # Use with “mkPlugin” function.
+  rawPluginsOverrides = {
+    # haskell-vim = mkPlugin "haskell-vim" (pkgs.lib.cleanSource ../../haskell-vim);
+  };
 
-    src =
-      let
-        origin =
-          pkgs.fetchFromGitHub ({
-            owner = builtins.head plugin;
-            repo = name;
-          } // pluginsOverrides.${name});
-      in
-        pkgs.runCommand "${name}-clean" {} ''
-          set -Eeuo pipefail
-          mkdir -- "$out"
-          cp -r -- ${esc origin}/* "$out"
-          rm -f -- "$out/Makefile"
-        '';
+  mkGhPlugin = plugin:
+    let
+      name = builtins.elemAt plugin 1;
+
+      src = pkgs.fetchFromGitHub ({
+        owner = builtins.head plugin;
+        repo = name;
+      } // ghPluginsOverrides.${name});
+    in
+      mkPlugin name src;
+
+  mkPlugin = name: origin: pkgs.vimUtils.buildVimPlugin {
+    inherit name;
+
+    src = pkgs.runCommand "${name}-clean" {} ''
+      set -Eeuo pipefail
+      mkdir -- "$out"
+      cp -r -- ${esc origin}/* "$out"
+      rm -f -- "$out/Makefile"
+    '';
   };
 
   plugins =
@@ -207,13 +218,23 @@ let
               (builtins.map (x: splitOwnerAndRepo (getGhRepo x)) (filterPlugs srcLines)));
 
       asPlugins = x: {
-        own = builtins.map mkGhPlugin x.own; # own plugins are always overridden
+        # Own plugins are always overridden.
+        # If there is “raw” override for an “own” plugin then it has more priority.
+        own =
+          let
+            toPlugin = p:
+              let name = builtins.elemAt p 1;
+              in rawPluginsOverrides.${name} or (mkGhPlugin p);
+          in
+            builtins.map toPlugin x.own;
+
         other =
           let
             expandPlugin = p:
               let
                 name = builtins.elemAt p 1;
-                hasOverride = builtins.hasAttr name pluginsOverrides;
+                hasRawOverride = builtins.hasAttr name rawPluginsOverrides;
+                hasOverride = builtins.hasAttr name ghPluginsOverrides;
                 hasDotVim = builtins.match ".+\.vim" name != null;
                 hasRename = builtins.hasAttr name pluginsRenames || hasDotVim;
 
@@ -224,7 +245,9 @@ let
 
                 fromNixpkgs = pkgs.vimPlugins.${if hasRename then renamed else name};
               in
-                if hasOverride then mkGhPlugin p else fromNixpkgs;
+                if hasRawOverride then rawPluginsOverrides.${name}
+                else if hasOverride then mkGhPlugin p
+                else fromNixpkgs;
           in
             builtins.map expandPlugin x.other;
       };
