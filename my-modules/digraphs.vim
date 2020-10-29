@@ -23,3 +23,5 @@ digraphs rS 9714   " ◲ | 0x25f2 (
                    "     using it in Haskell as an alias to the (^^) operator,
                    "     where '□' is an alias for the (^) and '■' for the (**)
                    "   )
+digraphs {} 8646   " ⇆ | 0x21c6
+digraphs [] 8651   " ⇋ | 0x21cb
