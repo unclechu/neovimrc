@@ -25,3 +25,9 @@ digraphs rS 9714   " ◲ | 0x25f2 (
                    "   )
 digraphs {} 8646   " ⇆ | 0x21c6
 digraphs [] 8651   " ⇋ | 0x21cb
+digraphs }} 8608   " ↠ | 0x21a0
+digraphs {{ 8606   " ↞ | 0x219e
+digraphs {< 8610   " ↢ | 0x21a2
+digraphs >} 8611   " ↣ | 0x21a3
+digraphs {\| 8612  " ↤ | 0x21a4
+digraphs \|} 8614  " ↦ | 0x21a6
