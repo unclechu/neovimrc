@@ -161,6 +161,10 @@ let
       rev = "de38ebc802bdc611c4404b5cd8db941dd6d2c171"; # "master" branch, 8 June 2019
       sha256 = "003sjh3nn5bjgfx126x60kwk60vdxijbrpa0375bfl4v4c6g2l7l";
     };
+    "toast.vim" = {
+      rev = "2da3ee3e0ad80187401ce95caf0285128f53d3b0"; # "master" branch, 27 October 2020
+      sha256 = "0s3wsd6c1dhjbdnl9vzdxz3078smhb130q3c3r2zm0zaply3ixxl";
+    };
     ## utils
     "left-pad.vim" = {
       rev = "9f5e1e68e7934b7c61042b12f24275e614bcde9f"; # "master" branch, 25 March 2016

@@ -173,6 +173,7 @@ Plug 'vim-scripts/habiLight'
 " Tomorrow-Night-Blue Tomorrow-Night-Bright Tomorrow-Night-Eighties
 " Tomorrow-Night Tomorrow
 Plug 'chriskempson/tomorrow-theme'
+Plug 'jsit/toast.vim'
 
 " utils
 Plug 'sl4m/left-pad.vim'
