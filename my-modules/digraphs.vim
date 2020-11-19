@@ -35,3 +35,5 @@ digraphs <0 8619   " ↫ | 0x21ab
 digraphs 0> 8620   " ↬ | 0x21ac
 digraphs <~ 8604   " ↜ | 0x219c
 digraphs ~> 8605   " ↝ | 0x219d
+digraphs /( 8713   " ∉ | 0x2209
+digraphs /) 8716   " ∌ | 0x220c
