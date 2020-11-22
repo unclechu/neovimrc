@@ -1,4 +1,5 @@
 { pkgs        ? import ./default-nixpkgs-pick.nix
+, fzf         ? import ./default-fzf.nix # Set to “null” if you want to use global version
 , bashEnvFile ? null
 , neovimRC    ? ../.
 }:
@@ -6,7 +7,7 @@ let
   utils   = import ./utils.nix   { inherit pkgs;          };
   plugins = import ./plugins.nix { inherit pkgs neovimRC; };
 
-  inherit (utils) esc lines unlines;
+  inherit (utils) esc lines unlines wrapExecutable;
 
   rcDerivation = "${neovimRC}";
 
@@ -82,8 +83,20 @@ let
     assert builtins.isBool forGUI;
     let
       configDir = rcDirGeneric { inherit forGUI; };
+
+      wrap = neovim: if isNull fzf then neovim else
+        let
+          nvim-exe = "${neovim}/bin/nvim";
+        in
+          wrapExecutable nvim-exe {
+            deps = [
+              neovim # To have other executables (e.g. “nvim-python”)
+              fzf
+            ];
+            checkPhase = utils.shellCheckers.fileIsExecutable nvim-exe;
+          };
     in
-      pkgs.neovim.override {
+      wrap (pkgs.neovim.override {
         configure = {
           packages.myPlugins = {
             start = plugins.own ++ plugins.other;
@@ -98,7 +111,7 @@ let
             let &pp .= ',${configDir}' " postpone post plugins init stage
           '';
         };
-      };
+      });
 in
 {
   inherit wenzelsNeovimGeneric; # main export

@@ -7,13 +7,22 @@ let
   # GitHub plugins overrides
   ghPluginsOverrides = {
     # newer picks
-    # TODO remove when https://github.com/NixOS/nixpkgs/pull/97985 gets to the stable release
+    ## TODO remove when https://github.com/NixOS/nixpkgs/pull/97985 gets to the stable release
     nerdtree-git-plugin = {
       # https://github.com/Xuyuanp/nerdtree-git-plugin
       # In <nixpkgs> this really outdated fork is used instead:
       # https://github.com/albfan/nerdtree-git-plugin
       rev = "a8c031f11dd312f53357729ca47ad493e798aa86"; # "master" branch, 11 September 2020
       sha256 = "1d64cmywhj43q9fkrh0kcfsxa7ijxcb1fbz38pxaacg082y6l0jy";
+    };
+    ## newer fzf plugin supports floating window feature of neovim
+    fzf = {
+      rev = "7acdaf0b4335a6c089bce5b73ff23aeb3b9d9c92"; # "master" branch, 19 November 2020
+      sha256 = "104fdllxa5a0mjr0h9dsy37vi5m2sma9d31wj573zjh4r1dpbq8m";
+    };
+    "fzf.vim" = {
+      rev = "53b3aea0da5e3581e224c958dbc13558cbe5daee"; # "master" branch, 11 November 2020
+      sha256 = "0r19v3431ps7mmq2vb0vf1phwmgi1xp0n7z43wa68i4ilyjhbnr6";
     };
     # own plugins
     vim-line-no-indicator = {

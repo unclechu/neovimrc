@@ -1,12 +1,12 @@
 let
   nixpkgs-src =
     let
-      # ref “release-20.09”, 2 November 2020
-      commit = "faee35ae82cc54bff6e5235895d4968f0de8d39a";
+      # ref “release-20.09”, 21 November 2020
+      commit = "7bf4729c5b940b1e2efd308606f35a27fc436be3";
     in
       fetchTarball {
         url = "https://github.com/NixOS/nixpkgs/archive/${commit}.tar.gz";
-        sha256 = "0jgp6czvqxh30hnq1a3l24mahcmqh6ik729jw1vq13pllhbb2p4b";
+        sha256 = "1f1qbadjdjq19pz6a4nysv9q579hzh1yc8ncad6y1dsi0lbf8aq0";
       };
 in
 import nixpkgs-src {} // { inherit nixpkgs-src; }
