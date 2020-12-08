@@ -37,6 +37,12 @@ let
       rev = "ee328f6c74bd5a128206cecb0849a194d6e03470"; # "master" branch, 23 December 2017
       sha256 = "1nn75n8cmay9b42c72kzs5c9bldl34ci1d29xb82623ymya7yjw0";
     };
+    # “2020-05-19” gets from time to time freezes with rapid memory leak, gigabytes in a minute.
+    # Let’s try newer version and see if it works fine.
+    ultisnips = {
+      rev = "8554371b57c8989cf73f73f288c456fb3f2a3a3a"; # “master” branch, 23 November 2020
+      sha256 = "0v3gyql3br11rl6ycl7i3zkx8kkc5f2w075y6cm6cslb9v124h6q";
+    };
     # other plugins
     ## utils/functionality
     vim-ctrlspace = {
