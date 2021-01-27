@@ -1,7 +1,6 @@
-let defaultPkgs = import ../default-nixpkgs-pick.nix; in
-args@
-{ pkgs   ? defaultPkgs
-, neovim ? import ../apps/neovim.nix { pkgs = args.pkgs or defaultPkgs; }
+let sources = import ../sources.nix; in
+{ pkgs   ? import sources.nixpkgs {}
+, neovim ? import ../apps/neovim.nix { inherit pkgs; }
 , origin ? ../../apps/nvimd
 }:
 let

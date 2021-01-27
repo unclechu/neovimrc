@@ -1,6 +1,7 @@
+let sources = import ../sources.nix; in
 args@
-{ pkgs ? import ../default-nixpkgs-pick.nix
+{ pkgs        ? import sources.nixpkgs {}
 , bashEnvFile ? null
-, neovimRC ? ../../.
+, neovimRC    ? ../../.
 }:
 (import ../generic.nix args).wenzelsNeovimGeneric {}

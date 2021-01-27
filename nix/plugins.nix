@@ -1,8 +1,9 @@
-{ pkgs     ? import ./default-nixpkgs-pick.nix
+let sources = import ./sources.nix; in
+{ pkgs     ? import sources.nixpkgs {}
 , neovimRC ? ../.
 }:
 let
-  inherit (import ./utils.nix { inherit pkgs; }) esc lines;
+  inherit (import ./utils.nix { inherit pkgs; }) esc lines exe;
 
   # GitHub plugins overrides
   ghPluginsOverrides = {
@@ -214,9 +215,9 @@ let
 
     src = pkgs.runCommand "${name}-clean" {} ''
       set -Eeuo pipefail
-      mkdir -- "$out"
-      cp -r -- ${esc origin}/* "$out"
-      rm -f -- "$out/Makefile"
+      ${exe pkgs.coreutils "mkdir"} -- "$out"
+      ${exe pkgs.coreutils "cp"} -r -- ${esc origin}/* "$out"
+      ${exe pkgs.coreutils "rm"} -f -- "$out/Makefile"
     '';
   };
 

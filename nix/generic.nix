@@ -1,5 +1,9 @@
-{ pkgs        ? import ./default-nixpkgs-pick.nix
-, fzf         ? import ./default-fzf.nix # Set to “null” if you want to use global version
+let
+  sources = import ./sources.nix;
+  default-fzf = (import sources.nixpkgs-for-fzf {}).fzf;
+in
+{ pkgs        ? import sources.nixpkgs {}
+, fzf         ? default-fzf # Set to “null” if you want to use global version
 , bashEnvFile ? null
 , neovimRC    ? ../.
 }:
@@ -7,7 +11,7 @@ let
   utils   = import ./utils.nix   { inherit pkgs;          };
   plugins = import ./plugins.nix { inherit pkgs neovimRC; };
 
-  inherit (utils) esc lines unlines wrapExecutable;
+  inherit (utils) esc lines unlines wrapExecutable exe;
 
   rcDerivation = "${neovimRC}";
 
@@ -64,19 +68,20 @@ let
     in
       pkgs.runCommand (if forGUI then rcDirNameForGUI else rcDirName) {} ''
         set -Eeuo pipefail
-        mkdir -- "$out"
-        cp -r -- ${esc rcDerivation}/{UltiSnips,my-modules}/ "$out"
-        cp -r -- ${esc rcDerivation}/{maps,options,plugins-configs,ginit}.vim "$out"
+        ${exe pkgs.coreutils "mkdir"} -- "$out"
+        ${exe pkgs.coreutils "cp"} -r -- ${esc rcDerivation}/{UltiSnips,my-modules}/ "$out"
+        ${exe pkgs.coreutils "cp"} -r -- \
+          ${esc rcDerivation}/{maps,options,plugins-configs,ginit}.vim "$out"
 
         # store original init.vim as one piece, it's linked to in $MYVIMRC
         # which is also used by config reloading hotkey.
-        cp -- ${esc fullInitFile} "$out"/${esc fullInitFile.name}
+        ${exe pkgs.coreutils "cp"} -- ${esc fullInitFile} "$out"/${esc fullInitFile.name}
 
         echo > "$out/plugins.vim" # just a dummy plug
 
         # for post-pluings part of the init.vim being interpreted as a package (latest in the order)
-        mkdir -- "$out/plugin"
-        cp -- ${esc postFile} "$out/plugin/"${esc postFile.name}
+        ${exe pkgs.coreutils "mkdir"} -- "$out/plugin"
+        ${exe pkgs.coreutils "cp"} -- ${esc postFile} "$out/plugin/"${esc postFile.name}
       '';
 
   wenzelsNeovimGeneric = { forGUI ? false }:
