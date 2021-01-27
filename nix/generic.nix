@@ -7,6 +7,18 @@ in
 , bashEnvFile ? null
 , neovimRC    ? ../.
 }:
+# The fzf.vim plugin needs fzf v0.24 or higher which currently is provided only in nixpkgs-unstable.
+assert ! isNull fzf -> (
+  let
+    versionDigits
+      = builtins.map pkgs.lib.toInt
+      ( builtins.filter builtins.isString
+      ( builtins.split "\\." fzf.version
+      ));
+  in
+    builtins.elemAt versionDigits 0 >= 0 &&
+    builtins.elemAt versionDigits 1 >= 24
+);
 let
   utils   = import ./utils.nix   { inherit pkgs;          };
   plugins = import ./plugins.nix { inherit pkgs neovimRC; };
