@@ -55,9 +55,13 @@ nn  <space>ff :Files!<CR>
 
 " fuzzy commands and commands history
 nn         : :Commands<CR>
+nm         Ö :
 nn  <space>: :Commands!<CR>
+nm  <space>Ö <space>:
 nn <leader>; :History:<CR>
+nm <leader>ö <leader>;
 nn  <space>; :History!:<CR>
+nm  <space>ö <space>;
 
 " fuzzy buffers, windows and mru
 nn <leader><space>   :Buffers<CR>
@@ -351,24 +355,34 @@ nm  <leader>pO  <A-,>kP
 
 " another alias to system X clipboard
 no '<Space>  "+
+nm ä<Space>  '<Space>
 no <Space>'  "*
+nm <Space>ä  <Space>'
 " yank from tmux buffer
 no <leader>' :let @@=system('tmux showb')<CR>
+nm <leader>ä <leader>'
 " yank from tmux buffer and replace visual selection
 xn <leader>' <Esc>:let @@=system('tmux showb')<CR>gvp
+xm <leader>ä <leader>'
 " yank from specific tmux buffer (TODO use fzf for it)
 no <leader>" :
 	\!tmux list-b<CR>:let @@=system('tmux showb -b buffer0000')<Left><Left>
+nm <leader>ä <leader>"
 " yank from specific tmux buffer and replace visual selection
 xn <leader>" <Esc>:echoe 'NOT YET IMPLEMENTED'<CR>gv
+xm <leader>Ä <leader>"
 " send to tmux clipboard buffer
 no '<leader> :cal system('tmux setb -- '.shellescape(@"))<CR>
+nm ä<leader> '<leader>
 " yank visual selection and send it to tmux clipboard buffer
 xn '<leader> y:cal system('tmux setb -- '.shellescape(@"))<CR>
+xm ä<leader> '<leader>
 " send to tmux clipboard buffer specific register
 no "<leader> :cal system('tmux setb -- '.shellescape(@))<Left><Left>
+nm Ä<leader> "<leader>
 " yank visual selection and send it to tmux clipboard buffer
 xn "<leader> <Esc>:echoe 'NOT YET IMPLEMENTED'<CR>gv
+xm Ä<leader> "<leader>
 " another alias to 'last yank' register
 no <A-y> "0
 
@@ -481,6 +495,7 @@ tno  <Leader><Esc> <C-\><C-n>
 
 " thanks to Minoru for the advice to swap ; and :
 no ; :
+nm ö ;
 
 " thanks to r3lgar for the advice (swap default <leader> and comma)
 no \ ;
@@ -488,9 +503,13 @@ no \| ,
 
 " because working with clipboard registers is more important
 no ' "
+nm ä '
 no " '
+nm Ä "
 no "" ''
+nm ÄÄ ""
 nn '' :reg<CR>
+nm ää ''
 
 " custom behavior of big R in visual mode
 xn R r<Space>R
@@ -516,7 +535,9 @@ ino <A-CR> <C-o>:cal <SID>split_next_line( 0, 0)<CR>
 " cannot map <S-CR> to make <A-S-CR> alternative
 " imap <A-S-CR> <C-o>:cal <SID>split_next_line(-1, 0)<CR>
 ino <A-'>  <C-o>:cal <SID>split_next_line( 0, 1)<CR>
+im  <A-ä>  <A-'>
 ino <A-">  <C-o>:cal <SID>split_next_line(-1, 1)<CR>
+im  <A-Ä>  <A-">
 fu! s:split_prev_line(new_col_offset, stay)
 	let l:pos=getcurpos() | let l:line=getline('.') | let l:vc=virtcol('$')
 	if l:pos[4] >= l:vc
