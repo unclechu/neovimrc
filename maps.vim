@@ -355,31 +355,31 @@ nm  <leader>pO  <A-,>kP
 
 " another alias to system X clipboard
 no '<Space>  "+
-nm ä<Space>  '<Space>
+map ä<Space> '<Space>
 no <Space>'  "*
-nm <Space>ä  <Space>'
+map <Space>ä <Space>'
 " yank from tmux buffer
 no <leader>' :let @@=system('tmux showb')<CR>
-nm <leader>ä <leader>'
+map <leader>ä <leader>'
 " yank from tmux buffer and replace visual selection
 xn <leader>' <Esc>:let @@=system('tmux showb')<CR>gvp
 xm <leader>ä <leader>'
 " yank from specific tmux buffer (TODO use fzf for it)
 no <leader>" :
 	\!tmux list-b<CR>:let @@=system('tmux showb -b buffer0000')<Left><Left>
-nm <leader>ä <leader>"
+map <leader>ä <leader>"
 " yank from specific tmux buffer and replace visual selection
 xn <leader>" <Esc>:echoe 'NOT YET IMPLEMENTED'<CR>gv
 xm <leader>Ä <leader>"
 " send to tmux clipboard buffer
 no '<leader> :cal system('tmux setb -- '.shellescape(@"))<CR>
-nm ä<leader> '<leader>
+map ä<leader> '<leader>
 " yank visual selection and send it to tmux clipboard buffer
 xn '<leader> y:cal system('tmux setb -- '.shellescape(@"))<CR>
 xm ä<leader> '<leader>
 " send to tmux clipboard buffer specific register
 no "<leader> :cal system('tmux setb -- '.shellescape(@))<Left><Left>
-nm Ä<leader> "<leader>
+map Ä<leader> "<leader>
 " yank visual selection and send it to tmux clipboard buffer
 xn "<leader> <Esc>:echoe 'NOT YET IMPLEMENTED'<CR>gv
 xm Ä<leader> "<leader>
@@ -495,7 +495,7 @@ tno  <Leader><Esc> <C-\><C-n>
 
 " thanks to Minoru for the advice to swap ; and :
 no ; :
-nm ö ;
+map ö ;
 
 " thanks to r3lgar for the advice (swap default <leader> and comma)
 no \ ;
@@ -503,11 +503,11 @@ no \| ,
 
 " because working with clipboard registers is more important
 no ' "
-nm ä '
+map ä '
 no " '
-nm Ä "
+map Ä "
 no "" ''
-nm ÄÄ ""
+map ÄÄ ""
 nn '' :reg<CR>
 nm ää ''
 
