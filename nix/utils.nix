@@ -19,5 +19,7 @@ utils // {
       inherit checkPhase;
     };
 
-  gitignore = pkgs.nix-gitignore.gitignoreSourcePure [ ../.gitignore ];
+  cleanSource =
+    let filter = pkgs.lib.cleanSourceFilter;
+     in pkgs.nix-gitignore.gitignoreFilterRecursiveSource filter [ ../.gitignore ];
 }

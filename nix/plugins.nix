@@ -1,7 +1,7 @@
 let sources = import ./sources.nix; in
 { pkgs     ? import sources.nixpkgs {}
 , utils    ? import ./utils.nix { inherit pkgs; }
-, neovimRC ? utils.gitignore ../.
+, neovimRC ? utils.cleanSource ../.
 }:
 let
   inherit (utils) esc lines exe;

@@ -6,7 +6,7 @@ in
 , utils       ? import ./utils.nix { inherit pkgs; }
 , fzf         ? default-fzf # Set to “null” if you want to use global version
 , bashEnvFile ? null
-, neovimRC    ? utils.gitignore ../.
+, neovimRC    ? utils.cleanSource ../.
 }:
 # The fzf.vim plugin needs fzf v0.24 or higher which currently is provided only in nixpkgs-unstable.
 assert ! isNull fzf -> (

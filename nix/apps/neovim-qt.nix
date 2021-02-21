@@ -3,7 +3,7 @@ args@
 { pkgs        ? import sources.nixpkgs {}
 , utils       ? import ../utils.nix { inherit pkgs; }
 , bashEnvFile ? null
-, neovimRC    ? utils.gitignore ../../.
+, neovimRC    ? utils.cleanSource ../../.
 }:
 let
   inherit (import ../generic.nix args) wenzelsNeovimGeneric;
