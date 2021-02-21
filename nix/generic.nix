@@ -3,9 +3,10 @@ let
   default-fzf = (import sources.nixpkgs-for-fzf {}).fzf;
 in
 { pkgs        ? import sources.nixpkgs {}
+, utils       ? import ./utils.nix { inherit pkgs; }
 , fzf         ? default-fzf # Set to “null” if you want to use global version
 , bashEnvFile ? null
-, neovimRC    ? ../.
+, neovimRC    ? utils.gitignore ../.
 }:
 # The fzf.vim plugin needs fzf v0.24 or higher which currently is provided only in nixpkgs-unstable.
 assert ! isNull fzf -> (
@@ -20,8 +21,7 @@ assert ! isNull fzf -> (
     builtins.elemAt versionDigits 1 >= 24
 );
 let
-  utils   = import ./utils.nix   { inherit pkgs;          };
-  plugins = import ./plugins.nix { inherit pkgs neovimRC; };
+  plugins = import ./plugins.nix { inherit pkgs utils neovimRC; };
 
   inherit (utils) esc lines unlines wrapExecutable exe;
 

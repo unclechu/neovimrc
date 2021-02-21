@@ -1,9 +1,9 @@
 let sources = import ../sources.nix; in
 { pkgs   ? import sources.nixpkgs {}
+, utils  ? import ../utils.nix { inherit pkgs; }
 , origin ? ../../apps/clean-vim
 }:
 let
-  utils = import ../utils.nix { inherit pkgs; };
   inherit (utils) nameOfModuleFile writeCheckedExecutable perlLibWrap;
 
   name = nameOfModuleFile (builtins.unsafeGetAttrPos "a" { a = 0; }).file;

@@ -1,9 +1,10 @@
 let sources = import ./sources.nix; in
 { pkgs     ? import sources.nixpkgs {}
-, neovimRC ? ../.
+, utils    ? import ./utils.nix { inherit pkgs; }
+, neovimRC ? utils.gitignore ../.
 }:
 let
-  inherit (import ./utils.nix { inherit pkgs; }) esc lines exe;
+  inherit (utils) esc lines exe;
 
   # GitHub plugins overrides
   ghPluginsOverrides = {

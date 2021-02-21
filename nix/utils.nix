@@ -18,4 +18,6 @@ utils // {
       env = { PERL5LIB = pkgs.perlPackages.makePerlPath deps; };
       inherit checkPhase;
     };
+
+  gitignore = pkgs.nix-gitignore.gitignoreSourcePure [ ../.gitignore ];
 }

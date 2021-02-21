@@ -1,9 +1,9 @@
 let sources = import ../sources.nix; in
 { pkgs   ? import sources.nixpkgs {}
+, utils  ? import ../utils.nix { inherit pkgs; }
 , origin ? ../../apps/git-grep-nvr.sh
 }:
 let
-  utils = import ../utils.nix { inherit pkgs; };
   inherit (utils) esc nameOfModuleFile writeCheckedExecutable;
 
   name = nameOfModuleFile (builtins.unsafeGetAttrPos "a" { a = 0; }).file;
