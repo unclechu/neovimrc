@@ -4,7 +4,7 @@ let sources = import ../sources.nix; in
 , origin ? ../../apps/clean-vim
 }:
 let
-  inherit (utils) nameOfModuleFile writeCheckedExecutable perlLibWrap;
+  inherit (utils) nameOfModuleFile writeCheckedExecutable wrapExecutableWithPerlDeps;
 
   name = nameOfModuleFile (builtins.unsafeGetAttrPos "a" { a = 0; }).file;
   src  = builtins.readFile "${origin}";
@@ -16,8 +16,8 @@ let
   '';
 
   perlScript = writeCheckedExecutable name checkPhase "#! ${perl}\n${src}";
-  deps = [ pkgs.perlPackages.IPCSystemSimple ];
-  pkg = perlLibWrap { inherit name checkPhase deps; } perlScript;
+  deps = p: [ p.IPCSystemSimple ];
+  pkg = wrapExecutableWithPerlDeps "${perlScript}/bin/${name}" { inherit deps; };
 in
 assert utils.valueCheckers.isNonEmptyString src;
 pkg // { inherit checkPhase; originSrc = src; perlDependencies = deps; }

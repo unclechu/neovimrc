@@ -9,16 +9,6 @@ utils // {
   utils-src = sources.nix-utils;
   exe = pkg: executable-name: "${esc pkg}/bin/${esc executable-name}";
 
-  perlLibWrap = { name, checkPhase, deps }: perlScript:
-    assert builtins.isString name;
-    assert builtins.isString checkPhase;
-    assert builtins.isList deps;
-    assert builtins.all pkgs.lib.isDerivation deps;
-    wrapExecutable "${perlScript}/bin/${name}" {
-      env = { PERL5LIB = pkgs.perlPackages.makePerlPath deps; };
-      inherit checkPhase;
-    };
-
   cleanSource =
     let filter = pkgs.lib.cleanSourceFilter;
      in pkgs.nix-gitignore.gitignoreFilterRecursiveSource filter [ ../.gitignore ];

@@ -5,13 +5,13 @@ let sources = import ../sources.nix; in
 , origin ? ../../apps/nvimd
 }:
 let
-  inherit (utils) nameOfModuleFile writeCheckedExecutable perlLibWrap;
+  inherit (utils) nameOfModuleFile writeCheckedExecutable wrapExecutable wrapExecutableWithPerlDeps;
 
   name = nameOfModuleFile (builtins.unsafeGetAttrPos "a" { a = 0; }).file;
   src  = builtins.readFile "${origin}";
 
-  nvim  = "${neovim}/bin/nvim";
   perl = "${pkgs.perl}/bin/perl";
+  nvim  = "${neovim}/bin/nvim";
   pkill = "${pkgs.procps}/bin/pkill";
 
   checkPhase = ''
@@ -20,16 +20,10 @@ let
     ${utils.shellCheckers.fileIsExecutable pkill}
   '';
 
-  perlScript = writeCheckedExecutable name checkPhase ''
-    #! ${perl}
-    use v5.10; use strict; use warnings; use autodie qw(:all);
-    $ENV{PATH} = q<${neovim}/bin:>.$ENV{PATH};
-    $ENV{PATH} = q<${pkgs.procps}/bin:>.$ENV{PATH};
-    ${src}
-  '';
-
-  deps = [ pkgs.perlPackages.IPCSystemSimple ];
-  pkg = perlLibWrap { inherit name checkPhase deps; } perlScript;
+  perlScript = writeCheckedExecutable name checkPhase "#! ${perl}\n${src}";
+  app = wrapExecutable "${perlScript}/bin/${name}" { deps = [ neovim pkgs.procps ]; };
+  deps = p: [ p.IPCSystemSimple ];
+  pkg = wrapExecutableWithPerlDeps "${app}/bin/${name}" { inherit deps; };
 in
 assert utils.valueCheckers.isNonEmptyString src;
 pkg // { inherit checkPhase; originSrc = src; perlDependencies = deps; }
