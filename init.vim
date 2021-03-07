@@ -23,6 +23,11 @@ cal PreventIndentTrimHackOn()
 exe 'so ' . $MYVIMRC_DIR . '/maps.vim'
 
 
+" my own options
+
+let g:insert_leave_autosave_enabled = 1
+
+
 " colorscheme
 
 let g:gruvbox_contrast_dark  = 'medium'

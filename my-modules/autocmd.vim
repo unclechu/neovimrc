@@ -73,6 +73,14 @@ aug my#insert_mode_hooks | au!
 		\ |   if b:__had_relative_number_enabled | se rnu | en
 		\ |   unl b:__had_relative_number_enabled
 		\ | en
+
+	fu! s:insert_leave_autosave()
+		if exists('b:insert_leave_autosave_enabled')
+			if b:insert_leave_autosave_enabled | up | en
+		elsei g:insert_leave_autosave_enabled | up | en
+	endf
+
+	au InsertLeave * cal s:insert_leave_autosave()
 aug END
 
 aug my#cmd_mode_hooks | au!
