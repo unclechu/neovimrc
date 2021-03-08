@@ -75,8 +75,7 @@ aug my#insert_mode_hooks | au!
 		\ | en
 
 	fu! s:insert_leave_autosave()
-		let l:f = expand('%')
-		if &ro || l:f == '' || l:f == '[Command Line]' | retu | en
+		if &ro || &bt != '' || expand('%:p') == '' | retu | en
 		if exists('b:insert_leave_autosave_enabled')
 			if b:insert_leave_autosave_enabled | do BufWritePre | up | en
 		el
