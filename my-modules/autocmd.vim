@@ -74,12 +74,21 @@ aug my#insert_mode_hooks | au!
 		\ |   unl b:__had_relative_number_enabled
 		\ | en
 
+	fu! s:insert_leave_autosave__save()
+		do BufWritePre | up | do BufWritePost
+	endf
+
 	fu! s:insert_leave_autosave()
+		" if current buffer is not a regular file saved on disk do not save
 		if &ro || &bt != '' || expand('%:p') == '' | retu | en
 		if exists('b:insert_leave_autosave_enabled')
-			if b:insert_leave_autosave_enabled | do BufWritePre | up | en
+			if b:insert_leave_autosave_enabled
+				cal s:insert_leave_autosave__save()
+			en
 		el
-			if g:insert_leave_autosave_enabled | do BufWritePre | up | en
+			if g:insert_leave_autosave_enabled
+				cal s:insert_leave_autosave__save()
+			en
 		en
 	endf
 
