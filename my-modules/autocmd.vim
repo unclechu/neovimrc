@@ -121,6 +121,7 @@ aug my#buffers_hooks | au!
 	au BufRead * sy match whitespaceEOL /\s\+$/
 
 	au BufWritePost * Neomake
+	au BufWritePost * GitGutter
 
 	" Auto-close NERDTree window if it is only window on the screen
 	au BufEnter *
