@@ -6,6 +6,7 @@
 
 # Overridable dependencies
 , __utils  ? callPackage ../utils.nix { inherit perlPackages; }
+# ↓ Set it to ‘null’ to use global ‘nvim’ (from ‘PATH’ environment variable)
 , __neovim ? callPackage ../apps/neovim.nix { inherit __utils; }
 
 # Build options
@@ -20,17 +21,20 @@ let
   src  = builtins.readFile "${__scriptSrc}";
 
   perl-exe = "${perl}/bin/perl";
-  nvim     = "${__neovim}/bin/nvim";
   pkill    = "${procps}/bin/pkill";
 
   checkPhase = ''
     ${shellCheckers.fileIsExecutable perl-exe}
-    ${shellCheckers.fileIsExecutable nvim}
+    ${if isNull __neovim then "" else shellCheckers.fileIsExecutable "${__neovim}/bin/nvim"}
     ${shellCheckers.fileIsExecutable pkill}
   '';
 
   perlScript = writeCheckedExecutable name checkPhase "#! ${perl-exe}\n${src}";
-  app = wrapExecutable "${perlScript}/bin/${name}" { deps = [ __neovim procps ]; };
+
+  app = wrapExecutable "${perlScript}/bin/${name}" {
+    deps = (if isNull __neovim then [] else [ __neovim ]) ++ [ procps ];
+  };
+
   deps = p: [ p.IPCSystemSimple ];
   pkg = wrapExecutableWithPerlDeps "${app}/bin/${name}" { inherit deps; };
 in
