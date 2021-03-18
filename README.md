@@ -32,8 +32,8 @@ nix-shell \
 
 #### As a NixOS system dependency
 
-```nix
-{ pkgs, ... }
+``` nix
+{ pkgs, ... }:
 let
   wenzels-neovim-src = pkgs.fetchFromGitHub {
     owner = "unclechu";
@@ -57,8 +57,8 @@ in
 
 ##### Also the scripts
 
-```nix
-{ pkgs, ... }
+``` nix
+{ pkgs, ... }:
 let
   wenzels-neovim-src = pkgs.fetchFromGitHub {
     owner = "unclechu";
@@ -78,13 +78,13 @@ in
 
 1. Clone this repo:
 
-   ```sh
+   ``` sh
    git clone --recursive https://github.com/unclechu/neovimrc.git ~/.config/nvim
    ```
 
 2. Install dependencies:
 
-   ```sh
+   ``` sh
    nvim +PlugInstall!
    ```
 
