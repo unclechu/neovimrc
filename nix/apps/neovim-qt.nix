@@ -20,4 +20,4 @@ let
 
   neovim-for-gui = generic.wenzelsNeovimGeneric { forGUI = true; };
 in
-neovim-qt.override { neovim = neovim-for-gui; }
+neovim-qt.override { neovim = neovim-for-gui; } // { inherit neovim-for-gui; }
