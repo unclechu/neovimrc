@@ -15,7 +15,7 @@
 # Author: Viacheslav Lotsmanov
 #
 
-set -e
+set -e || exit
 options=()
 
 # reading git-grep output from stdin

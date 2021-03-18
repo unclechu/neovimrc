@@ -1,8 +1,20 @@
-let sources = import ../sources.nix; in
-args@
-{ pkgs        ? import sources.nixpkgs {}
-, utils       ? import ../utils.nix { inherit pkgs; }
-, bashEnvFile ? null
-, neovimRC    ? utils.cleanSource ../../.
+let default-fzf = import ../default-fzf.nix; in
+# This module is intended to be called with ‘nixpkgs.callPackage’
+{ callPackage
+, config
+
+# Overridable dependencies
+, __utils ? callPackage ../utils.nix {}
+, __fzf   ? default-fzf config # Set to “null” if you want to use global version
+
+# Build options
+, __neovimRC  ? __utils.cleanSource ../../.
+, bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
 }:
-(import ../generic.nix args).wenzelsNeovimGeneric {}
+let
+  generic = callPackage ../generic.nix (
+    { inherit __utils __neovimRC bashEnvFile; } //
+    (if isNull __fzf then {} else { inherit __fzf; })
+  );
+in
+generic.wenzelsNeovimGeneric {}

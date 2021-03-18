@@ -1,15 +1,41 @@
 let sources = import ./sources.nix; in
-{ pkgs ? import sources.nixpkgs {}
+# This module is intended to be called with ‘nixpkgs.callPackage’
+{ callPackage
+, lib
+, nix-gitignore
+, perlPackages
+
+# Overridable dependencies
+, __nix-utils ? callPackage sources.nix-utils { inherit perlPackages; }
 }:
-let
-  utils = import sources.nix-utils { inherit pkgs; };
-  inherit (utils) esc wrapExecutable;
-in
-utils // {
-  utils-src = sources.nix-utils;
+let inherit (__nix-utils) esc wrapExecutable; in
+__nix-utils // {
   exe = pkg: executable-name: "${esc pkg}/bin/${esc executable-name}";
 
   cleanSource =
-    let filter = pkgs.lib.cleanSourceFilter;
-     in pkgs.nix-gitignore.gitignoreFilterRecursiveSource filter [ ../.gitignore ];
+    let
+      noVimPlug = fileName: fileType: ! (
+        fileType == "directory" &&
+        builtins.elem (baseNameOf fileName) [ "autoload" "vim-plug" ]
+      );
+
+      noUnnecessaryFiles = fileName: fileType: ! (
+        fileType == "regular" &&
+        builtins.elem (baseNameOf fileName) [
+          ".editorconfig"
+          ".gitignore"
+          ".gitmodules"
+          "README.md"
+          "digraphs-list.txt"
+          "make.pl"
+          "Makefile"
+        ]
+      );
+
+      filter = fileName: fileType:
+        lib.cleanSourceFilter fileName fileType &&
+        noUnnecessaryFiles    fileName fileType &&
+        noVimPlug             fileName fileType;
+    in
+      nix-gitignore.gitignoreFilterRecursiveSource filter [ ../.gitignore ];
 }

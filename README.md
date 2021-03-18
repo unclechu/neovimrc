@@ -10,22 +10,31 @@ My own Neovim config.
 
 Neovim default TUI:
 
-```sh
-nix-shell -E '(import <nixpkgs> {}).mkShell {buildInputs=[(import nix/apps/neovim.nix {})];}' --run nvim
+``` sh
+nix-shell --run nvim
 ```
 
 Neovim QT GUI:
 
-```sh
-nix-shell -E '(import <nixpkgs> {}).mkShell {buildInputs=[(import nix/apps/neovim-qt.nix {})];}' --run nvim-qt
+``` sh
+nix-shell --arg with-neovim-qt true --run nvim-qt
+```
+
+Turn everything on:
+
+``` sh
+nix-shell \
+  --arg with-neovim-qt           true \
+  --arg with-clean-vim-script    true \
+  --arg with-git-grep-nvr-script true \
+  --arg with-nvimd-script        true
 ```
 
 #### As a NixOS system dependency
 
 ```nix
+{ pkgs, ... }
 let
-  pkgs = import <nixpkgs> {};
-
   wenzels-neovim-src = pkgs.fetchFromGitHub {
     owner = "unclechu";
     repo = "neovimrc";
@@ -35,8 +44,8 @@ let
 
   # See the arguments of these *.nix files.
   # These are just simple examples which use defaults.
-  wenzels-neovim    = import "${wenzels-neovim-src}/nix/apps/neovim.nix"    {};
-  wenzels-neovim-qt = import "${wenzels-neovim-src}/nix/apps/neovim-qt.nix" {};
+  wenzels-neovim    = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim.nix"    {};
+  wenzels-neovim-qt = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim-qt.nix" {};
 in
 {
   environment.systemPackages = [
@@ -49,11 +58,18 @@ in
 ##### Also the scripts
 
 ```nix
+{ pkgs, ... }
 let
-  # … as in the example above
-  clean-vim    = import "${wenzels-neovim-src}/nix/scripts/clean-vim.nix"    {};
-  git-grep-nvr = import "${wenzels-neovim-src}/nix/scripts/git-grep-nvr.nix" {};
-  nvimd        = import "${wenzels-neovim-src}/nix/scripts/nvimd.nix"        {};
+  wenzels-neovim-src = pkgs.fetchFromGitHub {
+    owner = "unclechu";
+    repo = "neovimrc";
+    rev = "ffffffffffffffffffffffffffffffffffffffff"; # Git commit hash
+    sha256 = "0000000000000000000000000000000000000000000000000000";
+  };
+
+  clean-vim    = pkgs.callPackage "${wenzels-neovim-src}/nix/scripts/clean-vim.nix"    {};
+  git-grep-nvr = pkgs.callPackage "${wenzels-neovim-src}/nix/scripts/git-grep-nvr.nix" {};
+  nvimd        = pkgs.callPackage "${wenzels-neovim-src}/nix/scripts/nvimd.nix"        {};
 in
 { environment.systemPackages = [ clean-vim git-grep-nvr nvimd ]; }
 ```

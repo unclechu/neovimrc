@@ -1,10 +1,20 @@
-let sources = import ./sources.nix; in
-{ pkgs     ? import sources.nixpkgs {}
-, utils    ? import ./utils.nix { inherit pkgs; }
-, neovimRC ? utils.cleanSource ../.
+# This module is intended to be called with ‘nixpkgs.callPackage’
+{ callPackage
+, fetchFromGitHub
+, runCommand
+, lib
+, coreutils
+, vimUtils
+, vimPlugins
+
+# Overridable dependencies
+, __utils ? callPackage ./utils.nix {}
+
+# Build options
+, __neovimRC ? __utils.cleanSource ../.
 }:
 let
-  inherit (utils) esc lines exe;
+  inherit (__utils) esc lines exe;
 
   # GitHub plugins overrides
   ghPluginsOverrides = {
@@ -197,34 +207,34 @@ let
   # Allows to use a plugin from a local directory or from anywhere else.
   # Use with “mkPlugin” function.
   rawPluginsOverrides = {
-    # haskell-vim = mkPlugin "haskell-vim" (pkgs.lib.cleanSource ../../haskell-vim);
+    # haskell-vim = mkPlugin "haskell-vim" (lib.cleanSource ../../haskell-vim);
   };
 
   mkGhPlugin = plugin:
     let
       name = builtins.elemAt plugin 1;
 
-      src = pkgs.fetchFromGitHub ({
+      src = fetchFromGitHub ({
         owner = builtins.head plugin;
         repo = name;
       } // ghPluginsOverrides.${name});
     in
       mkPlugin name src;
 
-  mkPlugin = name: origin: pkgs.vimUtils.buildVimPlugin {
+  mkPlugin = name: origin: vimUtils.buildVimPlugin {
     inherit name;
 
-    src = pkgs.runCommand "${name}-clean" {} ''
-      set -Eeuo pipefail
-      ${exe pkgs.coreutils "mkdir"} -- "$out"
-      ${exe pkgs.coreutils "cp"} -r -- ${esc origin}/* "$out"
-      ${exe pkgs.coreutils "rm"} -f -- "$out/Makefile"
+    src = runCommand "${name}-clean" {} ''
+      set -Eeuo pipefail || exit
+      ${exe coreutils "mkdir"} -- "$out"
+      ${exe coreutils "cp"} -r -- ${esc origin}/* "$out"
+      ${exe coreutils "rm"} -f -- "$out/Makefile"
     '';
   };
 
   plugins =
     let
-      srcLines = lines (builtins.readFile "${neovimRC}/plugins.vim");
+      srcLines = lines (builtins.readFile "${__neovimRC}/plugins.vim");
 
       ghReposList =
         let
@@ -264,7 +274,7 @@ let
                   then pluginsRenames.${name}
                   else builtins.substring 0 (builtins.stringLength name - 4) name + "-vim";
 
-                fromNixpkgs = pkgs.vimPlugins.${if hasRename then renamed else name};
+                fromNixpkgs = vimPlugins.${if hasRename then renamed else name};
               in
                 if hasRawOverride then rawPluginsOverrides.${name}
                 else if hasOverride then mkGhPlugin p
