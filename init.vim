@@ -25,7 +25,7 @@ exe 'so ' . $MYVIMRC_DIR . '/maps.vim'
 
 " my own options
 
-let g:insert_leave_autosave_enabled = 1
+let g:insert_leave_autosave_enabled = 0
 
 
 " colorscheme
