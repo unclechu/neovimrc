@@ -1,5 +1,6 @@
 " additional functions and variables
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 
 " Some date masks for `strftime` function

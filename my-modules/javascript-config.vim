@@ -1,5 +1,6 @@
 " vim-javascript plugin configs
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 if !exists('s:loaded')
 	" conceals is disabled

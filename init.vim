@@ -1,5 +1,6 @@
 " NeoVim config
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 " vim: set noet fenc=utf-8 :
 
 

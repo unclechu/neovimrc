@@ -1,5 +1,6 @@
 " FuzzyHoogle command built on top of FZF
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 let s:shortcut_map = {
 	\ 'ctrl-x': 'yank',

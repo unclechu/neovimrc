@@ -1,5 +1,6 @@
 " wrap toggle
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 function! WrapToggle()
 	let &wrap = ! &wrap

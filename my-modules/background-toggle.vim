@@ -1,5 +1,6 @@
 " background and gruvbox contrast toggle
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 fu! s:BackgroundToggle()
 	if &bg == 'dark'

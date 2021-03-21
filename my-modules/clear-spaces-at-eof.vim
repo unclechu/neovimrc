@@ -1,5 +1,6 @@
 " clear spaces at EOF and tabs at end of not empty lines
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 if !exists('s:loaded')
 	let g:auto_clear_spaces_at_eof = 1 " for non empty lines

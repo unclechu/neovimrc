@@ -1,4 +1,5 @@
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 let s:intreg = '\v^\d+$'
 let s:percentreg = '\v^(\d+)(\%$)@='

@@ -1,5 +1,6 @@
 " list toggle
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 function! ListToggle()
 	let &list = ! &list

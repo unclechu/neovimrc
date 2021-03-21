@@ -1,4 +1,5 @@
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 " something wrong with 'haskell-vim' syntax plugin, this dirty hack fixes it.
 " it's just a copy from 'haskell-vim'

@@ -1,5 +1,6 @@
 " my own missed digraphs
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 digraphs `` 769    " accent mark (zero width) | 0x301
 digraphs 3. 8230   " … | 0x2026

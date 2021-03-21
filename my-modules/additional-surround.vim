@@ -1,5 +1,6 @@
 " additional surround bindings
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 
 " hack for wrap to <CR> with indentation

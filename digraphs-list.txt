@@ -1,3 +1,6 @@
+Author: Viacheslav Lotsmanov
+License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
+
 Vim digraphs mnenomic codes
 Insert mode: Ctrl+K {mnemonic-code}
 

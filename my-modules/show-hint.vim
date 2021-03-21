@@ -1,5 +1,6 @@
 " show hint command
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 function! ShowHint()
 	if &filetype =~ '^typescript'

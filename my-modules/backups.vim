@@ -1,5 +1,6 @@
 " backups and swap config
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 set backup
 set undofile

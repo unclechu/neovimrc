@@ -1,4 +1,5 @@
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 function! XClipYank()
 	let l:data = join(getline(a:firstline, a:lastline), "\n")

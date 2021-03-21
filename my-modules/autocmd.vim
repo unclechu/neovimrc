@@ -1,5 +1,6 @@
 " autocmd commands
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 aug my#auto_filetype_detection | au!
 	au BufNewFile,BufRead

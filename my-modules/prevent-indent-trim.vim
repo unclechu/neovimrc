@@ -1,5 +1,6 @@
 " dirty hacks for prevent unwanted trim trailing whitespace
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 function! PreventIndentTrimHackOn()
 	inoremap <CR> x<Backspace><CR>x<Backspace>

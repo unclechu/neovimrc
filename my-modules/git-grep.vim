@@ -1,5 +1,6 @@
 " GitGrep command built on top of FZF
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 let s:git_grep_shortcut_map = {
 	\ 'ctrl-t': 'tabe',

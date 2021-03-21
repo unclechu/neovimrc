@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Author: Viacheslav Lotsmanov
+# License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 #
 # Helps to open a file on specific line via neovim-remove
 # by selected match from `git grep` output
@@ -11,8 +13,6 @@
 #   git grep -nIF -- foo | git-grep-nvr.sh
 #
 # `-n` and `-I` are required for `git grep` command.
-#
-# Author: Viacheslav Lotsmanov
 #
 
 set -e || exit

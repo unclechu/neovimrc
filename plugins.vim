@@ -1,5 +1,6 @@
 " plugins loading
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 if $PLUGINS_DIR == '' | let $PLUGINS_DIR = $HOME.'/.cache/neovim-plugins' | en
 se rtp+=$PLUGINS_DIR/tomorrow-theme/vim

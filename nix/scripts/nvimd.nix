@@ -1,3 +1,6 @@
+# Author: Viacheslav Lotsmanov
+# License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
+
 # This module is intended to be called with ‘nixpkgs.callPackage’
 { callPackage
 , procps

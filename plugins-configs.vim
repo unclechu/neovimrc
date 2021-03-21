@@ -1,5 +1,6 @@
 " custom configs of plugins
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 let g:fzf_colors = {
 	\ 'fg':      ['fg', 'Normal'],

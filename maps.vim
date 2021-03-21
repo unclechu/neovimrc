@@ -1,5 +1,6 @@
 " custom maps
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 let mapleader = ','
 

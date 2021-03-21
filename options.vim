@@ -1,5 +1,6 @@
 " custom vim options
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 let $NVIM_ENABLE_TRUE_COLOR = 1
 

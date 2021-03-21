@@ -1,5 +1,6 @@
 " additional commands
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 " embedded terminal emulator split
 com! TE  new | exe 'te' | star

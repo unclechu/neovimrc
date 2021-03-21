@@ -1,5 +1,6 @@
 " get file lines for CLI
 " Author: Viacheslav Lotsmanov
+" License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 " python wrapper
 function! s:pybase64enc(to_encode)
