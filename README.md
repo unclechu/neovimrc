@@ -91,3 +91,10 @@ in
 ## Author
 
 Viacheslav Lotsmanov
+
+## License
+
+[MIT] — For the code of this repository.
+Some third-party dependencies may have different licenses.
+
+[MIT]: LICENSE
