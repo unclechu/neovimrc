@@ -599,7 +599,9 @@ xn <leader>bb !!
 
 " begin/end of line ignoring indentation and trailing whitespaces
 no  #  ^
+no  £  ^
 no g# g^
+no g£ g^
 no  $ g_
 no g$ g$
 
