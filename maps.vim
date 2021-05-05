@@ -233,6 +233,20 @@ nn  <space>swh :se wfh \| 9999winc - \| se wh=
 " Neomake
 nn <leader>si :NeomakeInfo<CR>
 nn <leader>sc :Neomake<CR>
+" ALE
+nn <leader>de :ALEEnable<cr>
+nn <leader>dd :ALEDisable<cr>
+nn <leader>di :ALEInfo<cr>
+nn <leader>da :ALEDetail<cr>
+nn <leader>dn :ALENext<cr>
+nn <leader>dp :ALEPrevious<cr>
+nn <leader>df :ALEFirst<cr>
+nn <leader>dl :ALELast<cr>
+nn <leader>dh :ALEHover<cr>
+nn <leader>dc :ALEComplete<cr>
+nn <leader>dx :ALEFix<cr>
+nn <leader>dr :ALERename<cr>
+nn <leader>dg :ALEGoToDefinition<cr>
 
 
 " show hint
