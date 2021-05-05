@@ -121,7 +121,6 @@ aug my#buffers_hooks | au!
 	" disable tabs highlight on empty lines
 	au BufRead * sy match whitespaceEOL /\s\+$/
 
-	au BufWritePost * Neomake
 	au BufWritePost * GitGutter
 
 	" Auto-close NERDTree window if it is only window on the screen
