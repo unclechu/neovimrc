@@ -1,9 +1,6 @@
 # Author: Viacheslav Lotsmanov
 # License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
-let
-  sources = import ./sources.nix;
-  default-fzf = import ./default-fzf.nix;
-in
+let sources = import ./sources.nix; in
 # This module is intended to be called with ‘nixpkgs.callPackage’
 { callPackage
 , runCommand
@@ -13,21 +10,23 @@ in
 , coreutils
 , neovim
 
+# Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
+, fzf ? null # Dependency for “fzf.vim”
+
 # Overridable dependencies
 , __utils ? callPackage ./utils.nix {}
-, __fzf   ? default-fzf config # Set to “null” if you want to use global version
 
 # Build options
 , __neovimRC  ? __utils.cleanSource ../.
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
 }:
-# The fzf.vim plugin needs fzf v0.24 or higher which currently is provided only in nixpkgs-unstable.
-assert ! isNull __fzf -> (
+# The fzf.vim plugin needs fzf v0.24 or higher
+assert ! isNull fzf -> (
   let
     versionDigits
       = builtins.map lib.toInt
       ( builtins.filter builtins.isString
-      ( builtins.split "\\." __fzf.version
+      ( builtins.split "\\." fzf.version
       ));
   in
     builtins.elemAt versionDigits 0 >= 0 &&
@@ -114,14 +113,14 @@ let
     let
       configDir = rcDirGeneric { inherit forGUI; };
 
-      wrap = neovim: if isNull __fzf then neovim else
+      wrap = neovim: if isNull fzf then neovim else
         let
           nvim-exe = "${neovim}/bin/nvim";
         in
           wrapExecutable nvim-exe {
             deps = [
               neovim # To have other executables (e.g. “nvim-python”)
-              __fzf
+              fzf
             ];
             checkPhase = shellCheckers.fileIsExecutable nvim-exe;
           };
