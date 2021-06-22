@@ -193,8 +193,8 @@ nm ]c         <Plug>(GitGutterNextHunk)
 nm ]C         <Plug>(GitGutterNextHunk)
 
 " git status in new tab
-nn <leader>gs :tabnew %<CR>:Gstatus<CR><C-w>o
-nn <leader>gS :Gstatus<CR><C-w>o
+nn <leader>gs :tabnew %<CR>:Git<CR><C-w>o
+nn <leader>gS :Git<CR><C-w>o
 
 " modes togglers
 nn <leader>mw :WrapToggle<CR>
