@@ -21,24 +21,6 @@ let
 
   # GitHub plugins overrides
   ghPluginsOverrides = {
-    # newer picks
-    ## TODO remove when https://github.com/NixOS/nixpkgs/pull/97985 gets to the stable release
-    nerdtree-git-plugin = {
-      # https://github.com/Xuyuanp/nerdtree-git-plugin
-      # In <nixpkgs> this really outdated fork is used instead:
-      # https://github.com/albfan/nerdtree-git-plugin
-      rev = "a8c031f11dd312f53357729ca47ad493e798aa86"; # "master" branch, 11 September 2020
-      sha256 = "1d64cmywhj43q9fkrh0kcfsxa7ijxcb1fbz38pxaacg082y6l0jy";
-    };
-    ## newer fzf plugin supports floating window feature of neovim
-    fzf = {
-      rev = "7acdaf0b4335a6c089bce5b73ff23aeb3b9d9c92"; # "master" branch, 19 November 2020
-      sha256 = "104fdllxa5a0mjr0h9dsy37vi5m2sma9d31wj573zjh4r1dpbq8m";
-    };
-    "fzf.vim" = {
-      rev = "53b3aea0da5e3581e224c958dbc13558cbe5daee"; # "master" branch, 11 November 2020
-      sha256 = "0r19v3431ps7mmq2vb0vf1phwmgi1xp0n7z43wa68i4ilyjhbnr6";
-    };
     # own plugins
     vim-line-no-indicator = {
       rev = "8704d4836cef4b2a73c767db293f2487b636e1e7"; # "patch-1" branch, 9 January 2020
@@ -52,33 +34,27 @@ let
       rev = "ee328f6c74bd5a128206cecb0849a194d6e03470"; # "master" branch, 23 December 2017
       sha256 = "1nn75n8cmay9b42c72kzs5c9bldl34ci1d29xb82623ymya7yjw0";
     };
-    # “2020-05-19” gets from time to time freezes with rapid memory leak, gigabytes in a minute.
-    # Let’s try newer version and see if it works fine.
-    ultisnips = {
-      rev = "8554371b57c8989cf73f73f288c456fb3f2a3a3a"; # “master” branch, 23 November 2020
-      sha256 = "0v3gyql3br11rl6ycl7i3zkx8kkc5f2w075y6cm6cslb9v124h6q";
-    };
     # other plugins
     ## utils/functionality
     vim-ctrlspace = {
-      rev = "1a8937dff063d22e681910567528ec9a563d2717"; # "master" branch, 6 March 2020
-      sha256 = "0r2n9k56f4v3iz58dpy6iansg6lak4vaifqjh800cpzbws41wpx5";
+      rev = "357b337a3494aae8f9c2075a5c120467833d753d"; # "master" branch, 26 April 2021
+      sha256 = "1yjx79yj21dbf746mmw6y3mf9j20yar7vww1isyhi3a3pb4l7wsl";
     };
     "ctrlsf.vim" = {
-      rev = "b44b3f33b0e736f8dc74cd5a4da81f3344162373"; # "master" branch, 2 July 2020
-      sha256 = "196l8abicq2lchpnvcm8133157rmanzvjwlzw2fgxw97vxvdfcfm";
+      rev = "51c5b285146f042bd2015278f9b8ad74ae915e00"; # "master" branch, 21 May 2021
+      sha256 = "1901cr6sbaa8js4ylirz9p4m0r9q0a06gm71ghl6kp6pw7h5fgmq";
     };
     "vim-quickhl" = {
-      rev = "9df53aacbff2709049b787109102b45163190c82"; # "master" branch, 20 December 2019
-      sha256 = "0kl91nxlgdhjv32ghnzbiwkhsy5dbrv0p7m126l51xhnkmz24n0g";
+      rev = "b63d478a7860dded6a6b675a0bdd891c022f1027"; # "master" branch, 13 November 2020
+      sha256 = "19v8yynyk5zwp2vxgddffld302kqp0vcasx6y9lk80y3b13vjl43";
     };
     "braceless.vim" = {
       rev = "3928fe18fb7c8561beed6a945622fd985a8e638b"; # "master" branch, 1 May 2017
       sha256 = "12nlcrvw78bf8i7lxr2hvdnaannkril00az68r40fgc5pqmrdb22";
     };
     "neovim-gui-shim" = {
-      rev = "a2dce90891339b0fbf05700146263adbcb713207"; # "master" branch, 6 August 2019
-      sha256 = "0ykx6c7bdcfpc59p6vkphnf8abd0q733rvdrmla5d0xix56scjb9";
+      rev = "668188542345e682addfc816af38b7073d376a64"; # "master" branch, 27 March 2021
+      sha256 = "1s1ws7cfhg0rjfzf5clr2w6k9b8fkd57jzfna3vx1caymwspwrw2";
     };
     ## filetype-specific
     "vim-haskell-indent" = {
@@ -97,10 +73,7 @@ let
       rev = "3d80096127b6481a18abadb8e45091c3390dc40d"; # "master" branch, 31 July 2020
       sha256 = "0p0hngm3armhmcvkzb3q5nnw12dvz2adf6iw23hamyr6mhyl627b";
     };
-    "vim-racket" = {
-      rev = "bca2643c3d8bd0fcd46ab73bee69023a5da1964b"; # "master" branch, 24 July 2020
-      sha256 = "059a79d66yxhhwq127sjl84ky1153im7mm5ixjcsgg9glgvd39jy";
-    };
+    # TODO Try https://github.com/peitalin/vim-jsx-typescript/ (pkgs.vimPlugins.vim-jsx-typescript)
     "vim-jsx" = {
       rev = "8879e0d9c5ba0e04ecbede1c89f63b7a0efa24af"; # "master" branch, 29 September 2019
       sha256 = "0czjily7kjw7bwmkxd8lqn5ncrazqjsfhsy3sf2wl9ni0r45cgcd";
@@ -125,6 +98,7 @@ let
       rev = "eb25d585c9ff0f5152cea4c64c2db2228c7347bf"; # "master" branch, 23 March 2015
       sha256 = "1pnfrshp9sc5w59cj607pxprk40y6sjm2j3aac13x80rknhnaxcg";
     };
+    # TODO Try https://github.com/pearofducks/ansible-vim/ (pkgs.vimPlugins.ansible-vim)
     "vim-ansible-yaml" = {
       rev = "a6f92d17ff01b2e63d6c9fdbb7f7e13c7fd41d14"; # "master" branch, 31 October 2017
       sha256 = "0226sx4ccb46jqbg2nnnf81sbq0rw5r84i070xngqjs34n3hr7gq";
@@ -133,10 +107,12 @@ let
       rev = "4b3b4c9f079b65d2b525f567715f0aabe60cfdf3"; # "master" branch, 5 June 2016
       sha256 = "051piyf403k98zxjv0qm68qhgajwv57hblxdab2awsyvk9gzv5lc";
     };
+    # TODO Try https://github.com/lepture/vim-jinja/ (pkgs.vimPlugins.vim-jinja)
     "vim-jinja2-syntax" = {
       rev = "ceb0f8076ee9aa802668448cefdd782edff4f6b2"; # "master" branch, 23 May 2020
       sha256 = "0vb07nhw2l165804lcfw831n20c7aa3hbsvidhz9magp0csfgphc";
     };
+    # TODO Try https://github.com/chr4/nginx.vim/ (pkgs.vimPlugins.nginx-vim)
     "nginx.vim" = {
       rev = "152bbb2dc00c2df37049ccf75f68f294208c72cb"; # "master" branch, 27 November 2010
       sha256 = "16d21sci6v4chiv9sc0g073l37yz0my2jh7hzck0y2rhixm955wm";
