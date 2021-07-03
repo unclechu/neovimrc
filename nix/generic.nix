@@ -8,6 +8,8 @@ let sources = import ./sources.nix; in
 , config
 , lib
 , coreutils
+
+# Overridable Neovim itself
 , neovim
 
 # Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)

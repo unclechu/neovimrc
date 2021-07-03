@@ -5,6 +5,9 @@
 { callPackage
 , config
 
+# Overridable Neovim itself
+, neovim
+
 # Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
 , fzf ? null # Dependency for “fzf.vim”
 
@@ -16,6 +19,6 @@
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
 }:
 let
-  generic = callPackage ../generic.nix { inherit fzf __utils __neovimRC bashEnvFile; };
+  generic = callPackage ../generic.nix { inherit neovim fzf __utils __neovimRC bashEnvFile; };
 in
 generic.wenzelsNeovimGeneric {}
