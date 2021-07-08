@@ -20,7 +20,7 @@ let g:fzf_colors = {
 
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
-let g:startify_disable_at_vimenter = 1
+let g:startify_disable_at_vimenter = 0
 
 let loaded_delimitMate = 0
 
