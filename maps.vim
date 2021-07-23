@@ -449,6 +449,8 @@ xn <C-Down>  <Esc>:winc j<CR>
 nn <A-=>     :winc =<CR>
 nn <A-->     :winc _<CR>
 nn <A-\>     :winc \|<CR>
+" for finnish layout
+nn <A-/>     :winc \|<CR>
 
 " scrolling windows by alt+arrow keys in any direction
 nn <A-Left>  zh
