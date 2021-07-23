@@ -24,6 +24,8 @@ let g:startify_disable_at_vimenter = 0
 
 let loaded_delimitMate = 0
 
+let g:gundo_prefer_python3 = 1
+
 let NERDTreeIgnore = ['\.swp', '\.swo', '\.pyc', '__pycache__']
 let NERDTreeShowHidden = 1 " always show hidden files in NERDTree
 let NERDTreeShowLineNumbers = 1
