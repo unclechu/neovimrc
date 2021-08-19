@@ -5,6 +5,8 @@ let sources = import ./sources.nix; in
 { callPackage
 , runCommand
 , writeText
+, symlinkJoin
+, makeWrapper
 , config
 , lib
 , coreutils
@@ -17,10 +19,12 @@ let sources = import ./sources.nix; in
 
 # Overridable dependencies
 , __utils ? callPackage ./utils.nix {}
+, perlForNeovim ? callPackage ./perl {}
 
 # Build options
 , __neovimRC  ? __utils.cleanSource ../.
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
+, with-perl-support ? true
 }:
 # The fzf.vim plugin needs fzf v0.24 or higher
 assert ! isNull fzf -> (
@@ -115,17 +119,24 @@ let
     let
       configDir = rcDirGeneric { inherit forGUI; };
 
-      wrap = neovim: if isNull fzf then neovim else
+      wrap = neovim:
         let
-          nvim-exe = "${neovim}/bin/nvim";
+          deps =
+            (lib.optional (fzf != null) fzf) ++
+            (lib.optional with-perl-support perlForNeovim);
         in
-          wrapExecutable nvim-exe {
-            deps = [
-              neovim # To have other executables (e.g. “nvim-python”)
-              fzf
-            ];
-            checkPhase = shellCheckers.fileIsExecutable nvim-exe;
-          };
+        symlinkJoin {
+          name = "${lib.getName neovim}-wrapper";
+          nativeBuildInputs = [ makeWrapper ];
+          paths = [ neovim ];
+          postBuild = ''
+            wrapProgram "$out"/bin/nvim ${
+              if deps != []
+              then "--prefix PATH : ${esc (lib.makeBinPath deps)}"
+              else ""
+            }
+          '';
+        };
     in
       wrap (neovim.override {
         configure = {

@@ -14,13 +14,18 @@
 
 # Overridable dependencies
 , __utils ? callPackage ../utils.nix {}
+, perlForNeovim ? callPackage ../perl {}
 
 # Build options
 , __neovimRC  ? __utils.cleanSource ../../.
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
+, with-perl-support ? true
 }:
 let
-  generic = callPackage ../generic.nix { inherit neovim fzf __utils __neovimRC bashEnvFile; };
+  generic = callPackage ../generic.nix {
+    inherit neovim fzf __utils __neovimRC bashEnvFile perlForNeovim with-perl-support;
+  };
+
   neovim-for-gui = generic.wenzelsNeovimGeneric { forGUI = true; };
 in
 neovim-qt.override { neovim = neovim-for-gui; } // { inherit neovim-for-gui; }
