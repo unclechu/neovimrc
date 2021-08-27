@@ -3,7 +3,6 @@
 
 # This module is intended to be called with ‘nixpkgs.callPackage’
 { callPackage
-, config
 
 # Overridable Neovim itself
 , neovim

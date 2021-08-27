@@ -20,11 +20,20 @@ Neovim QT GUI:
 nix-shell --arg with-neovim-qt true --run nvim-qt
 ```
 
+Neovide GUI:
+
+_N.B. At the moment Neovide is broken in stable “nixpkgs”. That’s why it is picked from unstable._
+
+``` sh
+nix-shell --arg with-neovide true --arg pkgs 'import <nixos-unstable> {}' --run neovide
+```
+
 Turn everything on:
 
 ``` sh
 nix-shell \
   --arg with-neovim-qt           true \
+  --arg with-neovide             true \
   --arg with-clean-vim-script    true \
   --arg with-git-grep-nvr-script true \
   --arg with-nvimd-script        true
@@ -46,11 +55,13 @@ let
   # These are just simple examples which use defaults.
   wenzels-neovim    = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim.nix"    {};
   wenzels-neovim-qt = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim-qt.nix" {};
+  wenzels-neovide   = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovide.nix" {};
 in
 {
   environment.systemPackages = [
     wenzels-neovim
     wenzels-neovim-qt
+    wenzels-neovide
   ];
 }
 ```

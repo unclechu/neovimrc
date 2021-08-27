@@ -10,36 +10,51 @@ if filereadable(g:local_guirc_pre) | exe 'so ' . g:local_guirc_pre | en
 " because default map doesn't work in neovim-qt
 nn <C-Space> :CtrlSpace<CR>
 
-if !exists('s:is_neovim_gtk_gui')
-	let s:is_neovim_gtk_gui = exists('g:GtkGuiLoaded') ? 1 : 0
+if !exists('s:gui_app')
+	let s:gui_app =
+		\ { 'neovim_gtk': exists('g:GtkGuiLoaded')
+		\ , 'neovide': exists('g:neovide')
+		\ }
+	for x in values(s:gui_app)
+		if x | let s:gui_app.neovim_qt = 0 | en
+	endfo
+	if !has_key(s:gui_app, 'neovim_qt')
+		let s:gui_app.neovim_qt = 1
+	en
 en
 
-if s:is_neovim_gtk_gui && $TMUX == '' && $GTK_THEME =~ ':light$'
+if s:gui_app.neovim_gtk && $TMUX == '' && $GTK_THEME =~ ':light$'
 	se bg=light
 	cal g:ColorschemeCustomizations()
 en
 
 " works for neovim-gtk and for neovim-qt since a250faf from 25-07-2018.
 " earlier neovim-qt have been supposed to be run with --no-ext-tabline option.
-cal rpcnotify((s:is_neovim_gtk_gui ? 1 : 0), 'Gui', 'Option', 'Tabline', 0)
+if s:gui_app.neovim_gtk || s:gui_app.neovim_qt
+	cal rpcnotify((s:gui_app.neovim_gtk ? 1 : 0), 'Gui', 'Option', 'Tabline', 0)
+en
 
-if s:is_neovim_gtk_gui
+if s:gui_app.neovim_gtk
 	cal rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
 	cal rpcnotify(1, 'Gui', 'FontFeatures', 'XHS0, XIDR, XELM, PURS')
-el " neovim-qt
+elsei s:gui_app.neovim_qt
 	GuiRenderLigatures 1
 en
 
-let s:font_family = s:is_neovim_gtk_gui ? 'Iosevka' : 'Iosevka Nerd Font Mono'
+let s:font_family = !s:gui_app.neovim_qt ? 'Iosevka' : 'Iosevka Nerd Font Mono'
 let s:font_size = 13
 
 fu! s:update_font()
-	if s:is_neovim_gtk_gui " neovim-gtk
+	if s:gui_app.neovim_gtk
 		cal rpcnotify(
 			\ 1, 'Gui', 'Font', s:font_family.' '.string(s:font_size))
-	el " neovim-qt
+	elsei s:gui_app.neovim_qt
 		cal rpcnotify(
 			\ 0, 'Gui', 'Font', s:font_family.':h'.string(s:font_size))
+	elsei s:gui_app.neovide
+		let &gfn = s:font_family.':h'.string(s:font_size)
+	el
+		th "Unknown GUI application"
 	en
 	redr!
 endf

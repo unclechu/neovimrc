@@ -15,6 +15,7 @@ args@
 
 # Local options
 , with-neovim-qt           ? false
+, with-neovide             ? false
 , with-clean-vim-script    ? false
 , with-git-grep-nvr-script ? false
 , with-nvimd-script        ? false
@@ -36,6 +37,7 @@ let
 
   neovim    = callPackage nix/apps/neovim.nix    (filterForwarded args);
   neovim-qt = callPackage nix/apps/neovim-qt.nix (filterForwarded args);
+  neovide   = callPackage nix/apps/neovide.nix   (filterForwarded args);
 
   scriptArgs = if builtins.hasAttr "__utils" args then { inherit __utils; } else {};
 
@@ -47,6 +49,7 @@ pkgs.mkShell {
   buildInputs =
     [ neovim ]
     ++ (lib.optional with-neovim-qt           neovim-qt)
+    ++ (lib.optional with-neovide             neovide)
     ++ (lib.optional with-clean-vim-script    clean-vim)
     ++ (lib.optional with-git-grep-nvr-script git-grep-nvr)
     ++ (lib.optional with-nvimd-script        nvimd)
