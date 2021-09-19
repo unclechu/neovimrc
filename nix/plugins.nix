@@ -202,6 +202,7 @@ let
 
   mkPlugin = name: origin: vimUtils.buildVimPlugin {
     inherit name;
+    pname = name; # This is mandatory for newer nixpkgs
 
     src = runCommand "${name}-clean" {} ''
       set -Eeuo pipefail || exit
