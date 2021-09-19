@@ -212,25 +212,36 @@ let
     '';
   };
 
+  # { own   :: [Derivation]
+  # , other :: [Derivation]
+  # }
+  #
+  # Where Derivation is a Vim plugin defined using “vimUtils.buildVimPlugin” function.
+  #
   plugins =
     let
-      srcLines =
+      # A list of GitHub repositories.
+      #
+      # { own   :: [(String, String)]
+      # , other :: [(String, String)]
+      # }
+      #
+      # Where first String in the tuple is repository owner and second is repository name.
+      #
+      ghReposList =
         lib.pipe "${__neovimRC}/plugins.vim" [
           builtins.readFile
           (lib.splitString "\n")
-        ];
+          (builtins.filter (x: builtins.substring 0 5 x == "Plug "))
 
-      ghReposList =
-        let
-          filterPlugs = builtins.filter (x: builtins.substring 0 5 x == "Plug ");
-          getGhRepo = x: builtins.elemAt (builtins.split "'" x) 2;
-          splitOwnerAndRepo = x: builtins.filter builtins.isString (builtins.split "/" x);
-          splitOwnAndOther = builtins.partition (x: builtins.head x == "unclechu");
-          ownAndOtherAttrs = x: { own = x.right; other = x.wrong; };
-        in
-          ownAndOtherAttrs
-            (splitOwnAndOther
-              (builtins.map (x: splitOwnerAndRepo (getGhRepo x)) (filterPlugs srcLines)));
+          (builtins.map (lib.flip lib.pipe [
+            (lib.flip lib.pipe [ (lib.splitString "'") (lib.flip builtins.elemAt 1) ])
+            (lib.splitString "/")
+          ]))
+
+          (builtins.partition (x: builtins.head x == "unclechu"))
+          (x: { own = x.right; other = x.wrong; })
+        ];
 
       asPlugins = x: {
         # Own plugins are always overridden.
