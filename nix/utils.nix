@@ -10,7 +10,7 @@ let sources = import ./sources.nix; in
 # Overridable dependencies
 , __nix-utils ? callPackage sources.nix-utils { inherit perlPackages; }
 }:
-let inherit (__nix-utils) esc wrapExecutable; in
+let inherit (__nix-utils) esc; in
 __nix-utils // {
   exe = pkg: executable-name: "${esc pkg}/bin/${esc executable-name}";
 

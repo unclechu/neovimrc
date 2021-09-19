@@ -41,7 +41,7 @@ assert ! isNull fzf -> (
 let
   plugins = callPackage ./plugins.nix { inherit __utils __neovimRC; };
 
-  inherit (__utils) esc lines unlines wrapExecutable exe shellCheckers;
+  inherit (__utils) esc wrapExecutable exe shellCheckers;
 
   rcDerivation = "${__neovimRC}";
 
@@ -51,10 +51,9 @@ let
   init  = builtins.readFile "${rcDerivation}/init.vim";
   ginit = builtins.readFile "${rcDerivation}/ginit.vim";
 
-  initLines =
+  initParts =
     let
       isPluginsImport = x: builtins.match ".*so.*'/plugins.vim'" x != null;
-      initial = { sep = false; pre = []; post = []; };
 
       handleLine = line:
         if builtins.match "^let \\$BASH_ENV =.*" line != null
@@ -73,14 +72,19 @@ let
              else { pre  = acc.pre  ++ [(handleLine line)]; }
       );
     in
-      builtins.foldl' reducer initial (lines init);
+      lib.pipe init [
+        (lib.splitString "\n")
+        (builtins.foldl' reducer { sep = false; pre = []; post = []; })
+        (lib.filterAttrs (n: _: n != "sep"))
+        (builtins.mapAttrs (_: v: builtins.concatStringsSep "\n" v))
+      ];
 
   initFiles = {
-    pre  = writeText "pre-plugins-init.vim"  (unlines initLines.pre);
-    post = writeText "post-plugins-init.vim" (unlines initLines.post);
+    pre  = writeText "pre-plugins-init.vim"  (initParts.pre);
+    post = writeText "post-plugins-init.vim" (initParts.post);
 
     postForGui = writeText "post-plugins-init-for-gui.vim" ''
-      ${unlines initLines.post}
+      ${initParts.post}
       ${ginit}
     '';
   };
@@ -89,8 +93,8 @@ let
     assert builtins.isBool forGUI;
     let
       fullInitFile = writeText "init.vim" ''
-        ${unlines initLines.pre}
-        ${unlines initLines.post}
+        ${initParts.pre}
+        ${initParts.post}
         ${if forGUI then ginit else ""}
       '';
 
@@ -157,5 +161,5 @@ let
 in
 {
   inherit wenzelsNeovimGeneric; # main export
-  inherit rcDirGeneric init ginit initLines initFiles; # just for debug
+  inherit rcDirGeneric init ginit initParts initFiles; # just for debug
 }

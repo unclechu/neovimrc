@@ -17,7 +17,7 @@
 , __neovimRC ? __utils.cleanSource ../.
 }:
 let
-  inherit (__utils) esc lines exe;
+  inherit (__utils) esc exe;
 
   # GitHub plugins overrides
   ghPluginsOverrides = {
@@ -214,7 +214,11 @@ let
 
   plugins =
     let
-      srcLines = lines (builtins.readFile "${__neovimRC}/plugins.vim");
+      srcLines =
+        lib.pipe "${__neovimRC}/plugins.vim" [
+          builtins.readFile
+          (lib.splitString "\n")
+        ];
 
       ghReposList =
         let
