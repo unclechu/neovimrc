@@ -122,6 +122,9 @@ Plug 'gkz/vim-ls'
 Plug 'HerringtonDarkholme/yats.vim' " instead of 'leafgarland/typescript-vim'
 " Plug 'Quramy/tsuquyomi'
 
+" shaders
+Plug 'tikhomirov/vim-glsl'
+
 " styles
 Plug 'groenewege/vim-less'
 Plug 'wavded/vim-stylus'
