@@ -25,7 +25,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
-Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ptzz/lf.vim'
@@ -57,9 +56,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 
-" linting
+" linting & lsp
 Plug 'neomake/neomake'
 Plug 'sbdchd/neoformat'
+Plug 'dense-analysis/ale'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'rhysd/vim-lsp-ale' " glue for ALE + vim-lsp (ALE’s readme refers to it)
 
 " git
 Plug 'xuyuanp/nerdtree-git-plugin'
