@@ -62,6 +62,8 @@ Plug 'sbdchd/neoformat'
 Plug 'dense-analysis/ale'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'rhysd/vim-lsp-ale' " glue for ALE + vim-lsp (ALE’s readme refers to it)
+Plug 'prabirshrestha/asyncomplete.vim' " primarily for using with LSP
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " git
 Plug 'xuyuanp/nerdtree-git-plugin'

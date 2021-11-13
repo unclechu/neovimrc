@@ -129,4 +129,12 @@ aug my#buffers_hooks | au!
 		\ | q | en
 aug END
 
+aug my#lsp | au!
+	fu! s:on_lsp_buffer_enabled()
+		setl ofu=lsp#complete
+	endf
+
+	au User lsp_buffer_enabled cal s:on_lsp_buffer_enabled()
+aug END
+
 " vim: se noet :
