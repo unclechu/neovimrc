@@ -64,6 +64,10 @@ let
       rev = "684c34453db9dcbed5dbf4769aaa6521530a23e0"; # “master” branch, 27 June 2020
       sha256 = "0vqx0d6iks7c0liplh3x8vgvffpljfs1j3g2yap7as6wyvq621rq";
     };
+    "dirbuf.nvim" = {
+      rev = "24a2d4d2fbff4f11f68f332471bec7a138b527f2"; # “master” branch, 24 January 2022
+      sha256 = "1jszxvmfphy29sk7yqkphjdcbi6zk7dqz0gfa3fgv463krcpia4l";
+    };
     ## filetype-specific
     "vim-haskell-indent" = {
       rev = "f4da5bc71ae7de9525c8c23fe44664f3e8ad79cd"; # "master" branch, 15 August 2020

@@ -10,6 +10,7 @@ cal plug#begin($PLUGINS_DIR)
 Plug 'scrooloose/nerdtree'
 " Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdcommenter'
+Plug 'elihunter173/dirbuf.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
