@@ -2,7 +2,7 @@
 # License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 # This module is intended to be called with ‘nixpkgs.callPackage’
-{ fetchurl, lib, buildPerlPackage, perlPackages }:
+{ fetchurl, lib, perlPackages }:
 with perlPackages;
 rec {
   # Automatically generated using “nix-generate-from-cpan Neovim::Ext”
