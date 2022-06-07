@@ -19,6 +19,8 @@
 let
   perlDeps = [
     localPerlDependencies.NeovimExt
+    localPerlDependencies.EvalSafe
+    localPerlDependencies.MsgPackRaw
     perlPackages.Appcpanminus # Neovim :checkhealth reports it’s missing
     perlPackages.locallib
   ] ++ extraPerlDependencies;
