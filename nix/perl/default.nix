@@ -17,12 +17,19 @@
 , extraPerlDependencies ? []
 }:
 let
+  perlPkgs = perlPackages.override { overrides = self: localPerlDependencies; };
+
   perlDeps = [
-    localPerlDependencies.NeovimExt
-    localPerlDependencies.EvalSafe
-    localPerlDependencies.MsgPackRaw
-    perlPackages.Appcpanminus # Neovim :checkhealth reports it’s missing
-    perlPackages.locallib
+    perlPkgs.NeovimExt
+    # Propagated dependencies for NeovimExt
+    # (for some reason they do not propagate automatically, it doesn’t work without it)
+    perlPkgs.ClassAccessor
+    perlPkgs.EvalSafe
+    perlPkgs.IOAsync
+    perlPkgs.MsgPackRaw
+
+    perlPkgs.Appcpanminus # Neovim :checkhealth reports it’s missing
+    perlPkgs.locallib
   ] ++ extraPerlDependencies;
 
   # This is a hack to have no warnings in “:checkhealth” in Neovim.
@@ -40,7 +47,7 @@ symlinkJoin {
   nativeBuildInputs = [ makeWrapper ];
   paths = [ perl ];
   postBuild = ''
-    wrapProgram "$out"/bin/perl --prefix PERL5LIB : ${perlPackages.makeFullPerlPath perlDeps} ${
+    wrapProgram "$out"/bin/perl --prefix PERL5LIB : ${perlPkgs.makeFullPerlPath perlDeps} ${
       builtins.concatStringsSep " "
         (map (x: "--run " + lib.escapeShellArg x) localLibVars)
     }
