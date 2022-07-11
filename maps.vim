@@ -381,7 +381,7 @@ xn <leader>' <Esc>:let @@=system('tmux showb')<CR>gvp
 xm <leader>ä <leader>'
 " yank from specific tmux buffer (TODO use fzf for it)
 no <leader>" :
-	\!tmux list-b<CR>:let @@=system('tmux showb -b buffer0000')<Left><Left>
+	\!tmux list-b<CR>:let @@=system('tmux showb -b buffer0')<Left><Left>
 map <leader>ä <leader>"
 " yank from specific tmux buffer and replace visual selection
 xn <leader>" <Esc>:echoe 'NOT YET IMPLEMENTED'<CR>gv
