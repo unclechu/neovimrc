@@ -32,10 +32,7 @@ let
   # TODO Try https://github.com/lepture/vim-jinja/ (pkgs.vimPlugins.vim-jinja) instead of vim-jinja2-syntax
   # TODO Try https://github.com/chr4/nginx.vim/ (pkgs.vimPlugins.nginx-vim) instead of nginx.vim
   # TODO Try https://github.com/peitalin/vim-jsx-typescript/ (pkgs.vimPlugins.vim-jsx-typescript) instead of vim-jsx
-  ghPluginsOverrides =
-    builtins.mapAttrs
-      (_: source: lib.filterAttrs (name: _: builtins.elem name ["rev" "sha256"]) source)
-      (import ./sources.nix { sourcesFile = ./plugins-sources.json; });
+  ghPluginsOverrides = import ./sources.nix { sourcesFile = ./plugins-sources.json; };
 
   pluginsRenames = {
     "fzf" = "fzfWrapper";
@@ -51,11 +48,12 @@ let
   mkGhPlugin = plugin:
     let
       name = builtins.elemAt plugin 1;
+      override = ghPluginsOverrides.${name};
 
-      src = fetchFromGitHub ({
-        owner = builtins.head plugin;
-        repo = name;
-      } // ghPluginsOverrides.${name});
+      src =
+        if ! builtins.hasAttr "outPath" override
+        then fetchFromGitHub ({ owner = builtins.head plugin; repo = name; } // override)
+        else override;
     in
       mkPlugin name src;
 
