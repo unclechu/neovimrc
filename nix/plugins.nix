@@ -6,6 +6,7 @@
 , fetchFromGitHub
 , runCommand
 , lib
+, nix-gitignore
 , coreutils
 , vimUtils
 , vimPlugins
@@ -42,7 +43,10 @@ let
   # Allows to use a plugin from a local directory or from anywhere else.
   # Use with “mkPlugin” function.
   rawPluginsOverrides = {
-    # haskell-vim = mkPlugin "haskell-vim" (lib.cleanSource ../../haskell-vim);
+    # "bullets.vim" =
+    #   mkPlugin
+    #   "bullets.vim"
+    #   (nix-gitignore.gitignoreRecursiveSource [ ../bullets.vim/.gitignore ] ../bullets.vim);
   };
 
   mkGhPlugin = plugin:
