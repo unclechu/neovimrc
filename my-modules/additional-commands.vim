@@ -14,4 +14,12 @@ com! TW sil !tmux neww
 
 com! MakeTags !ctags -R .
 
+" Goyo and Limelight shorthands
+com! -nargs=? -bar -bang -range LL
+	\ cal limelight#execute(<bang>0, <count> > 0, <line1>, <line2>, <f-args>)
+	\ | cal ColorschemeCustomizations()
+com! -nargs=? -bar -bang GG
+	\ cal goyo#execute(<bang>0, <q-args>)
+	\ | cal ColorschemeCustomizations()
+
 " vim: set noet :

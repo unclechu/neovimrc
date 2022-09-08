@@ -169,12 +169,6 @@ let g:smoothie_base_speed = 4
 let g:smoothie_break_on_reverse = 0
 
 let g:limelight_default_coefficient = 0.75
-com! -nargs=? -bar -bang -range LL
-	\ <line1>,<line2>cal limelight#execute(<bang>0, <count> > 0, <f-args>)
-	\ | cal ColorschemeCustomizations()
-com! -nargs=? -bar -bang GG
-	\ cal goyo#execute(<bang>0, <q-args>)
-	\ | cal ColorschemeCustomizations()
 
 let g:calendar_first_day = 'monday'
 let g:calendar_frame = 'unicode'
