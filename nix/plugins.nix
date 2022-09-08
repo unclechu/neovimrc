@@ -133,6 +133,10 @@ let
       rev = "e6372ca8f88d88eb532eb140128bb034d5ab0564"; # "master" branch, 30 June 2016
       sha256 = "079cs6w757jayr0qfznr8zjkbbv84h1v3ncahqq9q12vh9kybrny";
     };
+    "vim-venter" = {
+      rev = "8cbb93f912a85e320a3eaeee0b9ee5934043930a"; # “master” branch, 21 November 2021
+      sha256 = "sha256-mwOaGrgyvTCC3TnoATq65YqcQRipVOkYAlbobT1oVIo=";
+    };
     ## colorschemes
     "vim-distinguished" = {
       rev = "62b360dc81355b53d124cd06218a9ba2496563fc"; # "master" branch, 5 August 2013

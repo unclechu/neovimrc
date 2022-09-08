@@ -357,6 +357,14 @@ xm <Space>M <Plug>(quickhl-manual-reset)
 nm <Space>n <Plug>(quickhl-cword-toggle)
 
 
+" venter
+nn <leader>gz :VenterToggle<cr>
+nn <leader>gx :let venter_width=80 \| VenterResize
+	\<left><left><left><left><left><left><left><left><left><left>
+	\<left><left><left><left><left>
+nn <leader>gX :unlet venter_width \| VenterResize<cr>
+
+
 " remove word selection symbols after paste from search
 nm  <leader>c/  ds\ds>
 " plugs to prevent mess about triggering default 'p' or 'P'
