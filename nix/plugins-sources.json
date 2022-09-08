@@ -35,6 +35,18 @@
         "url": "https://github.com/tweekmonster/braceless.vim/archive/3928fe18fb7c8561beed6a945622fd985a8e638b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "bullets.vim": {
+        "branch": "master",
+        "description": "🔫 Bullets.vim is a Vim/NeoVim plugin for automated bullet lists.",
+        "homepage": "https://doriankarter.com",
+        "owner": "dkarter",
+        "repo": "bullets.vim",
+        "rev": "770a93c1770491ad45e47678a9cd7c581f3f24ee",
+        "sha256": "05wn0v6vi51iq5rsxfz6vnsfiz5w2xnsii7d32gk0vhbm9f83cb3",
+        "type": "tarball",
+        "url": "https://github.com/dkarter/bullets.vim/archive/770a93c1770491ad45e47678a9cd7c581f3f24ee.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "cider-nrepl": {
         "branch": "master",
         "description": "A collection of nREPL middleware to enhance Clojure editors with common functionality like definition lookup, code completion, etc. ",

@@ -186,3 +186,11 @@ let g:lsp_signs_error = {'text': '✗'}
 let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_highlight_references_enabled = 1
+
+let g:bullets_enabled_file_types = ['markdown', 'text']
+let g:bullets_enable_in_empty_buffers = 1
+let g:bullets_set_mappings = 0 " Conflicts with my own <leader>x for instance
+let g:bullets_line_spacing = 1 " 1 = no blank lines, 2 = one blank line
+let g:bullets_renumber_on_change = 0
+let g:bullets_pad_right = 0
+let g:bullets_mapping_leader = ''

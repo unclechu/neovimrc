@@ -48,6 +48,7 @@ Plug 'jonathanbranam/vim-orgmode' " less dead fork
 Plug 'mattn/calendar-vim'
 Plug 'unclechu/vim-line-no-indicator', {'branch': 'patch-1'}
 Plug 'JMcKiern/vim-venter'
+Plug 'dkarter/bullets.vim'
 
 " smooth scrolling
 " Plug 'yuttie/comfortable-motion.vim'
