@@ -193,7 +193,6 @@ let g:bullets_set_mappings = 0 " Conflicts with my own <leader>x for instance
 
 let g:bullets_custom_mappings = [
 	\ ['im', '<cr>', '<Plug>(bullets-newline)'],
-	\ ['ino', '<C-cr>', '<cr>'],
 	\
 	\ ['nm', 'o', '<Plug>(bullets-newline)'],
 	\
