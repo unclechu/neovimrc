@@ -181,10 +181,31 @@ let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_highlight_references_enabled = 1
 
+
+" Bullets plugin
+
 let g:bullets_enabled_file_types = ['markdown', 'text']
 let g:bullets_enable_in_empty_buffers = 1
-let g:bullets_set_mappings = 0 " Conflicts with my own <leader>x for instance
 let g:bullets_line_spacing = 1 " 1 = no blank lines, 2 = one blank line
 let g:bullets_renumber_on_change = 0
 let g:bullets_pad_right = 0
-let g:bullets_mapping_leader = ''
+let g:bullets_set_mappings = 0 " Conflicts with my own <leader>x for instance
+
+let g:bullets_custom_mappings = [
+	\ ['im', '<cr>', '<Plug>(bullets-newline)'],
+	\ ['ino', '<C-cr>', '<cr>'],
+	\
+	\ ['nm', 'o', '<Plug>(bullets-newline)'],
+	\
+	\ ['vm', '<leader>C', '<Plug>(bullets-renumber)'],
+	\ ['nm', '<leader>C', '<Plug>(bullets-renumber)'],
+	\
+	\ ['nm', '<leader>X', '<Plug>(bullets-toggle-checkbox)'],
+	\
+	\ ['im', '<C-t>', '<Plug>(bullets-demote)'],
+	\ ['nm', '>>', '<Plug>(bullets-demote)'],
+	\ ['vm', '>', '<Plug>(bullets-demote)'],
+	\ ['im', '<C-d>', '<Plug>(bullets-promote)'],
+	\ ['nm', '<<', '<Plug>(bullets-promote)'],
+	\ ['vm', '<', '<Plug>(bullets-promote)'],
+	\ ]

@@ -36,15 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "bullets.vim": {
-        "branch": "master",
+        "branch": "improve-key-maps-customization",
         "description": "🔫 Bullets.vim is a Vim/NeoVim plugin for automated bullet lists.",
         "homepage": "https://doriankarter.com",
-        "owner": "dkarter",
+        "owner": "wenzel-hoffman",
         "repo": "bullets.vim",
-        "rev": "770a93c1770491ad45e47678a9cd7c581f3f24ee",
-        "sha256": "05wn0v6vi51iq5rsxfz6vnsfiz5w2xnsii7d32gk0vhbm9f83cb3",
+        "rev": "287576fa0e328377ee63a8af3c4de828218ba7e4",
+        "sha256": "0fpy4l2kfv3ga4np4rpk26i15nmfz7igpr01dk5hkhdsjxbf5vz3",
         "type": "tarball",
-        "url": "https://github.com/dkarter/bullets.vim/archive/770a93c1770491ad45e47678a9cd7c581f3f24ee.tar.gz",
+        "url": "https://github.com/wenzel-hoffman/bullets.vim/archive/287576fa0e328377ee63a8af3c4de828218ba7e4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "cider-nrepl": {

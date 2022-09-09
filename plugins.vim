@@ -48,7 +48,9 @@ Plug 'jonathanbranam/vim-orgmode' " less dead fork
 Plug 'mattn/calendar-vim'
 Plug 'unclechu/vim-line-no-indicator', {'branch': 'patch-1'}
 Plug 'JMcKiern/vim-venter'
-Plug 'dkarter/bullets.vim'
+" My own fork, see https://github.com/dkarter/bullets.vim/pull/128
+" TODO Use the upstream plugin repo and its master branch when the change is merged
+Plug 'wenzel-hoffman/bullets.vim', {'branch': 'improve-key-maps-customization'}
 
 " smooth scrolling
 " Plug 'yuttie/comfortable-motion.vim'
