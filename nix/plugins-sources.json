@@ -101,10 +101,10 @@
         "homepage": "",
         "owner": "wenzel-hoffman",
         "repo": "haskell-with-unicode.vim",
-        "rev": "114e2b7aa558445ab55fbdbba0b8343deb241abc",
-        "sha256": "0m5k53y8a6zw4gmfcqkssyj6n1zsjz15l37l0ghm3an162fbckw8",
+        "rev": "28899d6795efe2feaca6b53c20ec5ef3b5a1b761",
+        "sha256": "11a3a981x4av2lvknq1xbxbr8ybgazxfikr45qdm1mby6533kx69",
         "type": "tarball",
-        "url": "https://github.com/wenzel-hoffman/haskell-with-unicode.vim/archive/114e2b7aa558445ab55fbdbba0b8343deb241abc.tar.gz",
+        "url": "https://github.com/wenzel-hoffman/haskell-with-unicode.vim/archive/28899d6795efe2feaca6b53c20ec5ef3b5a1b761.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "left-pad.vim": {
