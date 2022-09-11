@@ -76,9 +76,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " haskell
-" Plug 'unclechu/vim-my-haskell' " my old fork for syntax
-" Plug 'neovimhaskell/haskell-vim'
-Plug 'unclechu/haskell-vim', {'branch': 'my-fork'} " my fork with unicode support
+Plug 'wenzel-hoffman/haskell-with-unicode.vim'
 Plug 'unclechu/lushtags'
 Plug 'twinside/vim-hoogle'
 Plug 'itchyny/vim-haskell-indent'

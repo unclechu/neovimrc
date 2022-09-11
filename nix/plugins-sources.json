@@ -95,16 +95,16 @@
         "url": "https://github.com/vim-scripts/habiLight/archive/b1db6936fa8c168fc1b24fb991b0229f18c96ec3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "haskell-vim": {
-        "branch": "my-fork",
-        "description": "Custom Haskell Vimscripts (my own FORK with unicode syntax support)",
+    "haskell-with-unicode.vim": {
+        "branch": "master",
+        "description": "Syntax Highlighting and Indentation for Haskell and Cabal with Unicode Support",
         "homepage": "",
-        "owner": "unclechu",
-        "repo": "haskell-vim",
-        "rev": "f74fb1955b7a4f11349c2973a04bcdd4c8b36d73",
-        "sha256": "1naa7h08jrdciy9aib6kyla6scp3qjy90n081s6yas6hmn356fkz",
+        "owner": "wenzel-hoffman",
+        "repo": "haskell-with-unicode.vim",
+        "rev": "114e2b7aa558445ab55fbdbba0b8343deb241abc",
+        "sha256": "0m5k53y8a6zw4gmfcqkssyj6n1zsjz15l37l0ghm3an162fbckw8",
         "type": "tarball",
-        "url": "https://github.com/unclechu/haskell-vim/archive/f74fb1955b7a4f11349c2973a04bcdd4c8b36d73.tar.gz",
+        "url": "https://github.com/wenzel-hoffman/haskell-with-unicode.vim/archive/114e2b7aa558445ab55fbdbba0b8343deb241abc.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "left-pad.vim": {
