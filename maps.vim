@@ -247,6 +247,51 @@ nn <leader>dc :ALEComplete<cr>
 nn <leader>dx :ALEFix<cr>
 nn <leader>dr :ALERename<cr>
 nn <leader>dg :ALEGoToDefinition<cr>
+" vim-lsp (first “l” is for Lsp)
+"" ‘h’ is for Hierarchy (Add…; …Incoming; …Outgoing)
+nn <space>lha :LspAddTreeCallHierarchyIncoming<cr>
+nn <space>lhi :LspCallHierarchyIncoming<cr>
+nn <space>lho :LspCallHierarchyOutgoing<cr>
+"" (Action; Lens)
+nn <space>la :LspCodeAction<cr>
+nn <space>ll :LspCodeLens<cr>
+"" (DeClaration; DefiNition)
+nn <space>ldc :LspDeclaration<cr>
+nn <space>ldf :LspDefinition<cr>
+"" ‘d’ is for docuMent (Diagnostics; Format; Range…; Symbol)
+nn <space>lmd :LspDocumentDiagnostics<cr>
+nn <space>lmf :LspDocumentFormat<cr>
+nn <space>lmr :LspDocumentRangeFormat<cr>
+nn <space>lms :LspDocumentSymbol<cr>
+"" ‘v’ is for hoVer
+nn <space>lv :LspHover<cr>
+"" ‘i’ is for Implementation
+nn <space>li :LspImplementation<cr>
+"" ’n‘ is Next (Diagnostic; Error; Reference; Warning)
+nn <space>lnd :LspNextDiagnostic<cr>
+nn <space>lne :LspNextError<cr>
+nn <space>lnr :LspNextReference<cr>
+nn <space>lnw :LspNextWarning<cr>
+"" ‘k’ is for peeK (deClaration; deFinition; Implementation; Type…)
+nn <space>lkc :LspPeekDeclaration<cr>
+nn <space>lkf :LspPeekDefinition<cr>
+nn <space>lki :LspPeekImplementation<cr>
+nn <space>lkt :LspPeekTypeDefinition<cr>
+"" ’p‘ is for Previous (Diagnostic; Error; Reference; Warning)
+nn <space>lpd :LspPreviousDiagnostic<cr>
+nn <space>lpe :LspPreviousError<cr>
+nn <space>lpr :LspPreviousReference<cr>
+nn <space>lpw :LspPreviousWarning<cr>
+"" (ReFerence; ReName)
+nn <space>lrf :LspReferences<cr>
+nn <space>lrn :LspRename<cr>
+"" ’s‘ is for Status
+nn <space>ls :LspStatus<cr>
+"" ‘t’ is for Type (Definition; Hierarchy)
+nn <space>ltd :LspTypeDefinition<cr>
+nn <space>lth :LspTypeHierarchy<cr>
+"" ‘w‘ is for Workspace
+nn <space>lw :LspWorkspaceSymbol<cr>
 
 
 " show hint
