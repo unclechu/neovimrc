@@ -254,15 +254,23 @@ nn <space>lhi :LspCallHierarchyIncoming<cr>
 nn <space>lho :LspCallHierarchyOutgoing<cr>
 "" (Action; Lens)
 nn <space>la :LspCodeAction<cr>
+nn <space>lA :LspCodeActionSync<cr>
 nn <space>ll :LspCodeLens<cr>
 "" (DeClaration; DefiNition)
 nn <space>ldc :LspDeclaration<cr>
 nn <space>ldf :LspDefinition<cr>
-"" ‘d’ is for docuMent (Diagnostics; Format; Range…; Symbol)
+"" ‘d’ is for docuMent
+"" (Diagnostics; Format; Range…; Word, like for LspWorkspaceSymbol;
+"" …sEarch; fOld)
 nn <space>lmd :LspDocumentDiagnostics<cr>
 nn <space>lmf :LspDocumentFormat<cr>
+nn <space>lmF :LspDocumentFormatSync<cr>
 nn <space>lmr :LspDocumentRangeFormat<cr>
-nn <space>lms :LspDocumentSymbol<cr>
+nn <space>lmR :LspDocumentRangeFormatSync<cr>
+nn <space>lmw :LspDocumentSymbol<cr>
+nn <space>lme :LspDocumentSymbolSearch<cr>
+nn <space>lmo :LspDocumentFold<cr>
+nn <space>lmO :LspDocumentFoldSync<cr>
 "" ‘v’ is for hoVer
 nn <space>lv :LspHover<cr>
 "" ‘i’ is for Implementation
@@ -290,8 +298,17 @@ nn <space>ls :LspStatus<cr>
 "" ‘t’ is for Type (Definition; Hierarchy)
 nn <space>ltd :LspTypeDefinition<cr>
 nn <space>lth :LspTypeHierarchy<cr>
-"" ‘w‘ is for Workspace
+"" (Workspace… or Word; …sEarch)
 nn <space>lw :LspWorkspaceSymbol<cr>
+nn <space>le :LspWorkspaceSymbolSearch<cr>
+"" ’g‘ is for siGnature
+nn <space>lg :LspSignatureHelp<cr>
+"" ‘Q’ is for Quit I would say. ’q‘ is just common for Vim.
+"" This helps to fix hanged up LSP program.
+nn <space>lQ :LspStopServer<cr>
+" These are rather for debugging, no need for hot keys for them
+" :LspSemanticTokenModifiers
+" :LspSemanticTokenTypes
 
 
 " show hint
