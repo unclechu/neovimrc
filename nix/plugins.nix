@@ -49,17 +49,13 @@ let
 
     "nvim-treesitter" = vimPlugins.nvim-treesitter.withPlugins (tsPlugins: [
       tsPlugins.haskell
-      tsPlugins.vim
-      tsPlugins.markdown
+
       tsPlugins.lua
-      tsPlugins.make
-      tsPlugins.cmake
-      tsPlugins.nix
       tsPlugins.perl
       tsPlugins.python
-      tsPlugins.sql
-      tsPlugins.glsl
-      tsPlugins.dot
+
+      tsPlugins.java
+      tsPlugins.clojure
 
       tsPlugins.yaml
       tsPlugins.json
@@ -67,6 +63,9 @@ let
 
       tsPlugins.bash
       tsPlugins.diff
+
+      tsPlugins.make
+      tsPlugins.cmake
 
       tsPlugins.c
       tsPlugins.cpp
@@ -76,6 +75,15 @@ let
       tsPlugins.javascript
       tsPlugins.typescript
       tsPlugins.tsx
+
+      # Etc
+      tsPlugins.vim
+      tsPlugins.markdown
+      tsPlugins.nix
+      tsPlugins.sql
+      tsPlugins.glsl
+      tsPlugins.dot
+      tsPlugins.dockerfile
     ]);
   };
 
