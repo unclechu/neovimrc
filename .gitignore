@@ -1,7 +1,16 @@
+# Vim swap files
 *.swp
 *.swo
+
+# Vim plugins installation artifacts
 bundle
+
+# Other Neovim artifacts
 .netrwhist
 .init.vim-rplugin~
+
+# Ctags file
 tags
-result
+
+# Nix artifacts
+result*
