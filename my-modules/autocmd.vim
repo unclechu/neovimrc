@@ -15,7 +15,7 @@ aug my#auto_filetype_detection | au!
 	au BufNewFile,BufRead *.gyp se ft=json
 	au BufNewFile,BufRead *.tfstate se ft=json
 	au BufNewFile,BufRead *.ts se ft=typescript
-	au BufNewFile,BufRead *.tsx se ft=typescript.jsx
+	au BufNewFile,BufRead *.tsx se ft=tsx
 	au BufNewFile,BufRead *.hsc se ft=haskell
 	au BufNewFile,BufRead *.nj se ft=jinja
 	au BufNewFile,BufRead Vagrantfile se ft=ruby

@@ -208,3 +208,5 @@ let g:bullets_custom_mappings = [
 	\ ['nm', '<<', '<Plug>(bullets-promote)'],
 	\ ['vm', '<', '<Plug>(bullets-promote)'],
 	\ ]
+
+lua require("nvim-treesitter-config")

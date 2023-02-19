@@ -32,7 +32,6 @@ let
   # TODO Try https://github.com/pearofducks/ansible-vim/ (pkgs.vimPlugins.ansible-vim) instead of vim-ansible-yaml
   # TODO Try https://github.com/lepture/vim-jinja/ (pkgs.vimPlugins.vim-jinja) instead of vim-jinja2-syntax
   # TODO Try https://github.com/chr4/nginx.vim/ (pkgs.vimPlugins.nginx-vim) instead of nginx.vim
-  # TODO Try https://github.com/peitalin/vim-jsx-typescript/ (pkgs.vimPlugins.vim-jsx-typescript) instead of vim-jsx
   ghPluginsOverrides = import ./sources.nix { sourcesFile = ./plugins-sources.json; };
 
   pluginsRenames = {
@@ -47,6 +46,37 @@ let
     #   mkPlugin
     #   "bullets.vim"
     #   (nix-gitignore.gitignoreRecursiveSource [ ../bullets.vim/.gitignore ] ../bullets.vim);
+
+    "nvim-treesitter" = vimPlugins.nvim-treesitter.withPlugins (tsPlugins: [
+      tsPlugins.haskell
+      tsPlugins.vim
+      tsPlugins.markdown
+      tsPlugins.lua
+      tsPlugins.make
+      tsPlugins.cmake
+      tsPlugins.nix
+      tsPlugins.perl
+      tsPlugins.python
+      tsPlugins.sql
+      tsPlugins.glsl
+      tsPlugins.dot
+
+      tsPlugins.yaml
+      tsPlugins.json
+      tsPlugins.jq
+
+      tsPlugins.bash
+      tsPlugins.diff
+
+      tsPlugins.c
+      tsPlugins.cpp
+
+      tsPlugins.html
+      tsPlugins.css
+      tsPlugins.javascript
+      tsPlugins.typescript
+      tsPlugins.tsx
+    ]);
   };
 
   mkGhPlugin = plugin:
