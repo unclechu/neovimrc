@@ -15,7 +15,7 @@ let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
 let g:MYVIMRC = $MYVIMRC
 let g:MYVIMRC_DIR = $MYVIMRC_DIR
 
-lua package.path = package.path .. ";" .. vim.api.nvim_get_var('MYVIMRC_DIR') .. "/my-modules/?.lua"
+lua package.path = package.path .. ';' .. vim.api.nvim_get_var('MYVIMRC_DIR') .. '/my-modules/?.lua'
 
 exe 'so ' . $MYVIMRC_DIR . '/plugins.vim'
 exe 'so ' . $MYVIMRC_DIR . '/plugins-configs.vim'

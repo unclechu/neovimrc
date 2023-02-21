@@ -209,4 +209,4 @@ let g:bullets_custom_mappings = [
 	\ ['vm', '<', '<Plug>(bullets-promote)'],
 	\ ]
 
-lua require("nvim-treesitter-config")
+lua require'nvim-treesitter-config'
