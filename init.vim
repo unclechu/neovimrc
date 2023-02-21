@@ -11,11 +11,7 @@ if filereadable(g:local_rc_pre) | exe 'so ' . g:local_rc_pre | en
 
 let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
 
-" For accessing from Lua via “vim.api.nvim_get_var”
-let g:MYVIMRC = $MYVIMRC
-let g:MYVIMRC_DIR = $MYVIMRC_DIR
-
-lua package.path = package.path .. ';' .. vim.api.nvim_get_var('MYVIMRC_DIR') .. '/my-modules/?.lua'
+lua package.path = package.path .. ';' .. vim.env.MYVIMRC_DIR .. '/my-modules/?.lua'
 
 exe 'so ' . $MYVIMRC_DIR . '/plugins.vim'
 exe 'so ' . $MYVIMRC_DIR . '/plugins-configs.vim'
