@@ -103,7 +103,7 @@ let
       runCommand (if forGUI then rcDirNameForGUI else rcDirName) {} ''
         set -Eeuo pipefail || exit
         ${exe coreutils "mkdir"} -- "$out"
-        ${exe coreutils "cp"} -r -- ${esc rcDerivation}/{UltiSnips,my-modules}/ "$out"
+        ${exe coreutils "cp"} -r -- ${esc rcDerivation}/{UltiSnips,my-modules,lua}/ "$out"
         ${exe coreutils "cp"} -r -- \
           ${esc rcDerivation}/{maps,options,plugins-configs,ginit}.vim "$out"
 

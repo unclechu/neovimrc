@@ -11,8 +11,6 @@ if filereadable(g:local_rc_pre) | exe 'so ' . g:local_rc_pre | en
 
 let $MYVIMRC_DIR = fnamemodify($MYVIMRC, ':h')
 
-lua package.path = package.path .. ';' .. vim.env.MYVIMRC_DIR .. '/my-modules/?.lua'
-
 exe 'so ' . $MYVIMRC_DIR . '/plugins.vim'
 exe 'so ' . $MYVIMRC_DIR . '/plugins-configs.vim'
 
