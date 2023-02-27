@@ -50,6 +50,7 @@ Plug 'unclechu/vim-line-no-indicator', {'branch': 'patch-1'}
 Plug 'JMcKiern/vim-venter'
 Plug 'dkarter/bullets.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neovim/nvim-lspconfig'
 
 " smooth scrolling
 " Plug 'yuttie/comfortable-motion.vim'

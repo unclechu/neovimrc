@@ -175,12 +175,6 @@ let g:calendar_frame = 'unicode'
 
 let g:lf_map_keys = 0
 
-let g:lsp_signs_enabled = 1
-let g:lsp_signs_error = {'text': '✗'}
-let g:lsp_signs_warning = {'text': '‼'}
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_highlight_references_enabled = 1
-
 
 " Bullets plugin
 
@@ -210,3 +204,6 @@ let g:bullets_custom_mappings = [
 	\ ]
 
 lua require'nvim-treesitter-config'
+
+" Note: This is technically not a plugin but the native Neovim LSP support.
+lua require'lsp-setup'
