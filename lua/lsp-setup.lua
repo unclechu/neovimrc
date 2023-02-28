@@ -42,8 +42,11 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>lt', '', opts)
 	vim.keymap.set('n', '<space>ltd', vim.lsp.buf.type_definition, opts)
 
+	vim.keymap.set('n', '<space>ls', vim.lsp.buf.document_symbol, opts)
+
 	-- ’w‘ for (W)orkspace
 	vim.keymap.set('n', '<space>lw', '', opts)
+	vim.keymap.set('n', '<space>lws', vim.lsp.buf.workspace_symbol, opts)
 	vim.keymap.set('n', '<space>lwa', vim.lsp.buf.add_workspace_folder, opts)
 	vim.keymap.set('n', '<space>lwr', vim.lsp.buf.remove_workspace_folder, opts)
 	vim.keymap.set('n', '<space>lwl', function()
