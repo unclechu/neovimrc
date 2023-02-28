@@ -62,7 +62,11 @@ let
       tsPlugins.jq
 
       tsPlugins.bash
-      tsPlugins.diff
+
+      # Not really useful, only “diff” command and commit hashes are highlighted.
+      # The most important stuff to have highlighted is additions and deletions.
+      # By not adding it here making Neovim to use the non-treesitter syntax.
+      # tsPlugins.diff
 
       tsPlugins.make
       tsPlugins.cmake
