@@ -134,11 +134,29 @@ let
           nativeBuildInputs = [ makeWrapper ];
           paths = [ neovim ];
           postBuild = ''
+            nvim="$out"/bin/nvim
+
             wrapProgram "$out"/bin/nvim ${
               if deps != []
               then "--prefix PATH : ${esc (lib.makeBinPath deps)}"
               else ""
             }
+
+            # Smoke test
+            (
+              set -o nounset
+
+              # Relies on the key mappings in my Neovim configuration
+              "$nvim" --cmd 'lua vim.api.nvim_input("ihello world<esc>;wq test<cr>")' 0<&- &>/dev/null
+
+              # There must be “test” file created by the previous command
+              contents=$(cat test)
+
+              if [[ $contents != 'hello world' ]]; then
+                >&2 printf 'Smoke test failed. Test file contents: "%s"\n' "$contents"
+                exit 1
+              fi
+            )
           '';
         };
     in
