@@ -17,7 +17,7 @@
 , extraPerlDependencies ? []
 }:
 let
-  perlPkgs = perlPackages.override { overrides = self: localPerlDependencies; };
+  perlPkgs = perlPackages // localPerlDependencies;
 
   perlDeps = [
     perlPkgs.NeovimExt
