@@ -164,6 +164,11 @@ let g:vim_json_syntax_conceal = 0
 let g:indexed_search_mappings = 0
 let g:indexed_search_numbered_only = 1
 
+" It can be useful to turn the “smoothie” plugin off at start sometimes.
+" Like when using Neovide GUI with “--multigrid” for example which does the
+" scroll smoothing by itself. And any smoothing plugin would just stand in the
+" way and make things lag or/and glitch.
+let g:smoothie_enabled = $VIM_NO_SMOOTHIE ? 0 : 1
 let g:smoothie_update_interval = 20
 let g:smoothie_base_speed = 4
 let g:smoothie_break_on_reverse = 0
