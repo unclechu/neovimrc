@@ -41,6 +41,7 @@ symlinkJoin {
   paths = [ neovide ];
   postBuild = ''
     wrapProgram "$out"/bin/neovide \
-      --prefix PATH : ${esc (lib.makeBinPath [ neovim-for-gui ])}
+      --prefix PATH : ${esc (lib.makeBinPath [ neovim-for-gui ])} \
+      --set-default NEOVIDE_MULTIGRID 1
   '';
 } // { inherit neovim-for-gui; }
