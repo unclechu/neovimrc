@@ -64,6 +64,14 @@ if s:is_gtk_gui()
 en
 
 
+" Animation settings
+if s:is_neovide_gui()
+	let g:neovide_scroll_animation_length = 1
+	let g:neovide_cursor_vfx_mode = "pixiedust"
+	let g:neovide_cursor_vfx_particle_density = 100
+en
+
+
 " Ligatures support.
 "
 " In Neovide these are turned on by default.
