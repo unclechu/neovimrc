@@ -74,6 +74,15 @@ elsei s:is_qt_gui()
 en
 
 
+" Turn off all scroll smoothing plugins when native Neovide smoothing is used.
+"
+" N.B. Note that Neovide can also be started with “--multigrid” command-line
+" arguments option. In this case the plugins won’t be turned off automatically.
+if s:is_neovide_gui() && $NEOVIDE_MULTIGRID
+	let g:smoothie_enabled = 0
+en
+
+
 " Default font family and font size.
 "
 " If these were set before (just reloading the config) it will reuse the last
