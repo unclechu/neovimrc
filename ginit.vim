@@ -3,8 +3,6 @@
 "
 " GUI-specific configuration for Neovim.
 
-" TODO: Expose s:detect() globally
-
 
 " Applying local additional config
 let g:local_guirc_pre = $HOME . '/.neovimrc-gui-local-pre'
@@ -33,6 +31,16 @@ fun! s:is_gtk_gui()
 endf
 fun! s:is_qt_gui()
 	return s:detect() == s:qt_gui
+endf
+
+" Expose “s:detect()” globally
+fun! g:GetGuiApp()
+	return s:detect()
+endf
+
+" Get list of known applications
+fun! g:GetGuiKnownApps()
+	return [s:neovide_gui, s:gtk_gui, s:qt_gui]
 endf
 
 
