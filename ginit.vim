@@ -3,7 +3,6 @@
 "
 " GUI-specific configuration for Neovim.
 
-" TODO: Read current font state from command-line
 " TODO: Expose s:detect() globally
 
 
@@ -214,6 +213,15 @@ exe 'nn <expr> <C-ScrollWheelDown> <SID>font_size_dec('.s:scroll_wheel_pace.')'
 " Double the step when Shift is also held
 exe 'nn <expr> <C-S-ScrollWheelUp>   <SID>font_size_inc('.s:scroll_wheel_pace*2.')'
 exe 'nn <expr> <C-S-ScrollWheelDown> <SID>font_size_dec('.s:scroll_wheel_pace*2.')'
+
+
+" Ability to read current font state globally.
+"
+" Returns a pair (as list of 2 elements) of font family and font size.
+" Example return value: ['Hack', 20]
+fun! g:GetGuiFont()
+	return [s:font_family, s:font_size]
+endf
 
 
 " Applying local additional config
