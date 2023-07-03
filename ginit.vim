@@ -3,6 +3,9 @@
 "
 " GUI-specific configuration for Neovim.
 
+" TODO: Read current font state from command-line
+" TODO: Expose s:detect() globally
+
 
 " Applying local additional config
 let g:local_guirc_pre = $HOME . '/.neovimrc-gui-local-pre'
@@ -96,10 +99,26 @@ en
 " If these were set before (just reloading the config) it will reuse the last
 " value. It won’t be reset during config reloading.
 if !exists('s:font_family')
-	let s:font_family = !s:is_qt_gui() ? 'Iosevka' : 'Iosevka Nerd Font Mono'
+	" Can customize font family before GUI starts
+	if exists('g:initial_gui_font_family')
+		let s:font_family = g:initial_gui_font_family
+	" Can customize font before GUI starts.
+	" Example value: ['Hack', '12']
+	elseif exists('g:initial_gui_font') && len(g:initial_gui_font) >= 1
+		let s:font_family = g:initial_gui_font[0]
+	el
+		let s:font_family = 'IosevkaTerm Nerd Font'
+	en
 en
 if !exists('s:font_size')
-	if s:is_neovide_gui()
+	" Can customize font size before GUI starts
+	if exists('g:initial_gui_font_size')
+		let s:font_size = g:initial_gui_font_size
+	" Can customize font before GUI starts.
+	" Example value: ['Hack', '12']
+	elseif exists('g:initial_gui_font') && len(g:initial_gui_font) >= 2
+		let s:font_size = g:initial_gui_font[1]
+	elseif s:is_neovide_gui()
 		" In Neovide the font size renders significantly bigger.
 		" In practice it’s (approximately) the same as for the other GUIs.
 		let s:font_size = 9
