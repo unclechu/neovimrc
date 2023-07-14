@@ -155,6 +155,11 @@ Plug 'exu/pgsql.vim'
 " csv
 Plug 'chrisbra/csv.vim'
 
+" robot framework
+Plug 'mjkarki/vim-robot-syntax'
+" An older archived plugin
+" Plug 'mfukar/robotframework-vim'
+
 " colorschemes
 Plug 'morhetz/gruvbox' " gruvbox
 Plug 'tomasr/molokai' " molokai

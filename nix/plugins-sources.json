@@ -455,6 +455,18 @@
         "url": "https://github.com/niklasl/vim-rdf/archive/e2af9a7614a9fb9c3fc419135d41700426cad0db.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "vim-robot-syntax": {
+        "branch": "main",
+        "description": "Robot Framework syntax highlighting for Vim",
+        "homepage": null,
+        "owner": "mjkarki",
+        "repo": "vim-robot-syntax",
+        "rev": "b2d1624894963a2925d6eedd6bdac399f19fdb04",
+        "sha256": "1r4wwagcgi4i2jvw3dn99sj0z7xw2gpcfzlqpxdh5l6ayd54j5ca",
+        "type": "tarball",
+        "url": "https://github.com/mjkarki/vim-robot-syntax/archive/b2d1624894963a2925d6eedd6bdac399f19fdb04.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "vim-solarized8": {
         "branch": "master",
         "description": "Optimized Solarized colorschemes. Best served with true-color terminals!",
