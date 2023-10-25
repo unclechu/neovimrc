@@ -81,6 +81,7 @@ local SetupNeovimLsp = function(overrides)
 	for _, k in ipairs({
 		'hls', -- Haskell
 		'tsserver', -- TypeScript
+		'kotlin_language_server', -- Kotlin
 	}) do
 		require('lspconfig')[k].setup(merge_tables(opts, overrides[k] or {}))
 	end
