@@ -155,18 +155,6 @@
         "url": "https://github.com/vim-scripts/nginx.vim/archive/152bbb2dc00c2df37049ccf75f68f294208c72cb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "nova-vim": {
-        "branch": "master",
-        "description": "Nova color scheme plugin for Vim",
-        "homepage": "https://trevordmiller.com/projects/nova",
-        "owner": "trevordmiller",
-        "repo": "nova-vim",
-        "rev": "e587d14c655a4d2d048556eaaa5419a14f17826a",
-        "sha256": "0qdr84iykm8jrfl5q4clqv335blp3lj57isg0ylz1wak1gkn9dx8",
-        "type": "tarball",
-        "url": "https://github.com/trevordmiller/nova-vim/archive/e587d14c655a4d2d048556eaaa5419a14f17826a.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "pgsql.vim": {
         "branch": "master",
         "description": "Postgresql syntax from Devrim GUNDUZ",
