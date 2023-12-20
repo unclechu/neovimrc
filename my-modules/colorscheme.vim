@@ -6,11 +6,7 @@
 " but 'highlight def link' is replaced with 'hi! link'.
 fu! s:fix_haskell_syntax()
 	hi! link haskellBottom Macro
-	if g:colors_name == 'nova'
-		hi! link haskellTH Keyword
-	el
-		hi! link haskellTH Boolean
-	en
+	hi! link haskellTH Boolean
 	hi! link haskellIdentifier Identifier
 	hi! link haskellForeignKeywords Structure
 	hi! link haskellKeyword Keyword

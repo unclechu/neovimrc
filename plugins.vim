@@ -166,7 +166,6 @@ Plug 'tomasr/molokai' " molokai
 Plug 'Lokaltog/vim-distinguished' " distinguished
 Plug 'nanotech/jellybeans.vim' " jellybeans
 Plug 'rakr/vim-one' " one (supports 'bg' option)
-Plug 'trevordmiller/nova-vim' " nova
 Plug 'liuchengxu/space-vim-theme' " space_vim_theme
 Plug 'antlypls/vim-colors-codeschool' " codeschool
 Plug 'vim-scripts/TuttiColori-Colorscheme' " tutticolori
