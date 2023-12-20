@@ -56,6 +56,7 @@ let
 
       tsPlugins.java
       tsPlugins.clojure
+      tsPlugins.kotlin
 
       tsPlugins.yaml
       tsPlugins.json
