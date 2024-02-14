@@ -49,10 +49,12 @@ let
 
     "nvim-treesitter" = vimPlugins.nvim-treesitter.withPlugins (tsPlugins: [
       tsPlugins.haskell
+      tsPlugins.purescript
 
       tsPlugins.lua
       tsPlugins.perl
       tsPlugins.python
+      tsPlugins.ruby
 
       tsPlugins.java
       tsPlugins.clojure
@@ -61,6 +63,7 @@ let
       tsPlugins.yaml
       tsPlugins.json
       tsPlugins.jq
+      tsPlugins.xml
 
       tsPlugins.bash
 
@@ -80,6 +83,8 @@ let
       tsPlugins.javascript
       tsPlugins.typescript
       tsPlugins.tsx
+
+      tsPlugins.supercollider
 
       # Etc
       tsPlugins.vim
