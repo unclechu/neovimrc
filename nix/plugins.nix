@@ -23,16 +23,16 @@ let
   # GitHub plugins overrides.
   #
   # You can update pins of all these plugins like this:
-  #   niv -s nix/plugins-sources.json update
+  #   niv -s nix/plugins/sources.json update
   # N.B. Mind that there are quite many of them. GitHub might start responding with “rate limit
   # exceeded”. You can avoid this by providing a GITHUB_TOKEN you can create on this page
   # https://github.com/settings/tokens (you need a GitHub accout for this) and then run:
-  #   GITHUB_TOKEN=your-token niv -s nix/plugins-sources.json update
+  #   GITHUB_TOKEN=your-token niv -s nix/plugins/sources.json update
   #
   # TODO Try https://github.com/pearofducks/ansible-vim/ (pkgs.vimPlugins.ansible-vim) instead of vim-ansible-yaml
   # TODO Try https://github.com/lepture/vim-jinja/ (pkgs.vimPlugins.vim-jinja) instead of vim-jinja2-syntax
   # TODO Try https://github.com/chr4/nginx.vim/ (pkgs.vimPlugins.nginx-vim) instead of nginx.vim
-  ghPluginsOverrides = import ./sources.nix { sourcesFile = ./plugins-sources.json; };
+  ghPluginsOverrides = import ./sources.nix { sourcesFile = plugins/sources.json; };
 
   pluginsRenames = {
     "fzf" = "fzfWrapper";
