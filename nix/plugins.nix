@@ -36,6 +36,10 @@ let
 
   pluginsRenames = {
     "fzf" = "fzfWrapper";
+
+    # Without this “rename” I get this error:
+    #   error: attribute 'sc-vim' missing
+    "scnvim" = "scnvim";
   };
 
   # Highest priority, will override in any case.

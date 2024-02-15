@@ -98,6 +98,9 @@ Plug 'Raku/vim-raku'
 " faust
 Plug 'gmoe/vim-faust'
 
+" supercollider
+Plug 'davidgranstrom/scnvim' " neovim frontend for supercollider
+
 " nim
 Plug 'zah/nim.vim'
 

@@ -212,3 +212,5 @@ lua require'nvim-treesitter-config'
 
 " Note: This is technically not a plugin but the native Neovim LSP support.
 lua require'lsp-setup'
+
+lua require'supercollider-setup'
