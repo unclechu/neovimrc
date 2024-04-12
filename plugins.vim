@@ -162,6 +162,9 @@ Plug 'mjkarki/vim-robot-syntax'
 " An older archived plugin
 " Plug 'mfukar/robotframework-vim'
 
+" terraform
+Plug 'hashivim/vim-terraform'
+
 " colorschemes
 Plug 'morhetz/gruvbox' " gruvbox
 Plug 'tomasr/molokai' " molokai
