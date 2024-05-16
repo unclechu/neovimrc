@@ -1,0 +1,49 @@
+# Author: Viacheslav Lotsmanov
+# License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
+priority -50
+
+snippet // "KDoc comment" i
+/**
+ * ${1}
+ */
+endsnippet
+
+snippet c "Class" w
+class ${1:Foo} {
+	${2}
+}
+endsnippet
+
+snippet d "Data Class" w
+data class ${1:Foo}(val ${2:Bar}: ${3:String}) {
+	${4}
+}
+endsnippet
+
+snippet i "Interface" w
+interface ${1:Foo} {
+	${2}
+}
+endsnippet
+
+snippet f "Function" w
+fun ${1:foo}() {
+	${2}
+}
+endsnippet
+
+snippet f- "Inlined Function" w
+fun ${1:foo}() = ${2:bar}
+endsnippet
+
+snippet l "Lambda Function" w
+{ ${1:foo} -> ${2:bar} }
+endsnippet
+
+snippet val "Value" w
+val ${1:foo}: ${2:Bar} = ${3:baz}
+endsnippet
+
+snippet var "Variable" w
+var ${1:foo}: ${2:Bar} = ${3:baz}
+endsnippet
