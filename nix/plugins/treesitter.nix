@@ -52,12 +52,16 @@ let
 
     # Etc
     tsPlugins.vim
-    tsPlugins.markdown
     tsPlugins.nix
     tsPlugins.sql
     tsPlugins.glsl
     tsPlugins.dot
     tsPlugins.dockerfile
+
+    # After “nixpkgs” from 23.11 → 24.05 something became off with this syntax
+    # implementation. Almost nothing is highlighted. I only see a couple colons
+    # colored differently in one big document.
+    # tsPlugins.markdown
   ]);
 in
 
