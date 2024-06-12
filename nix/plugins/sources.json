@@ -41,10 +41,10 @@
         "homepage": "https://doriankarter.com",
         "owner": "dkarter",
         "repo": "bullets.vim",
-        "rev": "d9a47f114031d3030b1e4de3c0b6a664b1201524",
-        "sha256": "0ypf8ggvl1q5kgrzanr20n6bllfl547hk50aq0jmw0mprhi5npds",
+        "rev": "448ad2a159c5f2540f6c9738f3bb9e6f15a41734",
+        "sha256": "19anlq6kjlbmhzr2sqqykxfksflkfij10kj82cxlj47r7nqzjgpf",
         "type": "tarball",
-        "url": "https://github.com/dkarter/bullets.vim/archive/d9a47f114031d3030b1e4de3c0b6a664b1201524.tar.gz",
+        "url": "https://github.com/dkarter/bullets.vim/archive/448ad2a159c5f2540f6c9738f3bb9e6f15a41734.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "cider-nrepl": {
@@ -53,10 +53,10 @@
         "homepage": "https://docs.cider.mx/cider-nrepl",
         "owner": "clojure-emacs",
         "repo": "cider-nrepl",
-        "rev": "9aea519b87430c3a26cd146417dd84c33bb14676",
-        "sha256": "1pvcjf2v4va6kyjldkvba7agib5jwah0gkm3lvdwidl4fwry6dnb",
+        "rev": "6ec50c3fe97c618243d2c6eaa4cd2f2ee35a4205",
+        "sha256": "19p7bqdm1mv485z3qqrswanhlhqd1l2r4w262k4f2vspiyi7ivfh",
         "type": "tarball",
-        "url": "https://github.com/clojure-emacs/cider-nrepl/archive/9aea519b87430c3a26cd146417dd84c33bb14676.tar.gz",
+        "url": "https://github.com/clojure-emacs/cider-nrepl/archive/6ec50c3fe97c618243d2c6eaa4cd2f2ee35a4205.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "ctrlsf.vim": {
@@ -269,10 +269,10 @@
         "homepage": "",
         "owner": "vim-ctrlspace",
         "repo": "vim-ctrlspace",
-        "rev": "38266fba90e5bcc5db026522f5ade0e0e0a9a17f",
-        "sha256": "11hf1wk13f18pa8qmiqs15v85jjy3ifsx4p3a7j2w2kl11hsb7s7",
+        "rev": "c43997bc331903a68d3e70d4eeb33fc4bd2aa451",
+        "sha256": "0dj0vjnlqsq1j40rql8y2km1l7zh7smd9vgcv24xwvzdlw74qqkw",
         "type": "tarball",
-        "url": "https://github.com/vim-ctrlspace/vim-ctrlspace/archive/38266fba90e5bcc5db026522f5ade0e0e0a9a17f.tar.gz",
+        "url": "https://github.com/vim-ctrlspace/vim-ctrlspace/archive/c43997bc331903a68d3e70d4eeb33fc4bd2aa451.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "vim-distinguished": {
