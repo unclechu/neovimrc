@@ -5,31 +5,31 @@ priority -50
 snippet // "KDoc comment" i
 /**
  * ${1}
- */
+ */${2}
 endsnippet
 
 snippet c "Class" w
 class ${1:Foo} {
 	${2}
-}
+}${3}
 endsnippet
 
 snippet d "Data Class" w
 data class ${1:Foo}(val ${2:Bar}: ${3:String}) {
 	${4}
-}
+}${5}
 endsnippet
 
 snippet i "Interface" w
 interface ${1:Foo} {
 	${2}
-}
+}${3}
 endsnippet
 
 snippet f "Function" w
 fun ${1:foo}() {
 	${2}
-}
+}${3}
 endsnippet
 
 snippet f- "Inlined Function" w
@@ -37,13 +37,44 @@ fun ${1:foo}() = ${2:bar}
 endsnippet
 
 snippet l "Lambda Function" w
-{ ${1:foo} -> ${2:bar} }
+{ ${1:foo} -> ${2:bar} }${3}
+endsnippet
+
+snippet l- "Lambda Function without explicit argument(s)" w
+{ ${1:it} }${2}
 endsnippet
 
 snippet val "Value" w
 val ${1:foo}: ${2:Bar} = ${3:baz}
 endsnippet
 
+snippet cv "const val" w
+const val ${1:foo}: ${2:Bar} = ${3:baz}
+endsnippet
+
 snippet var "Variable" w
 var ${1:foo}: ${2:Bar} = ${3:baz}
+endsnippet
+
+snippet .ts ".toString() method call" i
+.toString()${1}
+endsnippet
+
+snippet im "import …" w
+import ${1}
+endsnippet
+
+snippet co "companion object {…}" w
+companion object {
+	${1}
+}${2}
+endsnippet
+
+snippet vc "Value class type wrapper"
+@JvmInline
+value class ${1:Foo}(${2:private }val ${3:x}: ${4:String}) {
+	${5:init {
+		require(x.isNotBlank()) { "Foo cannot be empty" }
+	}}
+}${6}
 endsnippet
