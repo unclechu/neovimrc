@@ -14,7 +14,9 @@ fu! s:fix_haskell_syntax()
 	hi! link haskellConditional Conditional
 	hi! link haskellNumber Number
 	hi! link haskellFloat Float
-	if g:colors_name == 'onedark' || g:colors_name == 'gruvbox'
+	if g:colors_name == 'onedark'
+	\|| g:colors_name == 'gruvbox'
+	\|| g:colors_name == 'retrobox'
 	\|| g:colors_name == 'codeschool'
 		hi! link haskellSeparator Comment
 		hi! link haskellDelimiter Comment
@@ -24,6 +26,7 @@ fu! s:fix_haskell_syntax()
 	en
 	hi! link haskellInfix Keyword
 	if g:colors_name == 'gruvbox'
+	\|| g:colors_name == 'retrobox'
 		hi! link haskellOperators Delimiter
 		hi! link haskellQuote Delimiter
 	elsei g:colors_name == 'OceanicNext'
@@ -40,7 +43,9 @@ fu! s:fix_haskell_syntax()
 	hi! link haskellLiquid SpecialComment
 	hi! link haskellString String
 	hi! link haskellChar String
-	if g:colors_name == 'OceanicNext' || g:colors_name == 'gruvbox'
+	if g:colors_name == 'OceanicNext'
+	\|| g:colors_name == 'gruvbox'
+	\|| g:colors_name == 'retrobox'
 		hi! link haskellBacktick Keyword
 	el
 		hi! link haskellBacktick Operator
@@ -107,7 +112,7 @@ endf
 fu! g:ColorschemeCustomizations()
 	try
 		cal s:fix_haskell_syntax()
-		if g:colors_name == 'gruvbox'
+		if g:colors_name == 'gruvbox' || g:colors_name == 'retrobox'
 			hi! link TabLine     Folded
 			hi! link TabLineFill Pmenu
 			hi! link TabLineSel  airline_a_bold

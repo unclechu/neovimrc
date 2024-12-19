@@ -52,6 +52,7 @@ let g:airline#extensions#whitespace#enabled              = 0
 let g:airline#extensions#keymap#enabled                  = 0
 let g:airline#extensions#branch#enabled                  = 0
 let g:airline#extensions#ale#enabled                     = 1
+let g:airline_theme                                      = 'gruvbox'
 
 fu! s:LineNoIndicatorFuncPlug()
 	if exists('*LineNoIndicator')

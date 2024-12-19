@@ -41,10 +41,25 @@ try
 		se bg=light
 	en
 
-	Colorscheme gruvbox
+	" “gruvbox” and some other colorschemes are slightly broken in Neovim 0.10.
+	" This “retrobox” is basically builtin “gruvbox” colorscheme but in single
+	" contrast mode. But the important part is that it’s not broken.
+	Colorscheme retrobox
 cat
-	" colorscheme not found (plugins are not installed yet)
-	if stridx(v:exception, ':E185:') == -1 | echoe v:exception | en
+	if stridx(v:exception, ':E185:') == -1
+		echoe v:exception
+
+	" colorscheme not found (assuming it’s older Neovim that does not provide
+	" “retrobox” colorscheme, trying “gruvbox”).
+	el
+		try
+			Colorscheme gruvbox
+		cat
+			" Silencing “colorscheme not found error”
+			" (assuming plugins are not installed yet).
+			if stridx(v:exception, ':E185:') == -1 | echoe v:exception | en
+		endt
+	en
 endt
 
 
