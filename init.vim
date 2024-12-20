@@ -35,33 +35,32 @@ let g:gruvbox_contrast_dark  = 'medium'
 let g:gruvbox_contrast_light = 'soft'
 set background=dark
 
-try
-	if $TMUX != '' &&
-	\ substitute(system('tmuxsh co s'), '\n\+$', '', '') == 'light'
-		se bg=light
-	en
+" Switch to light colorscheme if detected my Tmux session in light colorscheme
+if $TMUX != '' && executable('tmuxsh')
+\&& substitute(system('tmuxsh co s'), '\n\+$', '', '') == 'light'
+	se bg=light
+en
 
-	" “gruvbox” and some other colorschemes are slightly broken in Neovim 0.10.
-	" This “retrobox” is basically builtin “gruvbox” colorscheme but in single
-	" contrast mode. But the important part is that it’s not broken.
+" Check if a colorscheme is available
+fu! s:HasColorscheme(name)
+	retu filereadable(globpath(&rtp, 'colors/' . a:name . '.vim'))
+endf
+
+" “gruvbox” and some other colorschemes are slightly broken in Neovim 0.10.
+" This “retrobox” is basically builtin “gruvbox” colorscheme but in single
+" contrast mode. But the important part is that it’s not broken.
+if s:HasColorscheme('retrobox')
 	Colorscheme retrobox
-cat
-	if stridx(v:exception, ':E185:') == -1
-		echoe v:exception
+elsei s:HasColorscheme('gruvbox')
+	Colorscheme gruvbox
+el
+	" None of the above colorschemes found.
+	" Doing just nothing, assuming it’s a non-Nix setup and the plugins are not
+	" installed yet.
+en
 
-	" colorscheme not found (assuming it’s older Neovim that does not provide
-	" “retrobox” colorscheme, trying “gruvbox”).
-	el
-		try
-			Colorscheme gruvbox
-		cat
-			" Silencing “colorscheme not found error”
-			" (assuming plugins are not installed yet).
-			if stridx(v:exception, ':E185:') == -1 | echoe v:exception | en
-		endt
-	en
-endt
 
+" Neovim shell (&sh) configuration
 
 let s:sh
 	\ = (fnamemodify($SHELL, ':t') =~ 'bash')
