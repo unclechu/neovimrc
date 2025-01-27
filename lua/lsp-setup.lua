@@ -80,7 +80,7 @@ local SetupNeovimLsp = function(overrides)
 
 	for _, k in ipairs({
 		'hls', -- Haskell
-		'tsserver', -- TypeScript
+		'ts_ls', -- TypeScript
 		'kotlin_language_server', -- Kotlin
 	}) do
 		require('lspconfig')[k].setup(merge_tables(opts, overrides[k] or {}))
@@ -88,7 +88,7 @@ local SetupNeovimLsp = function(overrides)
 end
 
 -- If you need to customize something here is an example:
--- :lua vim.g.SetupNeovimLsp({tsserver = {cmd = {'npx', 'typescript-language-server', '--stdio'}}})
+-- :lua vim.g.SetupNeovimLsp({ts_ls = {cmd = {'npx', 'typescript-language-server', '--stdio'}}})
 vim.g.SetupNeovimLsp = SetupNeovimLsp
 
 vim.api.nvim_create_user_command(
