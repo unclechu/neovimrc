@@ -52,7 +52,27 @@ let g:airline#extensions#whitespace#enabled              = 0
 let g:airline#extensions#keymap#enabled                  = 0
 let g:airline#extensions#branch#enabled                  = 0
 let g:airline#extensions#ale#enabled                     = 1
-let g:airline_theme                                      = 'gruvbox'
+" save some space by shortening “NORMAL”/“INSERT”/“COMMAND”/“VISUAL”/etc.
+let g:airline_mode_map = {
+	\ '__'     : '-',
+	\ 'c'      : 'C',
+	\ 'i'      : 'I',
+	\ 'ic'     : 'I',
+	\ 'ix'     : 'I',
+	\ 'n'      : 'N',
+	\ 'multi'  : 'M',
+	\ 'ni'     : 'N',
+	\ 'no'     : 'N',
+	\ 'R'      : 'R',
+	\ 'Rv'     : 'R',
+	\ 's'      : 'S',
+	\ 'S'      : 'S',
+	\ "\<C-S>" : 'S',
+	\ 't'      : 'T',
+	\ 'v'      : 'V',
+	\ 'V'      : 'V',
+	\ "\<C-V>" : 'V',
+	\ }
 
 fu! s:LineNoIndicatorFuncPlug()
 	if exists('*LineNoIndicator')

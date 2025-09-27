@@ -83,6 +83,18 @@
         "url": "https://github.com/elihunter173/dirbuf.nvim/archive/ac7ad3c8e61630d15af1f6266441984f54f54fd2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "everforest-nvim": {
+        "branch": "main",
+        "description": "A Lua port of the Everforest colour scheme",
+        "homepage": "",
+        "owner": "neanias",
+        "repo": "everforest-nvim",
+        "rev": "d2936185a6d266def29fd7b523d296384580ef08",
+        "sha256": "039c8nql08l00r4mjvnrd603xpi7d4dffw1y52a6mrjgkrpi9qww",
+        "type": "tarball",
+        "url": "https://github.com/neanias/everforest-nvim/archive/d2936185a6d266def29fd7b523d296384580ef08.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "habiLight": {
         "branch": "master",
         "description": "A light color scheme with support of Vim 7 features",
@@ -179,6 +191,18 @@
         "url": "https://github.com/vim-scripts/railscasts/archive/4e32f0421ef099ba86b66dbe65f0cf5a6a1d7e7f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "solarized-osaka.nvim": {
+        "branch": "main",
+        "description": "🏯 A clean, dark Neovim theme written in Lua, with support for lsp, treesitter and lots of plugins.",
+        "homepage": "",
+        "owner": "craftzdog",
+        "repo": "solarized-osaka.nvim",
+        "rev": "f796014c14b1910e08d42cc2077fef34f08e0295",
+        "sha256": "0jy2hk4fc210jih30ybvisr9pliya1s3nazw4d131vh5k4p1xqi6",
+        "type": "tarball",
+        "url": "https://github.com/craftzdog/solarized-osaka.nvim/archive/f796014c14b1910e08d42cc2077fef34f08e0295.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "space-vim-theme": {
         "branch": "master",
         "description": ":blossom: A dark and light colorscheme for space-vim that supports GUI & terminal",
@@ -201,6 +225,18 @@
         "sha256": "0qz7jnkmc80mf3inflpxwvry81x036abx985z5cgmmw006z5x8vi",
         "type": "tarball",
         "url": "https://github.com/jsit/toast.vim/archive/6ef5cea8298e64a555cfaf7541bb94781d06dc69.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "tokyodark.nvim": {
+        "branch": "master",
+        "description": "A clean dark theme written in lua for neovim.",
+        "homepage": "",
+        "owner": "tiagovla",
+        "repo": "tokyodark.nvim",
+        "rev": "cc70a2fb809d5376f2bd8e5836f9bb3f5fb8ef43",
+        "sha256": "13ifj66mkywwmya0gy3jypr9cbwyxmakfabrkkca3svsrprc0jd4",
+        "type": "tarball",
+        "url": "https://github.com/tiagovla/tokyodark.nvim/archive/cc70a2fb809d5376f2bd8e5836f9bb3f5fb8ef43.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "tomorrow-theme": {
@@ -405,6 +441,18 @@
         "sha256": "17ygzvmg3nqvf2vqnryazpcpdl20rgahkqwl4d1c40sfrmsqpwgi",
         "type": "tarball",
         "url": "https://github.com/rhysd/vim-lsp-ale/archive/db0f9a8a33c0480988dc420cd2fba8a07743e4a4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim-moonfly-colors": {
+        "branch": "master",
+        "description": "A dark charcoal theme for modern Neovim & classic Vim",
+        "homepage": "",
+        "owner": "bluz71",
+        "repo": "vim-moonfly-colors",
+        "rev": "2a3cade7d47a3f0b13bfe50926e645b8c2a2432f",
+        "sha256": "0sw0ckrgxag8yzx0j2ds9nm6vyysnnz0pz01zfqvr003z9ckqbhy",
+        "type": "tarball",
+        "url": "https://github.com/bluz71/vim-moonfly-colors/archive/2a3cade7d47a3f0b13bfe50926e645b8c2a2432f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "vim-quickhl": {

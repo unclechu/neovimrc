@@ -14,7 +14,7 @@ Plug 'elihunter173/dirbuf.nvim'
 Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 Plug 'henrik/vim-indexed-search'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors' " todo: deprecated, try https://github.com/mg979/vim-visual-multi
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -183,7 +183,7 @@ Plug 'challenger-deep-theme/vim' " challenger_deep
 Plug 'mhinz/vim-janah' " janah
 Plug 'mhartington/oceanic-next' " OceanicNext OceanicNextLight
 " let g:airline_theme = 'onedark'
-Plug 'joshdick/onedark.vim' " onedark
+" Plug 'joshdick/onedark.vim' " onedark, replaced by 'olimorris/onedarkpro.nvim'
 Plug 'sickill/vim-monokai' " monokai (not very good for haskell)
 Plug 'junegunn/seoul256.vim' " seoul256 seoul256-light
 " light theme, just for fun, last update in 2006
@@ -193,6 +193,37 @@ Plug 'vim-scripts/habiLight'
 " Tomorrow-Night Tomorrow
 Plug 'chriskempson/tomorrow-theme'
 Plug 'jsit/toast.vim'
+
+" more colorschemes found on this page:
+" https://dotfyle.com/neovim/colorscheme/trending
+Plug 'AlexvZyl/nordic.nvim'
+Plug 'neanias/everforest-nvim'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'sainnhe/sonokai'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/edge'
+Plug 'savq/melange-nvim'
+Plug 'tiagovla/tokyodark.nvim'
+Plug 'shaunsingh/nord.nvim'
+Plug 'nyoom-engineering/oxocarbon.nvim'
+Plug 'marko-cerovac/material.nvim'
+Plug 'Mofiqul/dracula.nvim'
+" Plug 'olimorris/onedarkpro.nvim' " preferring 'navarasu/onedark.nvim' instead
+Plug 'navarasu/onedark.nvim'
+Plug 'Mofiqul/vscode.nvim'
+Plug 'projekt0n/github-nvim-theme'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'ribru17/bamboo.nvim'
+" FIXME: Fix this nix build error:
+"        Require check failed for the following modules:
+"         - solarized-osaka.extra.fzf
+" Plug 'craftzdog/solarized-osaka.nvim'
+Plug 'scottmckendry/cyberdream.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'rose-pine/neovim'
+Plug 'folke/tokyonight.nvim'
+Plug 'catppuccin/nvim'
 
 " utils
 Plug 'sl4m/left-pad.vim'

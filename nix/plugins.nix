@@ -40,6 +40,28 @@ let
     # Without this “rename” I get this error:
     #   error: attribute 'sc-vim' missing
     "scnvim" = "scnvim";
+
+    "nordic.nvim" = "nordic-nvim";
+    "nord.nvim" = "nord-nvim";
+    "oxocarbon.nvim" = "oxocarbon-nvim";
+    "material.nvim" = "material-nvim";
+    "dracula.nvim" = "dracula-nvim";
+    "onedarkpro.nvim" = "onedarkpro-nvim";
+    "onedark.nvim" = "onedark-nvim";
+    "vscode.nvim" = "vscode-nvim";
+    "nightfox.nvim" = "nightfox-nvim";
+    "bamboo.nvim" = "bamboo-nvim";
+    "cyberdream.nvim" = "cyberdream-nvim";
+    "kanagawa.nvim" = "kanagawa-nvim";
+    "tokyonight.nvim" = "tokyonight-nvim";
+
+    # rose-pine/neovim
+    "neovim" = "rose-pine";
+    # catppuccin/nvim
+    "nvim" = "catppuccin-nvim";
+
+    # A hack to fix it
+    "melange-nvim" = "melange-nvim";
   };
 
   # Highest priority, will override in any case.
