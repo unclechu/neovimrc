@@ -32,8 +32,7 @@ let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_menu_selection_background = 'orange'
 " note that this for the bg=hard
 " swapping normal (active window) and dim background (I prefer it this way)
-let g:gruvbox_material_colors_override =
-	\ {
+let g:gruvbox_material_colors_override = {
 	\ 'bg_dim': ['#1d2021', '234'],
 	\ 'bg0': ['#141617', '232'],
 	\ }
@@ -47,6 +46,11 @@ let g:edge_enable_italic = 1
 let g:edge_transparent_background = 1
 
 let g:sonokai_style = 'espresso'
+let g:sonokai_dim_inactive_windows = 1
+let g:sonokai_colors_override = {
+	\ 'bg_dim': ['#312c2b', '235'],
+	\ 'bg0': ['#242120', '232'],
+	\ }
 
 lua require('onedark').setup({style='warmer'})
 
@@ -70,8 +74,8 @@ lua << EOF
 		-- (for `dimInactive` feature).
 		overrides = function(colors)
 			local theme = colors.theme
-			local C = require("kanagawa.lib.color")
-			local darker_nc = C(theme.ui.bg):blend("#000000", 0.15):to_hex()
+			local C = require('kanagawa.lib.color')
+			local darker_nc = C(theme.ui.bg):blend('#000000', 0.15):to_hex()
 			return {
 				-- Active window: darker background
 				Normal = { fg = theme.ui.fg, bg = theme.ui.bg_dim },
@@ -106,7 +110,7 @@ lua << EOF
 			-- Inactive windows: brighter background
 			hl.NormalNC = { fg = c.fg_dark or c.fg, bg = c.bg }
 			-- Fix `cc` blending with active window background when using `tokyonight-night`
-			local util = require("tokyonight.util")
+			local util = require('tokyonight.util')
 			-- hl.ColorColumn = { bg = c.bg }
 			-- Make it visible on inactive window too
 			hl.ColorColumn = { bg = util.lighten(c.bg, 0.99) }
@@ -115,7 +119,7 @@ lua << EOF
 EOF
 
 lua << EOF
-	require("catppuccin").setup({
+	require('catppuccin').setup({
 		-- avoid theme-side dim when swapping [default false]
 		dim_inactive = { enabled = false },
 		custom_highlights = function(c)
@@ -126,6 +130,88 @@ lua << EOF
 				NormalNC = { fg = c.subtext1, bg = c.base },
 			}
 		end,
+	})
+EOF
+
+lua << EOF
+	require('bamboo').setup({
+		dim_inactive = false,
+		highlights = {
+			Normal = { bg = '#1b1f1b' }, -- darker for active
+			NormalNC = { bg = '#212521' }, -- brighter for inactive
+		},
+	})
+EOF
+
+lua << EOF
+	require('nightfox').setup({
+		options = { dim_inactive = false },
+		groups = {
+			all = {
+				Normal = { bg = 'palette.bg0' }, -- active darker (choose bg0/bg1 per taste)
+				NormalNC = { bg = 'palette.bg1' }, -- inactive brighter
+			},
+		},
+	})
+EOF
+
+lua << EOF
+	require('cyberdream').setup({
+		transparent = false,
+		highlights = {
+			Normal = { bg = '#16181a' }, -- active
+			NormalNC = { bg = '#1e2124' }, -- inactive
+		},
+	})
+EOF
+
+lua << EOF
+	require('material').setup({
+		-- keep theme-side dimming off when swapping manually
+		contrast = { non_current_windows = false },	-- optional
+		custom_highlights = function(colors, _)
+			if vim.g.material_style == 'darker' then
+				return {
+					-- active window darker
+					Normal = { bg = '#1b1b1f' },
+					-- inactive window brighter
+					NormalNC = { bg = '#222227' },
+				}
+			elseif vim.g.material_style == 'deep ocean' then
+				-- pick a slightly different pair for deep ocean
+				return {
+					Normal = { bg = '#0f111a' }, -- active darker
+					NormalNC = { bg = '#13151f' }, -- inactive brighter
+				}
+			else
+				-- fallback for other styles (oceanic, palenight, lighter)
+				return {
+					Normal = { bg = colors.editor.bg }, -- active
+					NormalNC = { bg = colors.editor.bg or 'NONE' }, -- tweak if needed
+				}
+			end
+		end,
+	})
+EOF
+
+lua << EOF
+	require('onedark').setup({
+		highlights = {
+			Normal = { bg = '#1b1d23' },
+			NormalNC = { bg = '#21242b' },
+		},
+	})
+EOF
+
+lua << EOF
+	local c = require('vscode.colors').get_colors()
+	local C = require('kanagawa.lib.color')
+	local lighterBg = C(c.vscBack):blend('#ffffff', 0.006):to_hex()
+	require('vscode').setup({
+		group_overrides = {
+			Normal = { fg = c.vscFront, bg = c.vscBack },
+			NormalNC = { fg = c.vscFront, bg = lighterBg },
+		},
 	})
 EOF
 
@@ -247,24 +333,43 @@ endf
 fu! g:ColorschemeCustomizations()
 	try
 		cal s:fix_haskell_syntax()
-		" Set these for any colorscheme
-		"if g:colors_name == 'gruvbox' || g:colors_name == 'retrobox'
-			hi! link TabLine     Folded
-			hi! link TabLineFill Pmenu
-			hi! link TabLineSel  airline_a_bold
-		"en
+		cal s:set_custom_tabline_colors()
 	cat
 		" handling default colorscheme
 		if stridx(v:exception, ':E121:') == -1 | echoe v:exception | en
 	endt
 
 	" a fix for the multicursor selection highlighting for non gruvbox themes
-	augroup MultiCursorsHighlight
+	augroup MultiCursorsHighlightColorFix
 		autocmd!
-		" Strong, theme-adaptive linking
-		autocmd ColorScheme * highlight link multiple_cursors_visual IncSearch
-		autocmd ColorScheme * highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+		autocmd ColorScheme * call s:multicursor_highlight_color_fix()
 	augroup END
+	call s:multicursor_highlight_color_fix()
+
+	" fix vertical window separator color
+	augroup JellybeansSeparatorColorFix
+		autocmd!
+		autocmd ColorScheme jellybeans call s:jellybeans_separator_color_fix()
+	augroup END
+	if g:colors_name == 'jellybeans'
+		call s:jellybeans_separator_color_fix()
+	en
+endf
+
+fu! s:set_custom_tabline_colors()
+	hi! link TabLine     Folded
+	hi! link TabLineFill Pmenu
+	hi! link TabLineSel  airline_a_bold
+endf
+
+fu! s:jellybeans_separator_color_fix()
+	hi! WinSeparator guifg=#555555 guibg=NONE ctermfg=240 ctermbg=NONE
+	hi! VertSplit guifg=#555555 guibg=NONE ctermfg=240 ctermbg=NONE
+endf
+
+fu! s:multicursor_highlight_color_fix()
+	hi! link multiple_cursors_visual IncSearch
+	hi! multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 endf
 
 let g:colorschemes = []
@@ -349,7 +454,7 @@ fu! g:SetColorscheme(colorscheme)
 		if l:x == 'onedark_vivid' | let l:x = 'onedark' | en
 		if l:x == 'carbonfox' | let l:x = 'atomic' | en
 		if l:x == 'vscode' | let l:x = 'base16_material_vivid' | en
-		if l:x == 'bamboo-vulgaris' | let l:x = 'moonfly' | en
+		if l:x == 'bamboo-vulgaris' | let l:x = 'gruvbox_material' | en
 		if l:x == 'cyberdream' | let l:x = 'jellybeans' | en
 		if l:x == 'kanagawa' | let l:x = 'one' | en
 		if l:x == 'kanagawa-wave' | let l:x = 'one' | en
