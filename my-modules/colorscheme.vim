@@ -269,6 +269,26 @@ endf
 
 let g:colorschemes = []
 
+let g:colorschemes_fav = [
+	\ 'bamboo-vulgaris',
+	\ 'carbonfox',
+	\ 'catppuccin-mocha',
+	\ 'cyberdream',
+	\ 'gruvbox-material',
+	\ 'jellybeans',
+	\ 'kanagawa-dragon',
+	\ 'kanagawa-wave',
+	\ 'material-darker',
+	\ 'material-deep-ocean',
+	\ 'melange',
+	\ 'onedark',
+	\ 'oxocarbon',
+	\ 'rose-pine-main',
+	\ 'tokyodark',
+	\ 'tokyonight-night',
+	\ 'vscode',
+	\ ]
+
 fu! g:RefreshColorschemes()
 	let g:colorschemes = map(
 		\ globpath(&rtp, 'colors/*.vim', 0, 1), 'fnamemodify(v:val, ":t:r")')
@@ -341,7 +361,6 @@ fu! g:SetColorscheme(colorscheme)
 		if l:x == 'tokyonight-night' | let l:x = 'one' | en
 		if l:x == 'tokyonight-storm' | let l:x = 'one' | en
 		if l:x == 'catppuccin-mocha' | let l:x = 'catppuccin' | en
-		if l:x == '' | let l:x = 'one' | en
 		" the command is not available at initialization time
 		if exists(':AirlineTheme')
 			exec 'AirlineTheme ' . l:x
