@@ -70,14 +70,15 @@ lua << EOF
 		-- (for `dimInactive` feature).
 		overrides = function(colors)
 			local theme = colors.theme
-			local util = require("tokyonight.util")
+			local C = require("kanagawa.lib.color")
+			local darker_nc = C(theme.ui.bg):blend("#000000", 0.15):to_hex()
 			return {
 				-- Active window: darker background
 				Normal = { fg = theme.ui.fg, bg = theme.ui.bg_dim },
 				-- Inactive windows: brighter background
 				--NormalNC = { fg = theme.ui.fg_dim, bg = theme.ui.bg },
 				-- Darken background more for inactive window, fix too much contrast
-				NormalNC = { fg = theme.ui.fg_dim, bg = util.darken(theme.ui.bg, 0.1) },
+				NormalNC = { fg = theme.ui.fg_dim, bg = darker_nc },
 			}
 		end,
 	})
@@ -266,32 +267,32 @@ fu! g:ColorschemeCustomizations()
 	augroup END
 endf
 
-let s:colorschemes = []
+let g:colorschemes = []
 
 fu! g:RefreshColorschemes()
-	let s:colorschemes = map(
+	let g:colorschemes = map(
 		\ globpath(&rtp, 'colors/*.vim', 0, 1), 'fnamemodify(v:val, ":t:r")')
 	" FIXME: Some colorschemes are missing, adding them manually.
 	"        Probably need to improve globpath or add another one.
-	let s:colorschemes +=
+	let g:colorschemes +=
 		\ [ 'melange', 'nordic', 'nord', 'tokyodark', 'oxocarbon'
 		\ , 'dracula', 'dracula-soft'
 		\ , 'vscode', 'onedark'
 		\ , 'cyberdream', 'cyberdream-light'
 		\ ]
 	" material.nvim themes
-	let s:colorschemes +=
+	let g:colorschemes +=
 		\ [ 'material', 'material-darker', 'material-deep-ocean'
 		\ , 'material-lighter', 'material-oceanic', 'material-palenight'
 		\ ]
 	" bamboo.nvim themes
-	let s:colorschemes +=
+	let g:colorschemes +=
 		\ [ 'bamboo', 'bamboo-light', 'bamboo-multiplex', 'bamboo-vulgaris' ]
 	" rose-pine themes
-	let s:colorschemes +=
+	let g:colorschemes +=
 		\ [ 'rose-pine', 'rose-pine-dawn', 'rose-pine-moon', 'rose-pine-main' ]
 	" tokyonight themes
-	let s:colorschemes +=
+	let g:colorschemes +=
 		\ [ 'tokyonight', 'tokyonight-day', 'tokyonight-moon'
 		\ , 'tokyonight-night', 'tokyonight-storm'
 		\ ]
@@ -300,7 +301,7 @@ endf
 cal RefreshColorschemes()
 
 fu! g:SetColorscheme(colorscheme)
-	if index(s:colorschemes, a:colorscheme) >= 0
+	if index(g:colorschemes, a:colorscheme) >= 0
 		exec 'colo '.a:colorscheme
 		cal ColorschemeCustomizations()
 
@@ -353,7 +354,7 @@ fu! g:SetColorscheme(colorscheme)
 endf
 
 fu! s:complete(A, L, P)
-	let l:x = copy(s:colorschemes)
+	let l:x = copy(g:colorschemes)
 	retu empty(a:A) ? l:x : filter(l:x, 'v:val[:strlen(a:A)-1] == a:A')
 endf
 
@@ -363,7 +364,7 @@ com! -nargs=1 -complete=customlist,s:complete Colorscheme
 
 " Check if a colorscheme is available
 fu! g:HasColorscheme(name)
-	retu filereadable(globpath(&rtp, 'colors/' . a:name . '.vim'))
+	retu index(g:colorschemes, a:name) >= 0
 endf
 
 fu! g:InitializeColorscheme()
@@ -375,8 +376,8 @@ fu! g:InitializeColorscheme()
 		se bg=light
 	en
 
-	if g:HasColorscheme('kanagawa')
-		Colorscheme kanagawa
+	if g:HasColorscheme('kanagawa-wave')
+		Colorscheme kanagawa-wave
 	elsei g:HasColorscheme('gruvbox-material')
 		Colorscheme gruvbox-material
 	elsei g:HasColorscheme('retrobox')
