@@ -114,7 +114,8 @@ if !exists('s:font_family')
 	elseif exists('g:initial_gui_font') && len(g:initial_gui_font) >= 1
 		let s:font_family = g:initial_gui_font[0]
 	el
-		let s:font_family = 'IosevkaTerm Nerd Font'
+		" Default font family
+		let s:font_family = 'IosevkaTerm Nerd Font Mono'
 	en
 en
 if !exists('s:font_size')
@@ -125,12 +126,9 @@ if !exists('s:font_size')
 	" Example value: ['Hack', '12']
 	elseif exists('g:initial_gui_font') && len(g:initial_gui_font) >= 2
 		let s:font_size = g:initial_gui_font[1]
-	elseif s:is_neovide_gui()
-		" In Neovide the font size renders significantly bigger.
-		" In practice it’s (approximately) the same as for the other GUIs.
-		let s:font_size = 9
 	el
-		let s:font_size = 13
+		" Default font size
+		let s:font_size = 11
 	en
 en
 
