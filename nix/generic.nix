@@ -11,8 +11,13 @@ let sources = import ./sources.nix; in
 , lib
 , coreutils
 
-# Overridable Neovim itself
-, neovim
+, perl
+
+# Core Neovim dependency
+, neovim-unwrapped
+, wrapNeovimUnstable
+, neovimUtils
+, makeNeovim ? config: wrapNeovimUnstable neovim-unwrapped (neovimUtils.makeNeovimConfig config)
 
 # Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
 , fzf ? null # Dependency for “fzf.vim”
@@ -125,9 +130,7 @@ let
 
       wrap = neovim:
         let
-          deps =
-            (lib.optional (fzf != null) fzf) ++
-            (lib.optional with-perl-support perlForNeovim);
+          deps = lib.optional (fzf != null) fzf;
         in
         symlinkJoin {
           name = "${lib.getName neovim}-wrapper";
@@ -165,22 +168,25 @@ let
           '';
         };
     in
-      wrap (neovim.override {
-        configure = {
-          packages.myPlugins = {
-            start = plugins.own ++ plugins.other;
-            opt = [];
-          };
+      wrap (makeNeovim {
+        withNodeJs = false;
+        withRuby = false;
 
-          customRC = ''
-            let $MYVIMRC = '${configDir}/init.vim'
-            let &rtp .= ',${configDir}' " for UltiSnips
-            se pp-=~/.vim/after
-            so ${initFiles.pre} " pre plugins init stage
-            let &pp .= ',${configDir}' " postpone post plugins init stage
-          '';
-        };
-      });
+        withPython3 = true; # Python is required for example for UltiSnips
+        withPerl = assert builtins.isBool with-perl-support; with-perl-support;
+
+        plugins = map (p: { plugin = p; }) (plugins.own ++ plugins.other);
+
+        customRC = ''
+          let $MYVIMRC = '${configDir}/init.vim'
+          let &rtp .= ',${configDir}' " for UltiSnips
+          se pp-=~/.vim/after
+          so ${initFiles.pre} " pre plugins init stage
+          let &pp .= ',${configDir}' " postpone post plugins init stage
+        '';
+      } // (
+        if ! with-perl-support then {} else { perlEnv = perlForNeovim; }
+      ));
 in
 {
   inherit wenzelsNeovimGeneric; # main export

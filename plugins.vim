@@ -225,7 +225,4 @@ Plug 'rose-pine/neovim'
 Plug 'folke/tokyonight.nvim'
 Plug 'catppuccin/nvim'
 
-" utils
-Plug 'sl4m/left-pad.vim'
-
 cal plug#end()
