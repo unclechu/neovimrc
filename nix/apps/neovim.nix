@@ -4,6 +4,9 @@
 # This module is intended to be called with ‘nixpkgs.callPackage’
 { callPackage
 
+# Overridable Neovim
+, neovim-unwrapped
+
 # Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
 , fzf ? null # Dependency for “fzf.vim”
 
@@ -18,7 +21,7 @@
 }:
 let
   generic = callPackage ../generic.nix {
-    inherit fzf __utils __neovimRC bashEnvFile perlForNeovim with-perl-support;
+    inherit neovim-unwrapped fzf __utils __neovimRC bashEnvFile perlForNeovim with-perl-support;
   };
 in
 generic.wenzelsNeovimGeneric {}

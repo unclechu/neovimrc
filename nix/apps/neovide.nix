@@ -10,7 +10,8 @@
 , makeWrapper
 , lib
 
-# Overridable Neovide
+# Overridable Neovim
+, neovim-unwrapped
 , neovide
 
 # Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
@@ -29,7 +30,7 @@ let
   inherit (__utils) esc;
 
   generic = callPackage ../generic.nix {
-    inherit fzf __utils __neovimRC bashEnvFile perlForNeovim with-perl-support;
+    inherit neovim-unwrapped fzf __utils __neovimRC bashEnvFile perlForNeovim with-perl-support;
   };
 
   neovim-for-gui = generic.wenzelsNeovimGeneric { forGUI = true; };
