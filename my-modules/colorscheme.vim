@@ -118,20 +118,21 @@ lua << EOF
 	})
 EOF
 
-lua << EOF
-	require('catppuccin').setup({
-		-- avoid theme-side dim when swapping [default false]
-		dim_inactive = { enabled = false },
-		custom_highlights = function(c)
-			return {
-				-- Active window (Normal): darker bg
-				Normal = { fg = c.text, bg = c.mantle }, -- use c.crust for even darker
-				-- Inactive windows (NormalNC): brighter bg
-				NormalNC = { fg = c.subtext1, bg = c.base },
-			}
-		end,
-	})
-EOF
+" FIXME: Fails to build with Neovim from unstable-nixpkgs
+"lua << EOF
+"	require('catppuccin').setup({
+"		-- avoid theme-side dim when swapping [default false]
+"		dim_inactive = { enabled = false },
+"		custom_highlights = function(c)
+"			return {
+"				-- Active window (Normal): darker bg
+"				Normal = { fg = c.text, bg = c.mantle }, -- use c.crust for even darker
+"				-- Inactive windows (NormalNC): brighter bg
+"				NormalNC = { fg = c.subtext1, bg = c.base },
+"			}
+"		end,
+"	})
+"EOF
 
 lua << EOF
 	require('bamboo').setup({
@@ -374,10 +375,11 @@ endf
 
 let g:colorschemes = []
 
+" FIXME: Fails to build with Neovim from unstable-nixpkgs
+" 'catppuccin-mocha',
 let g:colorschemes_fav = [
 	\ 'bamboo-vulgaris',
 	\ 'carbonfox',
-	\ 'catppuccin-mocha',
 	\ 'cyberdream',
 	\ 'gruvbox-material',
 	\ 'jellybeans',

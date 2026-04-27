@@ -223,6 +223,7 @@ Plug 'scottmckendry/cyberdream.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'rose-pine/neovim'
 Plug 'folke/tokyonight.nvim'
-Plug 'catppuccin/nvim'
+" FIXME: Fails to build with Neovim from unstable-nixpkgs
+" Plug 'catppuccin/nvim'
 
 cal plug#end()
