@@ -777,3 +777,7 @@ if !exists('plug_home') || (has('python3') || has('python'))
 	"       need this hack to force expanding anymore
 	ino <C-x><Tab> <C-R>=UltiSnips#ExpandSnippet()<CR>
 en
+
+
+" spell-checking stuff
+nn <space>sp :set invspell<CR>
