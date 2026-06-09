@@ -50,6 +50,46 @@ let
     sha256 = "0000000000000000000000000000000000000000000000000000";
   };
 
+  pluginsLackingLicenseInformation =
+    pkgs.callPackage
+      "${wenzels-neovim-src}/nix/plugins/plugins-lacking-license-information.nix"
+      {};
+
+  # See the arguments of these *.nix files.
+  # These are just simple examples which use defaults.
+  wenzels-neovim =
+    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim.nix" {};
+  wenzels-neovim-qt =
+    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim-qt.nix" {};
+  wenzels-neovide =
+    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovide.nix" {};
+in
+{
+  environment.systemPackages = [
+    wenzels-neovim
+    wenzels-neovim-qt
+    wenzels-neovide
+  ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.any (plugin: pkg == plugin) pluginsLackingLicenseInformation;
+}
+```
+
+Or you can use `__permitPluginsLackingLicenseInformation = true` as a hack to
+override the “unfree” license to Public Domain of the plugins that are lacking
+license information:
+
+``` nix
+{ pkgs, ... }:
+let
+  wenzels-neovim-src = pkgs.fetchFromGitHub {
+    owner = "unclechu";
+    repo = "neovimrc";
+    rev = "ffffffffffffffffffffffffffffffffffffffff"; # Git commit hash
+    sha256 = "0000000000000000000000000000000000000000000000000000";
+  };
+
   # See the arguments of these *.nix files.
   # These are just simple examples which use defaults.
   wenzels-neovim =
@@ -61,7 +101,7 @@ let
       __permitPluginsLackingLicenseInformation = true;
     };
   wenzels-neovide =
-    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovide.nix"   {
+    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovide.nix" {
       __permitPluginsLackingLicenseInformation = true;
     };
 in
