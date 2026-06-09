@@ -38,7 +38,7 @@ let
   ghPluginsOverrides = import ./sources.nix { sourcesFile = plugins/sources.json; };
 
   pluginsRenames = {
-    "fzf" = "fzfWrapper";
+    "fzf" = "fzf-wrapper";
 
     # Without this “rename” I get this error:
     #   error: attribute 'sc-vim' missing
