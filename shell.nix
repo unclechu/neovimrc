@@ -6,10 +6,11 @@ args@
 
 # Forwarded arguments.
 # See ‘nix/generic.nix’ for details.
-, __utils     ? null
-, __fzf       ? null
-, __neovimRC  ? null
+, __utils ? null
+, __fzf ? null
+, __neovimRC ? null
 , bashEnvFile ? null
+, __permitPluginsLackingLicenseInformation ? null
 
 , perlForNeovim ? pkgs.callPackage nix/perl {}
 
@@ -29,6 +30,7 @@ let
     "__fzf"
     "__neovimRC"
     "bashEnvFile"
+    "__permitPluginsLackingLicenseInformation"
     "perlForNeovim"
     "with-perl-support"
   ];

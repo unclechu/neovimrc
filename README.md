@@ -11,25 +11,26 @@ My own Neovim config.
 Neovim default TUI:
 
 ``` sh
-nix-shell --run nvim
+nix-shell --arg __permitPluginsLackingLicenseInformation true --run nvim
 ```
 
 Neovim QT GUI:
 
 ``` sh
-nix-shell --arg with-neovim-qt true --run nvim-qt
+nix-shell --arg __permitPluginsLackingLicenseInformation true --arg with-neovim-qt true --run nvim-qt
 ```
 
 Neovide GUI:
 
 ``` sh
-nix-shell --arg with-neovide true --run neovide
+nix-shell --arg __permitPluginsLackingLicenseInformation true --arg with-neovide true --run neovide
 ```
 
 Turn everything on:
 
 ``` sh
 nix-shell \
+  --arg __permitPluginsLackingLicenseInformation true \
   --arg with-neovim-qt           true \
   --arg with-neovide             true \
   --arg with-clean-vim-script    true \
@@ -51,9 +52,18 @@ let
 
   # See the arguments of these *.nix files.
   # These are just simple examples which use defaults.
-  wenzels-neovim    = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim.nix"    {};
-  wenzels-neovim-qt = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim-qt.nix" {};
-  wenzels-neovide   = pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovide.nix"   {};
+  wenzels-neovim =
+    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim.nix" {
+      __permitPluginsLackingLicenseInformation = true;
+    };
+  wenzels-neovim-qt =
+    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovim-qt.nix" {
+      __permitPluginsLackingLicenseInformation = true;
+    };
+  wenzels-neovide =
+    pkgs.callPackage "${wenzels-neovim-src}/nix/apps/neovide.nix"   {
+      __permitPluginsLackingLicenseInformation = true;
+    };
 in
 {
   environment.systemPackages = [

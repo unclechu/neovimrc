@@ -16,6 +16,9 @@
 
 # Build options
 , __neovimRC ? __utils.cleanSource ../.
+
+# See `pluginsLackingLicenseInformation`.
+, __permitPluginsLackingLicenseInformation ? false
 }:
 let
   inherit (__utils) esc exe;
@@ -64,6 +67,18 @@ let
     "melange-nvim" = "melange-nvim";
   };
 
+  # These plugins are lacking license information and marked as “unfree”.
+  # These plugins are typically old and not updated for years so it’s unlikely
+  # that the situation changes.
+  pluginsLackingLicenseInformation = [
+    vimPlugins.vim-indexed-search # https://github.com/henrik/vim-indexed-search
+    vimPlugins.delimitMate # https://github.com/raimondi/delimitMate
+    vimPlugins.vim-hoogle # https://github.com/twinside/vim-hoogle
+    vimPlugins.rainbow_parentheses-vim # https://github.com/kien/rainbow_parentheses.vim
+    vimPlugins.vim-pug # https://github.com/digitaltoad/vim-pug
+    vimPlugins.vim-janah # https://github.com/mhinz/vim-janah
+  ];
+
   # Highest priority, will override in any case.
   # Allows to use a plugin from a local directory or from anywhere else.
   # Use with “mkPlugin” function.
@@ -74,7 +89,22 @@ let
     #   (nix-gitignore.gitignoreRecursiveSource [ ../bullets.vim/.gitignore ] ../bullets.vim);
 
     nvim-treesitter = callPackage plugins/treesitter.nix {};
-  };
+  } // (
+    assert builtins.isBool __permitPluginsLackingLicenseInformation;
+    if ! __permitPluginsLackingLicenseInformation then {} else
+      lib.genAttrs' pluginsLackingLicenseInformation (
+        plugin: {
+          name = lib.getName plugin;
+          value = plugin.overrideAttrs (old: {
+            meta = old.meta // {
+              license =
+                assert old.meta.license == lib.licenses.unfree;
+                lib.licenses.publicDomain;
+            };
+          });
+        }
+      )
+  );
 
   mkGhPlugin = plugin:
     let

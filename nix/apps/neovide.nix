@@ -25,12 +25,25 @@
 , __neovimRC  ? __utils.cleanSource ../../.
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
 , with-perl-support ? true
+# Some plugins used in this configuration are marked as “unfree” because they
+# are lacking license information. This flag allows to permit those packages by
+# overriding the license with Public Domain.
+, __permitPluginsLackingLicenseInformation ? false
 }:
 let
   inherit (__utils) esc;
 
   generic = callPackage ../generic.nix {
-    inherit neovim-unwrapped fzf __utils __neovimRC bashEnvFile perlForNeovim with-perl-support;
+    inherit
+      neovim-unwrapped
+      fzf
+      __utils
+      __neovimRC
+      bashEnvFile
+      perlForNeovim
+      with-perl-support
+      __permitPluginsLackingLicenseInformation
+      ;
   };
 
   neovim-for-gui = generic.wenzelsNeovimGeneric { forGUI = true; };

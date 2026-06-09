@@ -17,7 +17,7 @@ let sources = import ./sources.nix; in
 , neovim-unwrapped
 , wrapNeovimUnstable
 , neovimUtils
-, makeNeovim ? config: wrapNeovimUnstable neovim-unwrapped (neovimUtils.makeNeovimConfig config)
+, makeNeovim ? config: wrapNeovimUnstable neovim-unwrapped config
 
 # Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
 , fzf ? null # Dependency for “fzf.vim”
@@ -30,6 +30,10 @@ let sources = import ./sources.nix; in
 , __neovimRC  ? __utils.cleanSource ../.
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
 , with-perl-support ? true
+# Some plugins used in this configuration are marked as “unfree” because they
+# are lacking license information. This flag allows to permit those packages by
+# overriding the license with Public Domain.
+, __permitPluginsLackingLicenseInformation ? false
 }:
 # The fzf.vim plugin needs fzf v0.24 or higher
 assert ! isNull fzf -> (
@@ -44,7 +48,9 @@ assert ! isNull fzf -> (
     builtins.elemAt versionDigits 1 >= 24
 );
 let
-  plugins = callPackage ./plugins.nix { inherit __utils __neovimRC; };
+  plugins = callPackage ./plugins.nix {
+    inherit __utils __neovimRC __permitPluginsLackingLicenseInformation;
+  };
 
   inherit (__utils) esc wrapExecutable exe shellCheckers;
 
@@ -177,7 +183,7 @@ let
 
         plugins = map (p: { plugin = p; }) (plugins.own ++ plugins.other);
 
-        customRC = ''
+        neovimRcContent = ''
           let $MYVIMRC = '${configDir}/init.vim'
           let &rtp .= ',${configDir}' " for UltiSnips
           se pp-=~/.vim/after
