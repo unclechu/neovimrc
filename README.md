@@ -51,9 +51,7 @@ let
   };
 
   pluginsLackingLicenseInformation =
-    pkgs.callPackage
-      "${wenzels-neovim-src}/nix/plugins/plugins-lacking-license-information.nix"
-      {};
+    import "${wenzels-neovim-src}/nix/plugins/plugins-lacking-license-information.nix";
 
   # See the arguments of these *.nix files.
   # These are just simple examples which use defaults.
@@ -72,7 +70,10 @@ in
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.any (plugin: pkg == plugin) pluginsLackingLicenseInformation;
+    lib.pipe pluginsLackingLicenseInformation [
+      builtins.attrNames
+      (builtins.any (name: lib.getName pkg == name))
+    ];
 }
 ```
 

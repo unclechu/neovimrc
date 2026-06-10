@@ -68,7 +68,7 @@ let
   };
 
   pluginsLackingLicenseInformation =
-    callPackage plugins/plugins-lacking-license-information.nix {};
+    import plugins/plugins-lacking-license-information.nix;
 
   # Highest priority, will override in any case.
   # Allows to use a plugin from a local directory or from anywhere else.
@@ -83,18 +83,22 @@ let
   } // (
     assert builtins.isBool __permitPluginsLackingLicenseInformation;
     if ! __permitPluginsLackingLicenseInformation then {} else
-      lib.genAttrs' pluginsLackingLicenseInformation (
-        plugin: {
-          name = lib.getName plugin;
-          value = plugin.overrideAttrs (old: {
-            meta = old.meta // {
-              license =
-                assert old.meta.license == lib.licenses.unfree;
-                lib.licenses.publicDomain;
-            };
-          });
-        }
-      )
+      lib.pipe pluginsLackingLicenseInformation [
+        builtins.attrValues
+        (map (name: vimPlugins.${name}))
+        (lib.flip lib.genAttrs' (
+          plugin: {
+            name = lib.getName plugin;
+            value = plugin.overrideAttrs (old: {
+              meta = old.meta // {
+                license =
+                  assert old.meta.license == lib.licenses.unfree;
+                  lib.licenses.publicDomain;
+              };
+            });
+          }
+        ))
+      ]
   );
 
   mkGhPlugin = plugin:
