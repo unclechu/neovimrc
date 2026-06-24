@@ -12,7 +12,6 @@ args@
 , mk-generic-script ? pkgs.callPackage utils/mk-generic-script.nix {}
 , executable-dependencies ? pkgs.callPackage utils/executable-dependencies.nix {}
 , __cleanSource ? pkgs.callPackage utils/clean-source.nix {}
-, perlForNeovim ? pkgs.callPackage nix/perl {}
 
 # Local options
 , with-neovim-qt           ? false
@@ -32,7 +31,6 @@ let
     "__permitPluginsLackingLicenseInformation"
     "executable-dependencies"
     "__cleanSource"
-    "perlForNeovim"
     "with-perl-support"
   ];
 
@@ -52,6 +50,12 @@ let
   clean-vim = callPackage nix/scripts/clean-vim.nix scriptArgs;
   git-grep-nvr = callPackage nix/scripts/git-grep-nvr.nix scriptArgs;
   nvimd = callPackage nix/scripts/nvimd.nix (scriptArgs // { __neovim = neovim; });
+
+  # Neovim does not expose it. Copy-pasted from nixpkgs.
+  perlEnv = pkgs.perl.withPackages (p: [
+    p.NeovimExt
+    p.Appcpanminus
+  ]);
 in
 
 pkgs.mkShell {
@@ -62,5 +66,5 @@ pkgs.mkShell {
     ++ (lib.optional with-clean-vim-script    clean-vim)
     ++ (lib.optional with-git-grep-nvr-script git-grep-nvr)
     ++ (lib.optional with-nvimd-script        nvimd)
-    ++ (lib.optional with-perl-support        perlForNeovim);
+    ++ (lib.optional with-perl-support        perlEnv);
 }

@@ -11,7 +11,7 @@ let sources = import ./sources.nix; in
 , lib
 , coreutils
 , fzf
-, perl
+, tree-sitter
 
 # Core Neovim dependency
 , neovim-unwrapped
@@ -25,7 +25,6 @@ let sources = import ./sources.nix; in
 # Overridable dependencies
 , executable-dependencies ? callPackage utils/executable-dependencies.nix {}
 , __cleanSource ? callPackage utils/clean-source.nix {}
-, perlForNeovim ? callPackage ./perl {}
 
 # Build options
 , __neovimRC  ? __cleanSource ../.
@@ -97,6 +96,8 @@ let
   e = executable-dependencies {
     mkdir = coreutils;
     cp = coreutils;
+    tree-sitter-cli = tree-sitter;
+    fzf = fzf;
   };
 
   rcDirGeneric = { forGUI ? false }:
@@ -134,7 +135,15 @@ let
       configDir = rcDirGeneric { inherit forGUI; };
 
       runtimeDependencies = [
-        fzf
+        # `:checkhealth` reports that `tree-sitter-cli` is missing
+        e.executables.tree-sitter-cli
+
+        # There is plenty of fuzzy-search stuff integrated into this config
+        # which is based on FZF calls.
+        e.executables.fzf
+
+        # Git is a runtime dependency too for a few of the plugins.
+        # But I rely on presence of Git in the user’s PATH.
       ];
 
       # A smoke test for this Neovim config.
@@ -223,9 +232,7 @@ let
           so ${initFiles.pre} " pre plugins init stage
           let &pp .= ',${configDir}' " postpone post plugins init stage
         '';
-      } // (
-        if ! with-perl-support then {} else { perlEnv = perlForNeovim; }
-      ));
+      });
 in
 {
   inherit wenzelsNeovimGeneric; # main export

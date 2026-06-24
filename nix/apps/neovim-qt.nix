@@ -12,7 +12,6 @@
 # Overridable dependencies
 , executable-dependencies ? callPackage ../utils/executable-dependencies.nix {}
 , __cleanSource ? callPackage ../utils/clean-source.nix {}
-, perlForNeovim ? callPackage ../perl {}
 
 # Build options
 , __neovimRC  ? __cleanSource ../../.
@@ -32,7 +31,6 @@ let
 
       executable-dependencies
       __cleanSource
-      perlForNeovim
 
       __neovimRC
       bashEnvFile
