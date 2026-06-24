@@ -6,11 +6,12 @@ args@
 
 # Forwarded arguments.
 # See ‘nix/generic.nix’ for details.
-, __utils ? null
-, __fzf ? null
 , __neovimRC ? null
 , bashEnvFile ? null
 , __permitPluginsLackingLicenseInformation ? null
+, mk-generic-script ? pkgs.callPackage utils/mk-generic-script.nix {}
+, executable-dependencies ? pkgs.callPackage utils/executable-dependencies.nix {}
+, __cleanSource ? pkgs.callPackage utils/clean-source.nix {}
 
 , perlForNeovim ? pkgs.callPackage nix/perl {}
 
@@ -26,26 +27,31 @@ let
   inherit (pkgs) lib callPackage;
 
   forwardedNames = [
-    "__utils"
-    "__fzf"
     "__neovimRC"
     "bashEnvFile"
     "__permitPluginsLackingLicenseInformation"
+    "executable-dependencies"
+    "__cleanSource"
     "perlForNeovim"
     "with-perl-support"
   ];
 
   filterForwarded = lib.filterAttrs (n: v: builtins.elem n forwardedNames);
+  fwdArgs = filterForwarded args;
 
-  neovim    = callPackage nix/apps/neovim.nix    (filterForwarded args);
-  neovim-qt = callPackage nix/apps/neovim-qt.nix (filterForwarded args);
-  neovide   = callPackage nix/apps/neovide.nix   (filterForwarded args);
+  neovim = callPackage nix/apps/neovim.nix fwdArgs;
+  neovim-qt = callPackage nix/apps/neovim-qt.nix fwdArgs;
+  neovide = callPackage nix/apps/neovide.nix fwdArgs;
 
-  scriptArgs = if builtins.hasAttr "__utils" args then { inherit __utils; } else {};
+  scriptArgs =
+    lib.filterAttrs (n: v: builtins.elem n [
+      "mk-generic-script"
+      "executable-dependencies"
+    ]) args;
 
-  clean-vim    = callPackage nix/scripts/clean-vim.nix scriptArgs;
+  clean-vim = callPackage nix/scripts/clean-vim.nix scriptArgs;
   git-grep-nvr = callPackage nix/scripts/git-grep-nvr.nix scriptArgs;
-  nvimd        = callPackage nix/scripts/nvimd.nix (scriptArgs // { __neovim = neovim; });
+  nvimd = callPackage nix/scripts/nvimd.nix (scriptArgs // { __neovim = neovim; });
 in
 pkgs.mkShell {
   buildInputs =

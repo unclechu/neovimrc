@@ -2,37 +2,47 @@
 # License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 # This module is intended to be called with ‘nixpkgs.callPackage’
-{ callPackage
+{ lib
+, callPackage
 , perl
 , perlPackages
 
 # Overridable dependencies
-, __utils ? callPackage ../utils.nix { inherit perlPackages; }
+, mk-generic-script ? callPackage ../utils/mk-generic-script.nix {}
+, executable-dependencies ? callPackage ../utils/executable-dependencies.nix {}
 
 # Build options
 , __scriptSrc ? ../../apps/clean-vim
 }:
+
 let
-  inherit (__utils)
-    nameOfModuleFile writeCheckedExecutable wrapExecutableWithPerlDeps
-    shellCheckers valueCheckers;
+  e = executable-dependencies {
+    perl = perl;
+  };
 
-  name = nameOfModuleFile (builtins.unsafeGetAttrPos "a" { a = 0; }).file;
-  src  = builtins.readFile "${__scriptSrc}";
+  perlDependencies = [
+    perlPackages.IPCSystemSimple
+  ];
 
-  perl-exe = "${perl}/bin/perl";
+  perlDependenciesBinPath = perlPackages.makePerlPath perlDependencies;
 
-  checkPhase = ''
-    ${shellCheckers.fileIsExecutable perl-exe}
-  '';
+  pkg = mk-generic-script {
+    name = "clean-vim";
+    src = __scriptSrc;
+    inherit e;
+    dontAddDependencies = true;
+    cutOffRuntimeDependenciesCheckPhase = null;
+    buildInputs = [ e.executables.perl ];
+    lintBuildInputs = [ e.executables.perl ];
+    wrapProgramArgs = [ "--set" "PERL5LIB" perlDependenciesBinPath ];
 
-  perlScript = writeCheckedExecutable name checkPhase "#! ${perl-exe}\n${src}";
-  deps = p: [ p.IPCSystemSimple ];
-  pkg = wrapExecutableWithPerlDeps "${perlScript}/bin/${name}" { inherit deps; };
+    lintPhase = ''
+      (
+        export PERL5LIB=${lib.escapeShellArg perlDependenciesBinPath}
+        perl -c -- "$src"
+      )
+    '';
+  };
 in
-assert valueCheckers.isNonEmptyString src;
-pkg // {
-  inherit checkPhase;
-  perlDependencies = deps perlPackages;
-  scriptSrc = __scriptSrc;
-}
+
+pkg // { inherit perlDependencies; }

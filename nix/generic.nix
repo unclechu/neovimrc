@@ -6,28 +6,29 @@ let sources = import ./sources.nix; in
 , runCommand
 , writeText
 , symlinkJoin
-, makeWrapper
+, makeBinaryWrapper
 , config
 , lib
 , coreutils
-
+, fzf
 , perl
 
 # Core Neovim dependency
 , neovim-unwrapped
 , wrapNeovimUnstable
-, neovimUtils
+
+# This helper was removed in later nixpkgs releases
 , makeNeovim ? config: wrapNeovimUnstable neovim-unwrapped config
 
-# Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
-, fzf ? null # Dependency for “fzf.vim”
+# --- Stuff that is not coming from the nixpkgs ---
 
 # Overridable dependencies
-, __utils ? callPackage ./utils.nix {}
+, executable-dependencies ? callPackage utils/executable-dependencies.nix {}
+, __cleanSource ? callPackage utils/clean-source.nix {}
 , perlForNeovim ? callPackage ./perl {}
 
 # Build options
-, __neovimRC  ? __utils.cleanSource ../.
+, __neovimRC  ? __cleanSource ../.
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
 , with-perl-support ? true
 # Some plugins used in this configuration are marked as “unfree” because they
@@ -35,24 +36,15 @@ let sources = import ./sources.nix; in
 # overriding the license with Public Domain.
 , __permitPluginsLackingLicenseInformation ? false
 }:
-# The fzf.vim plugin needs fzf v0.24 or higher
-assert ! isNull fzf -> (
-  let
-    versionDigits
-      = builtins.map lib.toInt
-      ( builtins.filter builtins.isString
-      ( builtins.split "\\." fzf.version
-      ));
-  in
-    builtins.elemAt versionDigits 0 >= 0 &&
-    builtins.elemAt versionDigits 1 >= 24
-);
+
 let
   plugins = callPackage ./plugins.nix {
-    inherit __utils __neovimRC __permitPluginsLackingLicenseInformation;
+    inherit
+      __cleanSource
+      executable-dependencies
+      __neovimRC
+      __permitPluginsLackingLicenseInformation;
   };
-
-  inherit (__utils) esc wrapExecutable exe shellCheckers;
 
   rcDerivation = "${__neovimRC}";
 
@@ -100,6 +92,13 @@ let
     '';
   };
 
+  esc = lib.escapeShellArg;
+
+  e = executable-dependencies {
+    mkdir = coreutils;
+    cp = coreutils;
+  };
+
   rcDirGeneric = { forGUI ? false }:
     assert builtins.isBool forGUI;
     let
@@ -113,20 +112,20 @@ let
     in
       runCommand (if forGUI then rcDirNameForGUI else rcDirName) {} ''
         set -Eeuo pipefail || exit
-        ${exe coreutils "mkdir"} -- "$out"
-        ${exe coreutils "cp"} -r -- ${esc rcDerivation}/{UltiSnips,my-modules,lua}/ "$out"
-        ${exe coreutils "cp"} -r -- \
+        ${e.s.mkdir} -- "$out"
+        ${e.s.cp} -r -- ${esc rcDerivation}/{UltiSnips,my-modules,lua}/ "$out"
+        ${e.s.cp} -r -- \
           ${esc rcDerivation}/{maps,options,plugins-configs,ginit}.vim "$out"
 
         # store original init.vim as one piece, it's linked to in $MYVIMRC
         # which is also used by config reloading hotkey.
-        ${exe coreutils "cp"} -- ${esc fullInitFile} "$out"/${esc fullInitFile.name}
+        ${e.s.cp} -- ${esc fullInitFile} "$out"/${esc fullInitFile.name}
 
         echo > "$out/plugins.vim" # just a dummy plug
 
         # for post-pluings part of the init.vim being interpreted as a package (latest in the order)
-        ${exe coreutils "mkdir"} -- "$out/plugin"
-        ${exe coreutils "cp"} -- ${esc postFile} "$out/plugin/"${esc postFile.name}
+        ${e.s.mkdir} -- "$out/plugin"
+        ${e.s.cp} -- ${esc postFile} "$out/plugin/"${esc postFile.name}
       '';
 
   wenzelsNeovimGeneric = { forGUI ? false }:
@@ -135,21 +134,13 @@ let
       configDir = rcDirGeneric { inherit forGUI; };
 
       wrap = neovim:
-        let
-          deps = lib.optional (fzf != null) fzf;
-        in
         symlinkJoin {
           name = "${lib.getName neovim}-wrapper";
-          nativeBuildInputs = [ makeWrapper ];
+          nativeBuildInputs = [ makeBinaryWrapper ];
           paths = [ neovim ];
           postBuild = ''
             nvim="$out"/bin/nvim
-
-            wrapProgram "$out"/bin/nvim ${
-              if deps != []
-              then "--prefix PATH : ${esc (lib.makeBinPath deps)}"
-              else ""
-            }
+            wrapProgram "$out"/bin/nvim --prefix PATH : ${esc (lib.makeBinPath [fzf])}
 
             # Smoke test
             (

@@ -2,48 +2,72 @@
 # License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 # This module is intended to be called with ‘nixpkgs.callPackage’
-{ callPackage
+{ lib
+, callPackage
+, coreutils
 , procps
 , perl
 , perlPackages
 
 # Overridable dependencies
-, __utils  ? callPackage ../utils.nix { inherit perlPackages; }
-# ↓ Set it to ‘null’ to use global ‘nvim’ (from ‘PATH’ environment variable)
-, __neovim ? callPackage ../apps/neovim.nix { inherit __utils; }
+, executable-dependencies ? callPackage ../utils/executable-dependencies.nix {}
+, mk-generic-script ? callPackage ../utils/mk-generic-script.nix {}
+# ↓ You can set it to `nixpkgs.pkgs.neovim` to test the script as standalone
+, __neovim ? callPackage ../apps/neovim.nix {}
 
 # Build options
 , __scriptSrc ? ../../apps/nvimd
 }:
 let
-  inherit (__utils)
-    nameOfModuleFile writeCheckedExecutable wrapExecutable wrapExecutableWithPerlDeps
-    shellCheckers valueCheckers;
+  e = (executable-dependencies {
+    perl = perl;
+    env = coreutils;
+    pkill = procps;
+    nvim = __neovim;
+  }).extend (final: prev: {
+    scriptDependencies = scriptSrc:
+      final.dependencies
+        "^BEGIN [{] # Guard dependencies$"
+        "^[[:space:]]*need_exe '([^']+)';([[:space:]]*#.*)?$"
+        scriptSrc;
+  });
 
-  name = nameOfModuleFile (builtins.unsafeGetAttrPos "a" { a = 0; }).file;
-  src  = builtins.readFile "${__scriptSrc}";
+  perlDependencies = [
+    perlPackages.IPCSystemSimple
+  ];
 
-  perl-exe = "${perl}/bin/perl";
-  pkill    = "${procps}/bin/pkill";
+  perlDependenciesBinPath = perlPackages.makePerlPath perlDependencies;
 
-  checkPhase = ''
-    ${shellCheckers.fileIsExecutable perl-exe}
-    ${if isNull __neovim then "" else shellCheckers.fileIsExecutable "${__neovim}/bin/nvim"}
-    ${shellCheckers.fileIsExecutable pkill}
-  '';
+  pkg = mk-generic-script {
+    name = "nvimd";
+    src = __scriptSrc;
+    inherit e;
+    buildInputs = [ e.executables.perl ];
+    lintBuildInputs = [ e.executables.perl ];
+    wrapProgramArgs = [ "--set" "PERL5LIB" perlDependenciesBinPath ];
 
-  perlScript = writeCheckedExecutable name checkPhase "#! ${perl-exe}\n${src}";
+    cutOffRuntimeDependenciesCheckPhase = ''
+      SED_CMD=(
+        sed -i
+        -e '/^BEGIN { # Guard dependencies/,/^}$/d'
+        -e '/^use IPC::Cmd qw(can_run)/d'
+        -e '/^sub need_exe/d'
+        -- "$src"
+      )
+      "''${SED_CMD[@]}"
+    '';
 
-  app = wrapExecutable "${perlScript}/bin/${name}" {
-    deps = (if isNull __neovim then [] else [ __neovim ]) ++ [ procps ];
+    lintPhase = ''
+      (
+        export PERL5LIB=${lib.escapeShellArg perlDependenciesBinPath}
+        (
+          export PATH=${lib.escapeShellArg (e.scriptDependenciesBinPath __scriptSrc)}:$PATH
+          perl -c -- "$pre_patched_src"
+        )
+        perl -c -- "$src"
+      )
+    '';
   };
-
-  deps = p: [ p.IPCSystemSimple ];
-  pkg = wrapExecutableWithPerlDeps "${app}/bin/${name}" { inherit deps; };
 in
-assert valueCheckers.isNonEmptyString src;
-pkg // {
-  inherit checkPhase;
-  perlDependencies = deps perlPackages;
-  scriptSrc = __scriptSrc;
-}
+
+pkg // { inherit perlDependencies; }

@@ -6,16 +6,15 @@
 
 # Overridable Neovim
 , neovim-unwrapped
-
-# Optional dependencies (set to “null” explicitly when call “callPackage” to use global one)
-, fzf ? null # Dependency for “fzf.vim”
+, wrapNeovimUnstable
 
 # Overridable dependencies
-, __utils ? callPackage ../utils.nix {}
+, executable-dependencies ? callPackage ../utils/executable-dependencies.nix {}
+, __cleanSource ? callPackage ../utils/clean-source.nix {}
 , perlForNeovim ? callPackage ../perl {}
 
 # Build options
-, __neovimRC  ? __utils.cleanSource ../../.
+, __neovimRC  ? __cleanSource ../../.
 , bashEnvFile ? null # E.g. a path to ‘.bash_aliases’ file (to make aliases be available via ‘:!…’)
 , with-perl-support ? true
 # Some plugins used in this configuration are marked as “unfree” because they
@@ -23,18 +22,23 @@
 # overriding the license with Public Domain.
 , __permitPluginsLackingLicenseInformation ? false
 }:
+
 let
   generic = callPackage ../generic.nix {
     inherit
       neovim-unwrapped
-      fzf
-      __utils
+      wrapNeovimUnstable
+
+      executable-dependencies
+      __cleanSource
+      perlForNeovim
+
       __neovimRC
       bashEnvFile
-      perlForNeovim
       with-perl-support
       __permitPluginsLackingLicenseInformation
       ;
   };
 in
+
 generic.wenzelsNeovimGeneric {}

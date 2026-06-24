@@ -3,6 +3,15 @@
 # License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 use v5.10; use strict; use warnings; use autodie qw(:all);
 
+use IPC::Cmd qw(can_run);
+sub need_exe { my ($cmd) = @_; can_run($cmd) or die "$cmd: executable dependency not found\n"; }
+
+BEGIN { # Guard dependencies
+	need_exe 'env';
+	need_exe 'pkill';
+	need_exe 'nvim';
+}
+
 use Env qw(USER);
 use constant ARGC => scalar(@ARGV);
 

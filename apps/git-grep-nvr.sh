@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Author: Viacheslav Lotsmanov
 # License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
-#
+set -o errexit || exit; set -o errtrace; set -o nounset; set -o pipefail
+
 # Helps to open a file on specific line via neovim-remove
 # by selected match from `git grep` output
 # (it will replace current `:terminal` buffer with selected file).
@@ -13,9 +14,11 @@
 #   git grep -nIF -- foo | git-grep-nvr.sh
 #
 # `-n` and `-I` are required for `git grep` command.
-#
 
-set -e || exit
+# Guard dependencies
+>/dev/null type whiptail
+>/dev/null type nvr
+
 options=()
 
 # reading git-grep output from stdin
@@ -25,8 +28,9 @@ while read -r match; do
 	line=${contents%%:*}
 	contents=${contents#*:} # slicing line number
 	if ! [[ $line =~ ^[0-9]+$ ]]; then
+		# shellcheck disable=SC2016
 		echo \
-			'Line number is incorrect, you probably forgot to add ' \
+			'Line number is incorrect, you probably forgot to add' \
 			'`-n` and/or `-I` to `git grep` command.' >&2
 		printf $"Line that failed to parse: \"%s\"\n" "$match" >&2
 		exit 1

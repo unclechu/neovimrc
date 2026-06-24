@@ -12,17 +12,16 @@
 , vimPlugins
 
 # Overridable dependencies
-, __utils ? callPackage ./utils.nix {}
+, executable-dependencies ? callPackage utils/executable-dependencies.nix {}
+, __cleanSource ? callPackage/utils/clean-source.nix {}
 
 # Build options
-, __neovimRC ? __utils.cleanSource ../.
+, __neovimRC ? __cleanSource ../.
 
 # See `pluginsLackingLicenseInformation`.
 , __permitPluginsLackingLicenseInformation ? false
 }:
 let
-  inherit (__utils) esc exe;
-
   # GitHub plugins overrides.
   #
   # You can update pins of all these plugins like this:
@@ -113,15 +112,21 @@ let
     in
       mkPlugin name src;
 
+  e = executable-dependencies {
+    mkdir = coreutils;
+    cp = coreutils;
+    rm = coreutils;
+  };
+
   mkPlugin = name: origin: vimUtils.buildVimPlugin {
     inherit name;
     pname = name; # This is mandatory for newer nixpkgs
 
     src = runCommand "${name}-clean" {} ''
       set -Eeuo pipefail || exit
-      ${exe coreutils "mkdir"} -- "$out"
-      ${exe coreutils "cp"} -r -- ${esc origin}/* "$out"
-      ${exe coreutils "rm"} -f -- "$out/Makefile"
+      ${e.s.mkdir} -- "$out"
+      ${e.s.cp} -r -- ${lib.escapeShellArg origin}/* "$out"
+      ${e.s.rm} -f -- "$out/Makefile"
     '';
   };
 
