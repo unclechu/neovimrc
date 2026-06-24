@@ -133,6 +133,67 @@ let
     let
       configDir = rcDirGeneric { inherit forGUI; };
 
+      runtimeDependencies = [
+        fzf
+      ];
+
+      # A smoke test for this Neovim config.
+      #
+      # Relies on the key mappings in my Neovim configuration.
+      # Writes some text via simulated key presses and saves it to a file.
+      smokeTest = ''
+        set -o errexit || exit; set -o errtrace; set -o nounset; set -o pipefail
+        export PATH="$path_prefix:$PATH"
+
+        # Plan Vimscript test
+        ${smokeTestTemplate "Vimscript" (testStr: testFile: ''
+          call feedkeys("i${testStr}\<Esc>;wq ${testFile}\<CR>", "mtx")
+        '')}
+
+        # Lua equivalent (test the Lua setup is healthy)
+        ${smokeTestTemplate "Lua" (testStr: testFile: ''
+          lua vim.api.nvim_feedkeys(vim.keycode([[i${testStr}<Esc>;wq ${testFile}<CR>]]), "mtx", false)
+        '')}
+
+        # Perl5 equivalent (test the Perl5 setup is healthy)
+        ${smokeTestTemplate "Perl5" (testStr: testFile: ''
+          call feedkeys(perleval("q{i${testStr}\<Esc>;wq ${testFile}\<CR>}"), "mtx")
+        '')}
+      '';
+
+      smokeTestTemplate = marker: exprFn:
+        let
+          testStr = "Hello world from ${marker}";
+          testFile = "test-output-${marker}";
+          logFile = "nvim-${marker}.log";
+        in
+        ''
+          (
+            exit_code=0
+            "$nvim" --headless -n -i NONE -c \
+              ${esc (exprFn testStr testFile)} &>${esc logFile} || exit_code=$?
+
+            if (( exit_code != 0 )); then
+              >&2 printf 'Smoke test failed (marker: “%s”) with exit code: %d\n' \
+                ${esc marker} "$exit_code"
+              log=$(<${esc logFile})
+              >&2 printf 'Neovim log: %s\n' "$log"
+              exit "$exit_code"
+            fi
+
+            contents=$(<${esc testFile})
+
+            if [[ "$contents" != ${esc testStr} ]]; then
+              >&2 printf \
+                'Vimscript smoke test failed. Test file “%s” contents: “%s”\n' \
+                ${esc testFile} "$contents"
+              log=$(<${esc logFile})
+              >&2 printf 'Neovim log: %s\n' "$log"
+              exit 1
+            fi
+          )
+        '';
+
       wrap = neovim:
         symlinkJoin {
           name = "${lib.getName neovim}-wrapper";
@@ -140,28 +201,9 @@ let
           paths = [ neovim ];
           postBuild = ''
             nvim="$out"/bin/nvim
-            wrapProgram "$out"/bin/nvim --prefix PATH : ${esc (lib.makeBinPath [fzf])}
-
-            # Smoke test
-            (
-              set -o nounset
-
-              # FIXME: The test is bypassed. When updating 24.05 → 24.11 the test was failing for
-              # some reason while when I try to run it as a command in a terminal it works just
-              # fine. Maybe new 0.10.* Neovim makes a hard dependency on TTY or something.
-              exit 0
-
-              # Relies on the key mappings in my Neovim configuration
-              "$nvim" --cmd 'lua vim.api.nvim_input("ihello world<esc>;wq test<cr>")' 0<&- &>/dev/null
-
-              # There must be “test” file created by the previous command
-              contents=$(cat test)
-
-              if [[ $contents != 'hello world' ]]; then
-                >&2 printf 'Smoke test failed. Test file contents: "%s"\n' "$contents"
-                exit 1
-              fi
-            )
+            path_prefix=${esc (lib.makeBinPath runtimeDependencies)}
+            wrapProgram "$nvim" --prefix PATH : "$path_prefix"
+            (${smokeTest})
           '';
         };
     in
