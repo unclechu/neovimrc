@@ -1,0 +1,69 @@
+name: Nix CI
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  neovim-nix-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            system-features = nixos-test benchmark big-parallel kvm
+
+      - name: Build Neovim config and run smoke tests
+        shell: bash
+        run: |
+          set -o errexit || exit; set -o errtrace; set -o nounset; set -o pipefail
+
+          TEST_SCRIPT='(
+            set -o errexit || exit; set -o errtrace; set -o nounset; set -o pipefail
+
+            nvim_path=$(type -P nvim)
+            printf "nvim path: %s\n" "$nvim_path"
+
+            case "$nvim_path" in
+              /nix/store/*-neovim-wrapper/bin/nvim)
+                ;;
+              *)
+                >&2 printf "Unexpected nvim path: %s\n" "$nvim_path"
+                exit 1
+                ;;
+            esac
+
+            version_first_line=$(nvim --version | head -n1)
+            printf "nvim --version first line: %s\n" "$version_first_line"
+
+            case "$version_first_line" in
+              "NVIM v"*)
+                ;;
+              *)
+                >&2 printf "Unexpected nvim --version first line: %s\n" "$version_first_line"
+                exit 1
+                ;;
+            esac
+          )'
+
+          CMD=(
+            nix-shell
+            --arg __permitPluginsLackingLicenseInformation true
+            --arg with-neovim-qt true
+            --arg with-neovide true
+            --arg with-clean-vim-script true
+            --arg with-git-grep-nvr-script true
+            --arg with-nvimd-script true
+            --run "$TEST_SCRIPT"
+          )
+          (set -o xtrace; "${CMD[@]}")

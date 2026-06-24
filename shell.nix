@@ -12,7 +12,6 @@ args@
 , mk-generic-script ? pkgs.callPackage utils/mk-generic-script.nix {}
 , executable-dependencies ? pkgs.callPackage utils/executable-dependencies.nix {}
 , __cleanSource ? pkgs.callPackage utils/clean-source.nix {}
-
 , perlForNeovim ? pkgs.callPackage nix/perl {}
 
 # Local options
@@ -23,6 +22,7 @@ args@
 , with-nvimd-script        ? false
 , with-perl-support        ? true
 }:
+
 let
   inherit (pkgs) lib callPackage;
 
@@ -53,6 +53,7 @@ let
   git-grep-nvr = callPackage nix/scripts/git-grep-nvr.nix scriptArgs;
   nvimd = callPackage nix/scripts/nvimd.nix (scriptArgs // { __neovim = neovim; });
 in
+
 pkgs.mkShell {
   buildInputs =
     [ neovim ]
