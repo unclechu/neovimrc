@@ -159,7 +159,7 @@ fu! s:qualify(type, without_as)
 			if len(l:words) > 1
 				let l:as = (len(l:words[-1]) < 3) ? l:words[-1] : l:words[-1][0]
 			en
-			
+
 			let l:as = ' as '.l:as
 		en
 	en
@@ -265,6 +265,18 @@ fu! s:handler(fullscreen, qargs)
 		\ 'options': l:fzf_opts,
 		\ 'sink*': funcref('s:sink'),
 		\ }
+
+	" A bug fix for when called fzf shell command pieces are bleeding into the
+	" UI in the Airline status line area. This fix removes these UI glitches.
+	augroup fuzzy_hoogle_fzf_statusline
+		autocmd!
+		autocmd FileType fzf call s:fzf_statusline()
+	augroup END
+	fu! s:fzf_statusline() abort
+		silent! file FuzzyHoogle
+		setlocal statusline=
+		setlocal winbar=
+	endf
 
 	retu fzf#run(fzf#wrap('Hoogle', l:fzf, a:fullscreen))
 endf
