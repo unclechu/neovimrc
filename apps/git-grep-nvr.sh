@@ -40,4 +40,4 @@ done
 
 CMD=(whiptail --menu 'Select git-grep match:' 0 0 0)
 SELECTED=$("${CMD[@]}" -- "${options[@]}" 2>&1 >/dev/tty)
-nvr --nostart -c "bd!#" -- "+${SELECTED%%:*}" "${SELECTED#*:}"
+exec nvr --nostart "+${SELECTED%%:*}" -- "${SELECTED#*:}"
