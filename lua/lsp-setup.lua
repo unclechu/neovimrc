@@ -83,6 +83,7 @@ local SetupNeovimLsp = function(overrides)
 		'ts_ls', -- TypeScript
 		'kotlin_language_server', -- Kotlin
 		'nim_langserver', -- Nim
+		'nimls', -- Nim
 	}) do
 		vim.lsp.config(k, merge_tables(opts, overrides[k] or {}))
 		vim.lsp.enable(k)
