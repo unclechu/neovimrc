@@ -14,20 +14,35 @@ local on_attach = function(client, bufnr)
 
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
+	local mk_diagnostic_jump_cb = function(count, severity)
+		return function()
+			vim.diagnostic.jump({
+				count = count,
+				severity = severity,
+			})
+		end
+	end
+
 	-- ’l‘ for (L)SP
 	vim.keymap.set('n', '<space>l', '', opts)
 
 	-- ’d‘ for (D)iagnostic
 	vim.keymap.set('n', '<space>ld', '', opts)
 	vim.keymap.set('n', '<space>ldo', vim.diagnostic.open_float, opts)
-	vim.keymap.set('n', '<space>ldp', vim.diagnostic.goto_prev, opts)
-	vim.keymap.set('n', '<space>ldn', vim.diagnostic.goto_next, opts)
-	vim.keymap.set('n', '<space>ldP', function()
-		vim.diagnostic.goto_prev({ severity = 'ERROR' })
-	end, opts)
-	vim.keymap.set('n', '<space>ldN', function()
-		vim.diagnostic.goto_next({ severity = 'ERROR' })
-	end, opts)
+	vim.keymap.set('n', '<space>ldp', mk_diagnostic_jump_cb(-1), opts)
+	vim.keymap.set(
+		'n',
+		'<space>ldP',
+		mk_diagnostic_jump_cb(-1, vim.diagnostic.severity.ERROR),
+		opts
+	)
+	vim.keymap.set('n', '<space>ldn', mk_diagnostic_jump_cb(1), opts)
+	vim.keymap.set(
+		'n',
+		'<space>ldN',
+		mk_diagnostic_jump_cb(1, vim.diagnostic.severity.ERROR),
+		opts
+	)
 	vim.keymap.set('n', '<space>ldl', vim.diagnostic.setloclist, opts)
 	vim.keymap.set('n', '<space>ldq', vim.diagnostic.setqflist, opts)
 	vim.keymap.set('n', '<space>ldr', vim.diagnostic.reset, opts)
