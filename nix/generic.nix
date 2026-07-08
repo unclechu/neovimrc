@@ -45,6 +45,8 @@ let
       __permitPluginsLackingLicenseInformation;
   };
 
+  spell-unicode-apostrophe = callPackage ./spell-unicode-apostrophe.nix {};
+
   rcDerivation = "${__neovimRC}";
 
   rcDirName = "wenzels-neovim";
@@ -228,6 +230,7 @@ let
         neovimRcContent = ''
           let $MYVIMRC = '${configDir}/init.vim'
           let &rtp .= ',${configDir}' " for UltiSnips
+          let &rtp .= ',${spell-unicode-apostrophe}'
           se pp-=~/.vim/after
           so ${initFiles.pre} " pre plugins init stage
           let &pp .= ',${configDir}' " postpone post plugins init stage
