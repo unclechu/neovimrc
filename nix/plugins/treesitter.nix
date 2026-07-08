@@ -12,14 +12,18 @@
 
 let
   treesitter = vimPlugins.nvim-treesitter.withPlugins (tsPlugins: [
+    # Code
     tsPlugins.haskell
     tsPlugins.purescript
+    tsPlugins.nim
 
+    # Scripting
     tsPlugins.lua
     tsPlugins.perl
     tsPlugins.python
     tsPlugins.ruby
 
+    # JVM stuff
     tsPlugins.java
     tsPlugins.clojure
     tsPlugins.kotlin
@@ -31,10 +35,7 @@ let
 
     tsPlugins.bash
 
-    # Not really useful, only “diff” command and commit hashes are highlighted.
-    # The most important stuff to have highlighted is additions and deletions.
-    # By not adding it here making Neovim to use the non-treesitter syntax.
-    # tsPlugins.diff
+    tsPlugins.diff
 
     tsPlugins.make
     tsPlugins.cmake
@@ -58,10 +59,7 @@ let
     tsPlugins.dot
     tsPlugins.dockerfile
 
-    # After “nixpkgs” from 23.11 → 24.05 something became off with this syntax
-    # implementation. Almost nothing is highlighted. I only see a couple colons
-    # colored differently in one big document.
-    # tsPlugins.markdown
+    tsPlugins.markdown
   ]);
 in
 
