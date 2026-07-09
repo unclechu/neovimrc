@@ -61,8 +61,12 @@ nn  <space>: :Commands!<CR>
 nm  <space>Ö <space>:
 nn <leader>; :History:<CR>
 nm <leader>ö <leader>;
+xn <leader>; :<C-u>call fzf#vim#command_history({'options': ['--query', "'<,'>"]})<CR>
+xm <leader>ö <leader>;
 nn  <space>; :History!:<CR>
 nm  <space>ö <space>;
+xn  <space>; :<C-u>call fzf#vim#command_history({'options': ['--query', "'<,'>"]}, 1)<CR>
+xm  <space>ö <space>;
 
 " fuzzy buffers, windows and mru
 nn <leader><space>   :Buffers<CR>
