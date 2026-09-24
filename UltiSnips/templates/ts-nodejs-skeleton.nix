@@ -99,10 +99,15 @@ let
           # TypeScript incremental build info
           *.tsbuildinfo
 
-          # Environment / secrets / direnv configuration
+          # Environment / secrets
           .env
           .env.*
           !.env.example
+
+          # direnv configuration
+          .envrc
+          .envrc.*
+          !.envrc.example
 
           # Logs
           *.log
@@ -165,12 +170,12 @@ let
         ''}
 
         # Create direnv configuration example file
-        >.env.example printf %s ${lib.escapeShellArg ''
+        >.envrc.example printf %s ${lib.escapeShellArg ''
           use nix
         ''}
 
         # Make a symlink to the direnv example file (will not be committed)
-        ${shExe' pkgs.coreutils "ln"} -s .env.example .env
+        ${shExe' pkgs.coreutils "ln"} -s .envrc.example .envrc
 
         # Create .editorconfig
         >.editorconfig printf %s ${lib.escapeShellArg ''
