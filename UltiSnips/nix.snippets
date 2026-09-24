@@ -1,0 +1,13 @@
+global !p
+from pathlib import Path
+from os import environ
+
+def template(name):
+	path = Path(environ['MYVIMRC_DIR']) / 'UltiSnips' / 'templates' / name
+	if not path.is_file(): raise RuntimeError(f'Template not found: “{path}”')
+	return path.read_text().rstrip('\n')
+endglobal
+
+snippet !ts-nodejs "TypeScript Node.js project skeleton"
+`!p snip.rv = template('ts-nodejs-skeleton.nix')`
+endsnippet
