@@ -26,10 +26,10 @@ let
         ${shExe pnpm} exec tsc --init
 
         # Patch package.json
-        package_json=$(<package.json jq '.
+        package_json=$(<package.json ${shExe jq} '.
           | .license = "--TBD--"
           | .author = "Wenzel"
-          | .main = "index.ts"
+          | .main = "src/index.ts"
           | .scripts = {
             "dev": "tsx watch src/index.ts",
             "start": "tsx src/index.ts",
