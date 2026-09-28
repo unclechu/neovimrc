@@ -205,6 +205,7 @@ let
 
         # Add local Vim configuration for my own setup (will not be committed)
         >.lvimrc printf %s ${lib.escapeShellArg ''
+          set cc=81,101 tw=100
           if executable('pnpm')
             call systemlist(['pnpm', 'exec', 'tsc', '--version'])
             if v:shell_error == 0
