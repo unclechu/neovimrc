@@ -62,6 +62,7 @@ let
         # Create some tests
         mkdir -p app tests
         >app/main.py printf %s ${lib.escapeShellArg ''
+          from typing import TypedDict
           import httpx
           from fastapi import FastAPI, HTTPException
 
@@ -75,8 +76,13 @@ let
               }
 
 
-          # Returns latitude and longitude pair or None is specified location is not found
-          async def get_coordinates_by_location(location: str) -> tuple[float, float] | None:
+          class Coordinates(TypedDict):
+              latitude: float
+              longitude: float
+
+
+          # Returns coordinates or None is specified location is not found
+          async def get_coordinates_by_location(location: str) -> Coordinates | None:
               async with httpx.AsyncClient() as client:
                   response = await client.get(
                       'https://geocoding-api.open-meteo.com/v1/search',
@@ -94,7 +100,7 @@ let
 
               if isinstance(results, list) and len(results):
                   result = results[0]
-                  return result['latitude'], result['longitude']
+                  return Coordinates(latitude=result['latitude'], longitude=result['longitude'])
               elif results is None or (isinstance(results, list) and len(results) == 0):
                   return None
               else:
@@ -106,13 +112,13 @@ let
 
 
           # Returns temperature value and temperature unit pair
-          async def get_weather_by_coordinates(coords: tuple[float, float]) -> tuple[float, str]:
+          async def get_weather_by_coordinates(coords: Coordinates) -> tuple[float, str]:
               async with httpx.AsyncClient() as client:
                   response = await client.get(
                       'https://api.open-meteo.com/v1/forecast',
                       params={
-                          'latitude': coords[0],
-                          'longitude': coords[1],
+                          'latitude': coords['latitude'],
+                          'longitude': coords['longitude'],
                           'current': 'temperature',
                       },
                   )
@@ -129,13 +135,18 @@ let
               return float(temp), temp_unit
 
 
-          @app.get('/weather/{location}')
-          async def weather(location: str) -> dict[str, str | int | float]:
+          class WeatherResponse(TypedDict):
+              temperature: float
+              unit: str
+
+
+          @app.get('/weather/{location}', response_model=WeatherResponse)
+          async def weather(location: str) -> WeatherResponse:
               coords = await get_coordinates_by_location(location)
               if coords is None:
                   raise HTTPException(status_code=404, detail=f'Location “{location}” not found')
               weather = await get_weather_by_coordinates(coords)
-              return {'temperature': weather[0], 'unit': weather[1]}
+              return WeatherResponse(temperature=weather[0], unit=weather[1])
         ''}
         >tests/test_main.py printf %s ${lib.escapeShellArg ''
           from fastapi.testclient import TestClient
