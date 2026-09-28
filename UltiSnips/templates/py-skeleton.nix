@@ -342,6 +342,9 @@ let
         # Add local Vim configuration for my own setup (will not be committed)
         >.lvimrc printf %s ${lib.escapeShellArg ''
           set cc=81,101 tw=100
+
+          nn <leader>fa :up<cr>:!ruff format %<cr>
+
           if executable('ty')
             lua vim.g.SetupNeovimLsp({
               \ ty = { cmd = { 'ty', 'server' } },
