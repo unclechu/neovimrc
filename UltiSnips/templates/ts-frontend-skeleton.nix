@@ -35,6 +35,8 @@ let
         ${shExe pnpm} add -D typescript@^7
         # Add dependencies for testing
         ${shExe pnpm} add -D vitest jsdom '@testing-library/react' '@testing-library/jest-dom'
+        # Add Oxlint and Oxfmt
+        ${shExe pnpm} add -D oxlint oxlint-tsgolint oxfmt
 
         # Patch package.json
         package_json=$(<package.json ${shExe jq} '.
@@ -42,6 +44,10 @@ let
           | .author = "Wenzel"
           | .scripts |= (. + {
             "typecheck": "tsc -b",
+            "lint": "oxlint --type-aware",
+            "lint:fix": "oxlint --type-aware --fix",
+            "format": "oxfmt --write .",
+            "format:check": "oxfmt --check .",
             "test": "vitest run",
             "test:watch": "vitest",
           })
@@ -67,6 +73,24 @@ let
               }),
             ).toBeInTheDocument()
           });
+        ''}
+
+        # Create Oxfmt configuration
+        >.oxfmtrc.json printf %s ${lib.escapeShellArg ''
+          {
+            "$schema": "./node_modules/oxfmt/configuration_schema.json",
+            "printWidth": 100,
+            "tabWidth": 2,
+            "useTabs": false,
+            "semi": true,
+            "singleQuote": true,
+            "trailingComma": "all",
+            "categories": {
+              "correctness": "error",
+              "suspicious": "warn",
+              "style": "warn"
+            }
+          }
         ''}
 
         # Create direnv configuration example file
@@ -176,8 +200,9 @@ let
         ''}
 
         # Smoke test
-        ${shExe pnpm} run typecheck
+        ${shExe pnpm} run format
         ${shExe pnpm} run lint
+        ${shExe pnpm} run typecheck
         ${shExe pnpm} run test
 
         # Removing this skeleton generator from this Nix configuration file
@@ -190,6 +215,9 @@ let
         # Add local Vim configuration for my own setup (will not be committed)
         >.lvimrc printf %s ${lib.escapeShellArg ''
           set cc=81,101 tw=100
+
+          nn <leader>fa :up<cr>:!pnpm format %<cr>
+
           if executable('pnpm')
             call systemlist(['pnpm', 'exec', 'tsc', '--version'])
             if v:shell_error == 0
