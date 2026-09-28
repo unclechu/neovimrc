@@ -22,7 +22,8 @@ let
 
         # Initialize the project with pnpm first
         ${shExe pnpm} init
-        ${shExe pnpm} add -D typescript tsx @types/node
+        ${shExe pnpm} add -D typescript tsx @types/node oxlint oxlint-tsgolint oxfmt
+        ${shExe pnpm} add hono @hono/node-server
         ${shExe pnpm} exec tsc --init
 
         # Patch package.json
@@ -34,8 +35,14 @@ let
             "dev": "tsx watch src/index.ts",
             "start": "tsx src/index.ts",
             "typecheck": "tsc --noEmit",
+            "lint": "oxlint",
+            "lint:fix": "oxlint --fix",
+            "format": "oxfmt --write .",
+            "format:check": "oxfmt --check .",
             "test": "tsx --test",
-            "test:watch": "tsx --test --watch"
+            "test:watch": "tsx --test --watch",
+            "dev-server": "tsx watch src/server.ts",
+            "start-server": "tsx src/server.ts"
           }
         ')
         printf '%s\n' "$package_json" > package.json
@@ -63,6 +70,112 @@ let
             assert.equal(hello('world'), 'Hello, world!');
           });
         ''}
+        >src/server.ts printf %s ${lib.escapeShellArg ''
+          import { serve } from '@hono/node-server';
+          import { Hono } from 'hono';
+
+          export const app = new Hono();
+
+          app.get('/', (c) =>
+            c.json({
+              message: 'Hello, world!',
+            }),
+          );
+
+          type Coordinates = {
+            latitude: number;
+            longitude: number;
+          };
+
+          // Returns coordinates or null if specified location is not found
+          const getCoordinatesByLocation = async (location: string): Promise<Coordinates | null> => {
+            const url = new URL('https://geocoding-api.open-meteo.com/v1/search');
+            url.searchParams.set('name', location);
+            url.searchParams.set('count', String(1));
+            url.searchParams.set('language', 'en');
+            url.searchParams.set('format', 'json');
+
+            const headers = new Headers();
+            headers.append('Accept', 'application/json');
+
+            const { results } = await fetch(url, { headers }).then((x) => x.json());
+
+            if (Array.isArray(results) && results.length > 0)
+              return {
+                latitude: results[0].latitude,
+                longitude: results[0].longitude,
+              } satisfies Coordinates;
+            else if (results == null || (Array.isArray(results) && results.length == 0)) return null;
+            else throw new TypeError('“results” is of unexpected type');
+          };
+
+          // Returns temperature value and temperature unit pair
+          const getWeatherByCoordinates = async (coords: Coordinates): Promise<[number, string]> => {
+            const url = new URL('https://api.open-meteo.com/v1/forecast');
+            url.searchParams.set('latitude', String(coords.latitude));
+            url.searchParams.set('longitude', String(coords.longitude));
+            url.searchParams.set('current', 'temperature');
+
+            const headers = new Headers();
+            headers.append('Accept', 'application/json');
+
+            const { current, current_units } = await fetch(url, { headers }).then((x) => x.json());
+
+            const temp = current?.temperature;
+            const temp_unit = current_units?.temperature;
+
+            if (
+              temp == null ||
+              temp_unit == null ||
+              typeof temp !== 'number' ||
+              typeof temp_unit !== 'string'
+            )
+              throw new TypeError('Unexpected response from open-meteo forecast endpoint');
+
+            return [temp, temp_unit];
+          };
+
+          type WeatherResponse = {
+            temperature: number;
+            unit: string;
+          };
+
+          app.get('/weather/:location', async (c) => {
+            const location: string = c.req.param('location');
+
+            const coords: null | Coordinates = await getCoordinatesByLocation(location);
+            if (coords === null) return c.json({ error: `Location “''${location}” not found` }, 404);
+
+            const weather = await getWeatherByCoordinates(coords);
+
+            return c.json({
+              temperature: weather[0],
+              unit: weather[1],
+            } satisfies WeatherResponse);
+          });
+
+          if (import.meta.main) {
+            const port: number = 3000;
+            console.error(`Listening to port ''${port}…`);
+            serve({ fetch: app.fetch, port });
+          }
+        ''}
+        >test/server.test.ts printf %s ${lib.escapeShellArg ''
+          import assert from 'node:assert/strict';
+          import test from 'node:test';
+
+          import { app } from '../src/server.ts';
+
+          test('GET / returns hello world', async () => {
+            const response = await app.request('/');
+
+            assert.equal(response.status, 200);
+
+            assert.deepEqual(await response.json(), {
+              message: 'Hello, world!',
+            });
+          });
+        ''}
 
         # Create TypeScript configuration
         >tsconfig.json printf %s ${lib.escapeShellArg ''
@@ -82,6 +195,24 @@ let
               "src/**/*.ts",
               "test/**/*.ts"
             ]
+          }
+        ''}
+
+        # Create Oxfmt configuration
+        >.oxfmtrc.json printf %s ${lib.escapeShellArg ''
+          {
+            "$schema": "./node_modules/oxfmt/configuration_schema.json",
+            "printWidth": 100,
+            "tabWidth": 2,
+            "useTabs": false,
+            "semi": true,
+            "singleQuote": true,
+            "trailingComma": "all",
+            "categories": {
+              "correctness": "error",
+              "suspicious": "warn",
+              "style": "warn"
+            }
           }
         ''}
 
@@ -192,6 +323,8 @@ let
         ''}
 
         # Smoke test
+        ${shExe pnpm} run format
+        ${shExe pnpm} run lint
         ${shExe pnpm} run typecheck
         ${shExe pnpm} run test
         ${shExe pnpm} run start
@@ -206,6 +339,9 @@ let
         # Add local Vim configuration for my own setup (will not be committed)
         >.lvimrc printf %s ${lib.escapeShellArg ''
           set cc=81,101 tw=100
+
+          nn <leader>fa :up<cr>:!pnpm format %<cr>
+
           if executable('pnpm')
             call systemlist(['pnpm', 'exec', 'tsc', '--version'])
             if v:shell_error == 0
