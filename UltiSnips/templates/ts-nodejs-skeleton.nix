@@ -353,6 +353,12 @@ let
                 \     }
                 \   }
                 \ })
+              " For builtin TypeScript >=7 LSP server
+              " 'pnpm', 'exec', 'tsc', '--lsp', '--stdio'
+              " 'npx', 'tsc', '--lsp', '--stdio'
+              " For TypeScript older than 7
+              " 'npx', 'typescript-language-server', '--stdio'
+              " 'pnpm', 'exec', 'typescript-language-server', '--stdio'
             endif
           endif
         ''}
