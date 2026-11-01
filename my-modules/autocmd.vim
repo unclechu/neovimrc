@@ -63,6 +63,14 @@ aug my#filetype_hooks | au!
 
 	au BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt
 		\ sil %!pandoc -tplain -o /dev/stdout -- '%'
+
+	fu! s:lisp_rainbow_parenthesis()
+		RainbowParenthesesLoadRound
+		RainbowParenthesesActivate
+	endf
+
+	" Enable parenthesis rainbow for Lisp syntax
+	au FileType lisp cal s:lisp_rainbow_parenthesis()
 aug END
 
 aug my#insert_mode_hooks | au!
