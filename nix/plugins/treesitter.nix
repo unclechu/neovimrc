@@ -28,6 +28,11 @@ let
     tsPlugins.clojure
     tsPlugins.kotlin
 
+    # Lisp family
+    tsPlugins.commonlisp
+    tsPlugins.scheme
+    tsPlugins.racket
+
     tsPlugins.yaml
     tsPlugins.json
     tsPlugins.jq

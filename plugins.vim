@@ -112,6 +112,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'clojure-emacs/cider-nrepl'
 Plug 'tpope/vim-fireplace'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'HiPhish/rainbow-delimiters.nvim'
 "   racket
 Plug 'wlangstroth/vim-racket'
 

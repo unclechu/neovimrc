@@ -64,6 +64,9 @@ let
 
     # A hack to fix it
     "melange-nvim" = "melange-nvim";
+
+    # HiPhish/rainbow-delimiters.nvim
+    "rainbow-delimiters.nvim" = "rainbow-delimiters-nvim";
   };
 
   pluginsLackingLicenseInformation =

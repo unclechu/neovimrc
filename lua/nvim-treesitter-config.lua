@@ -1,5 +1,19 @@
 require'nvim-treesitter'.setup {}
 
+vim.g.rainbow_delimiters = {
+	whitelist = {
+		'commonlisp',
+		'clojure',
+		'scheme',
+		'racket',
+	},
+	strategy = {
+		[''] = 'rainbow-delimiters.strategy.global',
+		-- Local strategy colors parenthesis only in expression under cursor
+		-- commonlisp = 'rainbow-delimiters.strategy.local',
+	},
+}
+
 vim.api.nvim_create_autocmd('FileType', {
 	callback = function(args)
 		local ft = vim.bo[args.buf].filetype
