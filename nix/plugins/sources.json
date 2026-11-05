@@ -59,6 +59,18 @@
         "url": "https://github.com/clojure-emacs/cider-nrepl/archive/8c100c6484b5b7f84a8f5c9a5c08db90cf745454.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "confetti-vim-syntax": {
+        "branch": "master",
+        "description": "Confetti syntax for Vim and Neovim",
+        "homepage": "https://github.com/hgs3/confetti",
+        "owner": "unclechu",
+        "repo": "confetti-vim-syntax",
+        "rev": "d28bcecf07314a016334d0f13b4b4734345651d6",
+        "sha256": "13vrjhfbc37ix1plawz69fakwkf14ixcc8jgjhgybddpdbc6a815",
+        "type": "tarball",
+        "url": "https://github.com/unclechu/confetti-vim-syntax/archive/d28bcecf07314a016334d0f13b4b4734345651d6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "ctrlsf.vim": {
         "branch": "master",
         "description": "A text searching plugin mimics Ctrl-Shift-F on Sublime Text 2",

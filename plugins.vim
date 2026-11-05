@@ -151,6 +151,7 @@ Plug 'glench/vim-jinja2-syntax'
 
 " configs
 Plug 'vim-scripts/nginx.vim'
+Plug 'unclechu/confetti-vim-syntax'
 
 " sql
 Plug 'exu/pgsql.vim'
