@@ -3,6 +3,13 @@
 " License: MIT https://raw.githubusercontent.com/unclechu/neovimrc/master/LICENSE
 
 
+" Fix overridden vim-surround Insert-mode key.
+"
+" Neovim 0.12 defines this global Insert-mode mapping:
+" vim.keymap.set("i", "<C-S>", vim.lsp.buf.signature_help)
+imap <C-S> <Plug>Isurround
+
+
 " hack for wrap to <CR> with indentation
 
 xmap S<CR> S<C-j>gvVkoj>
