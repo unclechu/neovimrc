@@ -17,20 +17,40 @@ nmap ysa{<CR> ysa{<C-j>gvVkoj>
 nmap ysi}<CR> ysi}<C-j>gvVkoj>
 nmap ysa}<CR> ysa}<C-j>gvVkoj>
 
+nmap ysI{<CR> cs{}ysi{<CR>
+nmap ysA{<CR> cs{}ysa{<CR>
+nmap ysI}<CR> cs{}ysi}<CR>
+nmap ysA}<CR> cs{}ysa}<CR>
+
 nmap ysi[<CR> ysi[<C-j>gvVkoj>
 nmap ysa[<CR> ysa[<C-j>gvVkoj>
 nmap ysi]<CR> ysi]<C-j>gvVkoj>
 nmap ysa]<CR> ysa]<C-j>gvVkoj>
+
+nmap ysI[<CR> cs[]ysi[<CR>
+nmap ysA[<CR> cs[]ysa[<CR>
+nmap ysI]<CR> cs[]ysi]<CR>
+nmap ysA]<CR> cs[]ysa]<CR>
 
 nmap ysi(<CR> ysi(<C-j>gvVkoj>
 nmap ysa(<CR> ysa(<C-j>gvVkoj>
 nmap ysi)<CR> ysi)<C-j>gvVkoj>
 nmap ysa)<CR> ysa)<C-j>gvVkoj>
 
+nmap ysI(<CR> cs()ysi(<CR>
+nmap ysA(<CR> cs()ysa(<CR>
+nmap ysI)<CR> cs()ysi)<CR>
+nmap ysA)<CR> cs()ysa)<CR>
+
 nmap ysi<<CR> ysi<<C-j>gvVkoj>
 nmap ysa<<CR> ysa<<C-j>gvVkoj>
 nmap ysi><CR> ysi><C-j>gvVkoj>
 nmap ysa><CR> ysa><C-j>gvVkoj>
+
+nmap ysI<<CR> cs<>ysi<<CR>
+nmap ysA<<CR> cs<>ysa<<CR>
+nmap ysI><CR> cs<>ysi><CR>
+nmap ysA><CR> cs<>ysa><CR>
 
 nmap ysi'<CR> ysi'<C-j>gvVkoj>
 nmap ysa'<CR> ysa'<C-j>gvVkoj>
@@ -38,6 +58,15 @@ nmap ysi"<CR> ysi"<C-j>gvVkoj>
 nmap ysa"<CR> ysa"<C-j>gvVkoj>
 nmap ysi`<CR> ysi`<C-j>gvVkoj>
 nmap ysa`<CR> ysa`<C-j>gvVkoj>
+
+" Using a trick to temporarily change quotations to parenthesis
+" to trim spacing characters
+nmap ysI'<CR> cs'(cs('ysi'<CR>
+nmap ysA'<CR> cs'(cs('ysa'<CR>
+nmap ysI"<CR> cs"(cs("ysi"<CR>
+nmap ysA"<CR> cs"(cs("ysa"<CR>
+nmap ysI`<CR> cs`(cs(`ysi`<CR>
+nmap ysA`<CR> cs`(cs(`ysa`<CR>
 
 
 " vim: set noet :
