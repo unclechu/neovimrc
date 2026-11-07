@@ -7,64 +7,69 @@
 # See https://tree-sitter.github.io/tree-sitter/
 
 # This module is intended to be called with ‘nixpkgs.callPackage’
-{ vimPlugins
+{ callPackage
+, vimPlugins
 }:
 
 let
+  plugin-overrides = import ../sources.nix { sourcesFile = ./sources.json; };
+  tree-sitter-confetti-source = import plugin-overrides.tree-sitter-confetti;
+  tree-sitter-confetti = callPackage tree-sitter-confetti-source {};
+  inherit (tree-sitter-confetti) tree-sitter-confetti-grammar;
+
   treesitter = vimPlugins.nvim-treesitter.withPlugins (tsPlugins: [
     # Code
     tsPlugins.haskell
     tsPlugins.purescript
     tsPlugins.nim
+    tsPlugins.c
+    tsPlugins.cpp
+    tsPlugins.javascript
+    tsPlugins.typescript
+    tsPlugins.tsx
+    tsPlugins.supercollider
+    tsPlugins.vim
+    tsPlugins.glsl
 
     # Scripting
     tsPlugins.lua
     tsPlugins.perl
     tsPlugins.python
     tsPlugins.ruby
+    tsPlugins.jq
+    tsPlugins.bash
 
     # JVM stuff
     tsPlugins.java
-    tsPlugins.clojure
     tsPlugins.kotlin
+    tsPlugins.clojure
 
     # Lisp family
     tsPlugins.commonlisp
     tsPlugins.scheme
     tsPlugins.racket
 
+    # Data/configuration
     tsPlugins.yaml
     tsPlugins.json
-    tsPlugins.jq
     tsPlugins.xml
-
-    tsPlugins.bash
-
     tsPlugins.diff
+    tree-sitter-confetti-grammar
 
+    # Build tools
+    tsPlugins.nix
     tsPlugins.make
     tsPlugins.cmake
 
-    tsPlugins.c
-    tsPlugins.cpp
-
+    # Markup
+    tsPlugins.markdown
     tsPlugins.html
     tsPlugins.css
-    tsPlugins.javascript
-    tsPlugins.typescript
-    tsPlugins.tsx
 
-    tsPlugins.supercollider
-
-    # Etc
-    tsPlugins.vim
-    tsPlugins.nix
+    # Queries, specs, schemas
     tsPlugins.sql
-    tsPlugins.glsl
     tsPlugins.dot
     tsPlugins.dockerfile
-
-    tsPlugins.markdown
   ]);
 in
 

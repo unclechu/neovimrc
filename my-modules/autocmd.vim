@@ -20,6 +20,10 @@ aug my#auto_filetype_detection | au!
 	au BufNewFile,BufRead *.nj se ft=jinja
 	au BufNewFile,BufRead Vagrantfile se ft=ruby
 	au BufNewFile,BufRead .ssh-vagrant se ft=sshconfig
+
+	" Confetti
+	au BufNewFile,BufRead *.confetti setf confetti
+	au FileType confetti setl commentstring=#\ %s comments=b:# iskeyword+=45
 aug END
 
 aug my#filetype_hooks | au!

@@ -251,6 +251,18 @@
         "url": "https://github.com/chriskempson/tomorrow-theme/archive/ccf6666d888198d341b26b3a99d0bc96500ad503.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "tree-sitter-confetti": {
+        "branch": "master",
+        "description": "Tree-sitter grammar for Cofetti https://confetti.hgs3.me",
+        "homepage": "https://tree-sitter.github.io/tree-sitter/",
+        "owner": "unclechu",
+        "repo": "tree-sitter-confetti",
+        "rev": "ed35a2f97f3561a107a0787d2863f0d76dcede7c",
+        "sha256": "0ycwa8x4ibzjlmm9fm2n19g32gx101s83mp4c0a247rnv5zy3bi4",
+        "type": "tarball",
+        "url": "https://github.com/unclechu/tree-sitter-confetti/archive/ed35a2f97f3561a107a0787d2863f0d76dcede7c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "twilight": {
         "branch": "master",
         "description": "A clone of Textmates twilight scheme",
