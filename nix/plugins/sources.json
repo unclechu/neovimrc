@@ -65,10 +65,10 @@
         "homepage": "https://github.com/hgs3/confetti",
         "owner": "unclechu",
         "repo": "confetti-vim-syntax",
-        "rev": "d28bcecf07314a016334d0f13b4b4734345651d6",
-        "sha256": "13vrjhfbc37ix1plawz69fakwkf14ixcc8jgjhgybddpdbc6a815",
+        "rev": "1b902d788f2262d2e3fe838493cc5df4afafce60",
+        "sha256": "0613hgxxw1scx5h349lnlkzd2q3i20213zii71c58wzwax5j4msr",
         "type": "tarball",
-        "url": "https://github.com/unclechu/confetti-vim-syntax/archive/d28bcecf07314a016334d0f13b4b4734345651d6.tar.gz",
+        "url": "https://github.com/unclechu/confetti-vim-syntax/archive/1b902d788f2262d2e3fe838493cc5df4afafce60.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "ctrlsf.vim": {
@@ -257,10 +257,10 @@
         "homepage": "https://tree-sitter.github.io/tree-sitter/",
         "owner": "unclechu",
         "repo": "tree-sitter-confetti",
-        "rev": "ed35a2f97f3561a107a0787d2863f0d76dcede7c",
-        "sha256": "0ycwa8x4ibzjlmm9fm2n19g32gx101s83mp4c0a247rnv5zy3bi4",
+        "rev": "0b577805a20b3c5acbc220e391de2a606a93ae1c",
+        "sha256": "0pnqqvlmppan07mn1zyvfzxx0ny8i5y9nfczkll9h9caa0a43fz8",
         "type": "tarball",
-        "url": "https://github.com/unclechu/tree-sitter-confetti/archive/ed35a2f97f3561a107a0787d2863f0d76dcede7c.tar.gz",
+        "url": "https://github.com/unclechu/tree-sitter-confetti/archive/0b577805a20b3c5acbc220e391de2a606a93ae1c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "twilight": {
